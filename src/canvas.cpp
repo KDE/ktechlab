@@ -466,7 +466,7 @@ void KtlQCanvas::setUpdatePeriod(int ms)
 
 // Don't call this unless you know what you're doing.
 // p is in the content's co-ordinate example.
-void KtlQCanvas::drawViewArea( KtlQCanvasView* view, QPainter* p, const QRect& vr, bool dbuf )
+void KtlQCanvas::drawViewArea( KtlQCanvasView* view, QPainter* p, const QRect& vr, bool dbuf /* always false */)
 {
 	QPoint tl = view->contentsToViewport(QPoint(0,0));
 
@@ -508,6 +508,7 @@ void KtlQCanvas::drawViewArea( KtlQCanvasView* view, QPainter* p, const QRect& v
 		p->setClipRegion(a);
 	}
 
+#if 0 // 2018.03.11 - dbuf is always false
 	if ( dbuf ) {
 		offscr = QPixmap(vr.width(), vr.height());
 		offscr.x11SetScreen(p->device()->x11Screen());
@@ -517,18 +518,20 @@ void KtlQCanvas::drawViewArea( KtlQCanvasView* view, QPainter* p, const QRect& v
         if (!isSuccess) {
             qWarning() << Q_FUNC_INFO << " painter not active";
         }
-	
+
 		twm.translate(-vr.x(),-vr.y());
 		twm.translate(-tl.x(),-tl.y());
 		dbp.setWorldMatrix( wm*twm, true );
-	
+
         // 2015.11.27 - do not clip, in order to fix drawing of garbage on the screen.
 		//dbp.setClipRect(0,0,vr.width(), vr.height());
 // 		dbp.setClipRect(v);
 		drawCanvasArea(ivr,&dbp,false);
 		dbp.end();
 		p->drawPixmap(vr.x(), vr.y(), offscr, 0, 0, vr.width(), vr.height());
-	} else {
+	} else
+#endif
+    {
 		QRect r = vr; r.moveBy(tl.x(),tl.y()); // move to untransformed co-ords
 		if ( !all.contains(ivr) )
 		{
@@ -594,7 +597,7 @@ void KtlQCanvas::update()
 		  		  // Translate to the coordinate system of drawViewArea().
 					QPoint tl = view->contentsToViewport(QPoint(0,0));
 					p.translate(tl.x(),tl.y());
-					drawViewArea( view, &p, wm.map(r), true );
+// 					drawViewArea( view, &p, wm.map(r), true );
 #endif
 					doneareas.append(new QRect(r));
 				}
@@ -748,7 +751,7 @@ void KtlQCanvas::drawChanges(const QRect& inarea)
 		elarea.width()*chunksize,
 		elarea.height()*chunksize
 					  );
-		drawCanvasArea(elarea, NULL, true);
+		drawCanvasArea(elarea, NULL, /*true*/ false);
 	}
 }
 
@@ -772,7 +775,7 @@ void KtlQCanvas::drawArea(const QRect& clip, QPainter* painter)
 }
 
 
-void KtlQCanvas::drawCanvasArea(const QRect& inarea, QPainter* p, bool double_buffer)
+void KtlQCanvas::drawCanvasArea(const QRect& inarea, QPainter* p, bool double_buffer /* 2018.03.11 - always false */)
 {
 	QRect area=inarea.intersect( m_size );
 
@@ -816,11 +819,11 @@ void KtlQCanvas::drawCanvasArea(const QRect& inarea, QPainter* p, bool double_bu
 	}
 // 	allvisible.sort();
 
+#if 0 // 2018.03.11 - double buffer is always false
 	if ( double_buffer ) {
 		offscr = QPixmap(area.width(), area.height());
 		if (p) offscr.x11SetScreen(p->device()->x11Screen());
 	}
-
 	if ( double_buffer && !offscr.isNull() ) {
 		QPainter painter;
         const bool isSucces = painter.begin(&offscr);
@@ -850,7 +853,9 @@ void KtlQCanvas::drawCanvasArea(const QRect& inarea, QPainter* p, bool double_bu
 			return;
 		}
 
-	} else if ( p ) {
+	} else
+#endif
+    if ( p ) {
 		drawBackground(*p,area);
 // 		allvisible.drawUnique(*p);
 		drawChangedItems( *p );
@@ -1641,7 +1646,7 @@ void KtlQCanvasView::drawContents(QPainter *p, int cx, int cy, int cw, int ch)
 	
 	if (viewing) {
 	//viewing->drawViewArea(this,p,r,true);
-		viewing->drawViewArea(this,p,r,!d->repaint_from_moving);
+		viewing->drawViewArea(this,p,r, /*!d->repaint_from_moving*/ false); /* 2018.03.11 - fix build for osx */
 		d->repaint_from_moving = false;
 	} else {
 		p->eraseRect(r);
