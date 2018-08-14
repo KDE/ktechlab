@@ -50,6 +50,7 @@
 #include <qtimer.h>
 #include <qprinter.h>
 #include <qtextedit.h>
+#include <qnamespace.h>
 
 #include <cmath>
 #include <cassert>
@@ -779,9 +780,11 @@ void ItemDocument::updateItemViewScrollbars()
 	{
 		ItemView * itemView = static_cast<ItemView*>((View*)*it);
 		CVBEditor * cvbEditor = itemView->cvbEditor();
-		// TODO QT3
-		cvbEditor->setVScrollBarMode( ((h*itemView->zoomLevel()) > cvbEditor->visibleHeight()) ? Q3ScrollView::AlwaysOn : Q3ScrollView::AlwaysOff );
-		cvbEditor->setHScrollBarMode( ((w*itemView->zoomLevel()) > cvbEditor->visibleWidth()) ? Q3ScrollView::AlwaysOn : Q3ScrollView::AlwaysOff );
+
+        cvbEditor->setVerticalScrollBarPolicy(
+            ((h*itemView->zoomLevel()) > cvbEditor->visibleHeight()) ? Qt::ScrollBarAlwaysOn : Qt::ScrollBarAlwaysOff );
+		cvbEditor->setHorizontalScrollBarPolicy(
+            ((w*itemView->zoomLevel()) > cvbEditor->visibleWidth()) ? Qt::ScrollBarAlwaysOn : Qt::ScrollBarAlwaysOff );
 	}
 }
 

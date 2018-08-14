@@ -23,6 +23,7 @@
 // #include <q3pointarray.h>   // needed for q3polygonscanner
 #include <q3scrollview.h>
 #include <qdesktopwidget.h>
+#include <qevent.h>
 
 
 #include <stdlib.h>
@@ -1099,7 +1100,8 @@ void KtlQCanvas::setBackgroundPixmap( const QPixmap& p )
 	setTiles(p, 1, 1, p.width(), p.height());
 
     for (QList<KtlQCanvasView*>::iterator itView = m_viewList.begin(); itView != m_viewList.end(); ++itView) {
-        (*itView)->updateContents();
+        //(*itView)->updateContents(); // 2018.08.14
+        (*itView)->update();
     }
 	//KtlQCanvasView* view = m_viewList.first();    // 2018.08.14 - see above
 	//while ( view != 0 ) {
@@ -1538,8 +1540,12 @@ QPolygon KtlQCanvasItem::chunks() const
 }
 
 KtlQCanvasView::KtlQCanvasView(QWidget* parent, const char* name, Qt::WFlags f)
-	: Q3ScrollView(parent,name,f|Qt::WResizeNoErase|Qt::WStaticContents)    // TODO QT3
+	: QScrollArea(parent)
+    // Q3ScrollView(parent,name,f|Qt::WResizeNoErase|Qt::WStaticContents)    // 2018.08.14
 {
+    setName(name);
+    setWindowFlags(f | Qt::WRepaintNoErase | Qt::WStaticContents);
+
 	d = new KtlQCanvasViewData;
 	viewing = 0;
 	setCanvas(0);
@@ -1547,9 +1553,13 @@ KtlQCanvasView::KtlQCanvasView(QWidget* parent, const char* name, Qt::WFlags f)
 }
 
 KtlQCanvasView::KtlQCanvasView(KtlQCanvas* canvas, QWidget* parent, const char* name, Qt::WFlags f)
-	: Q3ScrollView(parent,name,f|Qt::WResizeNoErase|Qt::WStaticContents)    // TODO QT3
+	: QScrollArea(parent)
+    //Q3ScrollView(parent,name,f|Qt::WResizeNoErase|Qt::WStaticContents)    // 2018.08.14
 {
-	d = new KtlQCanvasViewData;
+    setName(name);
+    setWindowFlags(f | Qt::WRepaintNoErase | Qt::WStaticContents);
+
+    d = new KtlQCanvasViewData;
 	viewing = 0;
 	setCanvas(canvas);
 
@@ -1603,6 +1613,40 @@ bool KtlQCanvasView::setWorldMatrix( const QWMatrix & wm )
 	}
 	return ok;
 }
+//BEGIN compat functions
+QPoint KtlQCanvasView::contentsToViewport(const QPoint &p) {
+    return p;
+}
+int KtlQCanvasView::contentsX() {
+    return 0;
+}
+int KtlQCanvasView::contentsY() {
+    return 0;
+}
+int KtlQCanvasView::contentsHeight() {
+    return 600;
+}
+int KtlQCanvasView::contentsWidth() {
+    return 800;
+}
+int KtlQCanvasView::visibleWidth() {
+    return 640;
+}
+int KtlQCanvasView::visibleHeight() {
+    return 480;
+}
+void KtlQCanvasView::resizeContents(int w, int h) {
+}
+void KtlQCanvasView::setContentsPos(int x, int y) {
+}
+void KtlQCanvasView::scrollBy(int dx, int dy) {
+}
+void KtlQCanvasView::viewportResizeEvent( QResizeEvent * e ) {
+    viewport()->resize(e->size()); //resizeEvent(e);
+}
+//note: void contentsMoving(int x, int y);
+
+//END compat functions
 
 void KtlQCanvasView::updateContentsSize()
 {
@@ -1686,12 +1730,21 @@ void KtlQCanvasView::drawContents( QPainter *p )
 QSize KtlQCanvasView::sizeHint() const
 {
 	if ( !canvas() )
-		return Q3ScrollView::sizeHint();        // TODO QT3
+		return QScrollArea::sizeHint();
     // should maybe take transformations into account
 	return ( canvas()->size() + 2 * QSize(frameWidth(), frameWidth()) )
 			.boundedTo( 3 * QApplication::desktop()->size() / 4 );
 }
 
+void KtlQCanvasView::paintEvent(QPaintEvent * event) {
+    QRect r = event->rect();
+    QPainter p;
+    const bool isStartSuccess = p.begin(viewport());
+    if (!isStartSuccess) {
+        qWarning() << Q_FUNC_INFO << " painter not active";
+    }
+    drawContents(&p, r.x(), r.y(), r.width(), r.height());
+}
 
 /*
 	Since most polygonal items don't have a pen, the default is

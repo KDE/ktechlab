@@ -36,6 +36,7 @@
 #include <qcursor.h>
 #include <qtimer.h>
 #include <qwmatrix.h>
+#include <qscrollbar.h>
 
 #include <cmath>
 #include <kmenu.h>
@@ -171,8 +172,8 @@ ItemView::ItemView( ItemDocument * itemDocument, ViewContainer *viewContainer, u
 	m_CVBEditor = new CVBEditor( p_itemDocument->canvas(), this, "cvbEditor" );
 	m_CVBEditor->setLineWidth(1);
 	
-	connect( m_CVBEditor, SIGNAL(horizontalSliderReleased()), itemDocument, SLOT(requestCanvasResize()) );
-	connect( m_CVBEditor, SIGNAL(verticalSliderReleased()), itemDocument, SLOT(requestCanvasResize()) );
+	connect( m_CVBEditor->horizontalScrollBar(), SIGNAL(sliderReleased()), itemDocument, SLOT(requestCanvasResize()) );
+	connect( m_CVBEditor->verticalScrollBar(), SIGNAL(sliderReleased()), itemDocument, SLOT(requestCanvasResize()) );
 	
 	m_layout->insertWidget( 0, m_CVBEditor );
 	

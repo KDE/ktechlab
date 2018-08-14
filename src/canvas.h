@@ -12,7 +12,8 @@
 
 #include <map>
 
-#include "q3scrollview.h"
+// #include "q3scrollview.h" // 2018.08.14
+#include "qscrollarea.h"
 #include "qpixmap.h"
 #include "q3ptrlist.h"
 #include "qbrush.h"
@@ -235,7 +236,7 @@ class KtlQCanvas : public QObject
 
 class KtlQCanvasViewData;
 
-class KtlQCanvasView : public Q3ScrollView  // TODO QT3 QScrollArea
+class KtlQCanvasView : public QScrollArea  // TODO QT3 QScrollArea
 {
 	Q_OBJECT
 	public:
@@ -252,10 +253,27 @@ class KtlQCanvasView : public Q3ScrollView  // TODO QT3 QScrollArea
 		const QMatrix &inverseWorldMatrix() const;
 		bool setWorldMatrix( const QMatrix & );
 
+    public:
+        QPoint contentsToViewport(const QPoint &p);
+        int contentsX();
+        int contentsY();
+        int contentsHeight();
+        int contentsWidth();
+        int visibleWidth();
+        int visibleHeight();
+        void resizeContents(int w, int h);
+        void setContentsPos(int x, int y);
+        void scrollBy(int dx, int dy);
+        void viewportResizeEvent( QResizeEvent * e );
+    signals:
+        void contentsMoving(int x, int y);
+
 	protected:
         /** overrides Q3ScrollView::drawContents() */   // override paintEvent?
 		virtual void drawContents( QPainter*, int cx, int cy, int cw, int ch );
 		QSize sizeHint() const;
+
+        void paintEvent(QPaintEvent * event);
 
 	private:
 		void drawContents( QPainter* );
