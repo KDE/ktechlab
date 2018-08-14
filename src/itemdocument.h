@@ -17,7 +17,7 @@
 
 #include <qmap.h>
 #include <qstack.h>
-#include <q3valuevector.h>
+// #include <q3valuevector.h>
 
 class Canvas;
 class CanvasTip;

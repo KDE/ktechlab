@@ -21,7 +21,7 @@
 #include "qtimer.h"
 #include "q3tl.h"
 // #include <q3pointarray.h>   // needed for q3polygonscanner
-#include <q3scrollview.h>
+// #include <q3scrollview.h>
 #include <qdesktopwidget.h>
 #include <qevent.h>
 

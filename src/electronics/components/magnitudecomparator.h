@@ -14,7 +14,7 @@
 #include "logic.h"
 
 #include <qbitarray.h>
-#include <q3ptrvector.h>
+// #include <q3ptrvector.h>
 
 /**
 @author Fredy Yanardi

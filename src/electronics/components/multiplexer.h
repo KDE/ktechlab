@@ -14,7 +14,7 @@
 #include "component.h"
 #include "logic.h"
 
-#include <q3ptrvector.h>
+// #include <q3ptrvector.h>
 
 /**
 @author David Saxton
