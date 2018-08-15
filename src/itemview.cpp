@@ -179,7 +179,8 @@ ItemView::ItemView( ItemDocument * itemDocument, ViewContainer *viewContainer, u
 	
 	setAcceptDrops(true);
 
-	setFocusWidget( m_CVBEditor->viewport() );
+	//setFocusWidget( m_CVBEditor->viewport() );    // 2018.08.15 - focus is on the scroll area, not its widget
+    setFocusWidget( m_CVBEditor );
 }
 
 
@@ -655,7 +656,7 @@ void ItemView::updateStatus()
 
 //BEGIN class CVBEditor
 CVBEditor::CVBEditor( Canvas *canvas, ItemView *itemView, const char *name )
-	: KtlQCanvasView( canvas, itemView, name, Qt::WNoAutoErase | Qt::WStaticContents )
+	: KtlQCanvasView( canvas, itemView, name, Qt::WNoAutoErase /* | Qt::WStaticContents */ )
 {
 	m_pCanvas = canvas;
 	b_ignoreEvents = false;

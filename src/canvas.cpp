@@ -1557,7 +1557,9 @@ KtlQCanvasView::KtlQCanvasView(KtlQCanvas* canvas, QWidget* parent, const char* 
     //Q3ScrollView(parent,name,f|Qt::WResizeNoErase|Qt::WStaticContents)    // 2018.08.14
 {
     setName(name);
-    setWindowFlags(f | Qt::WRepaintNoErase | Qt::WStaticContents);
+    setWindowFlags(f | Qt::WRepaintNoErase /* | Qt::WStaticContents */ );
+
+    setFocusPolicy(Qt::ClickFocus);
 
     d = new KtlQCanvasViewData;
 	viewing = 0;
