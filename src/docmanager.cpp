@@ -268,6 +268,8 @@ void DocManager::handleNewDocument( Document *document, ViewArea *viewArea )
 	connect( document, SIGNAL(viewFocused(View* )), this, SLOT(slotViewFocused(View* )) );
 	connect( document, SIGNAL(viewUnfocused()), this, SLOT(slotViewUnfocused()) );
 	
+    qDebug() << Q_FUNC_INFO << "connect viewFocused";
+
 	createNewView( document, viewArea );
 }
 
@@ -304,6 +306,7 @@ void DocManager::documentDestroyed( QObject *obj )
 
 void DocManager::slotViewFocused( View *view )
 {
+    qDebug() << Q_FUNC_INFO << "slotViewFocused begin view=" << view;
 	ViewContainer * vc = static_cast<ViewContainer*>(KTechlab::self()->tabWidget()->currentPage());
 	if (!vc)
 		view = 0l;

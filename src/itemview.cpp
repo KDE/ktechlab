@@ -37,6 +37,7 @@
 #include <qtimer.h>
 #include <qwmatrix.h>
 #include <qscrollbar.h>
+#include <qdebug.h>
 
 #include <cmath>
 #include <kmenu.h>
@@ -377,6 +378,7 @@ void ItemView::scrollToMouse( const QPoint & pos )
 
 void ItemView::contentsMousePressEvent( QMouseEvent *e )
 {
+    qDebug() << Q_FUNC_INFO << e;
 	if (!e) return;
 	
 	e->accept();
@@ -436,6 +438,7 @@ void ItemView::contentsMouseMoveEvent( QMouseEvent *e )
 
 void ItemView::contentsMouseReleaseEvent( QMouseEvent *e )
 {
+    qDebug() << Q_FUNC_INFO << e;
 	if (!e) return;
 	
 	e->accept();
@@ -784,8 +787,12 @@ bool CVBEditor::event( QEvent * e )
 			p_itemView->contentsWheelEvent( (QWheelEvent*)e );
 			return ((QWheelEvent*)e)->isAccepted();
 			
-		default:
+		default: {
+            if ((e->type() == QEvent::FocusIn) || (e->type() == QEvent::FocusIn)) {
+                qDebug() << Q_FUNC_INFO << " forward Focus event " << e->type();
+            }
 			return KtlQCanvasView::event( e );
+        }
 	}
 }
 

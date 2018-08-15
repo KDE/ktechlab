@@ -72,9 +72,11 @@ void ItemInterface::slotGetActionTicket()
 
 void ItemInterface::slotItemDocumentChanged( ItemDocument * doc )
 {
+    qDebug() << Q_FUNC_INFO << "slotItemDocumentChanged begin";
 	slotClearAll();
 	if ( ItemDocument * itemDocument = dynamic_cast<ItemDocument*>((Document*)p_cvb) )
 	{
+        qDebug() << Q_FUNC_INFO << "disconnect slotUpdateItemInterface";
 		disconnect( itemDocument, SIGNAL(selectionChanged()), this, SLOT(slotUpdateItemInterface()) );
 	}
 	
@@ -86,6 +88,7 @@ void ItemInterface::slotItemDocumentChanged( ItemDocument * doc )
 	if (!p_cvb)
 		return;
 	
+    qDebug() << Q_FUNC_INFO << "connec slotUpdateItemInterface";
 	connect( p_cvb, SIGNAL(selectionChanged()), this, SLOT(slotUpdateItemInterface()) );
 	
 	p_itemGroup = p_cvb->selectList();
@@ -125,6 +128,7 @@ void ItemInterface::slotMultipleSelected()
 
 void ItemInterface::slotUpdateItemInterface()
 {
+    qDebug() << Q_FUNC_INFO << " begin ";
 	if (!p_itemGroup)
 		return;
 	

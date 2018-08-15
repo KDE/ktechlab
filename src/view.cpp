@@ -98,6 +98,7 @@ bool View::closeView()
 
 void View::setFocusWidget( QWidget * focusWidget )
 {
+    qDebug() << Q_FUNC_INFO << " focusWidget=" << focusWidget;
 	assert( focusWidget );
 	assert( !m_pFocusWidget );
 	
@@ -113,11 +114,13 @@ void View::setFocusWidget( QWidget * focusWidget )
 
 bool View::eventFilter( QObject * watched, QEvent * e )
 {
-// 	kDebug() << k_funcinfo << e->type() << endl;
+    //qWarning() << Q_FUNC_INFO << watched << e->type();
 	
 	if ( watched != m_pFocusWidget )
 		return false;
 	
+    //qWarning() << Q_FUNC_INFO << watched << e->type();
+
 	switch ( e->type() )
 	{
 		case QEvent::FocusIn:
@@ -137,14 +140,14 @@ bool View::eventFilter( QObject * watched, QEvent * e )
 				ItemInterface::self()->updateItemActions();
 			}
 	
-// 			kDebug() << k_funcinfo << "Focused In\n";
+ 			qDebug() << Q_FUNC_INFO << "Focused In " << this;
 			emit focused(this);
 			break;
 		}
 		
 		case QEvent::FocusOut:
 		{
-// 			kDebug() << k_funcinfo << "Focused Out.\n";
+ 			qDebug() << Q_FUNC_INFO << "Focused Out." << this;
             QFocusEvent *fe = static_cast<QFocusEvent*>(e);
 			
 			if ( QWidget * fw = qApp->focusWidget() )

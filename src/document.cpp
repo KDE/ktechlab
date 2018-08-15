@@ -21,6 +21,8 @@
 #include <kmessagebox.h>
 #include <ktabwidget.h>
 
+#include <qdebug.h>
+
 Document::Document( const QString &caption, const char *name )
 	: QObject( KTechlab::self(), name ),
 	b_modified(false),
@@ -59,6 +61,7 @@ void Document::handleNewView( View *view )
 	connect( view, SIGNAL(focused(View* )), this, SLOT(slotViewFocused(View* )) );
 	connect( view, SIGNAL(unfocused()), this, SIGNAL(viewUnfocused()) );
 	
+    qDebug() << Q_FUNC_INFO << " connect view focused()";
 	view->show();
 	
 	if ( !DocManager::self()->getFocusedView() )
@@ -85,6 +88,7 @@ void Document::slotViewDestroyed( QObject *obj )
 
 void Document::slotViewFocused(View *view)
 {
+    qDebug() << Q_FUNC_INFO << "slotViewFocused begin view=" << view;
 	if (!view) return;
 	
 	m_pActiveView = view;
