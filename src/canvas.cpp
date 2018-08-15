@@ -1539,18 +1539,20 @@ QPolygon KtlQCanvasItem::chunks() const
 	return r;
 }
 
-KtlQCanvasView::KtlQCanvasView(QWidget* parent, const char* name, Qt::WFlags f)
-	: QScrollArea(parent)
-    // Q3ScrollView(parent,name,f|Qt::WResizeNoErase|Qt::WStaticContents)    // 2018.08.14
-{
-    setName(name);
-    setWindowFlags(f | Qt::WRepaintNoErase | Qt::WStaticContents);
-
-	d = new KtlQCanvasViewData;
-	viewing = 0;
-	setCanvas(0);
-	connect(this,SIGNAL(contentsMoving(int,int)),this,SLOT(cMoving(int,int)));
-}
+// KtlQCanvasView::KtlQCanvasView(QWidget* parent, const char* name, Qt::WFlags f)
+// 	: QScrollArea(parent)
+//     // Q3ScrollView(parent,name,f|Qt::WResizeNoErase|Qt::WStaticContents)    // 2018.08.14
+// {
+//     setName(name);
+//     setWindowFlags(f | Qt::WRepaintNoErase /* | Qt::WStaticContents */ );
+//
+//     setFocusPolicy(Qt::ClickFocus);
+//
+// 	d = new KtlQCanvasViewData;
+// 	viewing = 0;
+// 	setCanvas(0);
+// 	connect(this,SIGNAL(contentsMoving(int,int)),this,SLOT(cMoving(int,int)));
+// }
 
 KtlQCanvasView::KtlQCanvasView(KtlQCanvas* canvas, QWidget* parent, const char* name, Qt::WFlags f)
 	: QScrollArea(parent)
