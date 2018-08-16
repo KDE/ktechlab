@@ -797,8 +797,9 @@ bool CVBEditor::event( QEvent * e )
 }
 
 
-void CVBEditor::viewportResizeEvent( QResizeEvent * e )
+void CVBEditor::resizeEvent( QResizeEvent * e )
 {
+    //qWarning() << Q_FUNC_INFO << "e=" << e;
 	KtlQCanvasView::viewportResizeEvent(e);
 	p_itemView->p_itemDocument->requestEvent( ItemDocument::ItemDocumentEvent::ResizeCanvasToItems );
 }

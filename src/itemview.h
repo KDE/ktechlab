@@ -133,7 +133,8 @@ class CVBEditor : public KtlQCanvasView
 		void canvasResized( const QRect & oldSize, const QRect & newSize );
 		
 	protected:
-		virtual void viewportResizeEvent( QResizeEvent * );
+		// virtual void viewportResizeEvent( QResizeEvent * ); // 2018.08.15 -renamed, see below
+        virtual void resizeEvent( QResizeEvent * );
 		ItemView *p_itemView;
 		bool b_passEventsToView;
 		bool b_ignoreEvents;
