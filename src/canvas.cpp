@@ -24,6 +24,7 @@
 // #include <q3scrollview.h>
 #include <qdesktopwidget.h>
 #include <qevent.h>
+#include <qscrollbar.h>
 
 
 #include <stdlib.h>
@@ -1568,6 +1569,8 @@ KtlQCanvasView::KtlQCanvasView(KtlQCanvas* canvas, QWidget* parent, const char* 
 	setCanvas(canvas);
 
 	connect(this,SIGNAL(contentsMoving(int,int)),this,SLOT(cMoving(int,int)));
+    connect(horizontalScrollBar(), SIGNAL(valueChanged(int)), this, SLOT(horizScrollValueChanged(int)));
+    connect(verticalScrollBar(), SIGNAL(valueChanged(int)), this, SLOT(vertScrollValueChanged(int)));
 }
 
 
@@ -1622,31 +1625,57 @@ QPoint KtlQCanvasView::contentsToViewport(const QPoint &p) {
     return p;
 }
 int KtlQCanvasView::contentsX() {
-    return 0;
+    return horizontalScrollBar()->value();
 }
 int KtlQCanvasView::contentsY() {
-    return 0;
+    return verticalScrollBar()->value();
 }
 int KtlQCanvasView::contentsHeight() {
-    return 600;
+    if (viewing) {
+        return viewing->height();
+    } else {
+        return 0;
+    }
 }
 int KtlQCanvasView::contentsWidth() {
-    return 800;
+    if (viewing) {
+        return viewing->width();
+    } else {
+        return 0;
+    }
 }
 int KtlQCanvasView::visibleWidth() {
-    return 640;
+    return viewport()->width();
 }
 int KtlQCanvasView::visibleHeight() {
-    return 480;
+    return viewport()->height();
 }
 void KtlQCanvasView::resizeContents(int w, int h) {
+    qWarning() << Q_FUNC_INFO << "begin" << " w=" << w << " h=" << h;
+    viewport()->resize(w, h);
 }
 void KtlQCanvasView::setContentsPos(int x, int y) {
+    qWarning() << Q_FUNC_INFO << "begin" << " x=" << x << " y=" << y;
+//     horizontalScrollBar()->setValue(x);
+//     verticalScrollBar()->setValue(y);
 }
 void KtlQCanvasView::scrollBy(int dx, int dy) {
+    qWarning() << Q_FUNC_INFO << "begin" << " dx=" << dx << " dy=" << dy;
 }
 void KtlQCanvasView::viewportResizeEvent( QResizeEvent * e ) {
-    viewport()->resize(e->size()); //resizeEvent(e);
+    qWarning() << Q_FUNC_INFO << "begin" << "e.size=" << e->size();
+    // TODO zoom factor
+    if (1 /*contentsWidth() > e->size().width()*/) {
+        horizontalScrollBar()->setMinimum(0);
+        horizontalScrollBar()->setMaximum(contentsWidth() - e->size().width());
+        horizontalScrollBar()->setPageStep(e->size().width());
+    }
+    if (1 /*contentsHeight() > e->size().height()*/) {
+        verticalScrollBar()->setMinimum(0);
+        verticalScrollBar()->setMaximum(contentsHeight() - e->size().height());
+        verticalScrollBar()->setPageStep(e->size().height());
+    }
+    //viewport()->resize(e->size()); //resizeEvent(e);
 }
 //note: void contentsMoving(int x, int y);
 
@@ -1654,6 +1683,7 @@ void KtlQCanvasView::viewportResizeEvent( QResizeEvent * e ) {
 
 void KtlQCanvasView::updateContentsSize()
 {
+    qWarning() << Q_FUNC_INFO << "begin";
 	if ( viewing ) {
 		QRect br;
 // 			br = d->xform.map(QRect(0,0,viewing->width(),viewing->height()));
@@ -1682,11 +1712,21 @@ void KtlQCanvasView::updateContentsSize()
 
 void KtlQCanvasView::cMoving(int x, int y)
 {
+    qWarning() << Q_FUNC_INFO << " begin x=" << x << " y=" << y;
     // A little kludge to smooth up repaints when scrolling
 	int dx = x - contentsX();
 	int dy = y - contentsY();
 	d->repaint_from_moving = abs(dx) < width() / 8 && abs(dy) < height() / 8;
 }
+
+void KtlQCanvasView::horizScrollValueChanged(int valueX) {
+    qWarning() << Q_FUNC_INFO << "valueX=" << valueX;
+}
+void KtlQCanvasView::vertScrollValueChanged(int valueY) {
+    qWarning() << Q_FUNC_INFO << "valueY=" << valueY;
+}
+
+
 
 /*!
 	Repaints part of the KtlQCanvas that the canvas view is showing

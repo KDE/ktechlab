@@ -286,6 +286,8 @@ class KtlQCanvasView : public QScrollArea  // TODO QT3 QScrollArea
 	private slots:
 		void cMoving(int,int);
 		void updateContentsSize();
+        void horizScrollValueChanged(int);
+        void vertScrollValueChanged(int);
 
 };
 
