@@ -97,10 +97,14 @@ private:
 };
 
 
+class KtlQCanvasView;
+
 class KtlQCanvasViewData
 {
 public:
-	KtlQCanvasViewData() : repaint_from_moving( false ) {}
+	KtlQCanvasViewData(KtlQCanvasView *canvasView_) : canvasView(canvasView_), repaint_from_moving( false ) {}
+	void updateScrollbarSizes();
+	KtlQCanvasView *canvasView;
 	QWMatrix xform;
 	QWMatrix ixform;
 	bool repaint_from_moving;

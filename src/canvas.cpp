@@ -1564,7 +1564,7 @@ KtlQCanvasView::KtlQCanvasView(KtlQCanvas* canvas, QWidget* parent, const char* 
 
     setFocusPolicy(Qt::ClickFocus);
 
-    d = new KtlQCanvasViewData;
+    d = new KtlQCanvasViewData(this);
 	viewing = 0;
 	setCanvas(canvas);
 
@@ -1611,48 +1611,56 @@ const QWMatrix &KtlQCanvasView::inverseWorldMatrix() const
 
 bool KtlQCanvasView::setWorldMatrix( const QWMatrix & wm )
 {
+    qWarning() << Q_FUNC_INFO << " wm=" << wm;
 	bool ok = wm.isInvertible();
 	if ( ok ) {
 		d->xform = wm;
 		d->ixform = wm.invert();
 		updateContentsSize();
 		viewport()->update();
-	}
+	} else {
+        qWarning() << Q_FUNC_INFO << "world matrix not isInvertible, ignoring it " << wm;
+    }
 	return ok;
 }
 //BEGIN compat functions
 QPoint KtlQCanvasView::contentsToViewport(const QPoint &p) {
-    return p;
+    return worldMatrix().map( p );
 }
 int KtlQCanvasView::contentsX() {
-    return horizontalScrollBar()->value();
+    return worldMatrix().map( QPoint( horizontalScrollBar()->value(), 0) ).x();
 }
 int KtlQCanvasView::contentsY() {
-    return verticalScrollBar()->value();
+    return worldMatrix().map( QPoint( 0, verticalScrollBar()->value() ) ).y();
 }
 int KtlQCanvasView::contentsHeight() {
     if (viewing) {
-        return viewing->height();
+        return worldMatrix().map( QPoint( 0, viewing->height())).y();
     } else {
+        qWarning() << Q_FUNC_INFO << " viewing is null";
         return 0;
     }
 }
 int KtlQCanvasView::contentsWidth() {
     if (viewing) {
-        return viewing->width();
+        return worldMatrix().map( QPoint( viewing->width(), 0 )).x();
     } else {
+        qWarning() << Q_FUNC_INFO << " viewing is null";
         return 0;
     }
 }
+void KtlQCanvasView::resizeContents(int w, int h) {
+    qWarning() << Q_FUNC_INFO << "begin" << " w=" << w << " h=" << h;
+    d->updateScrollbarSizes();
+    //viewport()->resize(w, h);
+    //viewing->resize(QRect(0,0,w,h)); // note: ??
+}
+
 int KtlQCanvasView::visibleWidth() {
     return viewport()->width();
 }
 int KtlQCanvasView::visibleHeight() {
     return viewport()->height();
-}
-void KtlQCanvasView::resizeContents(int w, int h) {
-    qWarning() << Q_FUNC_INFO << "begin" << " w=" << w << " h=" << h;
-    viewport()->resize(w, h);
 }
 void KtlQCanvasView::setContentsPos(int x, int y) {
     qWarning() << Q_FUNC_INFO << "begin" << " x=" << x << " y=" << y;
@@ -1663,19 +1671,36 @@ void KtlQCanvasView::scrollBy(int dx, int dy) {
     qWarning() << Q_FUNC_INFO << "begin" << " dx=" << dx << " dy=" << dy;
 }
 void KtlQCanvasView::viewportResizeEvent( QResizeEvent * e ) {
-    qWarning() << Q_FUNC_INFO << "begin" << "e.size=" << e->size();
-    // TODO zoom factor
-    if (1 /*contentsWidth() > e->size().width()*/) {
-        horizontalScrollBar()->setMinimum(0);
-        horizontalScrollBar()->setMaximum(contentsWidth() - e->size().width());
-        horizontalScrollBar()->setPageStep(e->size().width());
+    d->updateScrollbarSizes();
+#if 0
+    if (!viewing) {
+        return;     // note: what to do? no canvas attached
     }
-    if (1 /*contentsHeight() > e->size().height()*/) {
-        verticalScrollBar()->setMinimum(0);
+    QRect mappedCanvasRect = worldMatrix().map(viewing->rect());
+    QRect canvContRect(contentsX(), contentsY(), contentsWidth(), contentsHeight());
+    qWarning() << Q_FUNC_INFO << "begin" << "e.size=" << e->size() << " canvas.size=" << viewing->size()
+        << " mappedCanvas=" << mappedCanvasRect << " contRect=" << canvContRect;
+    // TODO zoom factor
+    if (contentsWidth() > e->size().width()) {
+        horizontalScrollBar()->setMinimum(contentsX());
+        horizontalScrollBar()->setMaximum(contentsWidth() - e->size().width());
+        if (e->size().width() > 0) {
+            horizontalScrollBar()->setPageStep(e->size().width());
+        } else {
+            horizontalScrollBar()->setPageStep(1);
+        }
+    }
+    if (contentsHeight() > e->size().height()) {
+        verticalScrollBar()->setMinimum(contentsY());
         verticalScrollBar()->setMaximum(contentsHeight() - e->size().height());
-        verticalScrollBar()->setPageStep(e->size().height());
+        if (e->size().height() > 0) {
+            verticalScrollBar()->setPageStep(e->size().height());
+        } else {
+            verticalScrollBar()->setPageStep(1);
+        }
     }
     //viewport()->resize(e->size()); //resizeEvent(e);
+#endif
 }
 //note: void contentsMoving(int x, int y);
 
@@ -1720,10 +1745,18 @@ void KtlQCanvasView::cMoving(int x, int y)
 }
 
 void KtlQCanvasView::horizScrollValueChanged(int valueX) {
-    qWarning() << Q_FUNC_INFO << "valueX=" << valueX;
+    // scroll bar values are in mapped canvas coordinates
+    qWarning() << Q_FUNC_INFO << "valueX=" << valueX
+        << " min=" << horizontalScrollBar()->minimum()
+        << " page=" << horizontalScrollBar()->pageStep()
+        << " max=" << horizontalScrollBar()->maximum();
 }
 void KtlQCanvasView::vertScrollValueChanged(int valueY) {
-    qWarning() << Q_FUNC_INFO << "valueY=" << valueY;
+    // scroll bar values are in mapped canvas coordinates
+    qWarning() << Q_FUNC_INFO << "valueY=" << valueY
+        << " min=" << verticalScrollBar()->minimum()
+        << " page=" << verticalScrollBar()->pageStep()
+        << " max=" << verticalScrollBar()->maximum();
 }
 
 
@@ -1789,6 +1822,41 @@ void KtlQCanvasView::paintEvent(QPaintEvent * event) {
     }
     drawContents(&p, r.x(), r.y(), r.width(), r.height());
 }
+
+
+void KtlQCanvasViewData::updateScrollbarSizes() {
+    if (!canvasView->viewing) {
+        return;     // note: what to do? no canvas attached
+    }
+    QRect mappedCanvasRect = canvasView->worldMatrix().map(canvasView->viewing->rect());
+    QRect canvContRect(canvasView->contentsX(), canvasView->contentsY(),
+                       canvasView->contentsWidth(), canvasView->contentsHeight());
+    // zoom factor in mappedCanvasRect
+    qWarning() << Q_FUNC_INFO << "begin" << "viewing.size=" << canvasView->viewing->size()
+        << " canvas.size=" << canvasView->viewing->size()
+        << " mappedCanvas=" << mappedCanvasRect << " contRect=" << canvContRect;
+    if (canvasView->contentsWidth() > canvasView->viewport()->size().width()) {
+        canvasView->horizontalScrollBar()->setMinimum(canvasView->contentsX());
+        canvasView->horizontalScrollBar()->setMaximum(canvasView->contentsWidth() - canvasView->viewport()->size().width());
+        if (canvasView->viewport()->size().width() > 0) {
+            canvasView->horizontalScrollBar()->setPageStep(canvasView->viewport()->size().width());
+        } else {
+            canvasView->horizontalScrollBar()->setPageStep(1);
+        }
+    }
+    if (canvasView->contentsHeight() > canvasView->viewport()->size().height()) {
+        canvasView->verticalScrollBar()->setMinimum(canvasView->contentsY());
+        canvasView->verticalScrollBar()->setMaximum(canvasView->contentsHeight() - canvasView->viewport()->size().height());
+        if (canvasView->viewport()->size().height() > 0) {
+            canvasView->verticalScrollBar()->setPageStep(canvasView->viewport()->size().height());
+        } else {
+            canvasView->verticalScrollBar()->setPageStep(1);
+        }
+    }
+    //viewport()->resize(e->size()); //resizeEvent(e);
+
+}
+
 
 /*
 	Since most polygonal items don't have a pen, the default is

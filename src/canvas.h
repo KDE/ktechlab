@@ -278,7 +278,10 @@ class KtlQCanvasView : public QScrollArea  // TODO QT3 QScrollArea
 	private:
 		void drawContents( QPainter* );
 		KtlQCanvas* viewing;
+
+        friend class KtlQCanvasViewData;
 		KtlQCanvasViewData* d;
+
 		friend void qt_unview(KtlQCanvas* c);
 		KtlQCanvasView( const KtlQCanvasView & );
 		KtlQCanvasView &operator=( const KtlQCanvasView & );
