@@ -781,10 +781,10 @@ void ItemDocument::updateItemViewScrollbars()
 		ItemView * itemView = static_cast<ItemView*>((View*)*it);
 		CVBEditor * cvbEditor = itemView->cvbEditor();
 
-        cvbEditor->setVerticalScrollBarPolicy(
-            ((h*itemView->zoomLevel()) > cvbEditor->visibleHeight()) ? Qt::ScrollBarAlwaysOn : Qt::ScrollBarAlwaysOff );
-		cvbEditor->setHorizontalScrollBarPolicy(
-            ((w*itemView->zoomLevel()) > cvbEditor->visibleWidth()) ? Qt::ScrollBarAlwaysOn : Qt::ScrollBarAlwaysOff );
+//          cvbEditor->setVerticalScrollBarPolicy(
+//              ((h*itemView->zoomLevel()) > cvbEditor->visibleHeight()) ? Qt::ScrollBarAlwaysOn : Qt::ScrollBarAlwaysOff );
+//  		cvbEditor->setHorizontalScrollBarPolicy(
+//              ((w*itemView->zoomLevel()) > cvbEditor->visibleWidth()) ? Qt::ScrollBarAlwaysOn : Qt::ScrollBarAlwaysOff );
 	}
 }
 
