@@ -58,7 +58,7 @@ Item::Item(ItemDocument *itemDocument, bool newItem, const QString &id)
     }
 
     m_pPropertyChangedTimer = new QTimer(this);
-    connect(m_pPropertyChangedTimer, SIGNAL(timeout()), this, SLOT(dataChanged()));
+    connect(m_pPropertyChangedTimer, &QTimer::timeout, this, &Item::dataChanged);
 }
 
 Item::~Item()
@@ -374,7 +374,7 @@ void Item::setParentItem(Item *newParentItem)
     Item *oldParentItem = p_parentItem;
 
     if (oldParentItem) {
-        disconnect(oldParentItem, SIGNAL(removed(Item *)), this, SLOT(removeItem()));
+        disconnect(oldParentItem, &Item::removed, this, &Item::removeItem);
         oldParentItem->removeChild(this);
     }
 
@@ -383,7 +383,7 @@ void Item::setParentItem(Item *newParentItem)
             ;
         // 			qCritical() << Q_FUNC_INFO << "Already a child of " << newParentItem << endl;
         else {
-            connect(newParentItem, SIGNAL(removed(Item *)), this, SLOT(removeItem()));
+            connect(newParentItem, &Item::removed, this, &Item::removeItem);
             newParentItem->addChild(this);
         }
     }
@@ -432,7 +432,7 @@ void Item::addChild(Item *child)
     }
 
     m_children.append(child);
-    connect(child, SIGNAL(removed(Item *)), this, SLOT(removeChild(Item *)));
+    connect(child, &Item::removed, this, &Item::removeChild);
 
     child->setParentItem(this);
     childAdded(child);
@@ -445,7 +445,7 @@ void Item::removeChild(Item *child)
         return;
 
     m_children.removeAll(child);
-    disconnect(child, SIGNAL(removed(Item *)), this, SLOT(removeChild(Item *)));
+    disconnect(child, &Item::removed, this, &Item::removeChild);
 
     childRemoved(child);
     p_itemDocument->slotUpdateZOrdering();
@@ -565,7 +565,8 @@ Variant *Item::createProperty(const QString &id, Variant::Type::Value type)
 {
     if (!m_variantData.contains(id)) {
         m_variantData[id] = new Variant(id, type);
-        connect(m_variantData[id], SIGNAL(valueChanged(QVariant, QVariant)), this, SLOT(propertyChangedInitial()));
+       connect(m_variantData[id], qOverload<QVariant, QVariant>(&Variant::valueChanged),
+		this, &Item::propertyChangedInitial);
     }
 
     return m_variantData[id];

@@ -34,7 +34,7 @@ Document::Document(const QString &caption, const char *name)
     , m_nextViewID(0)
 {
     setObjectName(name);
-    connect(KTechlab::self(), SIGNAL(configurationChanged()), this, SLOT(slotUpdateConfiguration()));
+    connect(KTechlab::self(), &KTechlab::configurationChanged, this, &Document::slotUpdateConfiguration);
 }
 
 Document::~Document()
@@ -55,9 +55,9 @@ void Document::handleNewView(View *view)
     m_viewList.append(view);
     view->setDCOPID(m_nextViewID++);
     view->setWindowTitle(m_caption);
-    connect(view, SIGNAL(destroyed(QObject *)), this, SLOT(slotViewDestroyed(QObject *)));
-    connect(view, SIGNAL(focused(View *)), this, SLOT(slotViewFocused(View *)));
-    connect(view, SIGNAL(unfocused()), this, SIGNAL(viewUnfocused()));
+    connect(view, &View::destroyed, this, &Document::slotViewDestroyed);
+    connect(view, &View::focused, this, &Document::slotViewFocused);
+    connect(view, &View::unfocused, this, &Document::viewUnfocused);
 
     view->show();
 
