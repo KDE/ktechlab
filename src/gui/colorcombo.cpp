@@ -34,7 +34,13 @@ ColorCombo::ColorCombo(ColorScheme colorScheme, QWidget *parent, const char *nam
     addColors();
 
     connect(this, SIGNAL(activated(int)), SLOT(slotActivated(int)));
+    /* TODO Candidate template ignored: could not match 'int' against 'const QColor &'
+    connect(this, qOverload<int>(&ColorCombo::activated),
+	    this, [this](int x){slotActivated(x);});*/
     connect(this, SIGNAL(highlighted(int)), SLOT(slotHighlighted(int)));
+    /* TODO Pretty much the same, there isn't such signature for the signal
+    connect(this, qOverload<int>(&ColorCombo::highlighted),
+	    this, [this](int x){ slotHighlighted(x); }); */
 }
 
 ColorCombo::~ColorCombo()

@@ -53,11 +53,13 @@ CircuitDocument::CircuitDocument(const QString &caption, const char *name)
     m_cmManager->addManipulatorInfo(CMItemResize::manipulatorInfo());
     m_cmManager->addManipulatorInfo(CMItemDrag::manipulatorInfo());
 
-    connect(this, SIGNAL(connectorAdded(Connector *)), this, SLOT(requestAssignCircuits()));
-    connect(this, SIGNAL(connectorAdded(Connector *)), this, SLOT(connectorAdded(Connector *)));
+    connect(this, &CircuitDocument::connectorAdded,
+	    this, &CircuitDocument::requestAssignCircuits);
+    connect(this, &CircuitDocument::connectorAdded,
+	    this, &CircuitDocument::connectorAdded);
 
     m_updateCircuitsTmr = new QTimer();
-    connect(m_updateCircuitsTmr, SIGNAL(timeout()), this, SLOT(assignCircuits()));
+    connect(m_updateCircuitsTmr, &QTimer::timeout, this, &CircuitDocument::assignCircuits);
 
     requestStateSave();
 }
@@ -66,20 +68,24 @@ CircuitDocument::~CircuitDocument()
 {
     m_bDeleted = true;
 
-    disconnect(m_updateCircuitsTmr, SIGNAL(timeout()), this, SLOT(assignCircuits()));
-    disconnect(this, SIGNAL(connectorAdded(Connector *)), this, SLOT(connectorAdded(Connector *)));
-    disconnect(this, SIGNAL(connectorAdded(Connector *)), this, SLOT(requestAssignCircuits()));
+    disconnect(m_updateCircuitsTmr, &QTimer::timeout,
+	       this, &CircuitDocument::assignCircuits);
+    disconnect(this, &CircuitDocument::connectorAdded,
+	       this, &CircuitDocument::connectorAdded);
+    disconnect(this, &CircuitDocument::connectorAdded,
+	       this, &CircuitDocument::requestAssignCircuits);
 
     for (ConnectorList::Iterator itConn = m_connectorList.begin(); itConn != m_connectorList.end(); ++itConn) {
         Connector *connector = itConn->data();
-        disconnect(connector, SIGNAL(removed(Connector *)), this, SLOT(requestAssignCircuits()));
+        disconnect(connector, &Connector::removed, this, &CircuitDocument::requestAssignCircuits);
     }
     for (ItemMap::Iterator itItem = m_itemList.begin(); itItem != m_itemList.end(); ++itItem) {
         Item *item = itItem.value();
-        disconnect(item, SIGNAL(removed(Item *)), this, SLOT(componentRemoved(Item *)));
+        disconnect(item, &Item::removed, this, &CircuitDocument::componentRemoved);
         Component *comp = dynamic_cast<Component *>(item);
         if (comp) {
-            disconnect(comp, SIGNAL(elementDestroyed(Element *)), this, SLOT(requestAssignCircuits()));
+            disconnect(comp, &Component::elementDestroyed,
+		       this, &CircuitDocument::requestAssignCircuits);
         }
     }
 
@@ -300,8 +306,8 @@ void CircuitDocument::requestAssignCircuits()
 void CircuitDocument::connectorAdded(Connector *connector)
 {
     if (connector) {
-        connect(connector, SIGNAL(numWiresChanged(unsigned)), this, SLOT(requestAssignCircuits()));
-        connect(connector, SIGNAL(removed(Connector *)), this, SLOT(requestAssignCircuits()));
+        connect(connector, &Connector::numWiresChanged, this, &CircuitDocument::requestAssignCircuits);
+        connect(connector, &Connector::removed, this, &CircuitDocument::requestAssignCircuits);
     }
 }
 
@@ -320,9 +326,9 @@ void CircuitDocument::componentAdded(Item *item)
 
     requestAssignCircuits();
 
-    connect(component, SIGNAL(elementCreated(Element *)), this, SLOT(requestAssignCircuits()));
-    connect(component, SIGNAL(elementDestroyed(Element *)), this, SLOT(requestAssignCircuits()));
-    connect(component, SIGNAL(removed(Item *)), this, SLOT(componentRemoved(Item *)));
+    connect(component, &Component::elementCreated, this, &CircuitDocument::requestAssignCircuits);
+    connect(component, &Component::elementDestroyed, this, &CircuitDocument::requestAssignCircuits);
+    connect(component, &Component::removed, this, &CircuitDocument::componentRemoved);
 
     // We don't attach the component to the Simulator just yet, as the
     // Component's vtable is not yet fully constructed, and so Simulator can't

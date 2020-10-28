@@ -71,14 +71,14 @@ Oscilloscope::Oscilloscope(KateMDI::ToolView *parent)
     horizontalScroll->setSingleStep(32);
     horizontalScroll->setPageStep(oscilloscopeView->width());
 
-    connect(resetBtn, SIGNAL(clicked()), this, SLOT(reset()));
-    connect(zoomSlider, SIGNAL(valueChanged(int)), this, SLOT(slotZoomSliderChanged(int)));
-    connect(horizontalScroll, SIGNAL(valueChanged(int)), this, SLOT(slotSliderValueChanged(int)));
+    connect(resetBtn, &QPushButton::clicked, this, &Oscilloscope::reset);
+    connect(zoomSlider, &QSlider::valueChanged, this, &Oscilloscope::slotZoomSliderChanged);
+    connect(horizontalScroll, &QScrollBar::valueChanged, this, &Oscilloscope::slotSliderValueChanged);
 
     // 	connect( pauseBtn, SIGNAL(clicked()), this, SLOT(slotTogglePause()));
 
     QTimer *updateScrollTmr = new QTimer(this);
-    connect(updateScrollTmr, SIGNAL(timeout()), this, SLOT(updateScrollbars()));
+    connect(updateScrollTmr, &QTimer::timeout, this, &Oscilloscope::updateScrollbars);
     updateScrollTmr->start(20);
 
     // KGlobal::config()->setGroup("Oscilloscope");
@@ -86,7 +86,13 @@ Oscilloscope::Oscilloscope(KateMDI::ToolView *parent)
     setZoomLevel(grOscill.readEntry("ZoomLevel", 0.5));
 
     connect(this, SIGNAL(probeRegistered(int, ProbeData *)), probePositioner, SLOT(slotProbeDataRegistered(int, ProbeData *)));
+    /*TODO  fix error: 'slotProbeDataRegistered(int, ProbeData*)’ is protected within this context
+    connect(this, &Oscilloscope::probeRegistered,
+            probePositioner, &ProbePositioner::slotProbeDataRegistered);*/
     connect(this, SIGNAL(probeUnregistered(int)), probePositioner, SLOT(slotProbeDataUnregistered(int)));
+    /*TODO the same problem
+    connect(this, &Oscilloscope::probeUnregistered,
+            probePositioner, &ProbePositioner::slotProbeDataUnregistered);*/
 }
 
 Oscilloscope::~Oscilloscope()

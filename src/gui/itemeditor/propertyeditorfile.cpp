@@ -42,8 +42,9 @@ PropertyEditorFile::PropertyEditorFile(QWidget *parent, Property *property, cons
 
     setWidget(m_lineedit);
 
-    connect(m_button, SIGNAL(clicked()), this, SLOT(selectFile()));
-    connect(property, SIGNAL(valueChanged(const QString &)), m_lineedit, SLOT(setText(const QString &)));
+    connect(m_button, &QPushButton::clicked, this, &PropertyEditorFile::selectFile);
+    connect(property, qOverload<const QString&>(&Property::valueChanged),
+            m_lineedit, &KLineEdit::setText);
 }
 
 void PropertyEditorFile::selectFile()

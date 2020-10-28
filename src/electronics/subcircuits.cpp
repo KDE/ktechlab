@@ -29,7 +29,8 @@
 Subcircuits::Subcircuits()
     : QObject()
 {
-    connect(ComponentSelector::self(), SIGNAL(itemRemoved(const QString &)), this, SLOT(slotItemRemoved(const QString &)));
+    connect(ComponentSelector::self(), &ComponentSelector::itemRemoved,
+            this, &Subcircuits::slotItemRemoved);
 }
 
 Subcircuits::~Subcircuits()

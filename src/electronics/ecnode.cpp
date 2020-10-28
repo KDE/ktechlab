@@ -98,7 +98,11 @@ void ECNode::setParentItem(CNItem *parentItem)
 
     if (Component *component = dynamic_cast<Component *>(parentItem)) {
         connect(component, SIGNAL(elementDestroyed(Element *)), this, SLOT(removeElement(Element *)));
+        //TODO fix compiler error: invalid application of ‘sizeof’ to incomplete type ‘Element’
+        //connect(component, &Component::elementDestroyed, this, &ECNode::removeElement);
         connect(component, SIGNAL(switchDestroyed(Switch *)), this, SLOT(removeSwitch(Switch *)));
+        //TODO fix compiler error: invalid application of ‘sizeof’ to incomplete type ‘Switch’
+        //connect(component, &Component::switchDestroyed, this, &ECNode::removeSwitch);
     }
 }
 
@@ -255,9 +259,9 @@ bool ECNode::handleNewConnector(Connector *connector)
         return false;
     }
 
-    connect(this, SIGNAL(removed(Node *)), connector, SLOT(removeConnector(Node *)));
-    connect(connector, SIGNAL(removed(Connector *)), this, SLOT(checkForRemoval(Connector *)));
-    connect(connector, SIGNAL(selected(bool)), this, SLOT(setNodeSelected(bool)));
+    connect(this, &ECNode::removed, connector, &Connector::removeConnector);
+    connect(connector, &Connector::removed, this, &ECNode::checkForRemoval);
+    connect(connector, &Connector::selected, this, &ECNode::setNodeSelected);
 
     if (!isChildNode())
         p_icnDocument->slotRequestAssignNG();

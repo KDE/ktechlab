@@ -262,12 +262,14 @@ PropertyEditor::PropertyEditor(QWidget *parent, const char *name)
     m_topItem = nullptr;
     m_editItem = nullptr;
 
-    connect(this, SIGNAL(clicked(const QModelIndex &)), this, SLOT(slotClicked(const QModelIndex &)));
-    connect(this, SIGNAL(itemActivated(QTableWidgetItem *)), this, SLOT(slotCurrentChanged(QTableWidgetItem *)));
+    connect(this, &PropertyEditor::clicked, this, &PropertyEditor::slotClicked);
+    connect(this, &PropertyEditor::itemActivated, this, &PropertyEditor::slotCurrentChanged);
     // 	connect(this, SIGNAL(expanded(Q3ListViewItem *)), this, SLOT(slotExpanded(Q3ListViewItem *)));  // TODO
     // 	connect(this, SIGNAL(collapsed(Q3ListViewItem *)), this, SLOT(slotCollapsed(Q3ListViewItem *)));
 
-    connect(this, SIGNAL(currentCellChanged(int, int, int, int)), this, SLOT(slotCurrentCellChanged(int, int, int, int)));
+    //connect(this, SIGNAL(currentCellChanged(int, int, int, int)), this, SLOT(slotCurrentCellChanged(int, int, int, int)));
+    connect(this, &PropertyEditor::currentCellChanged,
+            this, &PropertyEditor::slotCurrentCellChanged);
 
     // 	connect(header(), SIGNAL(sizeChange( int, int, int )), this, SLOT(slotColumnSizeChanged( int, int, int ))); // TODO
     // 	connect(header(), SIGNAL(clicked( int )), this, SLOT(moveEditor()));
@@ -279,7 +281,7 @@ PropertyEditor::PropertyEditor(QWidget *parent, const char *name)
     m_defaults->setIcon(QIcon::fromTheme("edit-undo"));
     m_defaults->setToolTip(i18n("Undo changes"));
     m_defaults->hide();
-    connect(m_defaults, SIGNAL(clicked()), this, SLOT(resetItem()));
+    connect(m_defaults, &QPushButton::clicked, this, &PropertyEditor::resetItem);
 
     // TODO
     const int itemMargin = 2;
@@ -622,6 +624,9 @@ void PropertyEditor::fill()
             PropertyEditorItem *itemPropValue = new PropertyEditorItem(m_topItem, v);
             itemPropValue->setText(v->displayString());
             connect(v, SIGNAL(valueChanged(QVariant, QVariant)), itemPropValue, SLOT(propertyValueChanged()));
+            //TODO ‘virtual void PropertyEditorItem::propertyValueChanged()’ is protected within this context
+            //connect(v, qOverload<QVariant, QVariant>(&Variant::valueChanged),
+            //        itemPropValue, &PropertyEditorItem::propertyValueChanged);
             itemPropValue->updateValue();
             setItem(nextRow, 1, itemPropValue);
         }
