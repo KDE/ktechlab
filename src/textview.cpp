@@ -134,7 +134,7 @@ TextView::TextView(TextDocument *textDocument, ViewContainer *viewContainer, uin
         // new QAction( i18n("Step Out"), "debug-step-out", 0, textDocument, SLOT(debugStepOut()), ac, "debug_step_out" );
         QAction *action = new QAction(QIcon::fromTheme("debug-step-out"), i18n("Step Out"), ac);
         action->setObjectName("debug_step_out");
-	connect(action, &QAction::triggered, textDocument, &TextDocument::debugStepOut);
+        connect(action, &QAction::triggered, textDocument, &TextDocument::debugStepOut);
         ac->addAction(action->objectName(), action);
     }
     // END Debug Actions

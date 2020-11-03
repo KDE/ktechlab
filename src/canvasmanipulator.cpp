@@ -338,7 +338,7 @@ CanvasManipulator::CanvasManipulator(ItemDocument *itemDocument, CMManager *cmMa
     p_cnItemClickedOn = nullptr;
     p_cmManager = cmManager;
 
-    //connect(itemDocument->canvas(), SIGNAL(resized(const QRect &, const QRect &)), this, SLOT(canvasResized(const QRect &, const QRect &)));
+    // connect(itemDocument->canvas(), SIGNAL(resized(const QRect &, const QRect &)), this, SLOT(canvasResized(const QRect &, const QRect &)));
     connect(itemDocument->canvas(), &Canvas::resized, this, &CanvasManipulator::canvasResized);
 }
 

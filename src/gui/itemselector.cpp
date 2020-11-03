@@ -87,12 +87,11 @@ ItemSelector::ItemSelector(QWidget *parent, const char *name)
     connect(this, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(slotItemDoubleClicked(QTreeWidgetItem *, int)));
     /*TODO The same problem as above
     connect(this, qOverload<QTreeWidgetItem*, int>(&ItemSelector::itemClicked),
-	    this, qOverload<QTreeWidgetItem*, int>(&ItemSelector::slotItemDoubleClicked));*/
+        this, qOverload<QTreeWidgetItem*, int>(&ItemSelector::slotItemDoubleClicked));*/
     // 	connect( this, SIGNAL(contextMenuRequested(Q3ListViewItem*, const QPoint&, int )), this,
     //              SLOT(slotContextMenuRequested(Q3ListViewItem*, const QPoint&, int )) ); // 2018.08.12 - use signal from below
     setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(this, &ItemSelector::customContextMenuRequested,
-            this, &ItemSelector::slotContextMenuRequested);
+    connect(this, &ItemSelector::customContextMenuRequested, this, &ItemSelector::slotContextMenuRequested);
 
     connect(this, &ItemSelector::itemSelectionChanged, this, &ItemSelector::slotItemSelected);
 }

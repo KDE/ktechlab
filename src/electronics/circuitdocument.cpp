@@ -53,10 +53,8 @@ CircuitDocument::CircuitDocument(const QString &caption, const char *name)
     m_cmManager->addManipulatorInfo(CMItemResize::manipulatorInfo());
     m_cmManager->addManipulatorInfo(CMItemDrag::manipulatorInfo());
 
-    connect(this, &CircuitDocument::connectorAdded,
-	    this, &CircuitDocument::requestAssignCircuits);
-    connect(this, &CircuitDocument::connectorAdded,
-	    this, &CircuitDocument::connectorAdded);
+    connect(this, &CircuitDocument::connectorAdded, this, &CircuitDocument::requestAssignCircuits);
+    connect(this, &CircuitDocument::connectorAdded, this, &CircuitDocument::connectorAdded);
 
     m_updateCircuitsTmr = new QTimer();
     connect(m_updateCircuitsTmr, &QTimer::timeout, this, &CircuitDocument::assignCircuits);
@@ -68,12 +66,9 @@ CircuitDocument::~CircuitDocument()
 {
     m_bDeleted = true;
 
-    disconnect(m_updateCircuitsTmr, &QTimer::timeout,
-	       this, &CircuitDocument::assignCircuits);
-    disconnect(this, &CircuitDocument::connectorAdded,
-	       this, &CircuitDocument::connectorAdded);
-    disconnect(this, &CircuitDocument::connectorAdded,
-	       this, &CircuitDocument::requestAssignCircuits);
+    disconnect(m_updateCircuitsTmr, &QTimer::timeout, this, &CircuitDocument::assignCircuits);
+    disconnect(this, &CircuitDocument::connectorAdded, this, &CircuitDocument::connectorAdded);
+    disconnect(this, &CircuitDocument::connectorAdded, this, &CircuitDocument::requestAssignCircuits);
 
     for (ConnectorList::Iterator itConn = m_connectorList.begin(); itConn != m_connectorList.end(); ++itConn) {
         Connector *connector = itConn->data();
@@ -84,8 +79,7 @@ CircuitDocument::~CircuitDocument()
         disconnect(item, &Item::removed, this, &CircuitDocument::componentRemoved);
         Component *comp = dynamic_cast<Component *>(item);
         if (comp) {
-            disconnect(comp, &Component::elementDestroyed,
-		       this, &CircuitDocument::requestAssignCircuits);
+            disconnect(comp, &Component::elementDestroyed, this, &CircuitDocument::requestAssignCircuits);
         }
     }
 

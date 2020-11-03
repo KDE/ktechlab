@@ -59,8 +59,7 @@ MicroSelectWidget::MicroSelectWidget(QWidget *parent, const char *name, Qt::WFla
 
     updateFromAllowed();
     setMicro("P16F84");
-    connect(m_pMicroFamily, qOverload<const QString&>(&KComboBox::activated),
-            this, &MicroSelectWidget::microFamilyChanged);
+    connect(m_pMicroFamily, qOverload<const QString &>(&KComboBox::activated), this, &MicroSelectWidget::microFamilyChanged);
 }
 
 MicroSelectWidget::~MicroSelectWidget()

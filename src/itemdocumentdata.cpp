@@ -1191,8 +1191,7 @@ void SubcircuitData::initECSubcircuit(ECSubcircuit *ecSubcircuit)
             component->updateConnectorPoints(false);
             component->setVisible(false);
             component->setCanvas(nullptr);
-            ecSubcircuit->connect(ecSubcircuit, &ECSubcircuit::subcircuitDeleted,
-				  component, &Component::removeItem);
+            ecSubcircuit->connect(ecSubcircuit, &ECSubcircuit::subcircuitDeleted, component, &Component::removeItem);
         }
     }
     for (ConnectorDataMap::iterator it = m_connectorDataMap.begin(); it != connectorEnd; ++it) {
@@ -1201,9 +1200,8 @@ void SubcircuitData::initECSubcircuit(ECSubcircuit *ecSubcircuit)
             connector->updateConnectorPoints(false);
             connector->setVisible(false);
             connector->setCanvas(nullptr);
-            //TODO Review this: The slot needs more arguments than the signal provides
-	    ecSubcircuit->connect(ecSubcircuit, &ECSubcircuit::subcircuitDeleted,
-		    connector, [&connector](){connector->removeConnector();});
+            // TODO Review this: The slot needs more arguments than the signal provides
+            ecSubcircuit->connect(ecSubcircuit, &ECSubcircuit::subcircuitDeleted, connector, [&connector]() { connector->removeConnector(); });
         }
     }
     const NodeDataMap::iterator nodeEnd = m_nodeDataMap.end();
@@ -1212,8 +1210,7 @@ void SubcircuitData::initECSubcircuit(ECSubcircuit *ecSubcircuit)
         if (node) {
             node->setVisible(false);
             node->setCanvas(nullptr);
-	    ecSubcircuit->connect(ecSubcircuit, &ECSubcircuit::subcircuitDeleted,
-		    node, qOverload<>(&Node::removeNode));
+            ecSubcircuit->connect(ecSubcircuit, &ECSubcircuit::subcircuitDeleted, node, qOverload<>(&Node::removeNode));
         }
     }
 

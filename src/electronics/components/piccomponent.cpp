@@ -72,18 +72,12 @@ PICComponent::PICComponent(ICNDocument *icnDocument, bool newItem, const char *i
 
     connect(KTechlab::self(), &KTechlab::recentFileAdded, this, &PICComponent::slotUpdateFileList);
 
-    connect(ProjectManager::self(), &ProjectManager::projectOpened,
-	    this, &PICComponent::slotUpdateFileList);
-    connect(ProjectManager::self(), &ProjectManager::projectClosed,
-	    this, &PICComponent::slotUpdateFileList);
-    connect(ProjectManager::self(), &ProjectManager::projectCreated,
-	    this, &PICComponent::slotUpdateFileList);
-    connect(ProjectManager::self(), &ProjectManager::subprojectCreated,
-	    this, &PICComponent::slotUpdateFileList);
-    connect(ProjectManager::self(), &ProjectManager::filesAdded,
-	    this, &PICComponent::slotUpdateFileList);
-    connect(ProjectManager::self(), &ProjectManager::filesRemoved,
-	    this, &PICComponent::slotUpdateFileList);
+    connect(ProjectManager::self(), &ProjectManager::projectOpened, this, &PICComponent::slotUpdateFileList);
+    connect(ProjectManager::self(), &ProjectManager::projectClosed, this, &PICComponent::slotUpdateFileList);
+    connect(ProjectManager::self(), &ProjectManager::projectCreated, this, &PICComponent::slotUpdateFileList);
+    connect(ProjectManager::self(), &ProjectManager::subprojectCreated, this, &PICComponent::slotUpdateFileList);
+    connect(ProjectManager::self(), &ProjectManager::filesAdded, this, &PICComponent::slotUpdateFileList);
+    connect(ProjectManager::self(), &ProjectManager::filesRemoved, this, &PICComponent::slotUpdateFileList);
 
     createProperty("program", Variant::Type::FileName);
     property("program")->setCaption(i18n("Program"));

@@ -99,23 +99,18 @@ ContextHelp::ContextHelp(KateMDI::ToolView *parent)
     connect(m_pEditButton, &QPushButton::clicked, this, &ContextHelp::slotEdit);
     connect(m_pSaveButton, &QPushButton::clicked, this, &ContextHelp::slotSave);
     connect(m_pResetButton, &QToolButton::clicked, this, &ContextHelp::slotEditReset);
-    connect(m_pChangeDescriptionsDirectory, &QToolButton::clicked,
-            this, &ContextHelp::requestItemDescriptionsDirectory);
+    connect(m_pChangeDescriptionsDirectory, &QToolButton::clicked, this, &ContextHelp::requestItemDescriptionsDirectory);
 
-    connect(m_pLanguageSelect, qOverload<int>(&QComboBox::activated),
-            this, &ContextHelp::setCurrentLanguage);
+    connect(m_pLanguageSelect, qOverload<int>(&QComboBox::activated), this, &ContextHelp::setCurrentLanguage);
 
     m_pResetButton->setIcon(QIcon::fromTheme("dialog-cancel"));
     m_pChangeDescriptionsDirectory->setIcon(QIcon::fromTheme("folder"));
 
-    connect(ComponentSelector::self(), &ComponentSelector::itemSelected,
-            this, &ContextHelp::setBrowserItem);
+    connect(ComponentSelector::self(), &ComponentSelector::itemSelected, this, &ContextHelp::setBrowserItem);
 
-    connect(FlowPartSelector::self(), &FlowPartSelector::itemSelected,
-	    this, &ContextHelp::setBrowserItem);
+    connect(FlowPartSelector::self(), &FlowPartSelector::itemSelected, this, &ContextHelp::setBrowserItem);
 #ifdef MECHANICS
-    connect(MechanicsSelector::self(), &MechanicsSelector::itemSelected,
-            this, &MechanicsSelector::setBrowserItem);
+    connect(MechanicsSelector::self(), &MechanicsSelector::itemSelected, this, &MechanicsSelector::setBrowserItem);
 #endif
 
     QTimer::singleShot(10, this, &ContextHelp::slotInitializeLanguageList);

@@ -69,8 +69,7 @@ void ItemInterface::slotItemDocumentChanged(ItemDocument *doc)
 {
     slotClearAll();
     if (ItemDocument *itemDocument = dynamic_cast<ItemDocument *>((Document *)p_cvb)) {
-        disconnect(itemDocument, &ItemDocument::selectionChanged,
-		   this, &ItemInterface::slotUpdateItemInterface);
+        disconnect(itemDocument, &ItemDocument::selectionChanged, this, &ItemInterface::slotUpdateItemInterface);
     }
 
     p_itemGroup = nullptr;

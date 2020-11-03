@@ -138,29 +138,17 @@ SettingsDlg::SettingsDlg(QWidget *parent, const char *name, KCoreConfigSkeleton 
     addPage(m_gplinkSettingsWidget, "Gplink", "merge", "gplink");
     addPage(m_sdccOptionsWidget, "SDCC", "text-x-csrc", "SDCC");
 
-    connect(m_generalOptionsWidget->refreshRateSlider, &QSlider::valueChanged,
-            this, &SettingsDlg::slotUpdateRefreshRateLabel);
-    connect(m_picProgrammerConfigWidget->kcfg_PicProgrammerProgram,
-            qOverload<const QString&>(&KComboBox::activated),
-            this,
-            &SettingsDlg::slotUpdatePicProgrammerDescription);
-    connect(m_picProgrammerConfigWidget->removeButton, &QPushButton::clicked,
-            this, &SettingsDlg::slotRemoveProgrammerConfig);
-    connect(m_picProgrammerConfigWidget->addButton, &QPushButton::clicked,
-            this, &SettingsDlg::slotAddProgrammerConfig);
+    connect(m_generalOptionsWidget->refreshRateSlider, &QSlider::valueChanged, this, &SettingsDlg::slotUpdateRefreshRateLabel);
+    connect(m_picProgrammerConfigWidget->kcfg_PicProgrammerProgram, qOverload<const QString &>(&KComboBox::activated), this, &SettingsDlg::slotUpdatePicProgrammerDescription);
+    connect(m_picProgrammerConfigWidget->removeButton, &QPushButton::clicked, this, &SettingsDlg::slotRemoveProgrammerConfig);
+    connect(m_picProgrammerConfigWidget->addButton, &QPushButton::clicked, this, &SettingsDlg::slotAddProgrammerConfig);
 
-    connect(m_picProgrammerConfigWidget->initCommand, &KLineEdit::textChanged,
-            this, &SettingsDlg::slotSaveCurrentProgrammerConfig);
-    connect(m_picProgrammerConfigWidget->readCommand, &KLineEdit::textChanged,
-            this, &SettingsDlg::slotSaveCurrentProgrammerConfig);
-    connect(m_picProgrammerConfigWidget->writeCommand, &KLineEdit::textChanged,
-            this, &SettingsDlg::slotSaveCurrentProgrammerConfig);
-    connect(m_picProgrammerConfigWidget->verifyCommand, &KLineEdit::textChanged,
-            this, &SettingsDlg::slotSaveCurrentProgrammerConfig);
-    connect(m_picProgrammerConfigWidget->blankCheckCommand, &KLineEdit::textChanged,
-            this, &SettingsDlg::slotSaveCurrentProgrammerConfig);
-    connect(m_picProgrammerConfigWidget->eraseCommand, &KLineEdit::textChanged,
-            this, &SettingsDlg::slotSaveCurrentProgrammerConfig);
+    connect(m_picProgrammerConfigWidget->initCommand, &KLineEdit::textChanged, this, &SettingsDlg::slotSaveCurrentProgrammerConfig);
+    connect(m_picProgrammerConfigWidget->readCommand, &KLineEdit::textChanged, this, &SettingsDlg::slotSaveCurrentProgrammerConfig);
+    connect(m_picProgrammerConfigWidget->writeCommand, &KLineEdit::textChanged, this, &SettingsDlg::slotSaveCurrentProgrammerConfig);
+    connect(m_picProgrammerConfigWidget->verifyCommand, &KLineEdit::textChanged, this, &SettingsDlg::slotSaveCurrentProgrammerConfig);
+    connect(m_picProgrammerConfigWidget->blankCheckCommand, &KLineEdit::textChanged, this, &SettingsDlg::slotSaveCurrentProgrammerConfig);
+    connect(m_picProgrammerConfigWidget->eraseCommand, &KLineEdit::textChanged, this, &SettingsDlg::slotSaveCurrentProgrammerConfig);
 
     m_generalOptionsWidget->kcfg_GridColor->setEnabled(KTLConfig::showGrid());
 

@@ -78,8 +78,7 @@ ICNView::ICNView(ICNDocument *icnDocument, ViewContainer *viewContainer, uint vi
     connect(m, &QMenu::triggered, this, &ICNView::slotSetRoutingMode);
     // END Routing Actions
 
-    connect(icnDocument->m_cmManager, &CMManager::manualRoutingChanged,
-	    this, &ICNView::slotUpdateRoutingToggles);
+    connect(icnDocument->m_cmManager, &CMManager::manualRoutingChanged, this, &ICNView::slotUpdateRoutingToggles);
 }
 
 ICNView::~ICNView()

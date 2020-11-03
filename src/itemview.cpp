@@ -167,11 +167,9 @@ ItemView::ItemView(ItemDocument *itemDocument, ViewContainer *viewContainer, uin
     m_CVBEditor = new CVBEditor(p_itemDocument->canvas(), this, "cvbEditor");
     m_CVBEditor->setLineWidth(1);
 
-    //connect(m_CVBEditor, SIGNAL(horizontalSliderReleased()), itemDocument, SLOT(requestCanvasResize()));
-    connect(m_CVBEditor, &CVBEditor::horizontalSliderReleased,
-	    itemDocument, &ItemDocument::requestCanvasResize);
-    connect(m_CVBEditor, &CVBEditor::verticalSliderReleased,
-	    itemDocument, &ItemDocument::requestCanvasResize);
+    // connect(m_CVBEditor, SIGNAL(horizontalSliderReleased()), itemDocument, SLOT(requestCanvasResize()));
+    connect(m_CVBEditor, &CVBEditor::horizontalSliderReleased, itemDocument, &ItemDocument::requestCanvasResize);
+    connect(m_CVBEditor, &CVBEditor::verticalSliderReleased, itemDocument, &ItemDocument::requestCanvasResize);
 
     m_layout->insertWidget(0, m_CVBEditor);
 

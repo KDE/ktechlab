@@ -243,8 +243,7 @@ void DocManager::handleNewDocument(Document *document, ViewArea *viewArea)
     m_documentList.append(document);
     document->setDCOPID(m_nextDocumentID++);
 
-    connect(document, &Document::modifiedStateChanged,
-	    KTechlab::self(), &KTechlab::slotDocModifiedChanged);
+    connect(document, &Document::modifiedStateChanged, KTechlab::self(), &KTechlab::slotDocModifiedChanged);
     connect(document, &Document::fileNameChanged, KTechlab::self(), &KTechlab::slotDocModifiedChanged);
     connect(document, &Document::fileNameChanged, KTechlab::self(), &KTechlab::addRecentFile);
     connect(document, &Document::destroyed, this, &DocManager::documentDestroyed);
@@ -311,8 +310,7 @@ void DocManager::slotViewFocused(View *view)
 
     Document *document = view->document();
 
-    connect(document, &Document::undoRedoStateChanged,
-	    KTechlab::self(), &KTechlab::slotDocUndoRedoChanged);
+    connect(document, &Document::undoRedoStateChanged, KTechlab::self(), &KTechlab::slotDocUndoRedoChanged);
     p_connectedDocument = document;
 
     if (document->type() == Document::dt_circuit || document->type() == Document::dt_flowcode || document->type() == Document::dt_mechanics) {
@@ -337,8 +335,7 @@ void DocManager::slotViewUnfocused()
         return;
 
     if (p_connectedDocument) {
-	disconnect(p_connectedDocument, &Document::undoRedoStateChanged,
-		KTechlab::self(), &KTechlab::slotDocUndoRedoChanged);
+        disconnect(p_connectedDocument, &Document::undoRedoStateChanged, KTechlab::self(), &KTechlab::slotDocUndoRedoChanged);
         p_connectedDocument = nullptr;
     }
 

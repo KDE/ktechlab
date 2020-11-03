@@ -39,8 +39,7 @@ PropertyEditorInput::PropertyEditorInput(QWidget *parent, Property *property, co
     setWidget(m_lineedit);
 
     connect(m_lineedit, &KLineEdit::textChanged, this, &PropertyEditorInput::slotTextChanged);
-    connect(m_property, qOverload<const QString&>(&Property::valueChanged),
-            m_lineedit, &KLineEdit::setText);
+    connect(m_property, qOverload<const QString &>(&Property::valueChanged), m_lineedit, &KLineEdit::setText);
 }
 
 void PropertyEditorInput::slotTextChanged(const QString &text)
@@ -92,10 +91,8 @@ PropertyEditorSpin::PropertyEditorSpin(QWidget *parent, Property *property, cons
     m_spinBox->show();
 
     setWidget(m_spinBox, m_spinBox->editor());
-    connect(m_spinBox, qOverload<int>(&PropIntSpinBox::valueChanged),
-            this, &PropertyEditorSpin::valueChange);
-    connect(m_property, qOverload<int>(&Property::valueChanged),
-            m_spinBox, &PropIntSpinBox::setValue);
+    connect(m_spinBox, qOverload<int>(&PropIntSpinBox::valueChanged), this, &PropertyEditorSpin::valueChange);
+    connect(m_property, qOverload<int>(&Property::valueChanged), m_spinBox, &PropIntSpinBox::setValue);
 }
 
 void PropertyEditorSpin::valueChange(int value)
@@ -138,10 +135,8 @@ PropertyEditorDblSpin::PropertyEditorDblSpin(QWidget *parent, Property *property
     m_spinBox->show();
 
     setWidget(m_spinBox, m_spinBox->editor());
-    connect(m_spinBox, qOverload<double>(&PropDoubleSpinBox::valueChanged),
-            this, &PropertyEditorDblSpin::valueChange);
-    connect(m_property, qOverload<double>(&Property::valueChanged),
-            m_spinBox, &PropDoubleSpinBox::setValue);
+    connect(m_spinBox, qOverload<double>(&PropDoubleSpinBox::valueChanged), this, &PropertyEditorDblSpin::valueChange);
+    connect(m_property, qOverload<double>(&Property::valueChanged), m_spinBox, &PropDoubleSpinBox::setValue);
 }
 
 void PropertyEditorDblSpin::valueChange(double value)
@@ -164,8 +159,7 @@ PropertyEditorBool::PropertyEditorBool(QWidget *parent, Property *property, cons
     m_toggle->resize(width(), height());
 
     connect(m_toggle, &QToolButton::toggled, this, &PropertyEditorBool::setState);
-    connect(m_property, qOverload<bool>(&Property::valueChanged),
-            m_toggle, &QToolButton::setChecked);
+    connect(m_property, qOverload<bool>(&Property::valueChanged), m_toggle, &QToolButton::setChecked);
 
     if (property->value().toBool())
         m_toggle->setChecked(true);

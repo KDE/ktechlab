@@ -76,18 +76,15 @@ ItemDocument::ItemDocument(const QString &caption, const char *name)
     updateBackground();
 
     m_pUpdateItemViewScrollbarsTimer = new QTimer(this);
-    connect(m_pUpdateItemViewScrollbarsTimer, &QTimer::timeout, 
-	    this, &ItemDocument::updateItemViewScrollbars);
+    connect(m_pUpdateItemViewScrollbarsTimer, &QTimer::timeout, this, &ItemDocument::updateItemViewScrollbars);
 
     m_pEventTimer = new QTimer(this);
     connect(m_pEventTimer, &QTimer::timeout, this, &ItemDocument::processItemDocumentEvents);
 
     connect(this, &ItemDocument::selectionChanged, this, &ItemDocument::slotInitItemActions);
 
-    connect(ComponentSelector::self(), qOverload<const QString&>(&ComponentSelector::itemClicked),
-	    this, &ItemDocument::slotUnsetRepeatedItemId);
-    connect(FlowPartSelector::self(), qOverload<const QString&>(&FlowPartSelector::itemClicked),
-	    this, &ItemDocument::slotUnsetRepeatedItemId);
+    connect(ComponentSelector::self(), qOverload<const QString &>(&ComponentSelector::itemClicked), this, &ItemDocument::slotUnsetRepeatedItemId);
+    connect(FlowPartSelector::self(), qOverload<const QString &>(&FlowPartSelector::itemClicked), this, &ItemDocument::slotUnsetRepeatedItemId);
 
 #ifdef MECHANICS
     connect(MechanicsSelector::self(), SIGNAL(itemClicked(const QString &)), this, SLOT(slotUnsetRepeatedItemId()));

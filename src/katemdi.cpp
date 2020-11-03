@@ -541,8 +541,7 @@ void Sidebar::restoreSession(KConfigGroup *configGr)
             // readd the button
             int newId = m_widgetToId[tv];
             appendTab(tv->icon, newId, tv->text);
-	    connect(tab(newId), qOverload<int>(&KMultiTabBarTab::clicked),
-		    this, &Sidebar::tabClicked);
+            connect(tab(newId), qOverload<int>(&KMultiTabBarTab::clicked), this, &Sidebar::tabClicked);
             tab(newId)->installEventFilter(this);
 
             // reshuffle in splitter

@@ -110,8 +110,7 @@ void ProbePositioner::slotProbeDataRegistered(int id, ProbeData *probe)
     connect(probe, &ProbeData::displayAttributeChanged, this, &ProbePositioner::forceRepaint);
 
     // This connect doesn't really belong here, but it save a lot of code
-    connect(probe, &ProbeData::displayAttributeChanged,
-            Oscilloscope::self()->oscilloscopeView, &OscilloscopeView::updateView);
+    connect(probe, &ProbeData::displayAttributeChanged, Oscilloscope::self()->oscilloscopeView, &OscilloscopeView::updateView);
     forceRepaint();
     Oscilloscope::self()->oscilloscopeView->updateView();
 }

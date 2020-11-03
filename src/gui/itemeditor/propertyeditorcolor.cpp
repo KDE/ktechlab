@@ -31,8 +31,7 @@ PropertyEditorColor::PropertyEditorColor(QWidget *parent, Property *property, co
     setWidget(m_pColorCombo);
 
     connect(m_pColorCombo, &ColorCombo::activated, this, &PropertyEditorColor::valueChanged);
-    connect(property, qOverload<const QColor&>(&Property::valueChanged),
-            m_pColorCombo, &ColorCombo::setColor);
+    connect(property, qOverload<const QColor &>(&Property::valueChanged), m_pColorCombo, &ColorCombo::setColor);
 }
 
 void PropertyEditorColor::valueChanged(const QColor &color)

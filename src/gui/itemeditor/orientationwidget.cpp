@@ -94,8 +94,7 @@ void OrientationWidget::slotUpdate(CNItemGroup *itemGroup)
 
     m_pCNItem = dynamic_cast<CNItem *>(itemGroup->activeItem());
     if (m_pCNItem)
-        connect(m_pCNItem, &CNItem::orientationChanged,
-                this, &OrientationWidget::updateShownOrientation);
+        connect(m_pCNItem, &CNItem::orientationChanged, this, &OrientationWidget::updateShownOrientation);
 
     bool haveSameOrientation = itemGroup->haveSameOrientation();
 

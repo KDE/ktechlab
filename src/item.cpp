@@ -565,8 +565,7 @@ Variant *Item::createProperty(const QString &id, Variant::Type::Value type)
 {
     if (!m_variantData.contains(id)) {
         m_variantData[id] = new Variant(id, type);
-       connect(m_variantData[id], qOverload<QVariant, QVariant>(&Variant::valueChanged),
-		this, &Item::propertyChangedInitial);
+        connect(m_variantData[id], qOverload<QVariant, QVariant>(&Variant::valueChanged), this, &Item::propertyChangedInitial);
     }
 
     return m_variantData[id];

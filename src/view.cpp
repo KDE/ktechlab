@@ -59,7 +59,7 @@ View::View(Document *document, ViewContainer *viewContainer, uint viewAreaId, co
         m_layout->addWidget(new KVSSBSep(this));
         m_layout->addWidget(m_statusBar);
 
-        //connect(KTechlab::self(), SIGNAL(configurationChanged()), this, SLOT(slotUpdateConfiguration()));
+        // connect(KTechlab::self(), SIGNAL(configurationChanged()), this, SLOT(slotUpdateConfiguration()));
         connect(KTechlab::self(), &KTechlab::configurationChanged, this, &View::slotUpdateConfiguration);
     }
 }
