@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-08-15 01:52+0000\n"
-"PO-Revision-Date: 2025-07-06 10:56+0300\n"
+"PO-Revision-Date: 2025-08-26 15:09+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.04.2\n"
+"X-Generator: Lokalize 25.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -272,7 +272,7 @@ msgstr "אמור להיות שם"
 #: microbe/optimizer.cpp:71
 #, kde-format
 msgid "Internal issue: Optimization has not finished in %1 iterations."
-msgstr ""
+msgstr "תקלה פנימית: המיטוב לא סיים תוך %1 חזרות."
 
 #: src/circuitview.cpp:35
 #, kde-format
@@ -383,31 +383,31 @@ msgstr "שחזור מסמכים עם ההפעלה"
 #: src/core/ktechlab.kcfg:18
 #, kde-format
 msgid "Raise appropriate Item Selector on document creation"
-msgstr ""
+msgstr "הרמת בורר פריטים מתאים "
 
 #. i18n: ectx: label, entry (RaiseMessagesLog), group (General)
 #: src/core/ktechlab.kcfg:22
 #, kde-format
 msgid "Raise Messages Log on Compiling"
-msgstr ""
+msgstr "הרמת יומן הודעות בעת הידור"
 
 #. i18n: ectx: label, entry (ShowVoltageBars), group (General)
 #: src/core/ktechlab.kcfg:26
 #, kde-format
 msgid "Show Voltage Bars"
-msgstr ""
+msgstr "הצגת עמודות מתח"
 
 #. i18n: ectx: label, entry (ShowVoltageColor), group (General)
 #: src/core/ktechlab.kcfg:30
 #, kde-format
 msgid "Show Voltage as Color"
-msgstr ""
+msgstr "הצגת מתח כצבע"
 
 #. i18n: ectx: label, entry (AnimateWires), group (General)
 #: src/core/ktechlab.kcfg:34
 #, kde-format
 msgid "Animate Wires (current or power)"
-msgstr ""
+msgstr "הנפשת חוטים (זרם או חשמל)"
 
 #. i18n: ectx: label, entry (RefreshRate), group (General)
 #: src/core/ktechlab.kcfg:38
@@ -431,49 +431,49 @@ msgstr "האם להציג רשת."
 #: src/core/ktechlab.kcfg:50
 #, kde-format
 msgid "Whether the same output should be use for generation of code, etc"
-msgstr ""
+msgstr "האם אותו הפלט אמור לשמש ליצירת קוד וכו׳"
 
 #. i18n: ectx: label, entry (IndentAsmName), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:57
 #, kde-format
 msgid "Indentation of Instruction Names"
-msgstr ""
+msgstr "הזחה של שמות הנחיות"
 
 #. i18n: ectx: label, entry (IndentAsmData), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:61
 #, kde-format
 msgid "Indentation of Instruction Data"
-msgstr ""
+msgstr "הזחה של נתוני הנחיות"
 
 #. i18n: ectx: label, entry (IndentComment), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:65
 #, kde-format
 msgid "Indentation of Comments"
-msgstr ""
+msgstr "הזחה של הערות"
 
 #. i18n: ectx: label, entry (IndentEqu), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:69
 #, kde-format
 msgid "Indentation of 'equ'"
-msgstr ""
+msgstr "הזחה של ‚equ’"
 
 #. i18n: ectx: label, entry (IndentEquValue), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:73
 #, kde-format
 msgid "Indentation of 'equ' Value"
-msgstr ""
+msgstr "הזחה של ערך ‚equ’"
 
 #. i18n: ectx: label, entry (AutoFormatMBOutput), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:77
 #, kde-format
 msgid "Automatically format Microbe output"
-msgstr ""
+msgstr "עיצוב פלט Microbe אוטומטית"
 
 #. i18n: ectx: label, entry (LogicSymbolShapes), group (Logic)
 #: src/core/ktechlab.kcfg:84
 #, kde-format
 msgid "Logic Symbol Shapes"
-msgstr ""
+msgstr "צורות סימנים לוגיים"
 
 #. i18n: ectx: label, entry (LogicRisingTrigger), group (Logic)
 #: src/core/ktechlab.kcfg:92
@@ -509,68 +509,68 @@ msgstr ""
 #: src/core/ktechlab.kcfg:115
 #, kde-format
 msgid "Hex Format"
-msgstr ""
+msgstr "תבנית הקסדצימלית"
 
 #. i18n: ectx: label, entry (Radix), group (Gpasm)
 #: src/core/ktechlab.kcfg:125
 #, kde-format
 msgid "Radix"
-msgstr ""
+msgstr "בסיס"
 
 #. i18n: ectx: label, entry (GpasmWarningLevel), group (Gpasm)
 #: src/core/ktechlab.kcfg:135
 #, kde-format
 msgid "GpasmWarning Level"
-msgstr ""
+msgstr "רמת GpasmWarning"
 
 #. i18n: ectx: label, entry (IgnoreCase), group (Gpasm)
 #: src/core/ktechlab.kcfg:144
 #, kde-format
 msgid "Ignore Case"
-msgstr ""
+msgstr "התעלמות מרישיות"
 
 #. i18n: ectx: label, entry (DosFormat), group (Gpasm)
 #: src/core/ktechlab.kcfg:148
 #, kde-format
 msgid "Dos Formatting"
-msgstr ""
+msgstr "תבנית Dos"
 
 #. i18n: ectx: label, entry (MiscGpasmOptions), group (Gpasm)
 #. i18n: ectx: label, entry (MiscSDCCOptions), group (SDCC)
 #: src/core/ktechlab.kcfg:152 src/core/ktechlab.kcfg:299
 #, kde-format
 msgid "Other Options"
-msgstr ""
+msgstr "אפשרויות אחרות"
 
 #. i18n: ectx: label, entry (SDCC_nostdlib), group (SDCC)
 #: src/core/ktechlab.kcfg:159
 #, kde-format
 msgid "Do not search in the standard library directory"
-msgstr ""
+msgstr "לא לחפש בתיקיית הספרייה התקנית"
 
 #. i18n: ectx: label, entry (SDCC_nostdinc), group (SDCC)
 #: src/core/ktechlab.kcfg:163
 #, kde-format
 msgid "Do not search in the standard include directory"
-msgstr ""
+msgstr "לא לחפש בתיקיית ההכללה/include התקנית"
 
 #. i18n: ectx: label, entry (SDCC_less_pedantic), group (SDCC)
 #: src/core/ktechlab.kcfg:167
 #, kde-format
 msgid "Disable pedantic warnings"
-msgstr ""
+msgstr "השבתת אזהרות קטנוניות"
 
 #. i18n: ectx: label, entry (SDCC_std_c89), group (SDCC)
 #: src/core/ktechlab.kcfg:171
 #, kde-format
 msgid "Strictly follow the C89 standard"
-msgstr ""
+msgstr "להיצמד לתקן C89 באדיקות"
 
 #. i18n: ectx: label, entry (SDCC_std_c99), group (SDCC)
 #: src/core/ktechlab.kcfg:175
 #, kde-format
 msgid "Strictly follow the C99 standard"
-msgstr ""
+msgstr "להיצמד לתקן C99 באדיקות"
 
 #. i18n: ectx: label, entry (SDCC_stack_auto), group (SDCC)
 #: src/core/ktechlab.kcfg:180
@@ -594,7 +594,7 @@ msgstr ""
 #: src/core/ktechlab.kcfg:192
 #, kde-format
 msgid "Leave out the frame pointer"
-msgstr ""
+msgstr "להשאיר את מצביע המסגרת כמו שהוא"
 
 #. i18n: ectx: label, entry (SDCC_no_xinit_opt), group (SDCC)
 #: src/core/ktechlab.kcfg:196
@@ -606,7 +606,7 @@ msgstr ""
 #: src/core/ktechlab.kcfg:200
 #, kde-format
 msgid "Callee will always save registers used"
-msgstr ""
+msgstr "הקורא תמיד ישמור את האוגרים שהיו בשימוש"
 
 #. i18n: ectx: label, entry (SDCC_nooverlay), group (SDCC)
 #: src/core/ktechlab.kcfg:205
@@ -618,13 +618,13 @@ msgstr ""
 #: src/core/ktechlab.kcfg:209
 #, kde-format
 msgid "Disable the GCSE optimization"
-msgstr ""
+msgstr "השבתת מיטובי GCSE‏"
 
 #. i18n: ectx: label, entry (SDCC_nolabelopt), group (SDCC)
 #: src/core/ktechlab.kcfg:213
 #, kde-format
 msgid "Do not optimize labels"
-msgstr ""
+msgstr "לא למטב תוויות"
 
 #. i18n: ectx: label, entry (SDCC_noinvariant), group (SDCC)
 #: src/core/ktechlab.kcfg:217
@@ -636,13 +636,13 @@ msgstr ""
 #: src/core/ktechlab.kcfg:221
 #, kde-format
 msgid "Disable loop variable induction"
-msgstr ""
+msgstr "השבתת הסקה של משתני לולאה"
 
 #. i18n: ectx: label, entry (SDCC_no_peep), group (SDCC)
 #: src/core/ktechlab.kcfg:225
 #, kde-format
 msgid "Disable peep-hole optimization"
-msgstr ""
+msgstr "השבתת מיטוב „חור הצצה”"
 
 #. i18n: ectx: label, entry (SDCC_noloopreverse), group (SDCC)
 #: src/core/ktechlab.kcfg:229
@@ -654,13 +654,13 @@ msgstr ""
 #: src/core/ktechlab.kcfg:233
 #, kde-format
 msgid "Optimize for compact code"
-msgstr ""
+msgstr "מיטוב לקוד חסכוני"
 
 #. i18n: ectx: label, entry (SDCC_opt_code_speed), group (SDCC)
 #: src/core/ktechlab.kcfg:237
 #, kde-format
 msgid "Optimize for fast code"
-msgstr ""
+msgstr "מיטוב לקוד מהיר"
 
 #. i18n: ectx: label, entry (SDCC_peep_asm), group (SDCC)
 #: src/core/ktechlab.kcfg:241
@@ -1424,7 +1424,7 @@ msgstr ""
 #: src/electronics/components/discretelogic.cpp:153
 #, kde-format
 msgid "Logic Input"
-msgstr ""
+msgstr "קלט לוגי"
 
 #: src/electronics/components/discretelogic.cpp:160
 #, kde-format
@@ -1446,12 +1446,12 @@ msgstr ""
 #: src/electronics/components/ecbcdto7segment.cpp:43
 #, kde-format
 msgid "BCD to 7 Segment"
-msgstr ""
+msgstr "BCD ל־7 מקטעים"
 
 #: src/electronics/components/ecbcdto7segment.cpp:54
 #, kde-format
 msgid "BCD to Seven Segment"
-msgstr ""
+msgstr "BCD לשבעה מקטעים"
 
 #: src/electronics/components/ecbjt.cpp:31
 #, kde-format
@@ -2116,6 +2116,9 @@ msgid ""
 "program\n"
 "loaded)"
 msgstr ""
+"(לא\n"
+"נטענה\n"
+"תוכנית)"
 
 #: src/electronics/components/probe.cpp:59
 #, kde-format
@@ -2125,34 +2128,34 @@ msgstr ""
 #: src/electronics/components/probe.cpp:61
 #, kde-format
 msgid "Linear"
-msgstr ""
+msgstr "קווי"
 
 #: src/electronics/components/probe.cpp:62
 #, kde-format
 msgid "Logarithmic"
-msgstr ""
+msgstr "לוגריתמי"
 
 #: src/electronics/components/probe.cpp:68
 #, kde-format
 msgid "Upper Absolute Value"
-msgstr ""
+msgstr "ערך מוחלט עליון"
 
 #: src/electronics/components/probe.cpp:75
 #, kde-format
 msgid "Lower Absolute Value"
-msgstr ""
+msgstr "ערך מוחלט תחתון"
 
 #: src/electronics/components/probe.cpp:135
 #: src/electronics/components/probe.cpp:141
 #, kde-format
 msgid "Voltage Probe"
-msgstr ""
+msgstr "חיישן מתח"
 
 #: src/electronics/components/probe.cpp:167
 #: src/electronics/components/probe.cpp:173
 #, kde-format
 msgid "Current Probe"
-msgstr ""
+msgstr "חיישן זרם"
 
 #: src/electronics/components/probe.cpp:207
 #: src/electronics/components/probe.cpp:213
@@ -2178,7 +2181,7 @@ msgstr ""
 #: src/electronics/components/toggleswitch.cpp:304
 #, kde-format
 msgid "Button Text"
-msgstr ""
+msgstr "טקסט כפתור"
 
 #: src/electronics/components/pushswitch.cpp:45
 #, kde-format
@@ -2677,7 +2680,7 @@ msgstr ""
 #: src/flowparts/testpin.cpp:26 src/flowparts/writeport.cpp:26
 #, kde-format
 msgid "I\\/O"
-msgstr ""
+msgstr "קלט-פלט"
 
 #: src/flowparts/readport.cpp:26 src/flowparts/readport.cpp:32
 #, kde-format
@@ -2743,7 +2746,7 @@ msgstr "שבעה מקטעים"
 #: src/flowparts/sevenseg.cpp:51
 #, kde-format
 msgid "Display %1 on %2"
-msgstr ""
+msgstr "תצוגת %1 על %2"
 
 #: src/flowparts/start.cpp:26 src/flowparts/start.cpp:32
 #: src/flowparts/start.cpp:35
@@ -2775,22 +2778,22 @@ msgstr ""
 #: src/flowparts/unary.cpp:44
 #, kde-format
 msgid "Rotate Left"
-msgstr ""
+msgstr "סיבוב שמאלה"
 
 #: src/flowparts/unary.cpp:45
 #, kde-format
 msgid "Rotate Right"
-msgstr ""
+msgstr "סיבוב ימינה"
 
 #: src/flowparts/unary.cpp:46
 #, kde-format
 msgid "Increment"
-msgstr ""
+msgstr "הגדלה"
 
 #: src/flowparts/unary.cpp:47
 #, kde-format
 msgid "Decrement"
-msgstr ""
+msgstr "הקטנה"
 
 #: src/flowparts/varassignment.cpp:26
 #, kde-format
@@ -2815,12 +2818,12 @@ msgstr "השוואת משתנים"
 #: src/flowparts/while.cpp:26 src/flowparts/while.cpp:32
 #, kde-format
 msgid "While"
-msgstr ""
+msgstr "כל-עוד"
 
 #: src/flowparts/while.cpp:63
 #, kde-format
 msgid "while %1 %2 %3"
-msgstr ""
+msgstr "כל-עוד %1 %2 %3"
 
 #: src/flowparts/writeport.cpp:26 src/flowparts/writeport.cpp:32
 #, kde-format
@@ -2849,13 +2852,13 @@ msgstr "כתיבת %1 אל %2"
 msgid ""
 "The values control the indentation from the left margin of the various types "
 "of assembly code."
-msgstr ""
+msgstr "הערכים שולטים בהזחה מהשול השמאלי של הסוגים השונים של קוד אסמבלי."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox64)
 #: src/gui/asmformattingwidget.ui:32
 #, kde-format
 msgid "Output Code Indentation"
-msgstr ""
+msgstr "הזחת קוד הפלט"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel11)
 #: src/gui/asmformattingwidget.ui:38
@@ -2885,20 +2888,20 @@ msgstr ""
 #: src/gui/asmformattingwidget.ui:78
 #, kde-format
 msgid "Instruction Name"
-msgstr ""
+msgstr "שם הנחיה"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_AutoFormatMBOutput)
 #: src/gui/asmformattingwidget.ui:162
 #, kde-format
 msgid "&Automatically format Microbe output"
-msgstr ""
+msgstr "לעצב את פלט ה־Microbe &אוטומטית"
 
 #: src/gui/contexthelp.cpp:65
 #, kde-format
 msgid ""
 "Provides context-sensitive help relevant to the current editing being "
 "performed."
-msgstr ""
+msgstr "אספקת עזרה תלוית הקשר לעריכה שמתבצעת באותו הרגע."
 
 #: src/gui/contexthelp.cpp:245 src/gui/itemeditor/itemeditor.cpp:141
 #, kde-format
@@ -3009,48 +3012,50 @@ msgid ""
 "Maximum undo steps for work area. This does not apply to text documents - "
 "that is configurable separately under Configure Editor."
 msgstr ""
+"צעדי הסגה מרביים לאזור העבודה. לא חל על מסמכי טקסט - אפשר להגדיר את זה בנפרד "
+"תחת עורך ההגדרות."
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
 #: src/gui/generaloptionswidget.ui:88
 #, kde-format
 msgid "Maximum undo steps for work area:"
-msgstr ""
+msgstr "צעדי הסגה מרביים לאזור העבודה:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowVoltageBars)
 #: src/gui/generaloptionswidget.ui:98
 #, kde-format
 msgid "Show voltage bars &on electronic components"
-msgstr ""
+msgstr "להציג עמודות מתח על &רכיבים אלקטרוניים"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowVoltageColor)
 #: src/gui/generaloptionswidget.ui:105
 #, kde-format
 msgid "Color the wires to match the voltage"
-msgstr ""
+msgstr "לצבוע את החוטים כדי להתאים למתח"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_AnimateWires)
 #: src/gui/generaloptionswidget.ui:115
 #, kde-format
 msgid "Animate wires to show the current or power flow"
-msgstr ""
+msgstr "הנפשת החוטים כדי להציג את הזרם או זרימת החשמל"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox21)
 #: src/gui/generaloptionswidget.ui:125
 #, kde-format
 msgid "Display Refresh Rate"
-msgstr ""
+msgstr "קצב ריענון תצוגה"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3_2)
 #: src/gui/generaloptionswidget.ui:152
 #, kde-format
 msgid "Refresh rate:"
-msgstr ""
+msgstr "קצב ריענון:"
 
 #. i18n: ectx: property (text), widget (QLabel, refreshRateLabel)
 #: src/gui/generaloptionswidget.ui:162
 #, kde-format
 msgid "Medium (50 FPS)"
-msgstr ""
+msgstr "בינוני (50 תמוניות לשנייה)"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel9_2)
 #: src/gui/generaloptionswidget.ui:180
@@ -3059,18 +3064,20 @@ msgid ""
 "This is the number of times per second that the work area view is updated; a "
 "compromise between CPU usage and smoothness of display."
 msgstr ""
+"זה מספר הפעמים בשנייה שאזור העבודה מתעדכן, פשרה בין עומס על המעבד וחלקלקות "
+"התצוגה."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox4)
 #: src/gui/generaloptionswidget.ui:202
 #, kde-format
 msgid "Convenience"
-msgstr ""
+msgstr "נוחות"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_RestoreDocumentsOnStartup)
 #: src/gui/generaloptionswidget.ui:208
 #, kde-format
 msgid "Restore opened doc&uments on startup"
-msgstr ""
+msgstr "שחזור מסמכים &פתוחים עם ההפעלה"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_RaiseItemSelectors)
 #: src/gui/generaloptionswidget.ui:215
@@ -3088,19 +3095,19 @@ msgstr ""
 #: src/gui/gpasmsettingswidget.ui:32
 #, kde-format
 msgid "Radix (-r):"
-msgstr ""
+msgstr "בסיס (‎-r):"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3)
 #: src/gui/gpasmsettingswidget.ui:42
 #, kde-format
 msgid "Warning level (-w):"
-msgstr ""
+msgstr "רמת אזהרה (‎-w):"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
 #: src/gui/gpasmsettingswidget.ui:52 src/gui/linkeroptionswidget.ui:69
 #, kde-format
 msgid "Hex Format (-a):"
-msgstr ""
+msgstr "תבנית הקסדצימלית (‎-a):"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_IgnoreCase)
 #: src/gui/gpasmsettingswidget.ui:62
@@ -3114,7 +3121,7 @@ msgstr ""
 #: src/gui/gpasmsettingswidget.ui:65
 #, kde-format
 msgid "Ign&ore case (-i)"
-msgstr ""
+msgstr "התעלמות מ&רישיות (‎-i)"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_DosFormat)
 #: src/gui/gpasmsettingswidget.ui:72
@@ -3132,7 +3139,7 @@ msgstr ""
 #: src/gui/gpasmsettingswidget.ui:75
 #, kde-format
 msgid "Generate DOS-formatted hex file (-&n)"
-msgstr ""
+msgstr "יצירת קובץ &הקסדצימלי בתבנית DOS‏ (‎-n)"
 
 #. i18n: ectx: property (toolTip), widget (QComboBox, kcfg_HexFormat)
 #. i18n: ectx: property (toolTip), widget (KComboBox, m_pHexFormat)
@@ -3148,52 +3155,52 @@ msgstr ""
 #: src/gui/gpasmsettingswidget.ui:108 src/gui/linkeroptionswidget.ui:33
 #, kde-format
 msgid "inhx32"
-msgstr ""
+msgstr "inhx32"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_HexFormat)
 #. i18n: ectx: property (text), item, widget (KComboBox, m_pHexFormat)
 #: src/gui/gpasmsettingswidget.ui:113 src/gui/linkeroptionswidget.ui:38
 #, kde-format
 msgid "inhx8m"
-msgstr ""
+msgstr "inhx8m"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_HexFormat)
 #. i18n: ectx: property (text), item, widget (KComboBox, m_pHexFormat)
 #: src/gui/gpasmsettingswidget.ui:118 src/gui/linkeroptionswidget.ui:43
 #, kde-format
 msgid "inhx8s"
-msgstr ""
+msgstr "inhx8s"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_HexFormat)
 #. i18n: ectx: property (text), item, widget (KComboBox, m_pHexFormat)
 #: src/gui/gpasmsettingswidget.ui:123 src/gui/linkeroptionswidget.ui:48
 #, kde-format
 msgid "inhx16"
-msgstr ""
+msgstr "inhx16"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_Radix)
 #: src/gui/gpasmsettingswidget.ui:138 src/gui/symbolviewer.cpp:110
 #, kde-format
 msgid "Decimal"
-msgstr ""
+msgstr "עשרוני"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_Radix)
 #: src/gui/gpasmsettingswidget.ui:143 src/gui/symbolviewer.cpp:108
 #, kde-format
 msgid "Binary"
-msgstr ""
+msgstr "בינרי"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_Radix)
 #: src/gui/gpasmsettingswidget.ui:148 src/gui/symbolviewer.cpp:109
 #, kde-format
 msgid "Octal"
-msgstr ""
+msgstr "אוקטלי"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_Radix)
 #: src/gui/gpasmsettingswidget.ui:153 src/gui/symbolviewer.cpp:111
 #, kde-format
 msgid "Hexadecimal"
-msgstr ""
+msgstr "הקסדצימלי"
 
 #. i18n: ectx: property (toolTip), widget (KComboBox, kcfg_GpasmWarningLevel)
 #: src/gui/gpasmsettingswidget.ui:167
@@ -3209,26 +3216,26 @@ msgstr ""
 #: src/gui/gpasmsettingswidget.ui:171
 #, kde-format
 msgid "All"
-msgstr ""
+msgstr "הכול"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GpasmWarningLevel)
 #: src/gui/gpasmsettingswidget.ui:176
 #, kde-format
 msgid "Warnings"
-msgstr ""
+msgstr "אזהרות"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GpasmWarningLevel)
 #: src/gui/gpasmsettingswidget.ui:181
 #, kde-format
 msgid "Errors"
-msgstr ""
+msgstr "שגיאות"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: src/gui/gpasmsettingswidget.ui:237 src/gui/sdccoptionswidget.ui:449
 #, kde-format
 msgid "Other options:"
-msgstr ""
+msgstr "אפשרויות אחרות:"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_gplink_link_shared)
 #: src/gui/gplinksettingswidget.ui:26
@@ -3240,37 +3247,37 @@ msgstr ""
 #: src/itemdocument.cpp:854
 #, kde-format
 msgid "Export As Image"
-msgstr ""
+msgstr "ייצוא כתמונה"
 
 #: src/gui/imageexportdlg.cpp:45
 #, kde-format
 msgid "Format:"
-msgstr ""
+msgstr "תבנית:"
 
 #: src/gui/imageexportdlg.cpp:51
 #, kde-format
 msgid "File name:"
-msgstr ""
+msgstr "שם קובץ:"
 
 #: src/gui/imageexportdlg.cpp:57
 #, kde-format
 msgid "Crop image:"
-msgstr ""
+msgstr "חיתוך תמונה:"
 
 #: src/gui/imageexportdlg.cpp:64
 #, kde-format
 msgid "Export"
-msgstr ""
+msgstr "ייצוא"
 
 #: src/gui/itemeditor/componentmodelwidget.cpp:51
 #, kde-format
 msgid "Filter here..."
-msgstr ""
+msgstr "סינון מכאן…"
 
 #: src/gui/itemeditor/componentmodelwidget.cpp:61
 #, kde-format
 msgid "Clear filter"
-msgstr ""
+msgstr "פינוי מסנן"
 
 #: src/gui/itemeditor/componentmodelwidget.cpp:62
 #, kde-format
@@ -3311,44 +3318,44 @@ msgstr ""
 #: src/gui/itemeditor/propertyeditoritem.cpp:106
 #, kde-format
 msgid "Yes"
-msgstr ""
+msgstr "כן"
 
 #: src/gui/itemeditor/propertyeditor.cpp:180
 #: src/gui/itemeditor/propertyeditorinput.cpp:194
 #: src/gui/itemeditor/propertyeditoritem.cpp:111
 #, kde-format
 msgid "No"
-msgstr ""
+msgstr "לא"
 
 #: src/gui/itemeditor/propertyeditor.cpp:256
 #, kde-format
 msgid "Property"
-msgstr ""
+msgstr "מאפיין"
 
 #: src/gui/itemeditor/propertyeditor.cpp:287
 #, kde-format
 msgid "Undo changes"
-msgstr ""
+msgstr "הסגת השינויים"
 
 #: src/gui/itemeditor/propertyeditorfile.cpp:36
 #, kde-format
 msgid " ... "
-msgstr ""
+msgstr " … "
 
 #: src/gui/itemeditor/propertyeditorfile.cpp:52
 #, kde-format
 msgid "Choose File"
-msgstr ""
+msgstr "בחירת קובץ"
 
 #: src/gui/itemselector.cpp:61 src/gui/itemselector.cpp:408
 #, kde-format
 msgid "Component"
-msgstr ""
+msgstr "רכיב"
 
 #: src/gui/itemselector.cpp:265
 #, kde-format
 msgid "Remove %1"
-msgstr ""
+msgstr "הסרת %1"
 
 #: src/gui/itemselector.cpp:402
 #, kde-format
@@ -3377,43 +3384,43 @@ msgstr ""
 #: src/gui/itemselector.cpp:467
 #, kde-format
 msgid "Add mechanical parts to the mechanics work area by dragging them there."
-msgstr ""
+msgstr "אפשר להוסיף חלקים מכניים לאזור העבודה המכנית על ידי גרירתם לכאן."
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3)
 #: src/gui/linkeroptionswidget.ui:56
 #, kde-format
 msgid "Library Directory (-I):"
-msgstr ""
+msgstr "תיקיית הספריות (‎-I):"
 
 #. i18n: ectx: property (text), widget (QCheckBox, m_pOutputMap)
 #: src/gui/linkeroptionswidget.ui:79
 #, kde-format
 msgid "&Output a map file (-m)"
-msgstr ""
+msgstr "&פלט קובץ מפה (‎-m)"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel8)
 #: src/gui/linkeroptionswidget.ui:86
 #, kde-format
 msgid "Linker Script (-s):"
-msgstr ""
+msgstr "סקריפט מקשר (‎-s):"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
 #: src/gui/linkeroptionswidget.ui:102
 #, kde-format
 msgid "Other:"
-msgstr ""
+msgstr "אחר:"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
 #: src/gui/linkeroptionswidget.ui:116
 #, kde-format
 msgid "Link libraries inside project"
-msgstr ""
+msgstr "קישור ספריות בתוך מיזם"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1_3)
 #: src/gui/logicwidget.ui:31
 #, kde-format
 msgid "Logic Symbol Shapes:"
-msgstr ""
+msgstr "צורות סימנים לוגיים:"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_LogicSymbolShapes)
 #: src/gui/logicwidget.ui:42
@@ -3438,7 +3445,7 @@ msgstr "קלט"
 #: src/gui/logicwidget.ui:63 src/gui/logicwidget.ui:126
 #, kde-format
 msgid "Required voltage level before the input will be considered high."
-msgstr ""
+msgstr "רמת המתח הנדרשת לפני שהקלט ייחשב גבוה."
 
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, kcfg_LogicRisingTrigger)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, kcfg_LogicFallingTrigger)
@@ -3447,14 +3454,14 @@ msgstr ""
 #: src/gui/logicwidget.ui:170
 #, kde-format
 msgid " V"
-msgstr ""
+msgstr " וולט"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, textLabel2_2)
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, kcfg_LogicFallingTrigger)
 #: src/gui/logicwidget.ui:88 src/gui/logicwidget.ui:101
 #, kde-format
 msgid "Required voltage level before an input will be considered low."
-msgstr ""
+msgstr "רמת המתח הנדרשת לפני שקלט ייחשב נמוך."
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2_2)
 #: src/gui/logicwidget.ui:91
@@ -3473,7 +3480,7 @@ msgstr ""
 #: src/gui/logicwidget.ui:148 src/gui/logicwidget.ui:161
 #, kde-format
 msgid "Voltage level for high on logic components."
-msgstr ""
+msgstr "רמת מתח לגבוה ברכיבים לוגיים."
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: src/gui/logicwidget.ui:151
@@ -3505,13 +3512,13 @@ msgstr ""
 #: src/gui/logicwidget.ui:202
 #, kde-format
 msgid "Low Output Impedance:"
-msgstr ""
+msgstr "עכבה חשמלית של פלט חלש:"
 
 #. i18n: ectx: property (specialValueText), widget (QSpinBox, kcfg_LogicOutputLowImpedance)
 #: src/gui/logicwidget.ui:240
 #, kde-format
 msgid "Floating"
-msgstr ""
+msgstr "צף"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2_3)
 #: src/gui/logicwidget.ui:264
@@ -3522,12 +3529,16 @@ msgid ""
 "These values will apply to all components, apart from the PIC, whose pins' "
 "impedances depend on the pin in use."
 msgstr ""
+"כאן אפשר להגדיר את התנהגות הרכיבים הלוגיים.\n"
+"\n"
+"הערכים האלו חלים על כל הרכיבים, למעט ה־PIC שהעכבה החשמלית של הפינים שלו "
+"תלויה בשימוש בפינים."
 
 #. i18n("Clear All"), this, SLOT(clear()) ); // 2018.12.07
 #: src/gui/logview.cpp:121
 #, kde-format
 msgid "Clear All"
-msgstr ""
+msgstr "פינוי של הכול"
 
 #: src/gui/microselectwidget.cpp:29
 #, kde-format
@@ -3552,7 +3563,7 @@ msgstr "הגדרות PIC"
 #: src/gui/microsettingsdlg.cpp:70
 #, kde-format
 msgid "This dialog allows editing of the initial properties of the PIC"
-msgstr ""
+msgstr "החלונית הזאת מאפשרת לערוך את המאפיינים הראשוניים של ה־PIC"
 
 #: src/gui/microsettingsdlg.cpp:72
 #, kde-format
@@ -3622,6 +3633,8 @@ msgid ""
 "Tip: Toggle the initial state (high/low) of a pin by clicking its picture.\n"
 "Drag it to set the type (input/output)."
 msgstr ""
+"עצה: אפשר לשנות את המצב ההתחלתי של פין (גבוה/נמוך) בלחיצה על התמונה שלו.\n"
+"יש לגרור אותו כדי להגדיר את הסוג (קלט/פלט)."
 
 #. i18n: ectx: property (text), widget (QPushButton, pinMapRemove)
 #: src/gui/microsettingswidget.ui:109 src/projectmanager.cpp:1078
@@ -3660,6 +3673,15 @@ msgid ""
 "Creates a new circuit, with drag and drop editor. Real time simulation of "
 "the circuit occurs automatically."
 msgstr ""
+"נא לבחור את סוג הקובץ ליצירה.<br>\n"
+"<p>\n"
+"<b>תוכנית Pic</b><br>\n"
+"יצירת תוכנית PIC חדשה עם עורך תרשים זרימה. נא לבחור את התקן היעד לתוכנית שלך "
+"להלן.\n"
+"<p>\n"
+"<b>מעגל</b><br>\n"
+"יצירת מעגל חדש, עם עורך עצמים בגרירה. הדמיה של המעגל בזמן אמת מתרחשת "
+"אוטומטית."
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
 #: src/gui/newfilewidget.ui:72
@@ -3754,7 +3776,7 @@ msgstr "%1 תמוניות לשנייה"
 #: src/gui/oscilloscopewidget.ui:91
 #, kde-format
 msgid "Time Zoom"
-msgstr ""
+msgstr "תקריב זמן"
 
 #. i18n: ectx: property (text), widget (QRadioButton, displayDirectCheck)
 #: src/gui/outputmethodwidget.ui:44
@@ -4019,7 +4041,7 @@ msgstr "&כללי"
 #: src/gui/sdccoptionswidget.ui:42
 #, kde-format
 msgid "Do not search in the standard librar&y directory (--nostdlib)"
-msgstr ""
+msgstr "לא לחפש בתיקיית ה&ספרייה התקנית (‎--nostdlib)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nostdinc)
 #: src/gui/sdccoptionswidget.ui:49
@@ -4094,6 +4116,10 @@ msgid ""
 "option is used all source files in the project should be compiled with this "
 "option. It automatically implies --int-long-reent and --float-reent."
 msgstr ""
+"כל הפונקציות בקובץ המקור תהודרנה כרבות־כניסה, כלומר שכל הפרמטרים והמשתנים "
+"המקומיים יוקצו בערימה. אם האפשרות הזאת בשימוש יש להדר את כל קובצי המקור "
+"במיזם הזה עם האפשרות הזאת. היא גורמת להסקה אוטומטי של ‎--int-long-reent ושל ‎--"
+"float-reent."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_stack_auto)
 #: src/gui/sdccoptionswidget.ui:134
@@ -4151,7 +4177,7 @@ msgstr ""
 #: src/gui/sdccoptionswidget.ui:184
 #, kde-format
 msgid "Callee will &always save registers used (--all-callee-saves)"
-msgstr ""
+msgstr "הקורא &תמיד ישמור את האוגרים שהיו בשימוש (‎--all-callee-saves)"
 
 #. i18n: ectx: attribute (title), widget (QWidget, optimization)
 #: src/gui/sdccoptionswidget.ui:208
@@ -4185,7 +4211,7 @@ msgstr "השבתת מיטובי GCSE‏ (‎--nogcse)"
 #: src/gui/sdccoptionswidget.ui:234
 #, kde-format
 msgid "Will not optimize labels (makes the dumpfiles more readable)."
-msgstr ""
+msgstr "התוויות לא תמוטבנה (הפיכת קובצי ההיטל לקריאים יותר)."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nolabelopt)
 #: src/gui/sdccoptionswidget.ui:237
@@ -4277,7 +4303,7 @@ msgstr ""
 #: src/gui/sdccoptionswidget.ui:317
 #, kde-format
 msgid "Do not generate boundary check for &jump tables (--nojtbound)"
-msgstr ""
+msgstr "לא לייצר בדיקת גבולות לטבלאות &קפיצה (‎--nojtbound)"
 
 #. i18n: ectx: attribute (title), widget (QWidget, pic16_specific)
 #: src/gui/sdccoptionswidget.ui:341
@@ -4301,19 +4327,19 @@ msgstr "לא לייצר הנחיות BANKSEL ‏(‎--pno-banksel)"
 #: src/gui/sdccoptionswidget.ui:367
 #, kde-format
 msgid "Use large stac&k model (--pstack-model=large)"
-msgstr ""
+msgstr "להשתמש בדגם &ערימה גדול (‎--pstack-model=large)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_debug_xtra)
 #: src/gui/sdccoptionswidget.ui:374
 #, kde-format
 msgid "Show more debug info in assembl&y output (--debug-xtra)"
-msgstr ""
+msgstr "הצגת פרטי ניפוי &שגיאות נוספים בפלט האסמבלי (‎--debug-xtra)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_denable_peeps)
 #: src/gui/sdccoptionswidget.ui:381
 #, kde-format
 msgid "E&xplicit enable of peepholes (--denable-peeps)"
-msgstr ""
+msgstr "הפעלה מפורשת של &חורי הצצה (‎--denable-peeps)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_calltree)
 #: src/gui/sdccoptionswidget.ui:388
@@ -4325,7 +4351,7 @@ msgstr "להטיל את עץ הקריאות לקובץ ‎.calltree‏ (‎--cal
 #: src/gui/sdccoptionswidget.ui:395
 #, kde-format
 msgid "Ena&ble stack optimizations (--fstack)"
-msgstr ""
+msgstr "הפעלת מיטובי &ערימה (‎--fstack)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_optimize_goto)
 #: src/gui/sdccoptionswidget.ui:402
@@ -4385,7 +4411,7 @@ msgstr "מעצב אסמבלי"
 #: src/gui/settingsdlg.cpp:136
 #, kde-format
 msgid "Electronic Logic Values"
-msgstr ""
+msgstr "רכיבים לוגיים אלקטרוניים"
 
 #: src/gui/settingsdlg.cpp:177
 #, kde-format
@@ -5124,6 +5150,8 @@ msgid ""
 "KTechlab was unable to find the \"Start\" part.\n"
 "This must be included as the starting point for your program."
 msgstr ""
+"KTechlab לא הצליח למצוא את החלק „Start”.\n"
+"יש לכלול אותו בנקודת ההתחלה של התוכנית שלך."
 
 #: src/languages/gpasm.cpp:27
 #, kde-format
