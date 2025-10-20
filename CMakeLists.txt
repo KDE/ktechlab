@@ -117,9 +117,8 @@ message("Qt6Core_EXECUTABLE_COMPILE_FLAGS=>>>${Qt6Core_EXECUTABLE_COMPILE_FLAGS}
 # and http://www.cmake.org/Wiki/HowToBuildKDE4Software#Some_useful_functions
 remove_definitions(-DQT_NO_STL)
 
-# TODO switch to NO_GPSIM to HAVE_GPSIM
-if (NOT GPSim_FOUND)
-    set(NO_GPSIM TRUE)
+if (GPSim_FOUND)
+    set(HAVE_GPSIM TRUE)
 endif ()
 
 if (UNIX AND NOT APPLE)
