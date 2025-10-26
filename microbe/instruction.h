@@ -578,7 +578,7 @@ class Code
 		 * Merges all the blocks output together with other magic such as adding
 		 * variables, gpasm directives, etc.
 		 */
-		QString generateCode( PIC14 * pic ) const;
+		QString generateCode( const PIC14 & pic ) const;
 		/**
 		 * Appends the InstructionLists to the end of the ones in this instance.
 		 * @param middleInsertionPosition is the position where the middle code

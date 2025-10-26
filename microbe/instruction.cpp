@@ -2430,7 +2430,7 @@ void Code::postCompileConstruct()
 }
 
 
-QString Code::generateCode( PIC14 * pic ) const
+QString Code::generateCode( const PIC14 & pic ) const
 {
 	QString code;
 
@@ -2438,7 +2438,7 @@ QString Code::generateCode( PIC14 * pic ) const
 	if ( !variables.isEmpty() )
 	{
 		code += QLatin1StringView("; Variables\n");
-		uchar reg = pic->gprStart();
+		uchar reg = pic.gprStart();
 		QStringList::const_iterator end = variables.end();
 		for ( QStringList::const_iterator it = variables.begin(); it != end; ++it )
 			code += QLatin1StringView("%1\tequ\t0x%2\n").arg( *it ).arg( QString::number( reg++, 16 ) );
@@ -2446,7 +2446,7 @@ QString Code::generateCode( PIC14 * pic ) const
 		code += "\n"_L1;
 	}
 
-	QString picString = pic->minimalTypeString();
+	QString picString = pic.minimalTypeString();
 	code += QLatin1StringView("list p=%1\n").arg( picString );
 	code += QLatin1StringView("include \"p%2.inc\"\n\n").arg( picString.toLower() );
 

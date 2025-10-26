@@ -120,7 +120,7 @@ QString MicrobeApp::compile( const QString & url, bool optimize )
 		opt.optimize( code );
 	}
 
-	return code->generateCode( pic );
+	return code->generateCode( *pic );
 }
 
 
