@@ -214,6 +214,8 @@ class Parser
 		Parser * createChildParser();
 		/**
 		 * Creates a child class and uses it to parse recursively.
+		 *
+		 * TODO return a smart pointer to the Code class, so using it does not leak memory
 		 */
 		Code * parseWithChild( const SourceLineList & lines );
 		/**
