@@ -525,6 +525,7 @@ class Code
 {
 	public:
 		Code();
+		~Code();
 
 		typedef CodeIterator iterator;
 		typedef CodeConstIterator const_iterator;

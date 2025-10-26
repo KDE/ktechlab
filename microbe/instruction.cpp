@@ -2264,6 +2264,17 @@ Code::Code()
 {
 }
 
+Code::~Code() {
+	// break any possible circular dependency in internal lists
+	for (int posNr = 0; posNr < PositionCount; posNr++) {
+		InstructionList & currInstrList = m_instructionLists[posNr];
+		for (InstructionList::iterator itInstr = currInstrList.begin();
+			 itInstr != currInstrList.end(); ++itInstr) {
+			InstructionPtr currPtr = *itInstr;
+			currPtr->clearLinks();
+		}
+	}
+}
 
 void Code::merge( Code * code, InstructionPosition middleInsertionPosition )
 {
