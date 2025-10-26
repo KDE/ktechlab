@@ -142,6 +142,7 @@ Parser::Parser( MicrobeApp * _mb )
 
 Parser::~Parser()
 {
+	delete m_code;
 }
 
 Parser* Parser::createChildParser()
@@ -458,6 +459,7 @@ Code * Parser::parse( const SourceLineList & lines )
 	}
 
 	delete m_pPic;
+	m_pPic = nullptr;
 	return m_code;
 }
 
