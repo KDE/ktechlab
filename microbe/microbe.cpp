@@ -122,6 +122,7 @@ QString MicrobeApp::compile( const QString & url, bool optimize )
 
 	QString ret = code->generateCode( *pic );
 
+	delete code;
 	delete pic;
 
 	return ret;

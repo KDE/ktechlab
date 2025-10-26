@@ -284,7 +284,6 @@ class Parser
 		PIC14 * m_pPic;
 		bool m_bPassedEnd;
 		MicrobeApp * mb;
-		Code * m_code;
 		SourceLineMicrobe m_currentSourceLine;
 		
 	private: // Disable copy constructor and operator=

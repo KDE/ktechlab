@@ -41,7 +41,6 @@ using Qt::StringLiterals::operator""_L1;
 //BEGIN class Parser
 Parser::Parser( MicrobeApp * _mb )
 {
-	m_code = nullptr;
 	m_pPic = nullptr;
 	mb = _mb;
 	// Set up statement definitions.
@@ -142,7 +141,6 @@ Parser::Parser( MicrobeApp * _mb )
 
 Parser::~Parser()
 {
-	delete m_code;
 }
 
 Parser* Parser::createChildParser()
@@ -166,8 +164,8 @@ Code * Parser::parse( const SourceLineList & lines )
 {
 	StatementList sList;
 	m_pPic = mb->makePic();
-	m_code = new Code();
-	m_pPic->setCode( m_code );
+	Code * codeToRet = new Code();
+	m_pPic->setCode( codeToRet );
 	m_pPic->setParser(this);
 	m_bPassedEnd = false;
 
@@ -215,11 +213,11 @@ Code * Parser::parse( const SourceLineList & lines )
 		OutputFieldMap fieldMap;
 
 		if ( (*sit).content.line() >= 0 )
-			m_code->append( InstructionPtr(new Instr_sourceCode( QString(QLatin1StringView("#MSRC\t%1; %2\t%3"))
+			codeToRet->append( InstructionPtr(new Instr_sourceCode( QString(QLatin1StringView("#MSRC\t%1; %2\t%3"))
 					.arg( (*sit).content.line() + 1 ).arg( (*sit).content.url() ).arg( (*sit).content.text() ) )));
 		bool showBracesInSource = (*sit).hasBracedCode();
 		if ( showBracesInSource )
-			m_code->append(InstructionPtr(new Instr_sourceCode("{"_L1)));
+			codeToRet->append(InstructionPtr(new Instr_sourceCode("{"_L1)));
 
 		// Use the first token in the line to look up the statement type
 		DefinitionMap::Iterator dmit = m_definitionMap.find(command);
@@ -455,12 +453,12 @@ Code * Parser::parse( const SourceLineList & lines )
 		processStatement( command, fieldMap );
 
 		if( showBracesInSource )
-			m_code->append(InstructionPtr(new Instr_sourceCode("}"_L1)));
+			codeToRet->append(InstructionPtr(new Instr_sourceCode("}"_L1)));
 	}
 
 	delete m_pPic;
 	m_pPic = nullptr;
-	return m_code;
+	return codeToRet;
 }
 
 bool Parser::processAssignment(const QString &line)
