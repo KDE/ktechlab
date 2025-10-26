@@ -214,11 +214,11 @@ Code * Parser::parse( const SourceLineList & lines )
 		OutputFieldMap fieldMap;
 
 		if ( (*sit).content.line() >= 0 )
-			m_code->append( new Instr_sourceCode( QString(QLatin1StringView("#MSRC\t%1; %2\t%3"))
-					.arg( (*sit).content.line() + 1 ).arg( (*sit).content.url() ).arg( (*sit).content.text() ) ));
+			m_code->append( InstructionPtr(new Instr_sourceCode( QString(QLatin1StringView("#MSRC\t%1; %2\t%3"))
+					.arg( (*sit).content.line() + 1 ).arg( (*sit).content.url() ).arg( (*sit).content.text() ) )));
 		bool showBracesInSource = (*sit).hasBracedCode();
 		if ( showBracesInSource )
-			m_code->append(new Instr_sourceCode("{"_L1));
+			m_code->append(InstructionPtr(new Instr_sourceCode("{"_L1)));
 
 		// Use the first token in the line to look up the statement type
 		DefinitionMap::Iterator dmit = m_definitionMap.find(command);
@@ -454,7 +454,7 @@ Code * Parser::parse( const SourceLineList & lines )
 		processStatement( command, fieldMap );
 
 		if( showBracesInSource )
-			m_code->append(new Instr_sourceCode("}"_L1));
+			m_code->append(InstructionPtr(new Instr_sourceCode("}"_L1)));
 	}
 
 	delete m_pPic;

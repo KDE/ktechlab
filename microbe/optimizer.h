@@ -60,18 +60,18 @@ class Optimizer
 		 * label.
 		 * @return whether any GOTOs were redirected
 		 */
-		bool redirectGotos( Instruction * current, const QString & label );
+		bool redirectGotos( InstructionPtr current, const QString & label );
 		/**
 		 * Find out if the given instruction or any of its outputs overwrite
 		 * any of the bits of the given register before they are used.
 		 */
-		uchar generateRegisterDepends( Instruction * current, const Register & reg );
+		uchar generateRegisterDepends( InstructionPtr current, const Register & reg );
 		/**
 		 * This function should only be used from generateRegisterDepends.
 		 * Recursively looks at the output links of the given instruction, and
 		 * returns which bits are eventually used before being overwritten.
 		 */
-		uchar registerDepends( Instruction * current, const Register & reg );
+		uchar registerDepends( InstructionPtr current, const Register & reg );
 		/**
 		 * We often need to know whether removing an instruction will affect the
 		 * future processor state. This function looks are all possible future
@@ -79,7 +79,7 @@ class Optimizer
 		 * of the instruction will have no critical effect.
 		 * @param bitMask only look at the given bits of the register
 		 */
-		bool canRemove( Instruction * ins, const Register & reg, uchar bitMask = 0xff );
+		bool canRemove( InstructionPtr ins, const Register & reg, uchar bitMask = 0xff );
 		
 		Code * m_pCode;
 };

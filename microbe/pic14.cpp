@@ -231,7 +231,8 @@ QString PIC14::minimalTypeString() const
 
 void PIC14::postCompileConstruct( const QStringList &interrupts )
 {
-	m_pCode->append( new Instr_raw(QLatin1StringView("\n\tEND\n"_L1)), Code::Subroutine );
+	InstructionPtr ptr_raw( new Instr_raw(QLatin1StringView("\n\tEND\n"_L1)) );
+	m_pCode->append( ptr_raw, Code::Subroutine );
 
 	if ( interrupts.isEmpty() )
 	{
@@ -239,7 +240,8 @@ void PIC14::postCompileConstruct( const QStringList &interrupts )
 		// Instead, just insert the goto start instruction in case we need to
 		// jump past any lookup tables (and if there are none, then the optimizer
 		// will remove the goto instruction).
-		m_pCode->append(new Instr_goto(QLatin1StringView("_start"_L1)), Code::InterruptHandler);
+		InstructionPtr ptr_goto( new Instr_goto(QLatin1StringView("_start"_L1)) );
+		m_pCode->append( ptr_goto, Code::InterruptHandler);
 		m_pCode->queueLabel( QLatin1StringView("_start"_L1), Code::LookupTable );
 		return;
 	}
@@ -256,23 +258,23 @@ void PIC14::postCompileConstruct( const QStringList &interrupts )
 
 	// The bizarre dance with swap is to ensure the status bits
 	// are preserved properly
-	m_pCode->append(new Instr_goto(QLatin1StringView("_start"_L1)), Code::InterruptHandler);
+	m_pCode->append(InstructionPtr(new Instr_goto(QLatin1StringView("_start"_L1))), Code::InterruptHandler);
 
-	m_pCode->append(new Instr_raw(QLatin1StringView("ORG 0x4"_L1)), Code::InterruptHandler);
+	m_pCode->append(InstructionPtr(new Instr_raw(QLatin1StringView("ORG 0x4"_L1))), Code::InterruptHandler);
 	// When we arrive here:
 	// Return address on stack,
 	// GIE flag cleared (globally interrupts disabled)
 	// W or STATUS not preserved by processor.
-	m_pCode->append(new Instr_movwf("W_TEMP"), Code::InterruptHandler);
-	m_pCode->append(new Instr_swapf("STATUS",0), Code::InterruptHandler);
-	m_pCode->append(new Instr_movwf("STATUS_TEMP"), Code::InterruptHandler);
+	m_pCode->append(InstructionPtr(new Instr_movwf("W_TEMP")), Code::InterruptHandler);
+	m_pCode->append(InstructionPtr(new Instr_swapf("STATUS",0)), Code::InterruptHandler);
+	m_pCode->append(InstructionPtr(new Instr_movwf("STATUS_TEMP")), Code::InterruptHandler);
 
 	QStringList::ConstIterator interruptsEnd = interrupts.end();
 	for( QStringList::ConstIterator it = interrupts.begin(); it != interruptsEnd; ++it )
 	{
 		// Is the interrupt's flag bit set?
-		m_pCode->append(new Instr_btfsc("INTCON",QString::number(interruptNameToBit((*it), true))), Code::InterruptHandler);
-		m_pCode->append(new Instr_goto(QLatin1StringView("_interrupt_") + (*it)), Code::InterruptHandler); // Yes, do its handler routine
+		m_pCode->append(InstructionPtr(new Instr_btfsc("INTCON",QString::number(interruptNameToBit((*it), true)))), Code::InterruptHandler);
+		m_pCode->append(InstructionPtr(new Instr_goto(QLatin1StringView("_interrupt_") + (*it))), Code::InterruptHandler); // Yes, do its handler routine
 		// Otherwise fall through to the next.
 	}
 
@@ -280,11 +282,11 @@ void PIC14::postCompileConstruct( const QStringList &interrupts )
 	// much we can do about that (??) so just fall through and hope for the worst.
 
 	m_pCode->queueLabel( QLatin1StringView("_interrupt_end"_L1), Code::InterruptHandler );
-	m_pCode->append(new Instr_swapf("STATUS_TEMP",0), Code::InterruptHandler );
-	m_pCode->append(new Instr_movwf("STATUS"), Code::InterruptHandler );
-	m_pCode->append(new Instr_swapf("W_TEMP",1), Code::InterruptHandler );
-	m_pCode->append(new Instr_swapf("W_TEMP",0), Code::InterruptHandler );
-	m_pCode->append(new Instr_retfie()); // Returns and re-enables globally interrupts.
+	m_pCode->append(InstructionPtr(new Instr_swapf("STATUS_TEMP",0)), Code::InterruptHandler );
+	m_pCode->append(InstructionPtr(new Instr_movwf("STATUS")), Code::InterruptHandler );
+	m_pCode->append(InstructionPtr(new Instr_swapf("W_TEMP",1)), Code::InterruptHandler );
+	m_pCode->append(InstructionPtr(new Instr_swapf("W_TEMP",0)), Code::InterruptHandler );
+	m_pCode->append(InstructionPtr(new Instr_retfie())); // Returns and re-enables globally interrupts.
 
 	m_pCode->queueLabel( QLatin1StringView("_start"_L1), Code::LookupTable );
 }
@@ -499,7 +501,7 @@ void PIC14::setConditionalCode( Code * ifCode, Code * elseCode )
 
 void PIC14::Sgoto(const QString &label)
 {
-	m_pCode->append( new Instr_goto(label) );
+	m_pCode->append(InstructionPtr( new Instr_goto(label) ));
 }
 
 void PIC14::Slabel(const QString &label)
@@ -510,14 +512,14 @@ void PIC14::Slabel(const QString &label)
 
 void PIC14::Send()
 {
-	m_pCode->append( new Instr_sleep() );
+	m_pCode->append(InstructionPtr( new Instr_sleep() ));
 }
 
 void PIC14::Ssubroutine( const QString &procName, Code * subCode )
 {
 	m_pCode->queueLabel( procName, Code::Subroutine );
 	m_pCode->merge( subCode, Code::Subroutine );
-	m_pCode->append( new Instr_return(), Code::Subroutine );
+	m_pCode->append(InstructionPtr( new Instr_return()), Code::Subroutine );
 }
 
 void PIC14::Sinterrupt( const QString &procName, Code * subCode )
@@ -525,25 +527,25 @@ void PIC14::Sinterrupt( const QString &procName, Code * subCode )
 	m_pCode->queueLabel( "_interrupt_"_L1 + procName, Code::Subroutine );
 
 	// Clear the interrupt flag for this particular interrupt source
-	m_pCode->append( new Instr_bcf("INTCON",QString::number(interruptNameToBit(procName,true))) );
+	m_pCode->append(InstructionPtr( new Instr_bcf("INTCON",QString::number(interruptNameToBit(procName,true)))) );
 	m_pCode->merge( subCode, Code::Subroutine );
 
-	m_pCode->append( new Instr_goto("_interrupt_end"_L1), Code::Subroutine );
+	m_pCode->append(InstructionPtr( new Instr_goto("_interrupt_end"_L1)), Code::Subroutine );
 }
 
 
 void PIC14::Scall(const QString &name)
 {
-	m_pCode->append( new Instr_call(name) );
+	m_pCode->append(InstructionPtr( new Instr_call(name) ));
 }
 
 
 void PIC14::Ssetlh( const PortPin & portPin, bool high)
 {
 	if(high)
-		m_pCode->append( new Instr_bsf( portPin.port(),QString::number(portPin.pin()) ) );
+		m_pCode->append(InstructionPtr( new Instr_bsf( portPin.port(),QString::number(portPin.pin()) ) ));
 	else
-		m_pCode->append( new Instr_bcf( portPin.port(), QString::number(portPin.pin()) ) );
+		m_pCode->append(InstructionPtr( new Instr_bcf( portPin.port(), QString::number(portPin.pin()) ) ));
 }
 
 void PIC14::rearrangeOpArguments( QString * val1, QString * val2, LocationType * val1Type, LocationType * val2Type)
@@ -567,16 +569,16 @@ void PIC14::add( QString val1, QString val2, LocationType val1Type, LocationType
 
 	switch(val1Type)
 	{
-		case num:  m_pCode->append(new Instr_movlw( val1.toInt( nullptr, 0 ) )); break;
+		case num:  m_pCode->append(InstructionPtr(InstructionPtr(new Instr_movlw( val1.toInt( nullptr, 0 ) )))); break;
 		case work: break;
-		case var: m_pCode->append(new Instr_movf(val1,0)); break;
+		case var: m_pCode->append(InstructionPtr(InstructionPtr(new Instr_movf(val1,0)))); break;
 	}
 
 	switch(val2Type)
 	{
-		case num: m_pCode->append(new Instr_addlw(val2.toInt( nullptr, 0 ))); break;
+		case num: m_pCode->append(InstructionPtr( InstructionPtr(new Instr_addlw(val2.toInt( nullptr, 0 ))))); break;
 		case work: break;
-		case var: m_pCode->append(new Instr_addwf(val2,0)); break;
+		case var: m_pCode->append(InstructionPtr(InstructionPtr(new Instr_addwf(val2,0)))); break;
 	}
 }
 
@@ -584,36 +586,36 @@ void PIC14::subtract( const QString & val1, const QString & val2, LocationType v
 {
 	switch(val2Type)
 	{
-		case num:  m_pCode->append(new Instr_movlw( val2.toInt( nullptr, 0 ) )); break;
+		case num:  m_pCode->append(InstructionPtr(new Instr_movlw( val2.toInt( nullptr, 0 )))); break;
 		case work: break;
-		case var: m_pCode->append(new Instr_movf(val2,0)); break;
+		case var: m_pCode->append(InstructionPtr(new Instr_movf(val2,0))); break;
 	}
 	switch(val1Type)
 	{
-		case num: m_pCode->append(new Instr_sublw(val1.toInt( nullptr, 0 ))); break;
+		case num: m_pCode->append(InstructionPtr(new Instr_sublw(val1.toInt( nullptr, 0 )))); break;
 		case work: break;
-		case var: m_pCode->append(new Instr_subwf(val1,0)); break;
+		case var: m_pCode->append(InstructionPtr(new Instr_subwf(val1,0))); break;
 	}
 }
 
 void PIC14::assignNum(const QString & val)
 {
-	m_pCode->append(new Instr_movlw(val.toInt( nullptr, 0 )));
+	m_pCode->append(InstructionPtr(new Instr_movlw(val.toInt( nullptr, 0 ))));
 }
 
 void PIC14::assignVar(const QString &val)
 {
-	m_pCode->append(new Instr_movf(val,0));
+	m_pCode->append(InstructionPtr(new Instr_movf(val,0)));
 }
 
 void PIC14::saveToReg(const QString &dest)
 {
-	m_pCode->append(new Instr_movwf(dest));
+	m_pCode->append(InstructionPtr(new Instr_movwf(dest)));
 }
 
 void PIC14::saveResultToVar( const QString & var )
 {
-	m_pCode->append( new Instr_movwf( var ) );
+	m_pCode->append( InstructionPtr(new Instr_movwf( var ) ));
 }
 
 void PIC14::mul(QString val1, QString val2, LocationType val1Type, LocationType val2Type)
@@ -625,24 +627,24 @@ void PIC14::mul(QString val1, QString val2, LocationType val1Type, LocationType 
 	// First, set _i argument
 	switch(val1Type)
 	{
-		case num: m_pCode->append(new Instr_movlw(val1.toInt( nullptr, 0 ))); break;
+		case num: m_pCode->append(InstructionPtr(new Instr_movlw(val1.toInt( nullptr, 0 )))); break;
 		case work: break;
-		case var: m_pCode->append(new Instr_movf(val1,0)); break;
+		case var: m_pCode->append(InstructionPtr(new Instr_movf(val1,0))); break;
 	}
 
-	m_pCode->append(new Instr_movwf("__i"));
+	m_pCode->append(InstructionPtr(new Instr_movwf("__i")));
 
 	// Then set _j argument
 	switch(val2Type)
 	{
-		case num: m_pCode->append(new Instr_movlw(val2.toInt( nullptr, 0 ))); break;
+		case num: m_pCode->append(InstructionPtr(new Instr_movlw(val2.toInt( nullptr, 0 )))); break;
 		case work: break;
-		case var: m_pCode->append(new Instr_movf(val2,0)); break;
+		case var: m_pCode->append(InstructionPtr(new Instr_movf(val2,0))); break;
 	}
 
-	m_pCode->append(new Instr_movwf("__j"));
-	m_pCode->append(new Instr_call("__picfunc_multiply"_L1));
-	m_pCode->append(new Instr_movf("__result",0));
+	m_pCode->append(InstructionPtr(new Instr_movwf("__j")));
+	m_pCode->append(InstructionPtr(new Instr_call("__picfunc_multiply"_L1)));
+	m_pCode->append(InstructionPtr(new Instr_movf("__result",0)));
 }
 
 
@@ -652,20 +654,20 @@ void PIC14::multiply()
 		return;
 
 	m_pCode->queueLabel( "__picfunc_multiply"_L1, Code::Subroutine );
-	m_pCode->append(new Instr_clrf("__result"), Code::Subroutine ); //result+=m_pCode->appenduction("clrf __result"_L1);
+	m_pCode->append(InstructionPtr(new Instr_clrf("__result")), Code::Subroutine ); //result+=m_pCode->appenduction("clrf __result"_L1);
 
 	m_pCode->queueLabel( "__picfunc_multiply_loop"_L1, Code::Subroutine );
-	m_pCode->append(new Instr_movf("__i",0), Code::Subroutine ); //result+=m_pCode->appenduction("movf __i,0"_L1);
-	m_pCode->append(new Instr_btfsc("__j","0"), Code::Subroutine ); //result+=m_pCode->appenduction("btfsc __j,0"_L1);
-	m_pCode->append(new Instr_addwf("__result",1), Code::Subroutine ); //result+=m_pCode->appenduction("addwf __result,1"_L1);
-	m_pCode->append(new Instr_bcf("STATUS","C"), Code::Subroutine ); //result+=m_pCode->appenduction("bcf STATUS,C"_L1);
-	m_pCode->append(new Instr_rrf("__j",1), Code::Subroutine ); //result+=m_pCode->appenduction("rrf __j,1"_L1);
-	m_pCode->append(new Instr_bcf("STATUS","C"), Code::Subroutine ); //result+=m_pCode->appenduction("bcf STATUS,C"_L1);
-	m_pCode->append(new Instr_rlf("__i",1), Code::Subroutine ); //result+=m_pCode->appenduction("rlf __i,1"_L1);
-	m_pCode->append(new Instr_movf("__j",1), Code::Subroutine ); //result+=m_pCode->appenduction("movf __j,1"_L1);
-	m_pCode->append(new Instr_btfss("STATUS","Z"), Code::Subroutine ); //result+=m_pCode->appenduction("btfss STATUS,Z"_L1);
-	m_pCode->append(new Instr_goto("__picfunc_multiply_loop"_L1), Code::Subroutine ); //result+=m_pCode->appenduction("goto __picfunc_multiply_loop"_L1);
-	m_pCode->append(new Instr_return(), Code::Subroutine ); //result+=m_pCode->appenduction("return"_L1);
+	m_pCode->append(InstructionPtr(new Instr_movf("__i",0)), Code::Subroutine ); //result+=m_pCode->appenduction("movf __i,0"_L1);
+	m_pCode->append(InstructionPtr(new Instr_btfsc("__j","0")), Code::Subroutine ); //result+=m_pCode->appenduction("btfsc __j,0"_L1);
+	m_pCode->append(InstructionPtr(new Instr_addwf("__result",1)), Code::Subroutine ); //result+=m_pCode->appenduction("addwf __result,1"_L1);
+	m_pCode->append(InstructionPtr(new Instr_bcf("STATUS","C")), Code::Subroutine ); //result+=m_pCode->appenduction("bcf STATUS,C"_L1);
+	m_pCode->append(InstructionPtr(new Instr_rrf("__j",1)), Code::Subroutine ); //result+=m_pCode->appenduction("rrf __j,1"_L1);
+	m_pCode->append(InstructionPtr(new Instr_bcf("STATUS","C")), Code::Subroutine ); //result+=m_pCode->appenduction("bcf STATUS,C"_L1);
+	m_pCode->append(InstructionPtr(new Instr_rlf("__i",1)), Code::Subroutine ); //result+=m_pCode->appenduction("rlf __i,1"_L1);
+	m_pCode->append(InstructionPtr(new Instr_movf("__j",1)), Code::Subroutine ); //result+=m_pCode->appenduction("movf __j,1"_L1);
+	m_pCode->append(InstructionPtr(new Instr_btfss("STATUS","Z")), Code::Subroutine ); //result+=m_pCode->appenduction("btfss STATUS,Z"_L1);
+	m_pCode->append(InstructionPtr(new Instr_goto("__picfunc_multiply_loop"_L1)), Code::Subroutine ); //result+=m_pCode->appenduction("goto __picfunc_multiply_loop"_L1);
+	m_pCode->append(InstructionPtr(new Instr_return()), Code::Subroutine ); //result+=m_pCode->appenduction("return"_L1);
 }
 
 
@@ -679,65 +681,65 @@ void PIC14::div( const QString & val1, const QString & val2, LocationType val1Ty
 	// First, set _i argument
 	switch(val1Type)
 	{
-		case num: m_pCode->append(new Instr_movlw(val1.toInt( nullptr, 0 ))); break;
+		case num: m_pCode->append(InstructionPtr(new Instr_movlw(val1.toInt( nullptr, 0 )))); break;
 		case work: break;
-		case var: m_pCode->append(new Instr_movf(val1,0)); break;
+		case var: m_pCode->append(InstructionPtr(new Instr_movf(val1,0))); break;
 	}
 
-	m_pCode->append(new Instr_movwf("__i"));
+	m_pCode->append(InstructionPtr(new Instr_movwf("__i")));
 
 	// Then set _j argument
 	switch(val2Type)
 	{
-		case num: m_pCode->append(new Instr_movlw(val2.toInt( nullptr, 0 ))); break;
+		case num: m_pCode->append(InstructionPtr(new Instr_movlw(val2.toInt( nullptr, 0 )))); break;
 		case work: break;
-		case var: m_pCode->append(new Instr_movf(val2,0)); break;
+		case var: m_pCode->append(InstructionPtr(new Instr_movf(val2,0))); break;
 	}
 
-	m_pCode->append(new Instr_movwf("__j"));
+	m_pCode->append(InstructionPtr(new Instr_movwf("__j")));
 
-	m_pCode->append(new Instr_call("__picfunc_divide"_L1));//result+=instruction("call __picfunc_divide"_L1);
-	m_pCode->append(new Instr_movf("__result",0));//result+=instruction("movf __result,0"_L1);
+	m_pCode->append(InstructionPtr(new Instr_call("__picfunc_divide"_L1)));//result+=instruction("call __picfunc_divide"_L1);
+	m_pCode->append(InstructionPtr(new Instr_movf("__result",0)));//result+=instruction("movf __result,0"_L1);
 }
 
 void PIC14::divide()
 {
 	m_pCode->queueLabel( "__picfunc_divide"_L1, Code::Subroutine );
-	m_pCode->append(new Instr_movf("__j",1), Code::Subroutine );
-	m_pCode->append(new Instr_btfsc("STATUS","2"), Code::Subroutine );
-	m_pCode->append(new Instr_return(), Code::Subroutine );
-	m_pCode->append(new Instr_clrf("__result"), Code::Subroutine );
-	m_pCode->append(new Instr_movlw(1), Code::Subroutine );
-	m_pCode->append(new Instr_movwf("__k"), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_movf("__j",1)), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_btfsc("STATUS","2")), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_return()), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_clrf("__result")), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_movlw(1)), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_movwf("__k")), Code::Subroutine );
 
 	m_pCode->queueLabel( "__divide_shift"_L1, Code::Subroutine );
-	m_pCode->append(new Instr_bcf("STATUS","C"), Code::Subroutine );
-	m_pCode->append(new Instr_rlf("__k",1), Code::Subroutine );
-	m_pCode->append(new Instr_bcf("STATUS","C"), Code::Subroutine );
-	m_pCode->append(new Instr_rlf("__j",1), Code::Subroutine );
-	m_pCode->append(new Instr_btfss("__j","7"), Code::Subroutine );
-	m_pCode->append(new Instr_goto("__divide_shift"_L1), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_bcf("STATUS","C")), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_rlf("__k",1)), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_bcf("STATUS","C")), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_rlf("__j",1)), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_btfss("__j","7")), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_goto("__divide_shift"_L1)), Code::Subroutine );
 
 	m_pCode->queueLabel( "__divide_loop"_L1, Code::Subroutine );
-	m_pCode->append(new Instr_movf("__j",0), Code::Subroutine );
-	m_pCode->append(new Instr_subwf("__i",1), Code::Subroutine );
-	m_pCode->append(new Instr_btfsc("STATUS","C"), Code::Subroutine );
-	m_pCode->append(new Instr_goto("__divide_count"_L1), Code::Subroutine );
-	m_pCode->append(new Instr_addwf("__i",1), Code::Subroutine );
-	m_pCode->append(new Instr_goto("__divide_final"_L1), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_movf("__j",0)), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_subwf("__i",1)), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_btfsc("STATUS","C")), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_goto("__divide_count"_L1)), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_addwf("__i",1)), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_goto("__divide_final"_L1)), Code::Subroutine );
 
 	m_pCode->queueLabel( "__divide_count"_L1, Code::Subroutine );
-	m_pCode->append(new Instr_movf("__k",0), Code::Subroutine );
-	m_pCode->append(new Instr_addwf("__result",1), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_movf("__k",0)), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_addwf("__result",1)), Code::Subroutine );
 
 	m_pCode->queueLabel( "__divide_final"_L1, Code::Subroutine );
-	m_pCode->append(new Instr_bcf("STATUS","C"), Code::Subroutine );
-	m_pCode->append(new Instr_rrf("__j",1), Code::Subroutine );
-	m_pCode->append(new Instr_bcf("STATUS","C"), Code::Subroutine );
-	m_pCode->append(new Instr_rrf("__k",1), Code::Subroutine );
-	m_pCode->append(new Instr_btfss("STATUS","C"), Code::Subroutine );
-	m_pCode->append(new Instr_goto("__divide_loop"_L1), Code::Subroutine );
-	m_pCode->append(new Instr_return(), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_bcf("STATUS","C")), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_rrf("__j",1)), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_bcf("STATUS","C")), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_rrf("__k",1)), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_btfss("STATUS","C")), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_goto("__divide_loop"_L1)), Code::Subroutine );
+	m_pCode->append(InstructionPtr(new Instr_return()), Code::Subroutine );
 }
 
 
@@ -761,21 +763,21 @@ void PIC14::ifInitCode( const QString &val1, const QString &val2, LocationType v
 	switch(val1Type)
 	{
 		case num:
-			m_pCode->append(new Instr_movlw(val1.toInt( nullptr, 0 )));
+			m_pCode->append(InstructionPtr(new Instr_movlw(val1.toInt( nullptr, 0 ))));
 			break;
 
 		case work:
 			break; // Nothing to do
 
 		case var:
-			m_pCode->append(new Instr_movf(val1,0));
+			m_pCode->append(InstructionPtr(new Instr_movf(val1,0)));
 			break;
 	}
 
 	switch(val2Type)
 	{
 		case num:
-			m_pCode->append(new Instr_sublw(val2.toInt( nullptr, 0 )));
+			m_pCode->append(InstructionPtr(new Instr_sublw(val2.toInt( nullptr, 0 ))));
 			break;
 
 		case work:
@@ -783,7 +785,7 @@ void PIC14::ifInitCode( const QString &val1, const QString &val2, LocationType v
 			break;
 
 		case var:
-			m_pCode->append(new Instr_subwf(val2,0));
+			m_pCode->append(InstructionPtr(new Instr_subwf(val2,0)));
 			break;
 	}
 }
@@ -794,12 +796,12 @@ void PIC14::equal( const QString &val1, const QString &val2, LocationType val1Ty
 	const QString labelEnd = mb->uniqueLabel()+"_endif"_L1;
 	const QString labelFalse = mb->uniqueLabel()+"_case_false"_L1;
 
-	m_pCode->append(new Instr_btfss("STATUS","2"));
-	m_pCode->append(new Instr_goto(labelFalse));
+	m_pCode->append(InstructionPtr(new Instr_btfss("STATUS","2")));
+	m_pCode->append(InstructionPtr(new Instr_goto(labelFalse)));
 
 	mergeCode( ifCode() );
 
-	m_pCode->append(new Instr_goto(labelEnd));
+	m_pCode->append(InstructionPtr(new Instr_goto(labelEnd)));
 
 	m_pCode->queueLabel( labelFalse );
 	mergeCode( elseCode() );
@@ -812,12 +814,12 @@ void PIC14::notEqual( const QString &val1, const QString &val2, LocationType val
 	const QString labelEnd = mb->uniqueLabel()+"_endif"_L1;
 	const QString labelFalse = mb->uniqueLabel()+"_case_false"_L1;
 
-	m_pCode->append(new Instr_btfsc("STATUS","2"));
-	m_pCode->append(new Instr_goto(labelFalse));
+	m_pCode->append(InstructionPtr(new Instr_btfsc("STATUS","2")));
+	m_pCode->append(InstructionPtr(new Instr_goto(labelFalse)));
 
 	mergeCode( ifCode() );
 
-	m_pCode->append(new Instr_goto(labelEnd));
+	m_pCode->append(InstructionPtr(new Instr_goto(labelEnd)));
 
 	m_pCode->queueLabel( labelFalse );
 	mergeCode( elseCode() );
@@ -830,11 +832,11 @@ void PIC14::greaterThan( const QString &val1, const QString &val2, LocationType 
 	const QString labelEnd = mb->uniqueLabel()+"_endif"_L1;
 	const QString labelFalse = mb->uniqueLabel()+"_case_false"_L1;
 
-	m_pCode->append(new Instr_btfsc("STATUS","0"));
-	m_pCode->append(new Instr_goto(labelFalse));
+	m_pCode->append(InstructionPtr(new Instr_btfsc("STATUS","0")));
+	m_pCode->append(InstructionPtr(new Instr_goto(labelFalse)));
 
 	mergeCode( ifCode() );
-	m_pCode->append(new Instr_goto(labelEnd));
+	m_pCode->append(InstructionPtr(new Instr_goto(labelEnd)));
 
 	m_pCode->queueLabel( labelFalse );
 	mergeCode( elseCode() );
@@ -848,14 +850,14 @@ void PIC14::lessThan( const QString &val1, const QString &val2, LocationType val
 	const QString labelEnd = mb->uniqueLabel()+"_endif"_L1;
 	const QString labelFalse = mb->uniqueLabel()+"_case_false"_L1;
 
-	m_pCode->append(new Instr_btfss("STATUS","0"));
-	m_pCode->append(new Instr_goto(labelFalse));
-	m_pCode->append(new Instr_btfsc("STATUS","2"));
-	m_pCode->append(new Instr_goto(labelFalse));
+	m_pCode->append(InstructionPtr(new Instr_btfss("STATUS","0")));
+	m_pCode->append(InstructionPtr(new Instr_goto(labelFalse)));
+	m_pCode->append(InstructionPtr(new Instr_btfsc("STATUS","2")));
+	m_pCode->append(InstructionPtr(new Instr_goto(labelFalse)));
 
 	mergeCode( ifCode() );
 
-	m_pCode->append(new Instr_goto(labelEnd));
+	m_pCode->append(InstructionPtr(new Instr_goto(labelEnd)));
 
 	m_pCode->queueLabel( labelFalse );
 	mergeCode( elseCode() );
@@ -868,14 +870,14 @@ void PIC14::greaterOrEqual( const QString &val1, const QString &val2, LocationTy
 	const QString labelEnd = mb->uniqueLabel()+"_endif"_L1;
 	const QString labelTrue = mb->uniqueLabel()+"_case_true"_L1; // Note that unlike the others, this is labelTrue, not labelFalse
 
-	m_pCode->append(new Instr_btfsc("STATUS","2"));
-	m_pCode->append(new Instr_goto(labelTrue));
-	m_pCode->append(new Instr_btfss("STATUS","0"));
-	m_pCode->append(new Instr_goto(labelTrue));
+	m_pCode->append(InstructionPtr(new Instr_btfsc("STATUS","2")));
+	m_pCode->append(InstructionPtr(new Instr_goto(labelTrue)));
+	m_pCode->append(InstructionPtr(new Instr_btfss("STATUS","0")));
+	m_pCode->append(InstructionPtr(new Instr_goto(labelTrue)));
 
 	mergeCode( elseCode() );
 
-	m_pCode->append(new Instr_goto(labelEnd));
+	m_pCode->append(InstructionPtr(new Instr_goto(labelEnd)));
 
 	m_pCode->queueLabel( labelTrue );
 	mergeCode( ifCode() );
@@ -888,11 +890,11 @@ void PIC14::lessOrEqual( const QString &val1, const QString &val2, LocationType 
 	const QString labelEnd = mb->uniqueLabel()+"_endif"_L1;
 	const QString labelFalse = mb->uniqueLabel()+"_case_false"_L1;
 
-	m_pCode->append(new Instr_btfss("STATUS","0"));
-	m_pCode->append(new Instr_goto(labelFalse));
+	m_pCode->append(InstructionPtr(new Instr_btfss("STATUS","0")));
+	m_pCode->append(InstructionPtr(new Instr_goto(labelFalse)));
 
 	mergeCode( ifCode() );
-	m_pCode->append(new Instr_goto(labelEnd));
+	m_pCode->append(InstructionPtr(new Instr_goto(labelEnd)));
 
 	m_pCode->queueLabel( labelFalse );
 	mergeCode( elseCode() );
@@ -905,7 +907,7 @@ void PIC14::Swhile( Code * whileCode, const QString &expression)
 	QString result;
 	QString ul = mb->uniqueLabel();
 
-	whileCode->append( new Instr_goto(ul) );
+	whileCode->append( InstructionPtr(new Instr_goto(ul)));
 
 	m_pCode->queueLabel( ul, Code::Middle );
 
@@ -920,7 +922,7 @@ void PIC14::Srepeat( Code * repeatCode, const QString &expression)
 	QString ul = mb->uniqueLabel();
 
 	Code * elseCode = new Code;
-	elseCode->append( new Instr_goto(ul) );
+	elseCode->append( InstructionPtr(new Instr_goto(ul) ));
 
 	m_pCode->queueLabel( ul );
 	m_pCode->merge( repeatCode );
@@ -942,19 +944,19 @@ void PIC14::Sfor( Code * forCode, Code * initCode, const QString &expression, co
 	if ( step == "1"_L1 )
 	{
 		if (stepPositive)
-			forCode->append(new Instr_incf(variable,1));
+			forCode->append(InstructionPtr(new Instr_incf(variable,1)));
 		else
-			forCode->append(new Instr_decf(variable,1));
+			forCode->append(InstructionPtr(new Instr_decf(variable,1)));
 	}
 	else
 	{
-		forCode->append(new Instr_movlw(step.toInt( nullptr, 0 )));
+		forCode->append(InstructionPtr(new Instr_movlw(step.toInt( nullptr, 0 ))));
 		if (stepPositive)
-			forCode->append(new Instr_addwf(variable,1));
+			forCode->append(InstructionPtr(new Instr_addwf(variable,1)));
 		else
-			forCode->append(new Instr_subwf(variable,1));
+			forCode->append(InstructionPtr(new Instr_subwf(variable,1)));
 	}
-	forCode->append(new Instr_goto(ul));
+	forCode->append(InstructionPtr(new Instr_goto(ul)));
 
 	m_pCode->merge( initCode );
 
@@ -976,14 +978,14 @@ void PIC14::Spin( const PortPin & portPin, bool NOT)
 	result += postLabel + ;*/
 
 	if(NOT)
-		m_pCode->append(new Instr_btfsc( portPin.port(), QString::number( portPin.pin() ) ));
+		m_pCode->append(InstructionPtr(new Instr_btfsc( portPin.port(), QString::number( portPin.pin() ) )));
 	//result +=instruction((QString)(NOT?"btfsc":"btfss"_L1)+"\t"+port+","+pin);
 	else
-		m_pCode->append(new Instr_btfss( portPin.port(), QString::number( portPin.pin() ) ));
+		m_pCode->append(InstructionPtr(new Instr_btfss( portPin.port(), QString::number( portPin.pin() ) )));
 
-	m_pCode->append(new Instr_goto(lowLabel));//result += instruction("goto\t" + lowLabel);
+	m_pCode->append(InstructionPtr(new Instr_goto(lowLabel)));//result += instruction("goto\t" + lowLabel);
 	mergeCode( ifCode() );
-	m_pCode->append(new Instr_goto(postLabel));//result += instruction("goto\t"+postLabel);
+	m_pCode->append(InstructionPtr(new Instr_goto(postLabel)));//result += instruction("goto\t"+postLabel);
 
 	m_pCode->queueLabel( lowLabel );
 	mergeCode( elseCode() );
@@ -1004,10 +1006,10 @@ void PIC14::Sdelay( unsigned length_us, Code::InstructionPosition pos )
 		length_us -= l * 50070530;
 		int k = length_us/196355;
 
-		m_pCode->append( new Instr_movlw( l ), pos );
-		m_pCode->append( new Instr_movwf( "__l" ), pos );
-		m_pCode->append( new Instr_movlw( k ), pos );
-		m_pCode->append( new Instr_movwf( "__k" ), pos );
+		m_pCode->append( InstructionPtr(new Instr_movlw( l )), pos );
+		m_pCode->append( InstructionPtr(new Instr_movwf( "__l" )), pos );
+		m_pCode->append( InstructionPtr(new Instr_movlw( k )), pos );
+		m_pCode->append( InstructionPtr(new Instr_movwf( "__k" )), pos );
 
 		mb->addDelayRoutineWanted( Delay_50S );
 	}
@@ -1019,11 +1021,11 @@ void PIC14::Sdelay( unsigned length_us, Code::InstructionPosition pos )
 		length_us -= k * 196355;
 		int j = length_us/770;
 
-		m_pCode->append( new Instr_incf( "__l", 1 ), pos );
-		m_pCode->append( new Instr_movlw( k ), pos );
-		m_pCode->append( new Instr_movwf( "__k" ), pos );
-		m_pCode->append( new Instr_movlw( j ), pos );
-		m_pCode->append( new Instr_movwf( "__j" ), pos );
+		m_pCode->append( InstructionPtr(new Instr_incf( "__l", 1 )), pos );
+		m_pCode->append( InstructionPtr(new Instr_movlw( k )), pos );
+		m_pCode->append( InstructionPtr(new Instr_movwf( "__k" )), pos );
+		m_pCode->append( InstructionPtr(new Instr_movlw( j )), pos );
+		m_pCode->append( InstructionPtr(new Instr_movwf( "__j" )), pos );
 
 		mb->addDelayRoutineWanted( Delay_200mS );
 	}
@@ -1035,12 +1037,12 @@ void PIC14::Sdelay( unsigned length_us, Code::InstructionPosition pos )
 		length_us -= j * 770;
 		int i = length_us/3;
 
-		m_pCode->append( new Instr_incf( "__l", 1 ), pos );
-		m_pCode->append( new Instr_incf( "__k", 1 ), pos );
-		m_pCode->append( new Instr_movlw( j ), pos );
-		m_pCode->append( new Instr_movwf( "__j" ), pos );
-		m_pCode->append( new Instr_movlw( i ), pos );
-		m_pCode->append( new Instr_movwf( "__i" ), pos );
+		m_pCode->append( InstructionPtr(new Instr_incf( "__l", 1 )), pos );
+		m_pCode->append( InstructionPtr(new Instr_incf( "__k", 1 )), pos );
+		m_pCode->append( InstructionPtr(new Instr_movlw( j )), pos );
+		m_pCode->append( InstructionPtr(new Instr_movwf( "__j" )), pos );
+		m_pCode->append( InstructionPtr(new Instr_movlw( i )), pos );
+		m_pCode->append( InstructionPtr(new Instr_movwf( "__i" )), pos );
 
 		mb->addDelayRoutineWanted( Delay_768uS );
 	}
@@ -1050,16 +1052,16 @@ void PIC14::Sdelay( unsigned length_us, Code::InstructionPosition pos )
 		length_us += -1;
 		int i = length_us/3;
 
-		m_pCode->append( new Instr_incf( "__l", 1 ), pos );
-		m_pCode->append( new Instr_incf( "__k", 1 ), pos );
-		m_pCode->append( new Instr_incf( "__j", 1 ), pos );
-		m_pCode->append( new Instr_movlw( i ), pos );
-		m_pCode->append( new Instr_movwf( "__i" ), pos );
+		m_pCode->append( InstructionPtr(new Instr_incf( "__l", 1 )), pos );
+		m_pCode->append( InstructionPtr(new Instr_incf( "__k", 1 )), pos );
+		m_pCode->append( InstructionPtr(new Instr_incf( "__j", 1 )), pos );
+		m_pCode->append( InstructionPtr(new Instr_movlw( i )), pos );
+		m_pCode->append( InstructionPtr(new Instr_movwf( "__i" )), pos );
 
 		mb->addDelayRoutineWanted( Delay_3uS );
 	}
 
-	m_pCode->append( new Instr_call( "__delay_subroutine"_L1), pos );
+	m_pCode->append( InstructionPtr(new Instr_call( "__delay_subroutine"_L1)), pos );
 }
 
 
@@ -1070,28 +1072,28 @@ void PIC14::addCommonFunctions( DelaySubroutine delay )
 		QString subName = "__delay_subroutine"_L1;
 		m_pCode->queueLabel( subName, Code::Subroutine );
 
-		m_pCode->append( new Instr_decfsz( "__i", 1 ), Code::Subroutine );
-		m_pCode->append( new Instr_goto( subName ), Code::Subroutine );
+		m_pCode->append( InstructionPtr(new Instr_decfsz( "__i", 1 )), Code::Subroutine );
+		m_pCode->append( InstructionPtr(new Instr_goto( subName )), Code::Subroutine );
 
 		if ( delay > Delay_3uS )
 		{
-			m_pCode->append( new Instr_decfsz( "__j", 1 ), Code::Subroutine );
-			m_pCode->append( new Instr_goto( subName ), Code::Subroutine );
+			m_pCode->append( InstructionPtr(new Instr_decfsz( "__j", 1 )), Code::Subroutine );
+			m_pCode->append( InstructionPtr(new Instr_goto( subName )), Code::Subroutine );
 		}
 
 		if ( delay > Delay_768uS )
 		{
-			m_pCode->append( new Instr_decfsz( "__k", 1 ), Code::Subroutine );
-			m_pCode->append( new Instr_goto( subName ), Code::Subroutine );
+			m_pCode->append( InstructionPtr(new Instr_decfsz( "__k", 1 )), Code::Subroutine );
+			m_pCode->append( InstructionPtr(new Instr_goto( subName )), Code::Subroutine );
 		}
 
 		if ( delay > Delay_200mS )
 		{
-			m_pCode->append( new Instr_decfsz( "__l", 1 ), Code::Subroutine );
-			m_pCode->append( new Instr_goto( subName ), Code::Subroutine );
+			m_pCode->append( InstructionPtr(new Instr_decfsz( "__l", 1 )), Code::Subroutine );
+			m_pCode->append( InstructionPtr(new Instr_goto( subName )), Code::Subroutine );
 		}
 
-		m_pCode->append( new Instr_return(), Code::Subroutine );
+		m_pCode->append( InstructionPtr(new Instr_return()), Code::Subroutine );
 	}
 }
 
@@ -1103,7 +1105,7 @@ void PIC14::SsevenSegment( const Variable & pinMap )
 
 	QString subName = QString("__output_seven_segment_%1"_L1).arg( pinMap.name() );
 
-	m_pCode->append( new Instr_call( subName ) );
+	m_pCode->append( InstructionPtr(new Instr_call( subName ) ));
 
 	if ( m_pCode->instruction(subName) )
 		return;
@@ -1160,7 +1162,7 @@ void PIC14::SsevenSegment( const Variable & pinMap )
 	m_pCode->queueLabel( subName, Code::Subroutine );
 // 	if ( portsUsed > 1 )
 	{
-		m_pCode->append( new Instr_movwf("__i"), Code::Subroutine );
+		m_pCode->append( InstructionPtr(new Instr_movwf("__i")), Code::Subroutine );
 	}
 
 // 	bool overwrittenW = false;
@@ -1174,24 +1176,24 @@ void PIC14::SsevenSegment( const Variable & pinMap )
 		QString portName = QString("PORT%1"_L1).arg( char('A'+port) );
 
 		// Save the current value of the port pins that we should not be writing to
-		m_pCode->append( new Instr_movf( portName, 0 ), Code::Subroutine );
-		m_pCode->append( new Instr_andlw( ~portOutput[port].useMask ), Code::Subroutine );
-		m_pCode->append( new Instr_movwf( "__j" ), Code::Subroutine );
+		m_pCode->append( InstructionPtr(new Instr_movf( portName, 0 )), Code::Subroutine );
+		m_pCode->append( InstructionPtr(new Instr_andlw( ~portOutput[port].useMask )), Code::Subroutine );
+		m_pCode->append( InstructionPtr(new Instr_movwf( "__j" )), Code::Subroutine );
 
 		if ( overwrittenW )
-			m_pCode->append( new Instr_movf("__i",0), Code::Subroutine );
+			m_pCode->append( InstructionPtr(new Instr_movf("__i",0)), Code::Subroutine );
 
-		m_pCode->append( new Instr_call( subName + QString("_lookup_%1"_L1).arg(port) ), Code::Subroutine );
+		m_pCode->append( InstructionPtr(new Instr_call( subName + QString("_lookup_%1"_L1).arg(port) )), Code::Subroutine );
 		overwrittenW = true;
 
 		// Restore the state of the pins which aren't used
-		m_pCode->append( new Instr_iorwf( "__j", 0 ), Code::Subroutine );
+		m_pCode->append( InstructionPtr(new Instr_iorwf( "__j", 0 )), Code::Subroutine );
 
 		// And write the result to the port
-		m_pCode->append( new Instr_movwf( portName ), Code::Subroutine );
+		m_pCode->append( InstructionPtr(new Instr_movwf( portName )), Code::Subroutine );
 	}
 
-	m_pCode->append( new Instr_return(), Code::Subroutine );
+	m_pCode->append( InstructionPtr(new Instr_return()), Code::Subroutine );
 	//END Generate [subName] Subroutine
 
 	// For each port, generate code for looking up the value for writing to it
@@ -1201,17 +1203,17 @@ void PIC14::SsevenSegment( const Variable & pinMap )
 			continue;
 
 		m_pCode->queueLabel( subName + QString("_lookup_%1"_L1).arg(port), Code::LookupTable );
-		m_pCode->append( new Instr_andlw(15), Code::LookupTable );
+		m_pCode->append( InstructionPtr(new Instr_andlw(15)), Code::LookupTable );
 
 		// Generate the lookup table
-		m_pCode->append( new Instr_addwf( "pcl", 1 ), Code::LookupTable );
+		m_pCode->append( InstructionPtr(new Instr_addwf( "pcl", 1 )), Code::LookupTable );
 		for ( unsigned num = 0; num < 16; ++num )
 		{
 			unsigned literal = 0;
 			for ( unsigned bit = 0; bit < 8; ++bit )
 				literal += ( portOutput[port].out[num][bit] ? 1 : 0 ) << bit;
 
-			m_pCode->append( new Instr_retlw( literal ), Code::LookupTable );
+			m_pCode->append( InstructionPtr(new Instr_retlw( literal )), Code::LookupTable );
 		}
 	}
 }
@@ -1228,7 +1230,7 @@ void PIC14::Skeypad( const Variable & pinMap )
 	QString waitName = QString("__wait_keypad_%1"_L1).arg( pinMap.name() );
 	QString readName = QString("__read_keypad_%1"_L1).arg( pinMap.name() );
 
-	m_pCode->append( new Instr_call( subName ) );
+	m_pCode->append( InstructionPtr(new Instr_call( subName ) ));
 
 	if ( m_pCode->instruction( subName ) )
 		return;
@@ -1237,15 +1239,15 @@ void PIC14::Skeypad( const Variable & pinMap )
 	m_pCode->queueLabel( subName, Code::Subroutine );
 
 	// Read current key (if any) from keypad and save to temporary variable
-	m_pCode->append( new Instr_call( readName ), Code::Subroutine );
-	m_pCode->append( new Instr_movwf( "__m" ), Code::Subroutine );
+	m_pCode->append( InstructionPtr(new Instr_call( readName )), Code::Subroutine );
+	m_pCode->append( InstructionPtr(new Instr_movwf( "__m" )), Code::Subroutine );
 
 	// Test if any key was pressed; if not, then start again
 // 	std::cout << "mb->alias(\"Keypad_None\"_L1)="<<mb->alias("Keypad_None"_L1) << std::endl;
-	m_pCode->append( new Instr_sublw( mb->alias("Keypad_None"_L1).toInt( nullptr, 0 ) ), Code::Subroutine );
-	m_pCode->append( new Instr_btfsc( "STATUS","Z" ), Code::Subroutine );
-	m_pCode->append( new Instr_goto( subName ), Code::Subroutine );
-	m_pCode->append( new Instr_goto( waitName ), Code::Subroutine );
+	m_pCode->append( InstructionPtr(new Instr_sublw( mb->alias("Keypad_None"_L1).toInt( nullptr, 0 ) )), Code::Subroutine );
+	m_pCode->append( InstructionPtr(new Instr_btfsc( "STATUS","Z" )), Code::Subroutine );
+	m_pCode->append( InstructionPtr(new Instr_goto( subName )), Code::Subroutine );
+	m_pCode->append( InstructionPtr(new Instr_goto( waitName )), Code::Subroutine );
 	//END Wait until read subroutine
 
 
@@ -1255,12 +1257,12 @@ void PIC14::Skeypad( const Variable & pinMap )
 	Sdelay( 10000, Code::Subroutine ); // 10 milliseconds for debouncing
 
 	// Key was pressed; now we wait until the key is released again
-	m_pCode->append( new Instr_call( readName ), Code::Subroutine );
-	m_pCode->append( new Instr_sublw( mb->alias("Keypad_None"_L1).toInt( nullptr, 0 ) ), Code::Subroutine );
-	m_pCode->append( new Instr_btfss( "STATUS","Z" ), Code::Subroutine );
-	m_pCode->append( new Instr_goto( waitName ), Code::Subroutine );
-	m_pCode->append( new Instr_movf( "__m", 0 ), Code::Subroutine );
-	m_pCode->append( new Instr_return(), Code::Subroutine );
+	m_pCode->append( InstructionPtr(new Instr_call( readName )), Code::Subroutine );
+	m_pCode->append( InstructionPtr(new Instr_sublw( mb->alias("Keypad_None"_L1).toInt( nullptr, 0 ) )), Code::Subroutine );
+	m_pCode->append( InstructionPtr(new Instr_btfss( "STATUS","Z" )), Code::Subroutine );
+	m_pCode->append( InstructionPtr(new Instr_goto( waitName )), Code::Subroutine );
+	m_pCode->append( InstructionPtr(new Instr_movf( "__m", 0 )), Code::Subroutine );
+	m_pCode->append( InstructionPtr(new Instr_return()), Code::Subroutine );
 	//END Wait until released subroutine
 
 
@@ -1274,7 +1276,7 @@ void PIC14::Skeypad( const Variable & pinMap )
 	for ( unsigned row = 0; row < 4; ++ row )
 	{
 		PortPin rowPin = pinMap.portPinList()[row];
-		m_pCode->append( new Instr_bcf( rowPin.port(), QString::number( rowPin.pin() ) ), Code::Subroutine );
+		m_pCode->append( InstructionPtr(new Instr_bcf( rowPin.port(), QString::number( rowPin.pin() ) )), Code::Subroutine );
 	}
 
 	// Test each row in turn
@@ -1282,21 +1284,21 @@ void PIC14::Skeypad( const Variable & pinMap )
 	{
 		// Make the high low
 		PortPin rowPin = pinMap.portPinList()[row];
-		m_pCode->append( new Instr_bsf( rowPin.port(), QString::number( rowPin.pin() ) ), Code::Subroutine );
+		m_pCode->append( InstructionPtr(new Instr_bsf( rowPin.port(), QString::number( rowPin.pin() ) )), Code::Subroutine );
 
 		for ( unsigned col = 0; col < 3; ++ col )
 		{
 			PortPin colPin = pinMap.portPinList()[4+col];
-			m_pCode->append( new Instr_btfsc( colPin.port(), QString::number( colPin.pin() ) ), Code::Subroutine );
-			m_pCode->append( new Instr_retlw( mb->alias( QString("Keypad_%1_%2"_L1).arg(row+1).arg(col+1) ).toInt( nullptr, 0 ) ), Code::Subroutine );
+			m_pCode->append( InstructionPtr(new Instr_btfsc( colPin.port(), QString::number( colPin.pin() ) )), Code::Subroutine );
+			m_pCode->append( InstructionPtr(new Instr_retlw( mb->alias( QString("Keypad_%1_%2"_L1).arg(row+1).arg(col+1) ).toInt( nullptr, 0 ) )), Code::Subroutine );
 		}
 
 		// Make the low again
-		m_pCode->append( new Instr_bcf( rowPin.port(), QString::number( rowPin.pin() ) ), Code::Subroutine );
+		m_pCode->append( InstructionPtr(new Instr_bcf( rowPin.port(), QString::number( rowPin.pin() ) )), Code::Subroutine );
 	}
 
 	// No key was pressed
-	m_pCode->append( new Instr_retlw( mb->alias("Keypad_None"_L1).toInt( nullptr, 0 ) ), Code::Subroutine );
+	m_pCode->append( InstructionPtr(new Instr_retlw( mb->alias("Keypad_None"_L1).toInt( nullptr, 0 ) )), Code::Subroutine );
 	//END Read current value of keypad subroutine
 }
 
@@ -1308,18 +1310,18 @@ void PIC14::bitwise( Expression::Operation op, const QString &r_val1, const QStr
 	// There is no instruction for notting a literal,
 	// so instead I am going to XOR with 0xFF
 	if( op == Expression::bwnot ) val1 = "0xFF";
-	if( val1IsNum ) m_pCode->append(new Instr_movlw(val1.toInt( 0, 0 )));// result += instruction("movlw\t"+val1);
-	else m_pCode->append(new Instr_movf(val1,0));//result += instruction("movf\t"+val1+",0"_L1);
+	if( val1IsNum ) m_pCode->append(InstructionPtr(new Instr_movlw(val1.toInt( 0, 0 )));// result += instruction("movlw\t"+val1);
+	else m_pCode->append(InstructionPtr(new Instr_movf(val1,0));//result += instruction("movf\t"+val1+",0"_L1);
 
 	QString opString;
 	if( val2IsNum )
 	{
 		switch(op)
 		{
-			case Expression::bwand: m_pCode->append(new Instr_andlw(val2.toInt( 0, 0 ))); break;
-			case Expression::bwor: m_pCode->append(new Instr_iorlw(val2.toInt( 0, 0 ))); break;
-			case Expression::bwxor: m_pCode->append(new Instr_xorlw(val2.toInt( 0, 0 ))); break;
-			case Expression::bwnot: m_pCode->append(new Instr_xorlw(val2.toInt( 0, 0 ))); break;
+			case Expression::bwand: m_pCode->append(InstructionPtr(new Instr_andlw(val2.toInt( 0, 0 ))); break;
+			case Expression::bwor: m_pCode->append(InstructionPtr(new Instr_iorlw(val2.toInt( 0, 0 ))); break;
+			case Expression::bwxor: m_pCode->append(InstructionPtr(new Instr_xorlw(val2.toInt( 0, 0 ))); break;
+			case Expression::bwnot: m_pCode->append(InstructionPtr(new Instr_xorlw(val2.toInt( 0, 0 ))); break;
 			default: break;
 		}
 	}
@@ -1327,10 +1329,10 @@ void PIC14::bitwise( Expression::Operation op, const QString &r_val1, const QStr
 	{
 		switch(op)
 		{
-			case Expression::bwand: m_pCode->append(new Instr_andwf(val2,0)); break;
-			case Expression::bwor: m_pCode->append(new Instr_iorwf(val2,0)); break;
-			case Expression::bwxor: m_pCode->append(new Instr_xorwf(val2,0)); break;
-			case Expression::bwnot: m_pCode->append(new Instr_xorwf(val2,0)); break;
+			case Expression::bwand: m_pCode->append(InstructionPtr(new Instr_andwf(val2,0)); break;
+			case Expression::bwor: m_pCode->append(InstructionPtr(new Instr_iorwf(val2,0)); break;
+			case Expression::bwxor: m_pCode->append(InstructionPtr(new Instr_xorwf(val2,0)); break;
+			case Expression::bwnot: m_pCode->append(InstructionPtr(new Instr_xorwf(val2,0)); break;
 			default: break;
 		}
 
@@ -1345,9 +1347,9 @@ void PIC14::bitwise( Expression::Operation op,const QString & r_val1, const QStr
 	if( op == Expression::bwnot ) val1 = "0xFF"_L1;
 	switch(val1Type)
 	{
-		case num: m_pCode->append(new Instr_movlw(val1.toInt( nullptr, 0 ))); break;
+		case num: m_pCode->append(InstructionPtr(new Instr_movlw(val1.toInt( nullptr, 0 )))); break;
 		case work: break;
-		case var: m_pCode->append(new Instr_movf(val1,0)); break;
+		case var: m_pCode->append(InstructionPtr(new Instr_movf(val1,0))); break;
 	}
 	switch(val2Type)
 	{
@@ -1355,10 +1357,10 @@ void PIC14::bitwise( Expression::Operation op,const QString & r_val1, const QStr
 		{
 			switch(op)
 			{
-				case Expression::bwand: m_pCode->append(new Instr_andlw(val2.toInt( nullptr, 0 ))); break;
-				case Expression::bwor:  m_pCode->append(new Instr_iorlw(val2.toInt( nullptr, 0 ))); break;
-				case Expression::bwxor: m_pCode->append(new Instr_xorlw(val2.toInt( nullptr, 0 ))); break;
-				case Expression::bwnot: m_pCode->append(new Instr_xorlw(val2.toInt( nullptr, 0 ))); break;
+				case Expression::bwand: m_pCode->append(InstructionPtr(new Instr_andlw(val2.toInt( nullptr, 0 )))); break;
+				case Expression::bwor:  m_pCode->append(InstructionPtr(new Instr_iorlw(val2.toInt( nullptr, 0 )))); break;
+				case Expression::bwxor: m_pCode->append(InstructionPtr(new Instr_xorlw(val2.toInt( nullptr, 0 )))); break;
+				case Expression::bwnot: m_pCode->append(InstructionPtr(new Instr_xorlw(val2.toInt( nullptr, 0 )))); break;
 				default: break;
 		}
 		}
@@ -1367,10 +1369,10 @@ void PIC14::bitwise( Expression::Operation op,const QString & r_val1, const QStr
 		{
 			switch(op)
 			{
-				case Expression::bwand: m_pCode->append(new Instr_andwf(val2,0)); break;
-				case Expression::bwor:  m_pCode->append(new Instr_iorwf(val2,0)); break;
-				case Expression::bwxor: m_pCode->append(new Instr_xorwf(val2,0)); break;
-				case Expression::bwnot: m_pCode->append(new Instr_xorwf(val2,0)); break;
+				case Expression::bwand: m_pCode->append(InstructionPtr(new Instr_andwf(val2,0))); break;
+				case Expression::bwor:  m_pCode->append(InstructionPtr(new Instr_iorwf(val2,0))); break;
+				case Expression::bwxor: m_pCode->append(InstructionPtr(new Instr_xorwf(val2,0))); break;
+				case Expression::bwnot: m_pCode->append(InstructionPtr(new Instr_xorwf(val2,0))); break;
 				default: break;
 			}
 
@@ -1380,28 +1382,28 @@ void PIC14::bitwise( Expression::Operation op,const QString & r_val1, const QStr
 }//***************************************modification ends*****************************
 void PIC14::SincVar( const QString &var )
 {
-	m_pCode->append(new Instr_incf(var,1) );
+	m_pCode->append(InstructionPtr(new Instr_incf(var,1) ));
 }
 
 void PIC14::SdecVar( const QString &var )
 {
-	m_pCode->append(new Instr_decf(var,1) );
+	m_pCode->append(InstructionPtr(new Instr_decf(var,1) ));
 }
 
 void PIC14::SrotlVar( const QString &var )
 {
-	m_pCode->append(new Instr_rlf(var,1));
+	m_pCode->append(InstructionPtr(new Instr_rlf(var,1)));
 }
 
 void PIC14::SrotrVar( const QString &var )
 {
-	m_pCode->append(new Instr_rrf(var,1));
+	m_pCode->append(InstructionPtr(new Instr_rrf(var,1)));
 }
 
 void PIC14::Stristate(const QString &port)
 {
 //modification pic type is checked here
-	m_pCode->append( new Instr_bsf("STATUS","5") );//commented
+	m_pCode->append( InstructionPtr(new Instr_bsf("STATUS","5") ));//commented
 	if(pic_type== "P16C84"_L1 || pic_type =="P16F84"_L1 ||pic_type =="P16F627"_L1)
 	{
 		if( port == "trisa"_L1 || port == "TRISA"_L1 )
@@ -1421,12 +1423,12 @@ void PIC14::Stristate(const QString &port)
 		else	saveResultToVar( "TRISE"_L1 );
 
 	}
-	m_pCode->append( new Instr_bcf(Register("STATUS"),"5") );//commented
+	m_pCode->append( InstructionPtr(new Instr_bcf(Register("STATUS"),"5") ));//commented
 }
 
 void PIC14::Sasm(const QString &raw)
 {
-	m_pCode->append(new Instr_asm(raw));
+	m_pCode->append(InstructionPtr(new Instr_asm(raw)));
 }
 
 //BEGIN class PortPin

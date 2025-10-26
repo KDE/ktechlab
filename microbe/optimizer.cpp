@@ -160,9 +160,9 @@ bool Optimizer::pruneInstructions()
 	QStringList referencedLabels;
 	for ( it = m_pCode->begin(); it != end; ++it )
 	{
-		if ( Instr_goto * ins = dynamic_cast<Instr_goto*>(*it) )
+		if ( Instr_goto * ins = dynamic_cast<Instr_goto*>((*it).get()) )
 			referencedLabels << ins->label();
-		else if ( Instr_call * ins = dynamic_cast<Instr_call*>(*it) )
+		else if ( Instr_call * ins = dynamic_cast<Instr_call*>((*it).get()) )
 			referencedLabels << ins->label();
 	}
 
@@ -200,11 +200,13 @@ bool Optimizer::optimizeInstructions()
 	Code::iterator end = m_pCode->end();
 	for ( Code::iterator it = m_pCode->begin(); it != end; ++it )
 	{
-		Instr_goto * gotoIns = dynamic_cast<Instr_goto*>(*it);
+		Instr_goto * gotoIns = dynamic_cast<Instr_goto*>((*it).get());
 		if ( !gotoIns )
 			continue;
 
-		if ( redirectGotos( gotoIns, gotoIns->label() ) )
+		InstructionPtr ptrGotoIns = *it; // here assuming that the above cast has succeeded
+
+		if ( redirectGotos( ptrGotoIns, gotoIns->label() ) )
 			return true;
 		m_pCode->setAllUnused();
 	}
@@ -215,8 +217,8 @@ bool Optimizer::optimizeInstructions()
 	// Any GOTO instructions that just jump to the next instruction can be removed.
 	for ( Code::iterator it = m_pCode->begin(); it != end; ++it )
 	{
-		Instruction * next = *(++Code::iterator(it));
-		Instruction * gotoIns = dynamic_cast<Instr_goto*>(*it);
+		Instruction * next = (*(++Code::iterator(it))).get();
+		Instruction * gotoIns = dynamic_cast<Instr_goto*>((*it).get());
 		if ( !gotoIns || !next || (gotoIns->outputLinks().first() != next) )
 			continue;
 
@@ -233,7 +235,7 @@ bool Optimizer::optimizeInstructions()
 	// We then replace the MOVWf instruction with a CLRF instruction.
 	for ( Code::iterator it = m_pCode->begin(); it != end; ++it )
 	{
-		Instr_movwf * ins = dynamic_cast<Instr_movwf*>(*it);
+		Instr_movwf * ins = dynamic_cast<Instr_movwf*>((*it).get());
 		if ( !ins )
 			continue;
 
@@ -261,7 +263,8 @@ bool Optimizer::optimizeInstructions()
 
 		Instr_clrf * instr_clrf = new Instr_clrf( ins->file() );
 // 		cout << "Replacing \""<<(*it)->code()<<"\" with \""<<instr_clrf->code()<<"\"\n";
-		it.insertBefore( instr_clrf );
+		InstructionPtr ptr_instr_clrf(instr_clrf);
+		it.insertBefore( ptr_instr_clrf );
 		it.removeAndIncrement();
 		return true;
 	}
@@ -274,7 +277,7 @@ bool Optimizer::optimizeInstructions()
 	// depend on the STATUS bits set by the instruction, then we replace it with a MOVLW
 	for ( Code::iterator it = m_pCode->begin(); it != end; ++it )
 	{
-		if ( dynamic_cast<Instr_movlw*>(*it) )
+		if ( dynamic_cast<Instr_movlw*>((*it).get()) )
 		{
 			// If we don't catch this condition, we'll end up in an infinite loop,
 			// repeatedly replacing the first MOVLW that we come across.
@@ -302,7 +305,8 @@ bool Optimizer::optimizeInstructions()
 
 		Instr_movlw * movlw = new Instr_movlw( outputState.value );
 // 		cout << "Replacing \""<<(*it)->code()<<"\" with \""<<movlw->code()<<"\"\n";
-		it.insertBefore( movlw );
+		InstructionPtr ptr_movlw( movlw );
+		it.insertBefore( ptr_movlw );
 		it.removeAndIncrement();
 		return true;
 	}
@@ -422,7 +426,7 @@ bool Optimizer::optimizeInstructions()
 }
 
 
-bool Optimizer::redirectGotos( Instruction * current, const QString & label )
+bool Optimizer::redirectGotos( InstructionPtr current, const QString & label )
 {
 	if ( current->isUsed() )
 		return false;
@@ -435,7 +439,7 @@ bool Optimizer::redirectGotos( Instruction * current, const QString & label )
 	InstructionList::const_iterator end = list.end();
 	for ( InstructionList::const_iterator it = list.begin(); it != end; ++it )
 	{
-		Instr_goto * gotoIns = dynamic_cast<Instr_goto*>(*it);
+		Instr_goto * gotoIns = dynamic_cast<Instr_goto*>((*it).get());
 		if ( !gotoIns || (gotoIns->label() == label) )
 			continue;
 
@@ -448,7 +452,7 @@ bool Optimizer::redirectGotos( Instruction * current, const QString & label )
 }
 
 
-uchar Optimizer::generateRegisterDepends( Instruction * current, const Register & reg )
+uchar Optimizer::generateRegisterDepends( InstructionPtr current, const Register & reg )
 {
 	m_pCode->setAllUnused();
 
@@ -464,7 +468,7 @@ uchar Optimizer::generateRegisterDepends( Instruction * current, const Register 
 }
 
 
-uchar Optimizer::registerDepends( Instruction * current, const Register & reg )
+uchar Optimizer::registerDepends( InstructionPtr current, const Register & reg )
 {
 	if ( current->isUsed() )
 		return current->registerDepends( reg );
@@ -487,7 +491,7 @@ uchar Optimizer::registerDepends( Instruction * current, const Register & reg )
 }
 
 
-bool Optimizer::canRemove( Instruction * ins, const Register & reg, uchar bitMask )
+bool Optimizer::canRemove( InstructionPtr ins, const Register & reg, uchar bitMask )
 {
 	// The bits that are depended upon in the future for this register
 	uchar depends = generateRegisterDepends( ins, reg );

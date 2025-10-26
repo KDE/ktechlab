@@ -2297,7 +2297,7 @@ void Code::queueLabel( const QString & label, InstructionPosition position )
 }
 
 
-void Code::removeInstruction( Instruction * instruction )
+void Code::removeInstruction( InstructionPtr instruction )
 {
 	if ( !instruction )
 		return;
@@ -2317,7 +2317,7 @@ void Code::removeInstruction( Instruction * instruction )
 	{
 		if ( *i != instruction )
 		{
-			if ( dynamic_cast<Instr_btfss*>(*i) || dynamic_cast<Instr_btfsc*>(*i) )
+			if ( dynamic_cast<Instr_btfss*>((*i).get()) || dynamic_cast<Instr_btfsc*>((*i).get()) )
 				previous = i;
 			else
 				previous = e;
@@ -2345,7 +2345,7 @@ void Code::removeInstruction( Instruction * instruction )
 }
 
 
-void Code::append( Instruction * instruction, InstructionPosition position )
+void Code::append( InstructionPtr instruction, InstructionPosition position )
 {
 	if ( !instruction )
 		return;
@@ -2368,7 +2368,7 @@ void Code::append( Instruction * instruction, InstructionPosition position )
 }
 
 
-Instruction * Code::instruction( const QString & label ) const
+InstructionPtr Code::instruction( const QString & label ) const
 {
 	for ( unsigned i = 0; i < PositionCount; ++i )
 	{
@@ -2505,19 +2505,21 @@ void Code::generateLinksAndStates()
 	for ( CodeIterator it = begin(); it != e; ++it )
 			(*it)->clearLinks();
 
-	for ( CodeIterator it = begin(); it != e; ++it )
-		(*it)->generateLinksAndStates( it );
+	for ( CodeIterator it = begin(); it != e; ++it ) {
+		InstructionPtr thisInstrAsPtr( *it );
+		(*it)->generateLinksAndStates( it, thisInstrAsPtr );
+	}
 
 	// Generate return links for call instructions
 	// This cannot be done from the call instructions as we need to have
 	// generated the links first.
 	for ( CodeIterator it = begin(); it != e; ++it )
 	{
-		Instr_call * ins = dynamic_cast<Instr_call*>(*it);
+		Instr_call * ins = dynamic_cast<Instr_call*>((*it).get());
 		if ( !ins )
 			continue;
 
-		Instruction * next = *(++Code::iterator(it));
+		InstructionPtr next = *(++Code::iterator(it));
 		ins->makeReturnLinks( next );
 	}
 }
@@ -2649,14 +2651,14 @@ CodeIterator & CodeIterator::operator ++ ()
 
 CodeIterator & CodeIterator::removeAndIncrement()
 {
-	Instruction * i = *it;
+	InstructionPtr i = *it;
 	++(*this);
 	code->removeInstruction( i );
 	return *this;
 }
 
 
-void CodeIterator::insertBefore( Instruction * ins )
+void CodeIterator::insertBefore( InstructionPtr ins )
 {
 	list->insert( it, ins );
 }
@@ -2728,9 +2730,9 @@ void Instruction::setLabels( const QStringList & labels )
 }
 
 
-void Instruction::generateLinksAndStates( Code::iterator current )
+void Instruction::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 	m_outputState.reset();
 }
 
@@ -2741,7 +2743,7 @@ ProcessorBehaviour Instruction::behaviour() const
 }
 
 
-void Instruction::makeOutputLinks( Code::iterator current, bool firstOutput, bool secondOutput )
+void Instruction::makeOutputLinks( Code::iterator current, InstructionPtr thisAsPtr, bool firstOutput, bool secondOutput )
 {
 	if ( !firstOutput && !secondOutput )
 		return;
@@ -2753,53 +2755,53 @@ void Instruction::makeOutputLinks( Code::iterator current, bool firstOutput, boo
 		return;
 	}
 	if ( firstOutput )
-		(*current)->addInputLink( this );
+		(*current)->addInputLink( thisAsPtr, *current );
 
 	if ( !secondOutput )
 		return;
 
 	++current;
-	(*current)->addInputLink( this );
+	(*current)->addInputLink( thisAsPtr, *current );
 }
 
 
-void Instruction::makeLabelOutputLink( const QString & label )
+void Instruction::makeLabelOutputLink( const QString & label, InstructionPtr thisInstrAsPtr )
 {
-	Instruction * output = m_pCode->instruction( label );
+	InstructionPtr output = m_pCode->instruction( label );
 	if ( output )
-		output->addInputLink( this );
+		output->addInputLink( thisInstrAsPtr, output );
 }
 
 
-void Instruction::addInputLink( Instruction * instruction )
+void Instruction::addInputLink( InstructionPtr instruction, InstructionPtr thisAsPtr )
 {
 	// Don't forget that a link to ourself is valid!
 	if ( !instruction || m_inputLinks.contains( instruction ) )
 		return;
 
 	m_inputLinks << instruction;
-	instruction->addOutputLink( this );
+	instruction->addOutputLink( thisAsPtr, instruction );
 }
 
 
-void Instruction::addOutputLink( Instruction * instruction )
+void Instruction::addOutputLink( InstructionPtr instruction, InstructionPtr thisAsPtr )
 {
 	// Don't forget that a link to ourself is valid!
 	if ( !instruction || m_outputLinks.contains( instruction ) )
 		return;
 
 	m_outputLinks << instruction;
-	instruction->addInputLink( this );
+	instruction->addInputLink( thisAsPtr, instruction );
 }
 
 
-void Instruction::removeInputLink( Instruction * instruction )
+void Instruction::removeInputLink( InstructionPtr instruction )
 {
 	m_inputLinks.removeAll( instruction );
 }
 
 
-void Instruction::removeOutputLink( Instruction * instruction )
+void Instruction::removeOutputLink( InstructionPtr instruction )
 {
 	m_outputLinks.removeAll( instruction );
 }
@@ -2820,7 +2822,7 @@ QString Instr_addwf::code() const
 	return QString(QLatin1StringView("addwf\t%1,%2")).arg( m_file.name() ).arg( m_dest );
 }
 
-void Instr_addwf::generateLinksAndStates( Code::iterator current )
+void Instr_addwf::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
 	m_outputState = m_inputState;
 
@@ -2831,7 +2833,7 @@ void Instr_addwf::generateLinksAndStates( Code::iterator current )
 
 	if ( m_file.type() != Register::PCL || m_dest == 0 )
 	{
-		makeOutputLinks( current );
+		makeOutputLinks( current, thisInstrAsPtr );
 		return;
 	}
 
@@ -2847,7 +2849,7 @@ void Instr_addwf::generateLinksAndStates( Code::iterator current )
 	Code::iterator end = m_pCode->end();
 	for ( int i = 0; current != end && i < maxInc; ++i, ++current )
 	{
-		(*current)->addInputLink( this );
+		(*current)->addInputLink( thisInstrAsPtr, *current );
 // 		if ( i != maxInc-1 )
 // 			(*current)->setPositionAffectsBranching( true );
 	}
@@ -2873,9 +2875,9 @@ QString Instr_andwf::code() const
 	return QString(QLatin1StringView("andwf\t%1,%2")).arg( m_file.name() ).arg( m_dest );
 }
 
-void Instr_andwf::generateLinksAndStates( Code::iterator current )
+void Instr_andwf::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 	m_outputState = m_inputState;
 
 	uchar definiteOnes = m_inputState.reg( m_file ).definiteOnes() & m_outputState.working.definiteOnes();
@@ -2907,9 +2909,9 @@ QString Instr_clrf::code() const
 	return QLatin1StringView("clrf\t%1").arg( m_file.name() );
 }
 
-void Instr_clrf::generateLinksAndStates( Code::iterator current )
+void Instr_clrf::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 
 	m_outputState = m_inputState;
 	m_outputState.reg( m_file ).known = 0xff;
@@ -2941,9 +2943,9 @@ QString Instr_decf::code() const
 	return QString(QLatin1StringView("decf\t%1,%2")).arg( m_file.name() ).arg( m_dest );
 }
 
-void Instr_decf::generateLinksAndStates( Code::iterator current )
+void Instr_decf::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 
 	m_outputState = m_inputState;
 	m_outputState.status.known &= ~(1 << RegisterBit::Z);
@@ -2969,9 +2971,9 @@ QString Instr_decfsz::code() const
 	return QString(QLatin1StringView("decfsz\t%1,%2")).arg( m_file.name() ).arg( m_dest );
 }
 
-void Instr_decfsz::generateLinksAndStates( Code::iterator current )
+void Instr_decfsz::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current, true, true );
+	makeOutputLinks( current, thisInstrAsPtr, true, true );
 
 	m_outputState = m_inputState;
 	m_outputState.reg( outputReg() ).known = 0x0;
@@ -2993,9 +2995,9 @@ QString Instr_incf::code() const
 	return QString(QLatin1StringView("incf\t%1,%2")).arg( m_file.name() ).arg( m_dest );
 }
 
-void Instr_incf::generateLinksAndStates( Code::iterator current )
+void Instr_incf::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 
 	m_outputState = m_inputState;
 	m_outputState.status.known &= ~(1 << RegisterBit::Z);
@@ -3023,9 +3025,9 @@ QString Instr_iorwf::code() const
 	return QString(QLatin1StringView("iorwf\t%1,%2")).arg( m_file.name() ).arg( m_dest );
 }
 
-void Instr_iorwf::generateLinksAndStates( Code::iterator current )
+void Instr_iorwf::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 
 	m_outputState = m_inputState;
 	m_outputState.status.known &= ~(1 << RegisterBit::Z);
@@ -3052,9 +3054,9 @@ QString Instr_movf::code() const
 	return QString(QLatin1StringView("movf\t%1,%2")).arg( m_file.name() ).arg( m_dest );
 }
 
-void Instr_movf::generateLinksAndStates( Code::iterator current )
+void Instr_movf::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 
 	m_outputState = m_inputState;
 
@@ -3098,9 +3100,9 @@ QString Instr_movwf::code() const
 	return QLatin1StringView("movwf\t%1").arg( m_file.name() );
 }
 
-void Instr_movwf::generateLinksAndStates( Code::iterator current )
+void Instr_movwf::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 
 	m_outputState = m_inputState;
 	m_outputState.reg( m_file ).known = m_inputState.working.known;
@@ -3128,9 +3130,9 @@ QString Instr_rlf::code() const
 	return QString(QLatin1StringView("rlf\t%1,%2")).arg( m_file.name() ).arg( m_dest );
 }
 
-void Instr_rlf::generateLinksAndStates( Code::iterator current )
+void Instr_rlf::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 
 	m_outputState = m_inputState;
 	m_outputState.status.known &= ~(1 << RegisterBit::C);
@@ -3159,9 +3161,9 @@ QString Instr_rrf::code() const
 	return QString(QLatin1StringView("rrf\t%1,%2")).arg( m_file.name() ).arg( m_dest );
 }
 
-void Instr_rrf::generateLinksAndStates( Code::iterator current )
+void Instr_rrf::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 
 	m_outputState = m_inputState;
 	m_outputState.status.known &= ~(1 << RegisterBit::C);
@@ -3189,9 +3191,9 @@ QString Instr_subwf::code() const
 	return QString(QLatin1StringView("subwf\t%1,%2")).arg( m_file.name() ).arg( m_dest );
 }
 
-void Instr_subwf::generateLinksAndStates( Code::iterator current )
+void Instr_subwf::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 
 	m_outputState = m_inputState;
 
@@ -3247,9 +3249,9 @@ QString Instr_swapf::code() const
 	return QString(QLatin1StringView("swapf\t%1,%2")).arg( m_file.name() ).arg( m_dest );
 }
 
-void Instr_swapf::generateLinksAndStates( Code::iterator current )
+void Instr_swapf::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 
 	m_outputState = m_inputState;
 	if ( m_dest == 0 )
@@ -3274,9 +3276,9 @@ QString Instr_xorwf::code() const
 	return QString(QLatin1StringView("xorwf\t%1,%2")).arg( m_file.name() ).arg( m_dest );
 }
 
-void Instr_xorwf::generateLinksAndStates( Code::iterator current )
+void Instr_xorwf::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 
 	m_outputState = m_inputState;
 	m_outputState.status.known &= ~(1 << RegisterBit::Z);
@@ -3306,9 +3308,9 @@ QString Instr_bcf::code() const
 	return QLatin1StringView("bcf\t\t%1,%2").arg( m_file.name() ).arg( m_bit.name() );
 }
 
-void Instr_bcf::generateLinksAndStates( Code::iterator current )
+void Instr_bcf::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 
 	m_outputState = m_inputState;
 	m_outputState.reg( m_file ).value &= ~uchar(1 << m_bit.bitPos());
@@ -3330,9 +3332,9 @@ QString Instr_bsf::code() const
 	return QLatin1StringView("bsf\t\t%1,%2").arg( m_file.name() ).arg( m_bit.name() );
 }
 
-void Instr_bsf::generateLinksAndStates( Code::iterator current )
+void Instr_bsf::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 
 	m_outputState = m_inputState;
 	m_outputState.reg( m_file ).value |= uchar(1 << m_bit.bitPos());
@@ -3353,17 +3355,17 @@ QString Instr_btfsc::code() const
 	return QLatin1StringView("btfsc\t%1,%2").arg( m_file.name() ).arg( m_bit.name() );
 }
 
-void Instr_btfsc::generateLinksAndStates( Code::iterator current )
+void Instr_btfsc::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
 	m_outputState = m_inputState;
 
 	if ( m_inputState.reg( m_file ).known & (1 << m_bit.bitPos()) )
 	{
 		bool bit = m_inputState.reg( m_file ).value & (1 << m_bit.bitPos());
-		makeOutputLinks( current, bit, !bit );
+		makeOutputLinks( current, thisInstrAsPtr, bit, !bit );
 	}
 	else
-		makeOutputLinks( current, true, true );
+		makeOutputLinks( current, thisInstrAsPtr, true, true );
 }
 
 ProcessorBehaviour Instr_btfsc::behaviour() const
@@ -3380,17 +3382,17 @@ QString Instr_btfss::code() const
 	return QLatin1StringView("btfss\t%1,%2").arg( m_file.name() ).arg( m_bit.name() );
 }
 
-void Instr_btfss::generateLinksAndStates( Code::iterator current )
+void Instr_btfss::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
 	m_outputState = m_inputState;
 
 	if ( m_inputState.reg( m_file ).known & (1 << m_bit.bitPos()) )
 	{
 		bool bit = m_inputState.reg( m_file ).value & (1 << m_bit.bitPos());
-		makeOutputLinks( current, !bit, bit );
+		makeOutputLinks( current, thisInstrAsPtr, !bit, bit );
 	}
 	else
-		makeOutputLinks( current, true, true );
+		makeOutputLinks( current, thisInstrAsPtr, true, true );
 }
 
 ProcessorBehaviour Instr_btfss::behaviour() const
@@ -3410,9 +3412,9 @@ QString Instr_addlw::code() const
 	return QString(QLatin1StringView("addlw\t%1")).arg( m_literal );
 }
 
-void Instr_addlw::generateLinksAndStates( Code::iterator current )
+void Instr_addlw::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 
 	m_outputState = m_inputState;
 	m_outputState.working.value = (m_inputState.working.value + m_literal) & 0xff;
@@ -3437,9 +3439,9 @@ QString Instr_andlw::code() const
 	return QString(QLatin1StringView("andlw\t%1")).arg( m_literal );
 }
 
-void Instr_andlw::generateLinksAndStates( Code::iterator current )
+void Instr_andlw::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 
 	m_outputState = m_inputState;
 	m_outputState.working.value = (m_inputState.working.value & m_literal) & 0xff;
@@ -3464,10 +3466,10 @@ QString Instr_call::code() const
 	return QLatin1StringView("call\t%1").arg( m_label );
 }
 
-void Instr_call::generateLinksAndStates( Code::iterator current )
+void Instr_call::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
 	(void)current;
-	makeLabelOutputLink( m_label );
+	makeLabelOutputLink( m_label, thisInstrAsPtr );
 
 	m_outputState = m_inputState;
 }
@@ -3478,14 +3480,14 @@ ProcessorBehaviour Instr_call::behaviour() const
 	return behaviour;
 }
 
-void Instr_call::makeReturnLinks( Instruction * next )
+void Instr_call::makeReturnLinks( InstructionPtr next )
 {
 	m_pCode->setAllUnused();
 	linkReturns( m_pCode->instruction( m_label ), next );
 }
 
 
-void Instr_call::linkReturns( Instruction * current, Instruction * returnPoint )
+void Instr_call::linkReturns( InstructionPtr current, InstructionPtr returnPoint )
 {
 	while (true)
 	{
@@ -3493,19 +3495,19 @@ void Instr_call::linkReturns( Instruction * current, Instruction * returnPoint )
 			return;
 
 		current->setUsed( true );
-		if ( dynamic_cast<Instr_return*>(current) || dynamic_cast<Instr_retlw*>(current) )
+		if ( dynamic_cast<Instr_return*>(current.get()) || dynamic_cast<Instr_retlw*>(current.get()) )
 		{
 // 			cout << "Added return link" << endl;
 // 			cout << "   FROM: " << current->code() << endl;
 // 			cout << "   TO:   " << returnPoint->code() << endl;
-			returnPoint->addInputLink( current );
+			returnPoint->addInputLink( current, returnPoint );
 			return;
 		}
-		if ( dynamic_cast<Instr_call*>(current) )
+		if ( dynamic_cast<Instr_call*>(current.get()) )
 		{
 			// Jump over the call instruction to its return point,
 			// which will be the instruction after current.
-			current = *(++m_pCode->find( current ));
+			current = *(++m_pCode->find( current.get() ));
 			continue;
 		}
 
@@ -3537,11 +3539,11 @@ QString Instr_goto::code() const
 	return QLatin1StringView("goto\t%1").arg( m_label );
 }
 
-void Instr_goto::generateLinksAndStates( Code::iterator current )
+void Instr_goto::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
 	(void)current;
 
-	makeLabelOutputLink( m_label );
+	makeLabelOutputLink( m_label, thisInstrAsPtr );
 
 	m_outputState = m_inputState;
 }
@@ -3558,9 +3560,9 @@ QString Instr_iorlw::code() const
 	return QString(QLatin1StringView("iorlw\t%1")).arg( m_literal );
 }
 
-void Instr_iorlw::generateLinksAndStates( Code::iterator current )
+void Instr_iorlw::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 
 	m_outputState = m_inputState;
 	m_outputState.working.value = (m_inputState.working.value | m_literal) & 0xff;
@@ -3585,9 +3587,9 @@ QString Instr_movlw::code() const
 	return QString(QLatin1StringView("movlw\t%1")).arg( m_literal );
 }
 
-void Instr_movlw::generateLinksAndStates( Code::iterator current )
+void Instr_movlw::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 	m_outputState = m_inputState;
 	m_outputState.working.known = 0xff;
 	m_outputState.working.value = m_literal;
@@ -3606,10 +3608,11 @@ QString Instr_retfie::code() const
 	return QLatin1StringView("retfie");
 }
 
-void Instr_retfie::generateLinksAndStates( Code::iterator current )
+void Instr_retfie::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
 	// Don't generate any output links
 	(void)current;
+	(void)thisInstrAsPtr;
 
 	m_inputState = m_outputState;
 }
@@ -3626,9 +3629,10 @@ QString Instr_retlw::code() const
 	return QString(QLatin1StringView("retlw\t%1")).arg( m_literal );
 }
 
-void Instr_retlw::generateLinksAndStates( Code::iterator current )
+void Instr_retlw::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
 	(void)current;
+	(void)thisInstrAsPtr;
 
 	m_outputState = m_inputState;
 	m_outputState.working.known = 0xff;
@@ -3649,9 +3653,10 @@ QString Instr_return::code() const
 	return QLatin1StringView("return");
 }
 
-void Instr_return::generateLinksAndStates( Code::iterator current )
+void Instr_return::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
 	(void)current;
+	(void)thisInstrAsPtr;
 
 	m_outputState = m_inputState;
 }
@@ -3668,10 +3673,11 @@ QString Instr_sleep::code() const
 	return QLatin1StringView("sleep");
 }
 
-void Instr_sleep::generateLinksAndStates( Code::iterator current )
+void Instr_sleep::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
 	// Don't generate any output links
 	(void)current;
+	(void)thisInstrAsPtr;
 
 	m_outputState = m_inputState;
 	m_outputState.status.value &= ~(1 << RegisterBit::NOT_PD);
@@ -3692,9 +3698,9 @@ QString Instr_sublw::code() const
 	return QString(QLatin1StringView("sublw\t%1")).arg( m_literal );
 }
 
-void Instr_sublw::generateLinksAndStates( Code::iterator current )
+void Instr_sublw::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 
 	m_outputState = m_inputState;
 	m_outputState.working.value = (m_literal - m_inputState.working.value) & 0xff;
@@ -3737,9 +3743,9 @@ QString Instr_xorlw::code() const
 	return QString(QLatin1StringView("xorlw\t%1")).arg( m_literal );
 }
 
-void Instr_xorlw::generateLinksAndStates( Code::iterator current )
+void Instr_xorlw::generateLinksAndStates( Code::iterator current, InstructionPtr thisInstrAsPtr )
 {
-	makeOutputLinks( current );
+	makeOutputLinks( current, thisInstrAsPtr );
 	m_outputState = m_inputState;
 	m_outputState.working.value = (m_inputState.working.value ^ m_literal) & 0xff;
 	m_outputState.working.known = m_inputState.working.known;
