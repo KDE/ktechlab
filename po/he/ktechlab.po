@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:54+0000\n"
-"PO-Revision-Date: 2025-11-21 13:46+0200\n"
+"PO-Revision-Date: 2025-12-07 14:18+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -5109,7 +5109,7 @@ msgstr "דוגמאות"
 #: src/ktechlabui.rc:47
 #, kde-format
 msgid "555s"
-msgstr ""
+msgstr "555ים"
 
 #. i18n: ectx: Menu (examples_basic)
 #: src/ktechlabui.rc:50
