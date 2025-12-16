@@ -352,6 +352,14 @@ msgid ""
 "connecting the components with an External Connection, selecting the desired "
 "components and clicking on \"Create Subcircuit\" in the right-click menu."
 msgstr ""
+"בניית מעגל מתבצעת על ידי גרירת רכיבים מבורר הרכיבים משמאל. יצירת חיבורים "
+"מתבצעת על ידי גרירת חוט ממחברי הרכיב.<br><br>ההדמיה פועלת כברירת מחדל, אך "
+"ניתן להשהות ולהמשיך אותה מתפריט כלים.<br><br>כדי למחוק חוט, יש לבחור אותו עם "
+"תיבת בחירה וללחוץ על מחיקה (Delete).<br><br>כדי לערוך מאפיינים של רכיב, יש "
+"לבחור אותו (תוך וידוא שלא נבחרו רכיבים מסוג אחר), ולערוך בסרגל הכלים. ניתן "
+"לערוך מאפיינים מתקדמים יותר באמצעות עורך הפריטים משמאל.<br><br>ניתן ליצור תת־"
+"מעגלים על ידי חיבור הרכיבים עם חיבור חיצוני, בחירת הרכיבים הרצויים ולחיצה על "
+"„יצירת תת־מעגל” בתפריט לחיצה ימנית."
 
 #: src/circuitview.cpp:132
 #, kde-format
@@ -480,31 +488,31 @@ msgstr "צורות סימנים לוגיים"
 #: src/core/ktechlab.kcfg:92
 #, kde-format
 msgid "Rising Trigger Threshold"
-msgstr ""
+msgstr "סף הפעלה בעלייה"
 
 #. i18n: ectx: label, entry (LogicFallingTrigger), group (Logic)
 #: src/core/ktechlab.kcfg:96
 #, kde-format
 msgid "Falling Trigger Threshold"
-msgstr ""
+msgstr "סף הפעלה בירידה"
 
 #. i18n: ectx: label, entry (LogicOutputHigh), group (Logic)
 #: src/core/ktechlab.kcfg:100
 #, kde-format
 msgid "Logic Output High"
-msgstr ""
+msgstr "מתח מוצא לוגי גבוה"
 
 #. i18n: ectx: label, entry (LogicOutputHighImpedance), group (Logic)
 #: src/core/ktechlab.kcfg:104
 #, kde-format
 msgid "Logic Output High Impedance"
-msgstr ""
+msgstr "עכבת מוצא לוגי גבוהה"
 
 #. i18n: ectx: label, entry (LogicOutputLowImpedance), group (Logic)
 #: src/core/ktechlab.kcfg:108
 #, kde-format
 msgid "Logic Output Low Impedance"
-msgstr ""
+msgstr "עכבת מוצא לוגי נמוכה"
 
 #. i18n: ectx: label, entry (HexFormat), group (Gpasm)
 #: src/core/ktechlab.kcfg:115
@@ -1206,12 +1214,12 @@ msgstr "טווח קלט"
 #: src/electronics/components/addac.cpp:78
 #, kde-format
 msgid "ADC"
-msgstr ""
+msgstr "ממיר אנלוגי לדיגיטלי (ADC)"
 
 #: src/electronics/components/addac.cpp:161
 #, kde-format
 msgid "DAC"
-msgstr ""
+msgstr "ממיר דיגיטלי לאנלוגי (DAC)"
 
 #: src/electronics/components/bidirled.cpp:29
 #: src/electronics/components/bidirled.cpp:35
@@ -1256,7 +1264,7 @@ msgstr "מונה בינרי"
 #: src/electronics/components/flipflop.cpp:237
 #, kde-format
 msgid "Trigger Edge"
-msgstr ""
+msgstr "דופן הפעלה"
 
 #: src/electronics/components/binarycounter.cpp:69
 #: src/electronics/components/flipflop.cpp:29
@@ -1293,7 +1301,7 @@ msgstr "חיבורים"
 #: src/electronics/components/bussplitter.cpp:34
 #, kde-format
 msgid "Bus Splitter"
-msgstr ""
+msgstr "מפצל אפיק"
 
 #: src/electronics/components/bussplitter.cpp:41
 #, kde-format
@@ -1310,7 +1318,7 @@ msgstr "גודל"
 #: src/electronics/components/voltageregulator.cpp:29
 #, kde-format
 msgid "Passive"
-msgstr ""
+msgstr "סביל"
 
 #: src/electronics/components/capacitor.cpp:26
 #: src/electronics/components/capacitor.cpp:32 src/ktechlab.cpp:685
@@ -1474,7 +1482,7 @@ msgstr "NPN"
 #: src/electronics/components/ecmosfet.cpp:79
 #, kde-format
 msgid "Discrete"
-msgstr ""
+msgstr "בדיד"
 
 #: src/electronics/components/ecbjt.cpp:36
 #, kde-format
@@ -1501,25 +1509,25 @@ msgstr "זרם רוויה"
 #: src/electronics/components/ecmosfet.cpp:136
 #, kde-format
 msgid "Forward Coefficient"
-msgstr ""
+msgstr "מקדם קדמי"
 
 #: src/electronics/components/ecbjt.cpp:69
 #: src/electronics/components/ecmosfet.cpp:143
 #, kde-format
 msgid "Reverse Coefficient"
-msgstr ""
+msgstr "מקדם אחורי"
 
 #: src/electronics/components/ecbjt.cpp:76
 #: src/electronics/components/ecmosfet.cpp:150
 #, kde-format
 msgid "Forward Beta"
-msgstr ""
+msgstr "בטא קדמית"
 
 #: src/electronics/components/ecbjt.cpp:83
 #: src/electronics/components/ecmosfet.cpp:157
 #, kde-format
 msgid "Reverse Beta"
-msgstr ""
+msgstr "בטא אחורית"
 
 #: src/electronics/components/ecclockinput.cpp:41
 #: src/electronics/components/ecclockinput.cpp:47
@@ -1615,17 +1623,17 @@ msgstr ""
 #: src/electronics/components/ecjfet.cpp:43
 #, kde-format
 msgid "p-JFET"
-msgstr ""
+msgstr "p-JFET"
 
 #: src/electronics/components/ecjfet.cpp:55
 #, kde-format
 msgid "N-Channel JFET"
-msgstr ""
+msgstr "JFET ערוץ N"
 
 #: src/electronics/components/ecjfet.cpp:57
 #, kde-format
 msgid "P-Channel JFET"
-msgstr ""
+msgstr "JFET ערוץ P"
 
 #: src/electronics/components/ecjfet.cpp:65
 #, kde-format
@@ -1707,22 +1715,22 @@ msgstr "טרנזיסטור MOSFET תעלת p-d"
 #: src/electronics/components/ecmosfet.cpp:92
 #, kde-format
 msgid "N-Channel Enhancement MOSFET"
-msgstr ""
+msgstr "MOSFET ערוץ N העשרה"
 
 #: src/electronics/components/ecmosfet.cpp:97
 #, kde-format
 msgid "P-Channel Enhancement MOSFET"
-msgstr ""
+msgstr "MOSFET ערוץ P העשרה"
 
 #: src/electronics/components/ecmosfet.cpp:104
 #, kde-format
 msgid "N-Channel Depletion MOSFET"
-msgstr ""
+msgstr "MOSFET ערוץ N דלדול"
 
 #: src/electronics/components/ecmosfet.cpp:110
 #, kde-format
 msgid "P-Channel Depletion MOSFET"
-msgstr ""
+msgstr "MOSFET ערוץ P דלדול"
 
 #: src/electronics/components/ecmosfet.cpp:122
 #, kde-format
@@ -1733,7 +1741,7 @@ msgstr "פין גוף"
 #: src/electronics/components/ecopamp.cpp:26
 #, kde-format
 msgid "Op Amp"
-msgstr ""
+msgstr "מגבר שרת"
 
 #: src/electronics/components/ecopamp.cpp:32
 #, kde-format
@@ -2058,7 +2066,7 @@ msgstr "לא ניתן לפתוח את הפתחה %1"
 #: src/electronics/components/piccomponent.cpp:60
 #, kde-format
 msgid "PIC Micro"
-msgstr ""
+msgstr "מיקרו־בקר PIC"
 
 #: src/electronics/components/piccomponent.cpp:63
 #, kde-format
@@ -2128,7 +2136,7 @@ msgstr ""
 #: src/electronics/components/probe.cpp:59
 #, kde-format
 msgid "Scaling"
-msgstr ""
+msgstr "קנה מידה"
 
 #: src/electronics/components/probe.cpp:61
 #, kde-format
@@ -2166,17 +2174,17 @@ msgstr "חיישן זרם"
 #: src/electronics/components/probe.cpp:213
 #, kde-format
 msgid "Logic Probe"
-msgstr ""
+msgstr "חיישן לוגי"
 
 #: src/electronics/components/pushswitch.cpp:30
 #, kde-format
 msgid "Push-to-Break"
-msgstr ""
+msgstr "לחיצה לניתוק"
 
 #: src/electronics/components/pushswitch.cpp:36
 #, kde-format
 msgid "Push to Break"
-msgstr ""
+msgstr "לחיצה לניתוק"
 
 #: src/electronics/components/pushswitch.cpp:42
 #: src/electronics/components/pushswitch.cpp:125
