@@ -1,0 +1,95 @@
+<!-- kate: tab-width 2; indent-mode xml; -->
+<chapter id="flowcode">
+	<title
+>&flowcode;</title>
+	
+	<sect1 id="flowcode_introduction">
+		<title
+>Introdução</title>
+		
+		<para
+>O &flowcode; permite a construção rápida e fácil de um programa PIC. Depois que o usuário constrói um fluxograma a partir das partes do programa disponíveis, o &ktechlab; pode então converter o fluxograma em vários formatos. Para gerar um resultado em hexadecimal, por exemplo, a seguinte cadeia de conversões ocorre:</para>
+		
+		<orderedlist>
+			<listitem
+><para
+>O &flowcode; é convertido em &microbe;; uma linguagem de alto nível cujo compilador é distribuído com o &ktechlab;.</para
+></listitem>
+			<listitem
+><para
+>O executável <command
+>microbe</command
+> compila então o arquivo &microbe; para assembly PIC.</para
+></listitem>
+			<listitem
+><para
+>Finalmente, o <command
+>gpasm</command
+> pega o arquivo de montagem PIC e gera o código hexadecimal do programa.</para
+></listitem>
+		</orderedlist>
+		
+		<para
+>É claro que, se você não tiver o gputils instalado - com o qual o <command
+>gpasm</command
+> é distribuído - então a última etapa não poderá ser realizada.</para>
+		
+	</sect1>
+	
+	<sect1 id="flowcode_creation">
+		<title
+>Criar um programa</title>
+		
+		<para
+>Cada programa &flowcode; precisa de um ponto de partida único - este é o local de onde seu programa será executado na inicialização do PIC. Para definir este ponto, abra a barra lateral FlowParts à esquerda e arraste o cursor sobre a parte <guilabel
+>Início</guilabel
+>. O &ktechlab; permitirá que você use apenas um deles.</para>
+		
+		<para
+>Você pode então construir seu programa usando as partes predefinidas à esquerda - ou inserir seu próprio código (em formato assembly ou &microbe;) através da parte <guilabel
+>Embed</guilabel
+>. O fluxo do programa é controlado pelas conexões entre os FlowParts - <xref linkend="connecting_components"/> oferece mais detalhes sobre como criar conexões.</para>
+		
+		<para
+>O &flowcode; impõe limitações adicionais às dos circuitos sobre o que pode ser conectado. Por exemplo, cada FlowPart só pode ter uma conexão de saída. Limitações adicionais são descritas em <xref linkend="nestling_flowcode"/>.</para>
+	</sect1>
+	
+	<sect1 id="pic_settings">
+		<title
+>Configurações do PIC</title>
+		
+		<para
+>Ao criar um novo documento &flowcode;, você notará uma imagem do PIC que está usando no canto superior esquerdo da área de trabalho. Isso representa as configurações iniciais do PIC.</para>
+		
+		<para
+>Cada pino mostrado na imagem do PIC exibe o tipo inicial do pino (entrada ou saída) e seu estado inicial (alto ou baixo). Você pode alterar isso arrastando o pino para definir o tipo e clicando nele para alternar seu estado.</para>
+		
+		<para
+>A caixa de diálogo <guilabel
+>Configurações</guilabel
+>, acessada clicando no botão <guibutton
+>Configurações</guibutton
+>, também permite editar os tipos e estados iniciais dos pinos - neste caso, editando os valores binários gravados nos registradores PORT e TRIS. Além das configurações dos pinos, a caixa de diálogo permite editar os valores iniciais das variáveis ​​no programa PIC.</para>
+		
+		<para
+>Na parte inferior, há uma lista de mapeamentos de pinos definidos atualmente, bem como botões para manipulá-los. Os mapeamentos de pinos são usados ​​para especificar como um display de sete segmentos ou um teclado numérico está conectado a um PIC. Para usar as partes <guilabel
+>Seletor de sete segmentos</guilabel
+> ou <guilabel
+>Teclado numérico</guilabel
+> do &flowcode;, você precisará definir um mapeamento de pinos aqui primeiro.</para>
+		
+	</sect1>
+	
+	<sect1 id="nestling_flowcode">
+		<title
+>Aninhamento no &flowcode;</title>
+		
+		<para
+>Muitas FlowParts, como sub-rotinas e loops, podem conter código próprio. Após criar um contêiner desse tipo, as FlowParts podem ser adicionadas arrastando-as ou soltando-as dentro dele. O contêiner será destacado para indicar que se tornará o novo pai da FlowPart.</para>
+		
+		<para
+>O contêiner assume a responsabilidade pelos FlowParts contidos dentro dele. Se o botão de expansão for desmarcado, todos os FlowParts contidos nele ficarão ocultos - e, da mesma forma, o conteúdo será exibido quando o botão de expansão for clicado novamente. Não é possível criar conexões entre FlowParts em contêineres diferentes, e o conteúdo de um contêiner será movido junto com o contêiner.</para>
+		
+	</sect1>
+	
+</chapter>

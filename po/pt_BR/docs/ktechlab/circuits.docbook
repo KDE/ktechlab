@@ -1,0 +1,164 @@
+<!-- kate: tab-width 2; indent-mode xml; -->
+<chapter id="circuits">
+	<title
+>Circuitos</title>
+	
+	<sect1 id="placing_components">
+		<title
+>Colocando componentes</title>
+		<para
+>À esquerda, você encontrará a aba <guilabel
+>Componentes</guilabel
+>.</para>
+		
+		<para
+>Arrastar um componente da barra lateral para o circuito o colocará sob o cursor do mouse. Como alternativa, você pode clicar duas vezes em um item na barra lateral <guilabel
+>Componentes</guilabel
+> para adicioná-lo repetidamente ao circuito. Nesse modo, uma cópia do componente selecionado será colocada repetidamente no circuito clicando com o botão esquerdo do mouse até que a tecla &Esc; seja pressionada ou o botão direito do mouse seja clicado.</para>
+		
+		<para
+>Para reposicionar um componente, clique com o botão esquerdo do mouse e arraste. Você verá que ele se encaixará na grade subjacente. Se você arrastar o componente para fora das bordas direita ou inferior da área de trabalho, a área de trabalho será redimensionada para acomodá-lo.</para>
+		
+		<para
+>Todos os componentes têm uma noção de orientação: 0, 90, 180 e 270 graus. Aqueles que não são simétricos em relação a um eixo também podem ser invertidos. Para girar uma seleção de componentes, clique com o botão direito e selecione no menu <guimenu
+>Orientação</guimenu
+> ou clique nos botões de rotação na barra de ferramentas. Esta última também pode ser acessada pressionando as teclas <keycap
+>[</keycap
+> e <keycap
+>]</keycap
+> (familiares aos usuários do <application
+>Inkscape</application
+>). A barra lateral <guilabel
+>Item</guilabel
+> (à direita) fornece um método poderoso para definir a orientação, exibindo pré-visualizações dos componentes. Inverter componentes também só é possível através da barra lateral <guilabel
+>Item</guilabel
+>.</para>
+	</sect1>
+	
+	<sect1 id="connecting_components">
+		<title
+>Conectar componentes</title>
+		<para
+>Existem dois modos para criar conexões (fios): automático e manual. Esses modos são selecionados através do menu suspenso <guimenu
+>Modo de roteamento de conexão</guimenu
+> na barra de ferramentas. Experimente ambos - o roteamento automático geralmente é melhor para circuitos pequenos, enquanto circuitos mais complexos podem precisar de roteamento manual.</para>
+		
+		<para
+>No modo automático, crie uma conexão arrastando a partir de um pino de componente ou de uma conexão existente e soltando o mouse sobre o pino ou a conexão desejada. Você verá a linha reta desenhada ficar laranja quando uma conexão válida for criada ao soltar o mouse. Se a linha que você está desenhando estiver preta, é porque não há nada sob o cursor do mouse ou porque você está tentando conectar dois itens que já estão conectados. Ao criar fluxogramas, os critérios para uma conexão válida são mais complexos, mas falaremos disso mais tarde.</para>
+		
+		<para
+>A melhor maneira de se familiarizar com o roteamento manual de conexões é experimentando. Clique no pino ou conexão inicial e, em seguida, estenda o proto-conector movendo o mouse para longe do local onde você clicou. Para colocar um canto, clique com o botão esquerdo do mouse. Para cancelar o desenho da conexão, pressione &Esc; ou clique com o botão direito do mouse.</para>
+		
+		<para
+>O &ktechlab; faz o possível para manter as rotas que suas conexões percorrem. No entanto, se arrastar um componente resultar no deslocamento dos pontos finais de uma conexão em relação uns aos outros, o &ktechlab; será forçado a redesenhar a conexão usando roteamento automático. Antes de mover um componente, você pode ver quais conectores precisarão ser redirecionados, pois eles ficarão cinza ao clicar.</para>
+		
+		<para
+>Para remover uma conexão existente, selecione-a desenhando um pequeno retângulo de seleção sobre parte do conector e pressione <keycap
+>Del</keycap
+>.</para>
+	</sect1>
+	
+	<sect1 id="component_attributes">
+		<title
+>Atributos dos componentes</title>
+		<para
+>A maioria dos componentes terá atributos editáveis, como a resistência para resistores. Por padrão, você pode editar atributos simples na barra de ferramentas quando um grupo de componentes do mesmo tipo estiver selecionado. Se a sua seleção contiver uma mistura de diferentes tipos de componentes (como resistores e capacitores), nenhum atributo será exibido para edição.</para>
+		
+		<para
+>Alguns componentes possuem atributos mais avançados que não são acessíveis pela barra de ferramentas. Estes podem ser encontrados na barra lateral <guilabel
+>Item</guilabel
+> à direita. O diodo, por exemplo, possui uma variedade de características de comportamento que você pode editar aqui.</para>
+<!-- Not in 0.3.6 version
+		<para
+>If your selection of components have different values for their attributes (for example, different resistances for a selection of resistors), the <guilabel
+>Item</guilabel
+> sidebar will have the disagreeing attributes grayed-out. You can enable these by clicking the <guibutton
+>Merge properties</guibutton
+> button.</para>
+
+		<para
+>The "Defaults" button will reset the component attributes to the ones it had on creation.</para>
+		-->
+		<para
+>Existe um tipo de atributo que não pode ser editado nem pela barra de ferramentas nem pela barra lateral do item: texto multilinha. Clicar duas vezes no item abrirá uma caixa de diálogo onde o texto poderá ser inserido.</para>
+	</sect1>
+	
+	<sect1 id="circuit_simulation">
+		<title
+>Simulação</title>
+		<para
+>Por padrão, a simulação estará em execução quando você criar um novo circuito. O status da simulação é exibido no canto inferior direito da visualização do circuito e pode ser alterado através do menu <guimenu
+>Ferramentas</guimenu
+>. Primeiramente, uma breve explicação sobre como o simulador funciona. Isso deve permitir que você aproveite ao máximo o recurso.</para>
+		
+		<para
+>Quando um circuito é criado ou modificado, as áreas afetadas são divididas em grupos de pinos e conexões que podem ser considerados independentes. Cada grupo é então simulado como uma entidade separada (embora ainda interagindo por meio dos componentes), com a simulação fornecida dependendo da complexidade do grupo. Grupos complexos, como aqueles que envolvem componentes não lineares, como LEDs, são lentos para simular. Grupos que contêm apenas pinos lógicos, dos quais apenas um controla o valor nesses pinos, são os mais rápidos para simular.</para>
+		
+		<para
+>Os resultados da simulação são apresentados por meio de diversos recursos gráficos.</para>
+		
+		<para
+>Os pinos dos componentes exibirão barras laterais de tensão. Estas são coloridas laranja para tensão positiva e azul para tensão negativa. Seu comprimento depende do nível de tensão e sua largura da quantidade de corrente que flui pelo pino. Elas podem ser desativadas na página <guilabel
+>Geral</guilabel
+> da caixa de diálogo <guilabel
+>Configuração</guilabel
+>.</para>
+		
+		<para
+>Ao posicionar o cursor sobre um pino ou conexão, uma pequena dica será exibida, mostrando a tensão e a corrente naquele ponto do circuito. Vários componentes também fornecem feedback gráfico - por exemplo, LEDs e voltímetros ou amperímetros.</para>
+		
+		<para
+>Por último, temos o osciloscópio, que será abordado na próxima seção.</para>
+	</sect1>
+	
+	<sect1 id="oscilloscope">
+		<title
+>Osciloscópio</title>
+		<para
+>O osciloscópio pode registrar dados lógicos, de tensão e de corrente. A ponta de prova lógica é otimizada para armazenar amostras booleanas e, portanto, deve ser usada em vez da ponta de prova de tensão ao medir lógica.</para>
+		
+		<para
+>Para coletar dados, crie um novo componente de sonda e conecte-o a um ponto apropriado no circuito. Você verá a saída imediatamente desenhada no osciloscópio. Adicionar mais sondas comprimirá as saídas umas às outras - você pode reposicioná-las arrastando as setas à esquerda da visualização do osciloscópio e alterar suas cores por meio dos atributos da sonda.</para>
+		
+		<para
+>Para sondas de tensão e corrente, o intervalo de valores de entrada pode ser ajustado na barra lateral <guilabel
+>Editor de Itens</guilabel
+> à direita.</para>
+		
+		<para
+>O zoom é controlado por um controle deslizante. A escala é logarítmica; para cada poucos pixels que o controle deslizante percorre, o fator de zoom será multiplicado por uma constante.A &ktechlab; simula a lógica com uma precisão máxima de 1 microssegundo e, no nível máximo de zoom, um microssegundo é representado por 8 pixels.</para>
+		
+		<para
+>Quando a barra de rolagem é arrastada até o final, ela permanecerá lá enquanto novos dados forem registrados. Caso contrário, a posição da barra de rolagem permanece fixa no tempo. A visualização do osciloscópio também pode ser movida para frente e para trás clicando com o botão esquerdo do mouse e arrastando a visualização. Devido às limitações do sistema de widgets subjacente, a rolagem será muito granular no zoom máximo.</para>
+		
+		<para
+>Clicar com o botão direito do mouse na visualização do osciloscópio abre um menu onde você pode controlar o número de vezes que a visualização do osciloscópio é atualizada. Isso permite uma exibição mais suave ou a redução do uso da CPU.</para>
+	</sect1>
+	
+	<sect1 id="subcircuits">
+		<title
+>Subcircuitos</title>
+		<para
+>Os subcircuitos oferecem uma maneira reutilizável e organizada de usar um circuito, quando você está interessado apenas em interagir com conexões externas ao circuito. O subcircuito é criado como um CI, com os pinos atuando como a interação com o circuito interno.</para>
+		
+		<para
+>Primeiro, o circuito a ser usado como modelo para a criação de um subcircuito deve ser construído. Os pontos de interação são definidos por meio de componentes de <guilabel
+>Conexão externa</guilabel
+>. Estes devem ser conectados e posicionados onde você deseja que o pino seja posicionado no CI do subcircuito.</para>
+		
+		<para
+>Em seguida, selecione o grupo de componentes e conexões externas que deseja transformar em um subcircuito e selecione <guimenuitem
+>Criar subcircuito</guimenuitem
+> no menu de contexto (clique com o botão direito do mouse). Você poderá inserir um nome para o subcircuito. Após a criação, o nome aparecerá no seletor <guilabel
+>Componentes</guilabel
+>, na seção <guilabel
+>Subcircuitos</guilabel
+>. Este subcircuito pode ser tratado como qualquer componente normal, com a opção adicional de removê-lo clicando com o botão direito do mouse sobre ele e selecionando <guimenuitem
+>Remover</guimenuitem
+>.</para>
+	</sect1>
+	
+</chapter>
+
+
+
