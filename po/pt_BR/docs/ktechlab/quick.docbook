@@ -1,0 +1,69 @@
+<!-- kate: tab-width 2; indent-mode xml; -->
+<chapter id="quick">
+	<title
+>Tour rápido</title>
+	
+	<sect1 id="introduction">
+		<title
+>Introdução</title>
+		
+		<para
+>O &ktechlab; é uma IDE para circuitos eletrônicos e microcontroladores. Ele pode realizar simulações de diversos componentes (lógicos, integrados, lineares, não lineares e reativos), simulação e depuração de microcontroladores PIC via gpsim, e vem com suas próprias linguagens de alto nível intimamente ligadas e complementares: &flowcode; e &microbe;.</para>
+		
+		<para
+>Foi projetado para ser o mais fácil de usar e discreto possível; todos os componentes e FlowParts possuem ajuda contextual, e simular eletrônica é tão simples quanto arrastar componentes para a área de trabalho e criar conectores que se roteiam automaticamente entre seus pinos. O &flowcode; permite que usuários iniciantes em PICs criem instantaneamente seus próprios programas, enquanto a simulação eletrônica permite percorrer o programa assembly de um PIC passo a passo dentro de um circuito.</para>
+	</sect1>
+	
+	<sect1 id="documents">
+		<title
+>Documentos</title>
+		<para
+>Para começar a usar o &ktechlab;, você precisará criar um novo documento, cujo tipo dependerá da sua tarefa:</para>
+			
+			<itemizedlist>
+				<listitem
+><para
+>Documento &flowcode; - Construir um programa PIC através de fluxogramas.</para
+></listitem>
+				<listitem
+><para
+>Documento de circuito - Simular circuitos eletrônicos e microcontroladores.</para
+></listitem>
+				<listitem
+><para
+>Documento &microbe; - Linguagem de alto nível para PICs, também usada pelo &flowcode; para gerar código assembly.</para
+></listitem>
+				<listitem
+><para
+>Documento assembly - Começar a escrever um programa em linguagem assembly para PIC.</para
+></listitem>
+			</itemizedlist>
+			
+		<para
+>O &ktechlab; utiliza um modelo Documento-Visualização, no qual a lógica do documento é completamente separada das visualizações abertas do documento. Isso permite várias visualizações do mesmo arquivo.</para>
+		
+		<para
+>Ao criar um novo documento, a visualização é criada em uma aba separada. Cada aba pode suportar qualquer número de visualizações, organizadas em qualquer padrão arbitrário. Isso permite, por exemplo, simular um programa PIC em circuito, enquanto se percorre o programa em um documento assembly na mesma aba.</para>
+		
+		<para
+>O conteúdo das abas pode ser duplicado arrastando a aba para uma área vazia na barra de abas. Elas podem ser inseridas em uma aba existente arrastando-as para essa aba.</para>
+		
+		<para
+>Instruções detalhadas sobre os documentos acima podem ser encontradas em seus respectivos capítulos.</para>
+	</sect1>
+	
+	<sect1 id="drawing">
+		<title
+>Desenho</title>
+		
+		<para
+>Nos documentos de circuito e &flowcode; existem diversas ferramentas de desenho disponíveis, incluindo de texto. Elas podem ser acessadas clicando no ícone de pincel na barra de ferramentas. Para desenhar, arraste o mouse para formar uma forma ou uma linha apropriada para a ferramenta de desenho em uso.</para>
+		
+		<para
+>Quando um desenho é selecionado, ele pode ser redimensionado arrastando suas alças. Manter pressionada a tecla &Shift; enquanto arrasta fará com que a alça se ajuste à grade subjacente. Cada ferramenta possui opções básicas acessíveis na barra de ferramentas, como cores. Há também opções mais avançadas encontradas na barra lateral do <guilabel
+>Editor de itens</guilabel
+>, como estilos de linha e de extremidade.</para>
+		
+	</sect1>
+	
+</chapter>

@@ -1,0 +1,83 @@
+<!-- kate: tab-width 2; indent-mode xml; -->
+<chapter id="debugging">
+	<title
+>Depuração</title>
+	
+	<sect1 id="starting_debugger">
+		<title
+>Iniciar o depurador</title>
+		
+		<para
+>O suporte à depuração é fornecido para Assembly, SDCC e Microbe, quando eles estão abertos como um documento de texto. A partir daí, a execução passo a passo é controlada pelo menu <guimenu
+>Depurar</guimenu
+>. Existem dois métodos para iniciar o depurador.</para>
+		
+		<para
+>Se o programa PIC já estiver em execução em um circuito, clicar duas vezes no componente PIC abrirá o programa. Para programas PIC em linguagem assembly, o depurador do documento de texto será vinculado ao componente PIC. Nesse caso, o menu de depuração não pode interromper o programa PIC, pois pertence ao componente PIC.</para>
+		
+		<para
+>Se o arquivo de montagem já estiver aberto, o depurador pode ser executado através do menu <guimenu
+>Depurar</guimenu
+>. Após a compilação do programa, o depurador estará pronto, com o programa PIC pausado na primeira instrução. Observe que, ao depurar linguagens de alto nível, o ponto de execução atual não será exibido se não houver uma linha que corresponda à primeira instrução de montagem a ser executada. Nesse caso, clicar em <guibutton
+>Avançar</guibutton
+> levará o ponto de execução para a primeira linha do programa.</para>
+	</sect1>
+	
+	<sect1 id="controlling_debugger">
+		<title
+>Controlar o depurador</title>
+		
+		<para
+>O depurador pode estar em um dos dois modos: em execução e passo a passo. Enquanto estiver em execução, o programa PIC será simulado em tempo real. Para permitir a execução passo a passo, o programa PIC deve ser pausado - clicando em <guimenuitem
+>Interromper</guimenuitem
+> no menu <guimenu
+>Depurar</guimenu
+>, ou clicando no botão de pausa no componente PIC.</para>
+		
+		<para
+>No modo passo a passo, uma seta verde na margem do documento de texto indica a próxima linha a ser executada (familiar aos usuários do <application
+>KDevelop</application
+>). Pode ser útil ativar a borda do ícone através do menu <guimenu
+>Exibir</guimenu
+> (ela pode ser ativada permanentemente através da caixa de diálogo <guilabel
+>Configurações do editor</guilabel
+>).</para>
+		
+		<para
+>Existem três tipos de passos:</para>
+		
+		<itemizedlist>
+				<listitem
+><para
+><guimenuitem
+>Passo</guimenuitem
+> - Isso executa a instrução atual. A seta verde é movida para a próxima linha a ser executada.</para
+></listitem>
+				<listitem
+><para
+><guimenuitem
+>Passo sobre</guimenuitem
+> - Se a próxima instrução a ser executada for uma chamada, ou similar, então isso "passará por cima" da chamada, retornando ao modo de execução passo a passo assim que a chamada for concluída. Caso contrário, passar por cima de uma instrução comporta-se de forma idêntica a executar passo a passo. Tecnicamente falando, o nível inicial da pilha é registrado e a execução do programa é pausada assim que o nível da pilha retorna ao seu nível inicial.</para
+></listitem>
+				<listitem
+><para
+><guimenuitem
+>Passo fora</guimenuitem
+> - Se a execução atual estiver dentro de uma chamada, ou similar, então isso aguardará até que a chamada retorne. Similarmente a pular para o próximo nível, isso é equivalente a esperar até que o nível da pilha retorne para um nível a menos que o nível inicial, se o nível inicial for maior que zero.</para
+></listitem>
+		</itemizedlist>
+		
+		<para
+>Os pontos de parada permitem que a execução seja pausada quando o programa PIC atinge uma determinada instrução. Para ativar ou desativar um ponto de parada na linha que contém o cursor, use o menu <guimenu
+>Depurar</guimenu
+> ou clique na borda do ícone do documento de texto.</para>
+		
+		<para
+>A barra lateral <guilabel
+>Visualizador de símbolos</guilabel
+> à direita mostra os valores dos registros de função especial. Para descobrir o valor de uma variável nos registros de propósito geral, você pode passar o mouse sobre o nome da variável em uma instrução que opera nesse registro. Observe que a seleção de base no <guilabel
+>Visualizador de símbolos</guilabel
+> também controla como o valor é exibido ao passar o mouse sobre uma variável.</para>
+	</sect1>
+	
+</chapter>

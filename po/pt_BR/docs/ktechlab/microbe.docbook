@@ -1,0 +1,610 @@
+<!-- kate: tab-width 2; indent-mode xml; -->
+<chapter id="microbe">
+<title
+>&microbe;</title>
+<sect1>
+	<title
+>Introdução e sintaxe geral</title>
+	<para
+><application
+>Microbe</application
+> compila programas escritos na linguagem personalizada para PICs, como um programa complementar ao &ktechlab;. A sintaxe foi projetada para se adequar a um programa &flowcode;. A sintaxe para executar <command
+>microbe</command
+> a partir da linha de comando é: <programlisting
+>microbe [options] [input.microbe] [output.asm]</programlisting
+> onde as opções são: </para>
+		<itemizedlist>
+			<listitem
+><para
+><function
+>--show-source</function
+> - Coloca cada linha do código-fonte como um comentário na saída de montagem antes das próprias instruções de montagem para essa linha.</para
+></listitem>
+			<listitem
+><para
+><function
+>--no-optimize</function
+> - Impede a otimização das instruções geradas a partir do código-fonte. A otimização geralmente é segura, portanto, esta opção é usada principalmente para depuração.</para
+></listitem>
+		</itemizedlist>
+		
+	<para
+>O arquivo de entrada .microbe deve identificar o PIC alvo inserindo o nome do PIC no início do arquivo .microbe; &eg;, o nome de um PIC16F84 é "P16F84". <example
+><title
+>Programa &microbe; simples e completo</title>
+			<programlisting role="correct"
+>P16F84
+
+a = 0
+repeat
+{
+        PORTA = a
+        a = a + 1
+}
+until a == 5
+
+end</programlisting>
+			</example>
+		</para>
+
+	<sect2 id="namingconventions">
+		<title
+>Convenções de nomenclatura</title>
+		<para
+>As seguintes regras aplicam-se aos nomes e rótulos das variáveis: <itemizedlist>
+				<listitem
+><para
+>Eles só podem conter caracteres alfanuméricos [a..z][A..Z][0..9] e o sublinhado "_".</para
+></listitem>
+				<listitem
+><para
+>Eles diferenciam maiúsculas de minúsculas.</para
+></listitem>
+				<listitem
+><para
+>Eles não podem começar com um número.</para
+></listitem>
+				<listitem
+><para
+>Eles não devem começar com <quote
+>__</quote
+> (sublinhado duplo), pois isso é reservado para uso pelo compilador.</para
+></listitem>
+			</itemizedlist>
+		</para>
+	</sect2>
+
+	<sect2 id="bracingconventions">
+		<title
+>Convenções do uso de chaves</title>
+		<para
+>As chaves, {}, indicam o início e o fim de um bloco de código. Elas podem aparecer em qualquer lugar antes do início e depois do fim do bloco de código. Exemplos de blocos de código aceitáveis: <programlisting role="correct"
+>statement1 {
+        algum código
+}</programlisting>
+		<programlisting role="correct"
+>statement2 {
+        outro código }</programlisting>
+		
+		<programlisting role="correct"
+>statement3
+{
+        outro código
+}</programlisting>
+		
+		<programlisting role="correct"
+>statement5 {
+        bloco de código
+} statement6</programlisting>
+			</para>
+		</sect2>
+		<sect2 id="commenting">
+			<title
+>Comentando</title>
+			<para
+>Comentar é semelhante a C. // comenta o resto da linha. /* e */ denotam um comentário de várias linhas. <programlisting role="correct"
+>// Isto é um comentário
+x = 2 
+/* E isto é um
+comentário em várias linhas */</programlisting>
+		</para>
+	</sect2>
+
+	<sect2 id="structure">
+		<title
+>Estrutura do programa</title>
+		<para
+>O ID PIC deve ser inserido no início do programa. O fim do programa principal é indicado por <quote
+>end</quote
+>. As sub-rotinas devem ser colocadas após <quote
+>end</quote
+>. </para>
+	</sect2>
+
+	<sect2 id="subroutines">
+		<title
+>Sub-rotinas</title>
+		<para
+>Uma sub-rotina pode ser chamada de qualquer lugar no código. Sintaxe: </para>
+		<programlisting role="correct"
+>sub SubNome
+{
+        // Código...
+}</programlisting>
+<para
+>A sub-rotina é chamada com <quote
+>call <replaceable
+>SubNome</replaceable
+></quote
+>.</para>
+	</sect2>
+</sect1>
+
+<sect1 id="languagereference">
+	<title
+>Referência da linguagem &microbe;</title>
+	<sect2 id="if">
+		<title
+>if</title>
+		<para
+>Ramificação condicional. Sintaxe: <programlisting role="correct"
+>if [expressão] then [declaração]</programlisting
+> ou <programlisting role="correct">
+if [expressão] then
+{
+        [bloco de declarações]
+}</programlisting
+> Da mesma forma para else: <programlisting role="correct"
+>else [declaração]</programlisting
+> ou <programlisting role="correct"
+>else
+{
+        [bloco da declaração]
+}</programlisting>
+			</para>
+			
+			<example
+><title
+>if</title>
+			<programlisting role="correct"
+>if porta.0 is high then
+{
+        delay 200
+}
+else
+{
+        delay 300
+}</programlisting>
+		</example>
+	</sect2>
+	
+	<sect2 id="alias">
+		<title
+>alias</title>
+		<para
+>Atribui um nome alternativo (apelido ou alias) a uma string. Sintaxe: <programlisting role="correct"
+>alias [de] [para]</programlisting>
+		</para>
+	</sect2>
+	
+	<sect2 id="repeat">
+		<title
+>repeat</title>
+		<para
+>Executa o bloco de instruções repetidamente até que a expressão seja avaliada como verdadeira. A avaliação da expressão é realizada após o bloco de instruções, portanto, o bloco de instruções sempre será executado pelo menos uma vez. Sintaxe: <programlisting role="correct"
+>repeat
+{
+        [bloco de declaração]
+}
+until [expressão]</programlisting>
+	</para>
+</sect2>
+
+<sect2 id="while">
+<title
+>while</title>
+	<para
+>Semelhante ao repeat, este comando executa o bloco de instruções repetidamente. No entanto, a expressão é avaliada antes da execução, não depois. Portanto, se a expressão for avaliada como falsa na primeira execução, o bloco de instruções não será executado. Sintaxe: <programlisting role="correct"
+>while [expressão]
+{
+        [bloco de declaração]
+}</programlisting>
+	</para>
+</sect2>
+
+
+<sect2 id="goto">
+	<title
+>goto</title>
+	<para
+>Isso faz com que a execução do código continue na próxima instrução após o rótulo especificado. Sintaxe do goto: <programlisting role="correct"
+><function
+>goto</function
+> [nome do rótulo]</programlisting
+> Sintaxe do rótulo: <programlisting role="correct"
+><function
+>nome do rótulo:</function
+></programlisting
+> É frequentemente considerada uma boa prática de programação evitar o uso do goto. O uso de instruções de controle e sub-rotinas resultará em um programa muito mais legível. </para>
+	
+	<example
+><title
+>goto</title>
+	<programlisting role="correct"
+>goto MeuRotulo
+
+...
+
+[MeuRotulo]:
+// O código continuará neste ponto</programlisting>
+		</example>
+	</sect2>
+	
+	<sect2 id="call">
+		<title
+>call</title>
+		<para
+>Chama uma sub-rotina. Sintaxe: <programlisting role="correct"
+><function
+>call</function
+> [SubNome]</programlisting
+> onde <replaceable
+>SubNome</replaceable
+> é o nome da sub-rotina a ser chamada. </para>
+	</sect2>
+	
+	<sect2 id="delay">
+	<title
+>delay</title>
+		<para
+>Isso faz com que a execução do código seja interrompida pelo período de tempo especificado. O intervalo é em milissegundos. Sintaxe: <programlisting role="correct"
+><function
+>delay</function
+> [intervalo]</programlisting>
+		
+		<note
+><para
+>Atualmente, o &microbe; assume que o PIC está operando a uma frequência de 4MHz - &ie;, cada instrução leva 1 microssegundo para ser executada. Se este não for o caso, o intervalo deve ser ajustado proporcionalmente.</para
+></note>
+		</para>
+	</sect2>
+	
+	<sect2 id="sevenseg">
+		<title
+>sevenseg</title>
+		<para
+>Isso é usado para definir o mapeamento de pinos para um display de sete segmentos (cátodo comum) conectado ao PIC. Sintaxe: <programlisting role="correct"
+><function
+>sevenseg</function
+> [nome] [a] [b] [c] [d] [e] [f] [g]</programlisting
+> onde [a]...[g] são os pinos do PIC aos quais os respectivos segmentos do display de sete segmentos estão conectados. Os pinos podem ser escritos como PORTX.N ou RXN. </para>
+		
+		<para
+>Para exibir um número no display de sete segmentos, o mapeamento dos pinos é tratado como uma variável somente de escrita. <example>
+				<title
+>Definindo e enviando dados para um display de sete segmentos</title>
+				<programlisting role="correct"
+>sevenseg seg1 RB0 RB1 RB2 RB3 RB4 RB5 RB6
+seg1 = x + 2</programlisting>
+				</example>
+		</para>
+	</sect2>
+	
+	<sect2 id="keypad">
+		<title
+>keypad</title>
+		<para
+>Isso é usado para definir o mapeamento de pinos para um teclado conectado ao PIC. Sintaxe: <programlisting role="correct"
+><function
+>teclado</function
+> [nome] [linha 1] ... [linha 4] [coluna 1] ... [coluna n]</programlisting
+> onde [linha 1] ... [linha 4] e [coluna 1] ... [coluna n] são os pinos do PIC aos quais as respectivas linhas e colunas do teclado estão conectadas (no momento, o número de linhas não pode ser alterado). Consulte <xref linkend="sevenseg"/> (acima) para obter mais informações sobre mapeamentos de pinos. </para>
+		
+		<para
+>As colunas do teclado devem ser conectadas ao terra através de resistores de 100k. Os pinos das linhas devem ser configurados como saídas e os pinos das colunas como entradas. Uma vez definido, o teclado é tratado como uma variável somente leitura. <example>
+				<title
+>Definindo e lendo a partir de um teclado numérico</title>
+					<programlisting role="correct"
+>keypad keypad1 RB0 RB1 RB2 RB3 RB4 RB5 RB6
+x = keypad1</programlisting>
+			</example>
+		</para>
+			
+		<para
+>Por padrão, os valores retornados para um teclado numérico são: <itemizedlist
+> <listitem
+><para
+>O valor do número se for uma tecla numérica (1 a 3 na linha superior; hexadecimal de A a D na quarta coluna e continuando para cada coluna extra).</para
+></listitem
+> <listitem
+><para
+>253 para a tecla na linha 4, coluna 1.</para
+></listitem
+> <listitem
+><para
+>254 para a tecla na linha 4, coluna 3.</para
+></listitem
+> </itemizedlist
+> Esses valores podem ser redefinidos usando o comando alias, onde o nome da tecla na linha x, coluna y (linhas e colunas começando em 1), é Keypad_x_y. Por exemplo, para atribuir o valor zero à tecla asterisco em um teclado numérico 4x3, o seguinte alias seria usado: <example>
+				<title
+>Atribuir um alias de uma tecla do teclado a um valor</title>
+				<programlisting role="correct"
+>alias Keypad_4_1 0</programlisting>
+			</example>
+		</para>
+	</sect2>
+</sect1>
+
+<sect1 id="picio">
+<title
+>PIC I/O</title>
+	
+	<sect2 id="tristate">
+	<title
+>Direção da porta</title>
+		<para
+>A direção da porta é definida atribuindo um valor a TRIS*, onde * é a letra da porta. Por exemplo: </para>
+		<example
+><title
+>Configurando direções da porta</title>
+		<programlisting role="correct"
+>TRISB = b'01111001'</programlisting>
+		</example>
+		<para
+>O código acima define os pinos RB1, RB2 e RB7 da PORTB como saídas e os demais pinos da PORTB como entradas. Neste exemplo, b'01111001' é uma representação binária do tipo de saída. O 1 à direita representa uma saída em RB0 e o 0 à esquerda representa uma entrada em RB7. </para>
+	</sect2>
+	
+	<sect2 id="ports">
+	<title
+>Porta de E/S</title>
+		<para
+>A porta pode ser tratada como uma variável. Por exemplo: </para>
+		
+		<example
+><title
+>Escrevendo para uma porta</title>
+		<programlisting role="correct"
+>x = PORTA</programlisting>
+		</example>
+		
+		<para
+>O código acima atribui o valor de PORTA à variável x. </para>
+	</sect2>
+	
+	<sect2 id="pins">
+	<title
+>Pino de E/S</title>
+		<para
+>Cada pino em uma porta é obtido prefixando o número do pino com o nome da porta; &eg;, o pino 2 (a partir do pino 0) na PORTA é conhecido como <emphasis
+>PORTA.0</emphasis
+>. A sintaxe para definir o estado de um pino é: <programlisting role="correct"
+>PORTAX.N = <emphasis
+>ESTADO</emphasis
+></programlisting
+> onde <emphasis
+>ESTADO</emphasis
+> pode ser <emphasis
+>high</emphasis
+> ou <emphasis
+>low</emphasis
+>. A sintaxe para testar o estado de um pino é: <programlisting role="correct"
+><function
+>if</function
+> PORTAX.N is <emphasis
+>ESTADO</emphasis
+> <function
+>then</function
+></programlisting
+> Combinando esses exemplos, temos: </para>
+		<example
+><title
+>Configurando e testando o estado de um pino</title>
+		<programlisting role="correct"
+>TRISA = 0
+TRISB = 255
+<function
+>if</function
+> PORTA.3 is <function
+>high</function
+> <function
+>then</function>
+{
+        PORTB.5 = <function
+>low</function>
+}
+<function
+>else</function>
+{
+        PORTB = PORTA + 15
+}</programlisting>
+		</example>
+	</sect2>
+</sect1>
+	
+<sect1 id="variables">
+<title
+>Variáveis</title>
+	<para
+>Todas as variáveis ​​são inteiros sem sinal de 8 bits, resultando em um intervalo de 0 a 255. <application
+>&microbe;</application
+> suporta as operações unárias típicas (atuando em uma variável) e operações binárias (atuando em duas variáveis) que são suportadas pelo PIC. Além disso, &microbe; também suporta divisão e multiplicação. </para>
+	<sect2 id="unary">
+	<title
+>Operações unárias</title>
+		<para>
+		<itemizedlist>
+		<listitem
+><para
+><emphasis
+>rotateleft x</emphasis
+> - Rotaciona a variável x para a esquerda por transposição.</para
+></listitem>
+		<listitem
+><para
+><emphasis
+>rotateright x</emphasis
+> - Rotaciona a variável x para a direita por transposição.</para
+></listitem>
+		<listitem
+><para
+><emphasis
+>increment x</emphasis
+> - Incrementa a variável x. Se x tiver um valor de 255, então x retorna a 0.</para
+></listitem>
+		<listitem
+><para
+><emphasis
+>decrement x</emphasis
+> - Decrementa a variável x. Se x tiver um valor de 0, então x retorna ao valor 255.</para
+></listitem>
+		</itemizedlist>
+		</para>
+	</sect2>
+	
+	<sect2 id="arithmetic">
+	<title
+>Aritmética</title>
+		<para
+>Operações suportadas: <itemizedlist>
+		<listitem
+><para
+><emphasis
+>Adição:</emphasis
+> x + y</para
+></listitem>
+		<listitem
+><para
+><emphasis
+>Subtração:</emphasis
+> x - y</para
+></listitem>
+		<listitem
+><para
+><emphasis
+>Multiplicação:</emphasis
+> x * y</para
+></listitem>
+		<listitem
+><para
+><emphasis
+>Divisão:</emphasis
+> x / y</para
+></listitem>
+		<listitem
+><para
+><emphasis
+>XOR binário:</emphasis
+> x XOR y</para
+></listitem>
+		<listitem
+><para
+><emphasis
+>E binário:</emphasis
+> x AND y</para
+></listitem>
+		<listitem
+><para
+><emphasis
+>OU binário:</emphasis
+> x OR y</para
+></listitem>
+		</itemizedlist>
+		</para>
+	</sect2>
+	
+	<sect2 id="comparison">
+	<title
+>Comparação</title>
+	<para
+>Operações suportadas: </para>
+	<itemizedlist>
+	<listitem
+><para
+><emphasis
+>Igual a:</emphasis
+> x == y</para
+></listitem>
+	<listitem
+><para
+><emphasis
+>Diferente:</emphasis
+> x != y</para
+></listitem>
+	<listitem
+><para
+><emphasis
+>É maior que:</emphasis
+> x 
+> y</para
+></listitem>
+	<listitem
+><para
+><emphasis
+>É menor que:</emphasis
+> x &lt; y</para
+></listitem>
+	<listitem
+><para
+><emphasis
+>É maior que ou igual a:</emphasis
+> x &gt;= y</para
+></listitem>
+	<listitem
+><para
+><emphasis
+>É menor que ou igual a:</emphasis
+> x &lt;= y</para
+></listitem>
+	</itemizedlist>
+	
+	<para
+>Por exemplo: </para>
+	<example
+><title
+>Comparação</title>
+	<programlisting role="correct"
+><function
+>if</function
+> PORTA 
+>= 5 <function
+>then</function>
+{
+        ...
+}</programlisting>
+	</example>
+	</sect2>
+</sect1>
+
+<!--
+<sect1 id="interrupts">
+<title
+>Interrupts</title>
+	<para>
+	There are several types of events, and some of these take an optional parameter making
+	the condition under which the routine is called more specific.
+	<itemizedlist>
+	<listitem
+><para
+><emphasis
+>change &lt;pin name&gt;</emphasis>
+		 - Occurs when the state of the specified pin changes. Pin name is in the usual syntax of PORTX.n, &eg; <programlisting
+>interrupt change PORTB.4</programlisting
+></para
+></listitem>
+	<listitem
+><para
+><emphasis
+>timer</emphasis
+> - ///TODO</para
+></listitem>
+	<listitem
+><para
+><emphasis
+>external</emphasis
+> - ///TODO</para
+></listitem>
+	</itemizedlist>
+	</para>
+</sect1>
+-->
+</chapter>
