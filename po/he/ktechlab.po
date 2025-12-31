@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:54+0000\n"
-"PO-Revision-Date: 2025-12-07 14:18+0200\n"
+"PO-Revision-Date: 2025-12-30 10:14+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 25.12.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -886,7 +886,7 @@ msgstr "ג׳ון מאיירס"
 #: src/core/main.cpp:46
 #, kde-format
 msgid "Ali Akcaagac"
-msgstr ""
+msgstr "עלי אקצ׳אאץ׳"
 
 #: src/core/main.cpp:46
 #, kde-format
@@ -2199,12 +2199,12 @@ msgstr "טקסט כפתור"
 #: src/electronics/components/pushswitch.cpp:45
 #, kde-format
 msgid "Bounce"
-msgstr ""
+msgstr "ניתור"
 
 #: src/electronics/components/pushswitch.cpp:50
 #, kde-format
 msgid "Bounce Period"
-msgstr ""
+msgstr "הפרש בין ניתורים"
 
 #: src/electronics/components/pushswitch.cpp:113
 #, kde-format
@@ -2237,7 +2237,7 @@ msgstr "נגד"
 #: src/electronics/components/resistordip.cpp:32
 #, kde-format
 msgid "Resistor DIP"
-msgstr ""
+msgstr "מערך נגדים (DIP)"
 
 #: src/electronics/components/resistordip.cpp:45 src/flowparts/count.cpp:26
 #: src/flowparts/count.cpp:32
@@ -2417,7 +2417,7 @@ msgstr "קובץ"
 #: src/electronics/gpsimprocessor.cpp:741
 #, kde-format
 msgid "SFR"
-msgstr ""
+msgstr "אוגרי SFR"
 
 #: src/electronics/gpsimprocessor.cpp:744 src/textdocument.cpp:96
 #, kde-format
@@ -3401,7 +3401,7 @@ msgstr ""
 #: src/gui/itemselector.cpp:441
 #, kde-format
 msgid "Flow Part"
-msgstr ""
+msgstr "רכיב זרימה"
 
 #: src/gui/itemselector.cpp:468
 #, kde-format
@@ -4730,7 +4730,7 @@ msgstr "רכיבים"
 #: src/ktechlab.cpp:204
 #, kde-format
 msgid "Flow Parts"
-msgstr ""
+msgstr "רכיבי זרימה"
 
 #. i18n("Mechanics"), "ktechlab_mechanics", 0, this, SLOT(slotFileNewMechanics()), ac, "newfile_mechanics" ))->plug( p->menu() );
 #. "ktechlab_mechanics" -- for the future
@@ -5159,7 +5159,7 @@ msgstr "טרנזיסטורים"
 #: src/ktechlabui.rc:68
 #, kde-format
 msgid "Opamps"
-msgstr ""
+msgstr "מגברי שרת"
 
 #: src/languages/flowcode.cpp:30
 #, kde-format
