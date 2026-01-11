@@ -1,13 +1,13 @@
 # Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the ktechlab package.
 #
-# SPDX-FileCopyrightText: 2025 Yaron Shahrabani <sh.yaron@gmail.com>
+# SPDX-FileCopyrightText: 2025, 2026 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 09:01+0000\n"
-"PO-Revision-Date: 2025-11-16 15:25+0200\n"
+"PO-Revision-Date: 2026-01-10 15:15+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 25.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -351,6 +351,14 @@ msgid ""
 "connecting the components with an External Connection, selecting the desired "
 "components and clicking on \"Create Subcircuit\" in the right-click menu."
 msgstr ""
+"בניית מעגל מתבצעת על ידי גרירת רכיבים מבורר הרכיבים משמאל. יצירת חיבורים "
+"מתבצעת על ידי גרירת חוט ממחברי הרכיב.<br><br>ההדמיה פועלת כברירת מחדל, אך "
+"ניתן להשהות ולהמשיך אותה מתפריט כלים.<br><br>כדי למחוק חוט, יש לבחור אותו עם "
+"תיבת בחירה וללחוץ על מחיקה (Delete).<br><br>כדי לערוך מאפיינים של רכיב, יש "
+"לבחור אותו (תוך וידוא שלא נבחרו רכיבים מסוג אחר), ולערוך בסרגל הכלים. ניתן "
+"לערוך מאפיינים מתקדמים יותר באמצעות עורך הפריטים משמאל.<br><br>ניתן ליצור תת־"
+"מעגלים על ידי חיבור הרכיבים עם חיבור חיצוני, בחירת הרכיבים הרצויים ולחיצה על "
+"„יצירת תת־מעגל” בתפריט לחיצה ימנית."
 
 #: src/circuitview.cpp:132
 #, kde-format
@@ -479,31 +487,31 @@ msgstr "צורות סימנים לוגיים"
 #: src/core/ktechlab.kcfg:92
 #, kde-format
 msgid "Rising Trigger Threshold"
-msgstr ""
+msgstr "סף הפעלה בעלייה"
 
 #. i18n: ectx: label, entry (LogicFallingTrigger), group (Logic)
 #: src/core/ktechlab.kcfg:96
 #, kde-format
 msgid "Falling Trigger Threshold"
-msgstr ""
+msgstr "סף הפעלה בירידה"
 
 #. i18n: ectx: label, entry (LogicOutputHigh), group (Logic)
 #: src/core/ktechlab.kcfg:100
 #, kde-format
 msgid "Logic Output High"
-msgstr ""
+msgstr "מתח מוצא לוגי גבוה"
 
 #. i18n: ectx: label, entry (LogicOutputHighImpedance), group (Logic)
 #: src/core/ktechlab.kcfg:104
 #, kde-format
 msgid "Logic Output High Impedance"
-msgstr ""
+msgstr "עכבת מוצא לוגי גבוהה"
 
 #. i18n: ectx: label, entry (LogicOutputLowImpedance), group (Logic)
 #: src/core/ktechlab.kcfg:108
 #, kde-format
 msgid "Logic Output Low Impedance"
-msgstr ""
+msgstr "עכבת מוצא לוגי נמוכה"
 
 #. i18n: ectx: label, entry (HexFormat), group (Gpasm)
 #: src/core/ktechlab.kcfg:115
@@ -877,7 +885,7 @@ msgstr "ג׳ון מאיירס"
 #: src/core/main.cpp:46
 #, kde-format
 msgid "Ali Akcaagac"
-msgstr ""
+msgstr "עלי אקצ׳אאץ׳"
 
 #: src/core/main.cpp:46
 #, kde-format
@@ -1205,12 +1213,12 @@ msgstr "טווח קלט"
 #: src/electronics/components/addac.cpp:78
 #, kde-format
 msgid "ADC"
-msgstr ""
+msgstr "ממיר אנלוגי לדיגיטלי (ADC)"
 
 #: src/electronics/components/addac.cpp:161
 #, kde-format
 msgid "DAC"
-msgstr ""
+msgstr "ממיר דיגיטלי לאנלוגי (DAC)"
 
 #: src/electronics/components/bidirled.cpp:29
 #: src/electronics/components/bidirled.cpp:35
@@ -1255,7 +1263,7 @@ msgstr "מונה בינרי"
 #: src/electronics/components/flipflop.cpp:237
 #, kde-format
 msgid "Trigger Edge"
-msgstr ""
+msgstr "דופן הפעלה"
 
 #: src/electronics/components/binarycounter.cpp:69
 #: src/electronics/components/flipflop.cpp:29
@@ -1292,7 +1300,7 @@ msgstr "חיבורים"
 #: src/electronics/components/bussplitter.cpp:34
 #, kde-format
 msgid "Bus Splitter"
-msgstr ""
+msgstr "מפצל אפיק"
 
 #: src/electronics/components/bussplitter.cpp:41
 #, kde-format
@@ -1309,7 +1317,7 @@ msgstr "גודל"
 #: src/electronics/components/voltageregulator.cpp:29
 #, kde-format
 msgid "Passive"
-msgstr ""
+msgstr "סביל"
 
 #: src/electronics/components/capacitor.cpp:26
 #: src/electronics/components/capacitor.cpp:32 src/ktechlab.cpp:677
@@ -1473,7 +1481,7 @@ msgstr "NPN"
 #: src/electronics/components/ecmosfet.cpp:79
 #, kde-format
 msgid "Discrete"
-msgstr ""
+msgstr "בדיד"
 
 #: src/electronics/components/ecbjt.cpp:36
 #, kde-format
@@ -1500,25 +1508,25 @@ msgstr "זרם רוויה"
 #: src/electronics/components/ecmosfet.cpp:136
 #, kde-format
 msgid "Forward Coefficient"
-msgstr ""
+msgstr "מקדם קדמי"
 
 #: src/electronics/components/ecbjt.cpp:69
 #: src/electronics/components/ecmosfet.cpp:143
 #, kde-format
 msgid "Reverse Coefficient"
-msgstr ""
+msgstr "מקדם אחורי"
 
 #: src/electronics/components/ecbjt.cpp:76
 #: src/electronics/components/ecmosfet.cpp:150
 #, kde-format
 msgid "Forward Beta"
-msgstr ""
+msgstr "בטא קדמית"
 
 #: src/electronics/components/ecbjt.cpp:83
 #: src/electronics/components/ecmosfet.cpp:157
 #, kde-format
 msgid "Reverse Beta"
-msgstr ""
+msgstr "בטא אחורית"
 
 #: src/electronics/components/ecclockinput.cpp:41
 #: src/electronics/components/ecclockinput.cpp:47
@@ -1614,17 +1622,17 @@ msgstr ""
 #: src/electronics/components/ecjfet.cpp:43
 #, kde-format
 msgid "p-JFET"
-msgstr ""
+msgstr "p-JFET"
 
 #: src/electronics/components/ecjfet.cpp:55
 #, kde-format
 msgid "N-Channel JFET"
-msgstr ""
+msgstr "JFET ערוץ N"
 
 #: src/electronics/components/ecjfet.cpp:57
 #, kde-format
 msgid "P-Channel JFET"
-msgstr ""
+msgstr "JFET ערוץ P"
 
 #: src/electronics/components/ecjfet.cpp:65
 #, kde-format
@@ -1644,12 +1652,12 @@ msgstr "זרם רוויה"
 #: src/electronics/components/ecjfet.cpp:89
 #, kde-format
 msgid "PN emission coefficient"
-msgstr ""
+msgstr "מקדם פליטה PN"
 
 #: src/electronics/components/ecjfet.cpp:97
 #, kde-format
 msgid "Isr emission coefficient"
-msgstr ""
+msgstr "מקדם פליטה Isr"
 
 #: src/electronics/components/eckeypad.cpp:26
 #: src/electronics/components/eckeypad.cpp:34 src/flowparts/keypad.cpp:26
@@ -1706,22 +1714,22 @@ msgstr "טרנזיסטור MOSFET תעלת p-d"
 #: src/electronics/components/ecmosfet.cpp:92
 #, kde-format
 msgid "N-Channel Enhancement MOSFET"
-msgstr ""
+msgstr "MOSFET ערוץ N העשרה"
 
 #: src/electronics/components/ecmosfet.cpp:97
 #, kde-format
 msgid "P-Channel Enhancement MOSFET"
-msgstr ""
+msgstr "MOSFET ערוץ P העשרה"
 
 #: src/electronics/components/ecmosfet.cpp:104
 #, kde-format
 msgid "N-Channel Depletion MOSFET"
-msgstr ""
+msgstr "MOSFET ערוץ N דלדול"
 
 #: src/electronics/components/ecmosfet.cpp:110
 #, kde-format
 msgid "P-Channel Depletion MOSFET"
-msgstr ""
+msgstr "MOSFET ערוץ P דלדול"
 
 #: src/electronics/components/ecmosfet.cpp:122
 #, kde-format
@@ -1732,7 +1740,7 @@ msgstr "פין גוף"
 #: src/electronics/components/ecopamp.cpp:26
 #, kde-format
 msgid "Op Amp"
-msgstr ""
+msgstr "מגבר שרת"
 
 #: src/electronics/components/ecopamp.cpp:32
 #, kde-format
@@ -2057,7 +2065,7 @@ msgstr "לא ניתן לפתוח את הפתחה %1"
 #: src/electronics/components/piccomponent.cpp:60
 #, kde-format
 msgid "PIC Micro"
-msgstr ""
+msgstr "מיקרו־בקר PIC"
 
 #: src/electronics/components/piccomponent.cpp:63
 #, kde-format
@@ -2127,7 +2135,7 @@ msgstr ""
 #: src/electronics/components/probe.cpp:59
 #, kde-format
 msgid "Scaling"
-msgstr ""
+msgstr "קנה מידה"
 
 #: src/electronics/components/probe.cpp:61
 #, kde-format
@@ -2165,17 +2173,17 @@ msgstr "חיישן זרם"
 #: src/electronics/components/probe.cpp:213
 #, kde-format
 msgid "Logic Probe"
-msgstr ""
+msgstr "חיישן לוגי"
 
 #: src/electronics/components/pushswitch.cpp:30
 #, kde-format
 msgid "Push-to-Break"
-msgstr ""
+msgstr "לחיצה לניתוק"
 
 #: src/electronics/components/pushswitch.cpp:36
 #, kde-format
 msgid "Push to Break"
-msgstr ""
+msgstr "לחיצה לניתוק"
 
 #: src/electronics/components/pushswitch.cpp:42
 #: src/electronics/components/pushswitch.cpp:125
@@ -2190,12 +2198,12 @@ msgstr "טקסט כפתור"
 #: src/electronics/components/pushswitch.cpp:45
 #, kde-format
 msgid "Bounce"
-msgstr ""
+msgstr "ניתור"
 
 #: src/electronics/components/pushswitch.cpp:50
 #, kde-format
 msgid "Bounce Period"
-msgstr ""
+msgstr "הפרש בין ניתורים"
 
 #: src/electronics/components/pushswitch.cpp:113
 #, kde-format
@@ -2228,7 +2236,7 @@ msgstr "נגד"
 #: src/electronics/components/resistordip.cpp:32
 #, kde-format
 msgid "Resistor DIP"
-msgstr ""
+msgstr "מערך נגדים (DIP)"
 
 #: src/electronics/components/resistordip.cpp:45 src/flowparts/count.cpp:26
 #: src/flowparts/count.cpp:32
@@ -2408,7 +2416,7 @@ msgstr "קובץ"
 #: src/electronics/gpsimprocessor.cpp:741
 #, kde-format
 msgid "SFR"
-msgstr ""
+msgstr "אוגרי SFR"
 
 #: src/electronics/gpsimprocessor.cpp:744 src/textdocument.cpp:101
 #, kde-format
@@ -3392,7 +3400,7 @@ msgstr ""
 #: src/gui/itemselector.cpp:440
 #, kde-format
 msgid "Flow Part"
-msgstr ""
+msgstr "רכיב זרימה"
 
 #: src/gui/itemselector.cpp:467
 #, kde-format
@@ -3439,7 +3447,7 @@ msgstr "צורות סימנים לוגיים:"
 #: src/gui/logicwidget.ui:42
 #, kde-format
 msgid "Distinctive"
-msgstr ""
+msgstr "ייחודי"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_LogicSymbolShapes)
 #: src/gui/logicwidget.ui:47
@@ -3587,6 +3595,10 @@ msgid ""
 "and 0 an output.<br><br>The \"State (PORT)\" edit shows the initial high/low "
 "state of the ports; 1 represents a high, and 0 a low."
 msgstr ""
+"כאן ניתן לערוך את ערך הפתחות הראשוני. לכל מספר בינאי, הסדר מימין לשמאל הוא "
+"פינים 0 עד 7.<br><br>עריכת „סוג (TRIS)” מציגה את מצב הקלט/פלט ההתחלתי של "
+"הפתחות: 1 מייצג קלט, ו־0 פלט.<br><br>עריכת „מצב (פתחה)” מציגה את מצב "
+"הגבוה/נמוך הראשוני של הפתחות: 1 מייצג גבוה ו־0 נמוך."
 
 #: src/gui/microsettingsdlg.cpp:75
 #, kde-format
@@ -4149,6 +4161,8 @@ msgid ""
 "Integer (16 bit) and long (32 bit) libraries have been compiled as "
 "reentrant. Note by default these libraries are compiled as non-reentrant."
 msgstr ""
+"ספריות מספר שלם (16 סיביות) וארוך (32 סיביות) הוגדר בתור רב־כניסה. נא לשים "
+"לב שהספריות האלו מהודרות כלא רבות־כניסה."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_int_long_reent)
 #: src/gui/sdccoptionswidget.ui:147
@@ -4246,7 +4260,7 @@ msgstr "השבתת מיטוב משתמרים/אינווריאנטים (‎--noin
 #: src/gui/sdccoptionswidget.ui:254
 #, kde-format
 msgid "Disable loop variable induction (--noinduction)"
-msgstr ""
+msgstr "השבתת הסקה של משתני לולאה (‎--noinduction)"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_no_peep)
 #: src/gui/sdccoptionswidget.ui:264
@@ -4715,7 +4729,7 @@ msgstr "רכיבים"
 #: src/ktechlab.cpp:197
 #, kde-format
 msgid "Flow Parts"
-msgstr ""
+msgstr "רכיבי זרימה"
 
 #. i18n("Mechanics"), "ktechlab_mechanics", 0, this, SLOT(slotFileNewMechanics()), ac, "newfile_mechanics" ))->plug( p->menu() );
 #. "ktechlab_mechanics" -- for the future
@@ -5102,7 +5116,7 @@ msgstr "דוגמאות"
 #: src/ktechlabui.rc:47
 #, kde-format
 msgid "555s"
-msgstr ""
+msgstr "555ים"
 
 #. i18n: ectx: Menu (examples_basic)
 #: src/ktechlabui.rc:50
@@ -5144,7 +5158,7 @@ msgstr "טרנזיסטורים"
 #: src/ktechlabui.rc:68
 #, kde-format
 msgid "Opamps"
-msgstr ""
+msgstr "מגברי שרת"
 
 #: src/languages/flowcode.cpp:30
 #, kde-format
