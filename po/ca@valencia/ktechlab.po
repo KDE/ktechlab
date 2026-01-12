@@ -437,7 +437,7 @@ msgstr "Freqüència d'actualització"
 #: src/core/ktechlab.kcfg:42
 #, kde-format
 msgid "Color of grid lines"
-msgstr "Color de les línies de la graella"
+msgstr "Color de les línies de la quadrícula"
 
 #. i18n: ectx: label, entry (ShowGrid), group (General)
 #: src/core/ktechlab.kcfg:46
@@ -5535,7 +5535,7 @@ msgstr "Voleu eliminar el fitxer de projecte?"
 #: src/textdocument.cpp:85
 #, kde-format
 msgid "Failed to create editor"
-msgstr "No s'ha pogut crear l'editor"
+msgstr "Ha fallat mentre es creava l'editor"
 
 #: src/textdocument.cpp:597
 #, kde-format
