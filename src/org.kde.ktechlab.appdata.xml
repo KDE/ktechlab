@@ -360,6 +360,7 @@
         <p xml:lang="fr">Cette version devrait se compiler et fonctionner sur des systèmes où les bibliothèques « kdelibs4support » sont indisponibles.</p>
         <p xml:lang="it">Questo rilascio dovrebbe compilare e poter essere eseguito nei sistemi in cui le librerie KDELibs4Support non sono disponibili.</p>
         <p xml:lang="nl">Deze uitgave zou moeten compileren en draaien op systemen waar de KDELibs4Support-bibliotheken niet beschikbaar zijn.</p>
+        <p xml:lang="pl">To wydanie powinno budować i uruchamiać się na systemach, gdzie biblioteki KDELibs4Support nie są dostępne.</p>
         <p xml:lang="pt-BR">Esta versão deve compilar e executar em sistemas onde as bibliotecas KDELibs4Support não estão disponíveis.</p>
         <p xml:lang="ru">В этой версии сборка и запуск возможны в системах без библиотек KDELibs4Support.</p>
         <p xml:lang="sl">Ta izdaja bi se morala prevesti in zagnati na sistemih, kjer knjižnice KDELibs4Support niso na voljo.</p>
