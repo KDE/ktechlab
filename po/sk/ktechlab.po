@@ -15,8 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: UTF-8\n"
-"X-Generator: Lokalize 21.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Lokalize 21.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -58,7 +58,7 @@ msgstr "David Saxton"
 #: microbe/main.cpp:55
 #, kde-format
 msgid "George John"
-msgstr ""
+msgstr "George John"
 
 #: microbe/main.cpp:55
 #, kde-format
@@ -76,8 +76,7 @@ msgid "Do not attempt optimization of generated instructions."
 msgstr ""
 
 #: microbe/main.cpp:66
-#, fuzzy, kde-format
-#| msgid "Input Range"
+#, kde-format
 msgid "Input filename"
 msgstr "Vstupný rozsah"
 
@@ -87,14 +86,12 @@ msgid "Output filename"
 msgstr "Výstupný súbor"
 
 #: microbe/microbe.cpp:93
-#, fuzzy, kde-format
-#| msgid "Could not open '%1'"
+#, kde-format
 msgid "Could not open file '%1'\n"
-msgstr "Nemožno otvoriť '%1'"
+msgstr "Nemožno otvoriť '%1'\n"
 
 #: microbe/microbe.cpp:223
-#, fuzzy, kde-format
-#| msgid "Unknown value"
+#, kde-format
 msgid "Unknown statement"
 msgstr "Neznáma hodnota"
 
@@ -159,8 +156,7 @@ msgid "Unknown variable '%1'"
 msgstr "Neznáma premenná '%1'"
 
 #: microbe/microbe.cpp:262
-#, fuzzy, kde-format
-#| msgid "Could not open Circuit file \"%1\""
+#, kde-format
 msgid "Could not open include file '%1'"
 msgstr "Nemožno otvoriť súbor Obvodu \"%1\""
 
@@ -170,8 +166,7 @@ msgid "Division by zero"
 msgstr "Delenie nulou"
 
 #: microbe/microbe.cpp:268
-#, fuzzy, kde-format
-#| msgid "Number Bits"
+#, kde-format
 msgid "Number too big"
 msgstr "Počet bitov"
 
@@ -191,8 +186,7 @@ msgid "'high' or 'low' expected after pin expression '%1'"
 msgstr ""
 
 #: microbe/microbe.cpp:280
-#, fuzzy, kde-format
-#| msgid "The processor for cod file \"%1\" is unrecognized."
+#, kde-format
 msgid "Comparison operator in '%1' is not recognized"
 msgstr "Procesor súboru cod \"%1\" nie je rozpoznaný."
 
@@ -262,20 +256,17 @@ msgid "Variable '%1' is already defined"
 msgstr ""
 
 #: microbe/microbe.cpp:322
-#, fuzzy, kde-format
-#| msgid "Invalid variable value: %1"
+#, kde-format
 msgid "'%1' is not a valid variable name"
 msgstr "Neplatná hodnota premennej: %1"
 
 #: microbe/microbe.cpp:325
-#, fuzzy, kde-format
-#| msgid "Variable Capacitor"
+#, kde-format
 msgid "Variable expected"
 msgstr "Premenný kondenzátor"
 
 #: microbe/microbe.cpp:328
-#, fuzzy, kde-format
-#| msgid "No Item Selected"
+#, kde-format
 msgid "Name expected"
 msgstr "Nič vybraté"
 
@@ -372,8 +363,7 @@ msgstr ""
 "komponentov a kliknutím na \"Vytvoriť subobvod\" v menu pravého tlačidla."
 
 #: src/circuitview.cpp:132
-#, fuzzy, kde-format
-#| msgid "Simulation Running"
+#, kde-format
 msgid "Simulation Initializing"
 msgstr "Simulácia spustená"
 
@@ -395,43 +385,37 @@ msgstr ""
 
 #. i18n: ectx: label, entry (RestoreDocumentsOnStartup), group (General)
 #: src/core/ktechlab.kcfg:14
-#, fuzzy, kde-format
-#| msgid "Restore opened doc&uments on startup"
+#, kde-format
 msgid "Restore Documents on Startup"
 msgstr "Obnoviť otvorené &dokumenty pri štarte"
 
 #. i18n: ectx: label, entry (RaiseItemSelectors), group (General)
 #: src/core/ktechlab.kcfg:18
-#, fuzzy, kde-format
-#| msgid "Raise the &appropriate item selector on creating a new document"
+#, kde-format
 msgid "Raise appropriate Item Selector on document creation"
 msgstr "Pri vytvorení nového dokumentu vyvol&ať príslušnú kartu výberu"
 
 #. i18n: ectx: label, entry (RaiseMessagesLog), group (General)
 #: src/core/ktechlab.kcfg:22
-#, fuzzy, kde-format
-#| msgid "Raise the &Messages log when compiling"
+#, kde-format
 msgid "Raise Messages Log on Compiling"
 msgstr "Otvoriť okno správ pri ko&mpilácii"
 
 #. i18n: ectx: label, entry (ShowVoltageBars), group (General)
 #: src/core/ktechlab.kcfg:26
-#, fuzzy, kde-format
-#| msgid "Voltage Range"
+#, kde-format
 msgid "Show Voltage Bars"
 msgstr "Rozsah napätia"
 
 #. i18n: ectx: label, entry (ShowVoltageColor), group (General)
 #: src/core/ktechlab.kcfg:30
-#, fuzzy, kde-format
-#| msgid "Voltage Range"
+#, kde-format
 msgid "Show Voltage as Color"
 msgstr "Rozsah napätia"
 
 #. i18n: ectx: label, entry (AnimateWires), group (General)
 #: src/core/ktechlab.kcfg:34
-#, fuzzy, kde-format
-#| msgid "Animate wires to show the current or power flow"
+#, kde-format
 msgid "Animate Wires (current or power)"
 msgstr "Animovať vodiče podľa toku napätia alebo prúdu"
 
@@ -455,113 +439,97 @@ msgstr ""
 
 #. i18n: ectx: label, entry (ReuseSameViewForOutput), group (General)
 #: src/core/ktechlab.kcfg:50
-#, fuzzy, kde-format
-#| msgid "Reuse the same output view for code generation"
+#, kde-format
 msgid "Whether the same output should be use for generation of code, etc"
 msgstr "Znova použiť rovnaký výstup pre generovanie kódu"
 
 #. i18n: ectx: label, entry (IndentAsmName), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:57
-#, fuzzy, kde-format
-#| msgid "Instruction Name"
+#, kde-format
 msgid "Indentation of Instruction Names"
 msgstr "Meno inštrukcie"
 
 #. i18n: ectx: label, entry (IndentAsmData), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:61
-#, fuzzy, kde-format
-#| msgid "Instruction Data"
+#, kde-format
 msgid "Indentation of Instruction Data"
 msgstr "Data inštrukcií"
 
 #. i18n: ectx: label, entry (IndentComment), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:65
-#, fuzzy, kde-format
-#| msgid "Instruction Name"
+#, kde-format
 msgid "Indentation of Comments"
 msgstr "Meno inštrukcie"
 
 #. i18n: ectx: label, entry (IndentEqu), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:69
-#, fuzzy, kde-format
-#| msgid "Instruction Data"
+#, kde-format
 msgid "Indentation of 'equ'"
 msgstr "Data inštrukcií"
 
 #. i18n: ectx: label, entry (IndentEquValue), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:73
-#, fuzzy, kde-format
-#| msgid "Instruction Name"
+#, kde-format
 msgid "Indentation of 'equ' Value"
 msgstr "Meno inštrukcie"
 
 #. i18n: ectx: label, entry (AutoFormatMBOutput), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:77
-#, fuzzy, kde-format
-#| msgid "&Automatically format Microbe output"
+#, kde-format
 msgid "Automatically format Microbe output"
 msgstr "&Automaticky formátovať výstup Microbe"
 
 #. i18n: ectx: label, entry (LogicSymbolShapes), group (Logic)
 #: src/core/ktechlab.kcfg:84
-#, fuzzy, kde-format
-#| msgid "Logic Symbol Shapes:"
+#, kde-format
 msgid "Logic Symbol Shapes"
 msgstr "Tvar logických značiek:"
 
 #. i18n: ectx: label, entry (LogicRisingTrigger), group (Logic)
 #: src/core/ktechlab.kcfg:92
-#, fuzzy, kde-format
-#| msgid "Rising Trigger Threshold:"
+#, kde-format
 msgid "Rising Trigger Threshold"
 msgstr "Hodnota hranice zdvihnutia:"
 
 #. i18n: ectx: label, entry (LogicFallingTrigger), group (Logic)
 #: src/core/ktechlab.kcfg:96
-#, fuzzy, kde-format
-#| msgid "Falling Trigger Threshold:"
+#, kde-format
 msgid "Falling Trigger Threshold"
 msgstr "Hodnota hranice zníženia:"
 
 #. i18n: ectx: label, entry (LogicOutputHigh), group (Logic)
 #: src/core/ktechlab.kcfg:100
-#, fuzzy, kde-format
-#| msgid "Logic Output"
+#, kde-format
 msgid "Logic Output High"
 msgstr "Logický výstup"
 
 #. i18n: ectx: label, entry (LogicOutputHighImpedance), group (Logic)
 #: src/core/ktechlab.kcfg:104
-#, fuzzy, kde-format
-#| msgid "Low Output Impedance:"
+#, kde-format
 msgid "Logic Output High Impedance"
 msgstr "Impedancia výstupu (Low):"
 
 #. i18n: ectx: label, entry (LogicOutputLowImpedance), group (Logic)
 #: src/core/ktechlab.kcfg:108
-#, fuzzy, kde-format
-#| msgid "Low Output Impedance:"
+#, kde-format
 msgid "Logic Output Low Impedance"
 msgstr "Impedancia výstupu (Low):"
 
 #. i18n: ectx: label, entry (HexFormat), group (Gpasm)
 #: src/core/ktechlab.kcfg:115
-#, fuzzy, kde-format
-#| msgid "Formatter"
+#, kde-format
 msgid "Hex Format"
 msgstr "Formátovanie"
 
 #. i18n: ectx: label, entry (Radix), group (Gpasm)
 #: src/core/ktechlab.kcfg:125
-#, fuzzy, kde-format
-#| msgid "Radix (-r):"
+#, kde-format
 msgid "Radix"
 msgstr "Základ (-r):"
 
 #. i18n: ectx: label, entry (GpasmWarningLevel), group (Gpasm)
 #: src/core/ktechlab.kcfg:135
-#, fuzzy, kde-format
-#| msgid "Warning level (-w):"
+#, kde-format
 msgid "GpasmWarning Level"
 msgstr "Úroveň upozornení (-w):"
 
@@ -573,8 +541,7 @@ msgstr "Ignorovať veľkosť písmen"
 
 #. i18n: ectx: label, entry (DosFormat), group (Gpasm)
 #: src/core/ktechlab.kcfg:148
-#, fuzzy, kde-format
-#| msgid "Asm Formatting"
+#, kde-format
 msgid "Dos Formatting"
 msgstr "Formátovanie asembléra"
 
@@ -587,22 +554,19 @@ msgstr "&Popisy"
 
 #. i18n: ectx: label, entry (SDCC_nostdlib), group (SDCC)
 #: src/core/ktechlab.kcfg:159
-#, fuzzy, kde-format
-#| msgid "Don't search in the standard librar&y directory (--nostdlib)"
+#, kde-format
 msgid "Do not search in the standard library directory"
 msgstr "Nehľadať v štandardnom adresári knižníc (--nostdlib)"
 
 #. i18n: ectx: label, entry (SDCC_nostdinc), group (SDCC)
 #: src/core/ktechlab.kcfg:163
-#, fuzzy, kde-format
-#| msgid "Don't search in the standard include directory (--nostdinc)"
+#, kde-format
 msgid "Do not search in the standard include directory"
 msgstr "Nehľadať v štandardnom adresári include (--nostdinc)"
 
 #. i18n: ectx: label, entry (SDCC_less_pedantic), group (SDCC)
 #: src/core/ktechlab.kcfg:167
-#, fuzzy, kde-format
-#| msgid "Disable the GCSE optimization (--nogcse)"
+#, kde-format
 msgid "Disable pedantic warnings"
 msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
 
@@ -662,8 +626,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_nogcse), group (SDCC)
 #: src/core/ktechlab.kcfg:209
-#, fuzzy, kde-format
-#| msgid "Disable the GCSE optimization (--nogcse)"
+#, kde-format
 msgid "Disable the GCSE optimization"
 msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
 
@@ -675,8 +638,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_noinvariant), group (SDCC)
 #: src/core/ktechlab.kcfg:217
-#, fuzzy, kde-format
-#| msgid "Disable the GCSE optimization (--nogcse)"
+#, kde-format
 msgid "Disable optimization of invariants"
 msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
 
@@ -688,8 +650,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_no_peep), group (SDCC)
 #: src/core/ktechlab.kcfg:225
-#, fuzzy, kde-format
-#| msgid "Disable the GCSE optimization (--nogcse)"
+#, kde-format
 msgid "Disable peep-hole optimization"
 msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
 
@@ -701,15 +662,13 @@ msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_opt_code_size), group (SDCC)
 #: src/core/ktechlab.kcfg:233
-#, fuzzy, kde-format
-#| msgid "&Optimize for fast code (--opt-code-speed)"
+#, kde-format
 msgid "Optimize for compact code"
 msgstr "&Optimalizovať pre rýchly kód (--opt-code-speed)"
 
 #. i18n: ectx: label, entry (SDCC_opt_code_speed), group (SDCC)
 #: src/core/ktechlab.kcfg:237
-#, fuzzy, kde-format
-#| msgid "&Optimize for fast code (--opt-code-speed)"
+#, kde-format
 msgid "Optimize for fast code"
 msgstr "&Optimalizovať pre rýchly kód (--opt-code-speed)"
 
@@ -727,8 +686,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_nodefaultlibs), group (SDCC)
 #: src/core/ktechlab.kcfg:250
-#, fuzzy, kde-format
-#| msgid "Don't use default libraries (--nodefaultlibs)"
+#, kde-format
 msgid "Do not use default libraries"
 msgstr "Nepoužívať predvolené knižnice (--nodefaultlibs)"
 
@@ -764,8 +722,7 @@ msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_fstack), group (SDCC)
 #: src/core/ktechlab.kcfg:274
-#, fuzzy, kde-format
-#| msgid "Ena&ble stack optimizations (--fstack)"
+#, kde-format
 msgid "Enable stack optimizations"
 msgstr "Zapnúť optimalizácie zásobníka (--fstack)"
 
@@ -839,8 +796,7 @@ msgid "Alan Grimes"
 msgstr "Alan Grimes"
 
 #: src/core/main.cpp:36
-#, fuzzy, kde-format
-#| msgid "Pause Simulation"
+#, kde-format
 msgid "Developer, Simulation"
 msgstr "Prerušiť simuláciu"
 
@@ -870,8 +826,7 @@ msgid "Juan De Vincenzo"
 msgstr ""
 
 #: src/core/main.cpp:39
-#, fuzzy, kde-format
-#| msgid "Port"
+#, kde-format
 msgid "KDE4 Port"
 msgstr "KDE port"
 
@@ -901,15 +856,14 @@ msgid "Former developer, project founder, former maintainer"
 msgstr ""
 
 #: src/core/main.cpp:43
-#, fuzzy, kde-format
-#| msgid "former developer"
+#, kde-format
 msgid "Former developer"
 msgstr "Predošlý vývojár"
 
 #: src/core/main.cpp:44
 #, kde-format
 msgid "Couriousous"
-msgstr ""
+msgstr "Couriousous"
 
 #: src/core/main.cpp:44
 #, kde-format
@@ -1087,7 +1041,7 @@ msgstr "Štýl čiary"
 #: src/drawparts/dpline.cpp:54
 #, kde-format
 msgid "Cap Style"
-msgstr ""
+msgstr "Cap Style"
 
 #: src/drawparts/dpline.cpp:142 src/drawparts/dpline.cpp:148
 #: src/itemview.cpp:124
@@ -1307,7 +1261,7 @@ msgstr "Binárny čítač"
 #: src/electronics/components/flipflop.cpp:237
 #, kde-format
 msgid "Trigger Edge"
-msgstr ""
+msgstr "Trigger Edge"
 
 #: src/electronics/components/binarycounter.cpp:69
 #: src/electronics/components/flipflop.cpp:29
@@ -1344,7 +1298,7 @@ msgstr "Spojenia"
 #: src/electronics/components/bussplitter.cpp:34
 #, kde-format
 msgid "Bus Splitter"
-msgstr ""
+msgstr "Bus Splitter"
 
 #: src/electronics/components/bussplitter.cpp:41
 #, kde-format
@@ -1373,7 +1327,7 @@ msgstr "Kondenzátor"
 #: src/electronics/components/variablecapacitor.cpp:62
 #, kde-format
 msgid "Capacitance"
-msgstr ""
+msgstr "Capacitance"
 
 #: src/electronics/components/demultiplexer.cpp:27
 #: src/electronics/components/demultiplexer.cpp:38
@@ -1413,8 +1367,7 @@ msgid "CCCS"
 msgstr "PRZP"
 
 #: src/electronics/components/dependentsource.cpp:135
-#, fuzzy, kde-format
-#| msgid "Current Controlled Currrent Source"
+#, kde-format
 msgid "Current Controlled Current Source"
 msgstr "Prúdovo riadený zdroj prúdu"
 
@@ -1553,25 +1506,25 @@ msgstr "Saturačný prúd"
 #: src/electronics/components/ecmosfet.cpp:136
 #, kde-format
 msgid "Forward Coefficient"
-msgstr ""
+msgstr "Forward Coefficient"
 
 #: src/electronics/components/ecbjt.cpp:69
 #: src/electronics/components/ecmosfet.cpp:143
 #, kde-format
 msgid "Reverse Coefficient"
-msgstr ""
+msgstr "Reverse Coefficient"
 
 #: src/electronics/components/ecbjt.cpp:76
 #: src/electronics/components/ecmosfet.cpp:150
 #, kde-format
 msgid "Forward Beta"
-msgstr ""
+msgstr "Forward Beta"
 
 #: src/electronics/components/ecbjt.cpp:83
 #: src/electronics/components/ecmosfet.cpp:157
 #, kde-format
 msgid "Reverse Beta"
-msgstr ""
+msgstr "Reverse Beta"
 
 #: src/electronics/components/ecclockinput.cpp:41
 #: src/electronics/components/ecclockinput.cpp:47
@@ -1627,13 +1580,13 @@ msgstr "Dióda"
 #: src/electronics/components/ledbargraphdisplay.cpp:122
 #, kde-format
 msgid "Emission Coefficient"
-msgstr ""
+msgstr "Emission Coefficient"
 
 #: src/electronics/components/ecdiode.cpp:59
 #: src/electronics/components/ledbargraphdisplay.cpp:129
 #, kde-format
 msgid "Breakdown Voltage"
-msgstr ""
+msgstr "Breakdown Voltage"
 
 #: src/electronics/components/ecfixedvoltage.cpp:26
 #: src/electronics/components/ecfixedvoltage.cpp:32
@@ -1687,10 +1640,10 @@ msgstr "Hraničné napätie"
 #: src/electronics/components/ecjfet.cpp:73
 #, kde-format
 msgid "Transcondutance"
-msgstr ""
+msgstr "Transcondutance"
 
 #: src/electronics/components/ecjfet.cpp:81
-#, fuzzy, kde-format
+#, kde-format
 msgid "Saturation current"
 msgstr "Saturačný prúd"
 
@@ -1780,7 +1733,7 @@ msgstr ""
 #, kde-format
 msgctxt "mosfet body/bulk pin"
 msgid "Body Pin"
-msgstr ""
+msgstr "Body Pin"
 
 #: src/electronics/components/ecopamp.cpp:26
 #, kde-format
@@ -2148,8 +2101,7 @@ msgid "Assembly Code"
 msgstr "Kód asembléra"
 
 #: src/electronics/components/piccomponent.cpp:91
-#, fuzzy, kde-format
-#| msgid "Code"
+#, kde-format
 msgid "C Code"
 msgstr "Kód"
 
@@ -2253,7 +2205,7 @@ msgstr "Odskok"
 #: src/electronics/components/pushswitch.cpp:50
 #, kde-format
 msgid "Bounce Period"
-msgstr ""
+msgstr "Bounce Period"
 
 #: src/electronics/components/pushswitch.cpp:113
 #, kde-format
@@ -2444,8 +2396,7 @@ msgid "Unreadable File"
 msgstr "Nečitateľný súbor"
 
 #: src/electronics/gpsimprocessor.cpp:158
-#, fuzzy, kde-format
-#| msgid "An error occured with the cod file \"%1\"."
+#, kde-format
 msgid "An error occurred with the cod file \"%1\"."
 msgstr "Nastala chyba v súbore .cod \"%1\"."
 
@@ -2505,8 +2456,7 @@ msgid "Hex Code Output"
 msgstr "Hexa výstupný kód"
 
 #: src/flowcodedocument.cpp:220 src/textdocument.cpp:477
-#, fuzzy, kde-format
-#| msgid "Hex Code Output"
+#, kde-format
 msgid "Hex Code"
 msgstr "Hexa výstupný kód"
 
@@ -2945,8 +2895,7 @@ msgstr "Komentáre"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel10)
 #: src/gui/asmformattingwidget.ui:68
-#, fuzzy, kde-format
-#| msgid "'equ' Value"
+#, kde-format
 msgid "'equ'"
 msgstr "Hodnota 'equ'"
 
@@ -3074,10 +3023,7 @@ msgstr "Zobraziť m&riežku"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, textLabel1)
 #: src/gui/generaloptionswidget.ui:85
-#, fuzzy, kde-format
-#| msgid ""
-#| "Maximum undo steps for work area. This doesn't apply to text documents - "
-#| "that is configurable seperately under Configure Editor."
+#, kde-format
 msgid ""
 "Maximum undo steps for work area. This does not apply to text documents - "
 "that is configurable separately under Configure Editor."
@@ -3176,8 +3122,7 @@ msgstr "Úroveň upozornení (-w):"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
 #: src/gui/gpasmsettingswidget.ui:52 src/gui/linkeroptionswidget.ui:69
-#, fuzzy, kde-format
-#| msgid "Formatter"
+#, kde-format
 msgid "Hex Format (-a):"
 msgstr "Formátovanie"
 
@@ -3211,8 +3156,7 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DosFormat)
 #: src/gui/gpasmsettingswidget.ui:75
-#, fuzzy, kde-format
-#| msgid "Generate DOS-formated hex file (-&n)"
+#, kde-format
 msgid "Generate DOS-formatted hex file (-&n)"
 msgstr "Generovať hexa súbor vo formáte DOS (-&n)"
 
@@ -3337,14 +3281,12 @@ msgid "File name:"
 msgstr "Názov súboru:"
 
 #: src/gui/imageexportdlg.cpp:57
-#, fuzzy, kde-format
-#| msgid "Crop image"
+#, kde-format
 msgid "Crop image:"
 msgstr "Orezať obrázok"
 
 #: src/gui/imageexportdlg.cpp:64
-#, fuzzy, kde-format
-#| msgid "Image Export"
+#, kde-format
 msgid "Export"
 msgstr "Exportovať"
 
@@ -3483,15 +3425,13 @@ msgstr "Adresár knižnice (-I):"
 
 #. i18n: ectx: property (text), widget (QCheckBox, m_pOutputMap)
 #: src/gui/linkeroptionswidget.ui:79
-#, fuzzy, kde-format
-#| msgid "Output filename"
+#, kde-format
 msgid "&Output a map file (-m)"
 msgstr "Výstupný súbor"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel8)
 #: src/gui/linkeroptionswidget.ui:86
-#, fuzzy, kde-format
-#| msgid "Linker Options"
+#, kde-format
 msgid "Linker Script (-s):"
 msgstr "Voľby linkera"
 
@@ -3686,14 +3626,12 @@ msgid "State (PORT register):"
 msgstr "Stav (PORT register):"
 
 #: src/gui/microsettingsdlg.cpp:132
-#, fuzzy, kde-format
-#| msgid "Variable"
+#, kde-format
 msgid "Variable name"
 msgstr "Meno premennej"
 
 #: src/gui/microsettingsdlg.cpp:133
-#, fuzzy, kde-format
-#| msgid "Variable"
+#, kde-format
 msgid "Variable value"
 msgstr "Premenná"
 
@@ -3868,8 +3806,7 @@ msgstr "%1 snímkov/s"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/oscilloscopewidget.ui:91
-#, fuzzy, kde-format
-#| msgid "Zoom"
+#, kde-format
 msgid "Time Zoom"
 msgstr "Lupa"
 
@@ -3881,8 +3818,7 @@ msgstr "Zobrazovať priamo"
 
 #. i18n: ectx: property (text), widget (QRadioButton, saveFileCheck)
 #: src/gui/outputmethodwidget.ui:54
-#, fuzzy, kde-format
-#| msgid "Save to file"
+#, kde-format
 msgid "Sa&ve to file"
 msgstr "Uložiť do súboru"
 
@@ -4135,15 +4071,13 @@ msgstr "Všeobec&né"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nostdlib)
 #: src/gui/sdccoptionswidget.ui:42
-#, fuzzy, kde-format
-#| msgid "Don't search in the standard librar&y directory (--nostdlib)"
+#, kde-format
 msgid "Do not search in the standard librar&y directory (--nostdlib)"
 msgstr "Nehľadať v štandardnom adresári knižníc (--nostdlib)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nostdinc)
 #: src/gui/sdccoptionswidget.ui:49
-#, fuzzy, kde-format
-#| msgid "Don't search in the standard include directory (--nostdinc)"
+#, kde-format
 msgid "Do not search in the standard include directory (--nostdinc)"
 msgstr "Nehľadať v štandardnom adresári include (--nostdinc)"
 
@@ -4207,12 +4141,7 @@ msgstr "Generov&anie kódu"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_stack_auto)
 #: src/gui/sdccoptionswidget.ui:131
-#, fuzzy, kde-format
-#| msgid ""
-#| "All functions in the source file will be compiled as reentrant, i.e. the "
-#| "parameters and local variables will be allocated on the stack. If this "
-#| "option is used all source files in the project should be compiled with "
-#| "this option. It automatically implies -int-long-reent and -float-reent."
+#, kde-format
 msgid ""
 "All functions in the source file will be compiled as reentrant, i.e. the "
 "parameters and local variables will be allocated on the stack. If this "
@@ -4318,15 +4247,13 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nolabelopt)
 #: src/gui/sdccoptionswidget.ui:237
-#, fuzzy, kde-format
-#| msgid "Disable the GCSE optimization (--nogcse)"
+#, kde-format
 msgid "Disable label optimi&zation (--nolabelopt)"
 msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_noinvariant)
 #: src/gui/sdccoptionswidget.ui:244
-#, fuzzy, kde-format
-#| msgid "Disable the GCSE optimization (--nogcse)"
+#, kde-format
 msgid "Disable optimization of invariants (--noinvariant)"
 msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
 
@@ -4338,15 +4265,13 @@ msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_no_peep)
 #: src/gui/sdccoptionswidget.ui:264
-#, fuzzy, kde-format
-#| msgid "Disable the GCSE optimization (--nogcse)"
+#, kde-format
 msgid "Disable peep-hole optimization."
 msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_no_peep)
 #: src/gui/sdccoptionswidget.ui:267
-#, fuzzy, kde-format
-#| msgid "Disable the GCSE optimization (--nogcse)"
+#, kde-format
 msgid "Disable peep-hole optimization (--&no-peep)"
 msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
 
@@ -4358,8 +4283,7 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_noloopreverse)
 #: src/gui/sdccoptionswidget.ui:277
-#, fuzzy, kde-format
-#| msgid "Disable the GCSE optimization (--nogcse)"
+#, kde-format
 msgid "Disable loop reverse optimization (--noloopreverse)"
 msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
 
@@ -4373,8 +4297,7 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_opt_code_size)
 #: src/gui/sdccoptionswidget.ui:290
-#, fuzzy, kde-format
-#| msgid "&Optimize for fast code (--opt-code-speed)"
+#, kde-format
 msgid "Opti&mize for compact code (--opt-code-size)"
 msgstr "&Optimalizovať pre rýchly kód (--opt-code-speed)"
 
@@ -4422,8 +4345,7 @@ msgstr "Špecifické pre PIC&16"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nodefaultlibs)
 #: src/gui/sdccoptionswidget.ui:347
-#, fuzzy, kde-format
-#| msgid "Don't use default libraries (--nodefaultlibs)"
+#, kde-format
 msgid "Do not use default libraries (--nodefaultlibs)"
 msgstr "Nepoužívať predvolené knižnice (--nodefaultlibs)"
 
@@ -4642,10 +4564,7 @@ msgid "Could not open %1 for reading"
 msgstr "Nemožno otvoriť %1 na čítanie"
 
 #: src/itemdocumentdata.cpp:133 src/projectmanager.cpp:764
-#, fuzzy, kde-format
-#| msgid ""
-#| "Couldn't parse xml:\n"
-#| "%1"
+#, kde-format
 msgid ""
 "Could not parse XML:\n"
 "%1"
@@ -4664,10 +4583,7 @@ msgid "Saving File"
 msgstr "Uloženie súboru"
 
 #: src/itemlibrary.cpp:134
-#, fuzzy, kde-format
-#| msgid ""
-#| "This help item does not yet exist for the %1 language. Help out with "
-#| "KTechlab by creating one via the \"Edit\" button!"
+#, kde-format
 msgid ""
 "This help item does not yet exist for the %1 language. Help out with "
 "KTechlab by creating one via the \"Edit\" button."
@@ -4989,14 +4905,12 @@ msgid "Square Wave"
 msgstr "Štvorcová vlna"
 
 #: src/ktechlab.cpp:675
-#, fuzzy, kde-format
-#| msgid "Rotary Switch"
+#, kde-format
 msgid "2-Way Switch"
 msgstr "Rotačný prepínač"
 
 #: src/ktechlab.cpp:676
-#, fuzzy, kde-format
-#| msgid "Rotary Switch"
+#, kde-format
 msgid "3-Way Switch"
 msgstr "Rotačný prepínač"
 
@@ -5053,7 +4967,7 @@ msgstr "OR"
 #: src/ktechlab.cpp:689
 #, kde-format
 msgid "Decoupler"
-msgstr ""
+msgstr "Decoupler"
 
 #: src/ktechlab.cpp:690
 #, kde-format
@@ -5066,8 +4980,7 @@ msgid "Noninverting Amplifier"
 msgstr "Neinvertujúci zosilňovač"
 
 #: src/ktechlab.cpp:692
-#, fuzzy, kde-format
-#| msgid "Inverting Amplifier"
+#, kde-format
 msgid "Instrumentation Amplifier"
 msgstr "Invertujúci zosilňovač"
 
@@ -5077,8 +4990,7 @@ msgid "Astable Multivibrator"
 msgstr "Astabilný multivibrátor"
 
 #: src/ktechlab.cpp:695
-#, fuzzy, kde-format
-#| msgid "Trigger"
+#, kde-format
 msgid "Schmitt Trigger"
 msgstr "Spúšťač"
 
@@ -5229,8 +5141,7 @@ msgstr "JFET-y"
 
 #. i18n: ectx: Menu (examples_matrix_disp_driver)
 #: src/ktechlabui.rc:59
-#, fuzzy, kde-format
-#| msgid "Matrix Display Driver"
+#, kde-format
 msgid "Matrix Display Drivers"
 msgstr "Ovládač maticového displeja"
 
@@ -5441,20 +5352,17 @@ msgid "Advanced..."
 msgstr "Pokročilé..."
 
 #: src/projectmanager.cpp:411
-#, fuzzy, kde-format
-#| msgid "Don't know how to build \"%1\" (output url is empty)."
+#, kde-format
 msgid "Do not know how to build \"%1\" (output URL is empty)."
 msgstr "Neviem ako vybudovať \"%1\" (výstupná URL je prázdna)."
 
 #: src/projectmanager.cpp:420
-#, fuzzy, kde-format
-#| msgid "Don't know how to build \"%1\" (library does not exist in project)."
+#, kde-format
 msgid "Do not know how to build \"%1\" (library does not exist in project)."
 msgstr "Neviem ako vybudovať \"%1\" (knižnica v projekte neexistuje)."
 
 #: src/projectmanager.cpp:446
-#, fuzzy, kde-format
-#| msgid "Don't know how to build \"%1\" (unknown output type)."
+#, kde-format
 msgid "Do not know how to build \"%1\" (unknown output type)."
 msgstr "Neviem ako vybudovať \"%1\" (neznámy typ výstupu)."
 
@@ -5602,17 +5510,14 @@ msgstr "Otvoriť dokument"
 #~ msgstr "Otvoriť nedávne"
 
 #, fuzzy
-#~| msgid "Image"
 #~ msgid "PNG Image"
 #~ msgstr "Obrázok"
 
 #, fuzzy
-#~| msgid "Image"
 #~ msgid "BMP Image"
 #~ msgstr "Obrázok"
 
 #, fuzzy
-#~| msgid "Image"
 #~ msgid "SVG Image"
 #~ msgstr "Obrázok"
 
@@ -5656,7 +5561,6 @@ msgstr "Otvoriť dokument"
 #~ msgstr "Nastavenia gpasm"
 
 #, fuzzy
-#~| msgid "Gpasm Settings"
 #~ msgid "Gplink Settings"
 #~ msgstr "Nastavenia gpasm"
 
