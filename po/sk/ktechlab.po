@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: sk\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 09:01+0000\n"
-"PO-Revision-Date: 2022-04-09 15:20+0200\n"
+"PO-Revision-Date: 2026-04-10 12:00+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
 "Language: sk\n"
@@ -38,12 +38,12 @@ msgstr "Microbe"
 #: microbe/main.cpp:48
 #, kde-format
 msgid "The Microbe Compiler"
-msgstr ""
+msgstr "Kompilátor Microbe"
 
 #: microbe/main.cpp:50
 #, kde-format
 msgid "(C) 2004-2005, The KTechlab developers"
-msgstr ""
+msgstr "(C) 2004-2005, vývojári KTechlab"
 
 #: microbe/main.cpp:53 src/core/main.cpp:43
 #, kde-format
@@ -63,17 +63,17 @@ msgstr "George John"
 #: microbe/main.cpp:55
 #, kde-format
 msgid "Added pic 16f877,16f627 and 16f628"
-msgstr ""
+msgstr "Pridané pic 16f877, 16f627 a 16f628"
 
 #: microbe/main.cpp:62
 #, kde-format
 msgid "Show source code lines in assembly output"
-msgstr ""
+msgstr "Zobraziť riadky zdrojového kódu vo výstupe assemblera"
 
 #: microbe/main.cpp:64
 #, kde-format
 msgid "Do not attempt optimization of generated instructions."
-msgstr ""
+msgstr "Nepokúšať sa o optimalizáciu generovaných inštrukcií."
 
 #: microbe/main.cpp:66
 #, kde-format
@@ -98,52 +98,52 @@ msgstr "Neznáma hodnota"
 #: microbe/microbe.cpp:226
 #, kde-format
 msgid "Port '%1' is not supported by target PIC"
-msgstr ""
+msgstr "Port '%1' nie je podporovaný cieľovým PIC"
 
 #: microbe/microbe.cpp:229
 #, kde-format
 msgid "Pin identifier was not followed by '='"
-msgstr ""
+msgstr "Za identifikátorom pinu nenasledovalo '='"
 
 #: microbe/microbe.cpp:232
 #, kde-format
 msgid "Pin state can only be 'high' or 'low'"
-msgstr ""
+msgstr "Stav pinu môže byť iba 'high' alebo 'low'"
 
 #: microbe/microbe.cpp:235
 #, kde-format
 msgid "Invalid token '%1'. Port identifier should be followed by '='"
-msgstr ""
+msgstr "Neplatný token '%1'. Za identifikátorom portu by malo nasledovať '='"
 
 #: microbe/microbe.cpp:238
 #, kde-format
 msgid "Unexpected statement before '{'"
-msgstr ""
+msgstr "Neočakávaný príkaz pred '{'"
 
 #: microbe/microbe.cpp:241
 #, kde-format
 msgid "Mismatched brackets in expression '%1'"
-msgstr ""
+msgstr "Nezodpovedajúce zátvorky vo výraze '%1'"
 
 #: microbe/microbe.cpp:244
 #, kde-format
 msgid "Invalid '=' found in expression"
-msgstr ""
+msgstr "Neplatné '=' nájdené vo výraze"
 
 #: microbe/microbe.cpp:247
 #, kde-format
 msgid "Reserved keyword '%1' cannot be a variable name."
-msgstr ""
+msgstr "Rezervované kľúčové slovo '%1' nemôže byť názvom premennej."
 
 #: microbe/microbe.cpp:250
 #, kde-format
 msgid "Nothing between operators"
-msgstr ""
+msgstr "Nič medzi operátormi"
 
 #: microbe/microbe.cpp:253
 #, kde-format
 msgid "Missing operator or space in operand"
-msgstr ""
+msgstr "Chýbajúci operátor alebo medzera v operande"
 
 #: microbe/microbe.cpp:257
 #, kde-format
@@ -173,17 +173,17 @@ msgstr "Počet bitov"
 #: microbe/microbe.cpp:271
 #, kde-format
 msgid "Step can only be a constant expression"
-msgstr ""
+msgstr "Krok môže byť iba konštantný výraz"
 
 #: microbe/microbe.cpp:274
 #, kde-format
 msgid "Delay must be a positive constant value"
-msgstr ""
+msgstr "Oneskorenie musí byť kladná konštantná hodnota"
 
 #: microbe/microbe.cpp:277
 #, kde-format
 msgid "'high' or 'low' expected after pin expression '%1'"
-msgstr ""
+msgstr "'high' alebo 'low' sa očakáva po výraze pinu '%1'"
 
 #: microbe/microbe.cpp:280
 #, kde-format
@@ -193,22 +193,22 @@ msgstr "Procesor súboru cod \"%1\" nie je rozpoznaný."
 #: microbe/microbe.cpp:283
 #, kde-format
 msgid "Subroutine definition before end of program"
-msgstr ""
+msgstr "Definícia podprogramu pred koncom programu"
 
 #: microbe/microbe.cpp:286
 #, kde-format
 msgid "Interrupt routine definition before end of program"
-msgstr ""
+msgstr "Definícia prerušovacej rutiny pred koncom programu"
 
 #: microbe/microbe.cpp:289
 #, kde-format
 msgid "Label expected"
-msgstr ""
+msgstr "Očakávaný návestie"
 
 #: microbe/microbe.cpp:292
 #, kde-format
 msgid "Extra tokens at end of line"
-msgstr ""
+msgstr "Nadbytočné tokeny na konci riadka"
 
 #: microbe/microbe.cpp:295
 #, kde-format
@@ -218,42 +218,42 @@ msgstr "Očakávané '%1'"
 #: microbe/microbe.cpp:298
 #, kde-format
 msgid "Pin list expected"
-msgstr ""
+msgstr "Očakávaný zoznam pinov"
 
 #: microbe/microbe.cpp:301
 #, kde-format
 msgid "Alias already defined"
-msgstr ""
+msgstr "Alias je už definovaný"
 
 #: microbe/microbe.cpp:304
 #, kde-format
 msgid "Interrupt type not supported by target PIC"
-msgstr ""
+msgstr "Typ prerušenia nie je podporovaný cieľovým PIC"
 
 #: microbe/microbe.cpp:307
 #, kde-format
 msgid "Interrupt already defined"
-msgstr ""
+msgstr "Prerušenie je už definované"
 
 #: microbe/microbe.cpp:310
 #, kde-format
 msgid "Variable '%1' is read only"
-msgstr ""
+msgstr "Premenná '%1' je iba na čítanie"
 
 #: microbe/microbe.cpp:313
 #, kde-format
 msgid "Variable '%1' is write only"
-msgstr ""
+msgstr "Premenná '%1' je iba na zápis"
 
 #: microbe/microbe.cpp:316
 #, kde-format
 msgid "Invalid pin list size"
-msgstr ""
+msgstr "Neplatná veľkosť zoznamu pinov"
 
 #: microbe/microbe.cpp:319
 #, kde-format
 msgid "Variable '%1' is already defined"
-msgstr ""
+msgstr "Premenná '%1' je už definovaná"
 
 #: microbe/microbe.cpp:322
 #, kde-format
@@ -273,12 +273,12 @@ msgstr "Nič vybraté"
 #: microbe/optimizer.cpp:71
 #, kde-format
 msgid "Internal issue: Optimization has not finished in %1 iterations."
-msgstr ""
+msgstr "Interný problém: Optimalizácia sa nedokončila v %1 iteráciách."
 
 #: src/circuitview.cpp:35
 #, kde-format
 msgid "Dump linear equations"
-msgstr ""
+msgstr "Vypísať lineárne rovnice"
 
 #. i18n("0 Degrees"), "", 0, circuitDocument, SLOT(setOrientation0()), ac, "edit_orientation_0" );
 #. ra->setExclusiveGroup("orientation"); // TODO test
@@ -381,7 +381,7 @@ msgstr "Simulácia prerušená"
 #: src/core/ktechlab.kcfg:10
 #, kde-format
 msgid "Maximum number of undo steps"
-msgstr ""
+msgstr "Maximálny počet krokov späť"
 
 #. i18n: ectx: label, entry (RestoreDocumentsOnStartup), group (General)
 #: src/core/ktechlab.kcfg:14
@@ -429,13 +429,13 @@ msgstr "Obnovovacia frekvencia"
 #: src/core/ktechlab.kcfg:42
 #, kde-format
 msgid "Color of grid lines"
-msgstr ""
+msgstr "Farba čiar mriežky"
 
 #. i18n: ectx: label, entry (ShowGrid), group (General)
 #: src/core/ktechlab.kcfg:46
 #, kde-format
 msgid "Whether the grid should be shown."
-msgstr ""
+msgstr "Či sa má mriežka zobrazovať."
 
 #. i18n: ectx: label, entry (ReuseSameViewForOutput), group (General)
 #: src/core/ktechlab.kcfg:50
@@ -574,55 +574,56 @@ msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
 #: src/core/ktechlab.kcfg:171
 #, kde-format
 msgid "Strictly follow the C89 standard"
-msgstr ""
+msgstr "Striktne dodržiavať štandard C89"
 
 #. i18n: ectx: label, entry (SDCC_std_c99), group (SDCC)
 #: src/core/ktechlab.kcfg:175
 #, kde-format
 msgid "Strictly follow the C99 standard"
-msgstr ""
+msgstr "Striktne dodržiavať štandard C99"
 
 #. i18n: ectx: label, entry (SDCC_stack_auto), group (SDCC)
 #: src/core/ktechlab.kcfg:180
 #, kde-format
 msgid "Stack automatic variables"
-msgstr ""
+msgstr "Ukladať automatické premenné na zásobník"
 
 #. i18n: ectx: label, entry (SDCC_int_long_reent), group (SDCC)
 #: src/core/ktechlab.kcfg:184
 #, kde-format
 msgid "Integer libraries have been compiled as reentrant"
-msgstr ""
+msgstr "Celočíselné knižnice boli skompilované ako reentrantné"
 
 #. i18n: ectx: label, entry (SDCC_float_reent), group (SDCC)
 #: src/core/ktechlab.kcfg:188
 #, kde-format
 msgid "Floating point library has been compiled as reentrant"
 msgstr ""
+"Knižnica s pohyblivou rádovou čiarkou bola skompilovaná ako reentrantná"
 
 #. i18n: ectx: label, entry (SDCC_fommit_frame_pointer), group (SDCC)
 #: src/core/ktechlab.kcfg:192
 #, kde-format
 msgid "Leave out the frame pointer"
-msgstr ""
+msgstr "Vynechať ukazovateľ rámca"
 
 #. i18n: ectx: label, entry (SDCC_no_xinit_opt), group (SDCC)
 #: src/core/ktechlab.kcfg:196
 #, kde-format
 msgid "Do not memcpy initialized data from code space to xdata space"
-msgstr ""
+msgstr "Nekopírovať inicializované dáta z priestoru kódu do priestoru xdata"
 
 #. i18n: ectx: label, entry (SDCC_all_callee_saves), group (SDCC)
 #: src/core/ktechlab.kcfg:200
 #, kde-format
 msgid "Callee will always save registers used"
-msgstr ""
+msgstr "Volaná funkcia vždy uloží použité registre"
 
 #. i18n: ectx: label, entry (SDCC_nooverlay), group (SDCC)
 #: src/core/ktechlab.kcfg:205
 #, kde-format
 msgid "Do not overlay parameters and local variables"
-msgstr ""
+msgstr "Neprekrývať parametre a lokálne premenné"
 
 #. i18n: ectx: label, entry (SDCC_nogcse), group (SDCC)
 #: src/core/ktechlab.kcfg:209
@@ -634,7 +635,7 @@ msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
 #: src/core/ktechlab.kcfg:213
 #, kde-format
 msgid "Do not optimize labels"
-msgstr ""
+msgstr "Neoptimalizovať návestia"
 
 #. i18n: ectx: label, entry (SDCC_noinvariant), group (SDCC)
 #: src/core/ktechlab.kcfg:217
@@ -646,7 +647,7 @@ msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
 #: src/core/ktechlab.kcfg:221
 #, kde-format
 msgid "Disable loop variable induction"
-msgstr ""
+msgstr "Zakázať indukciu premennej cyklu"
 
 #. i18n: ectx: label, entry (SDCC_no_peep), group (SDCC)
 #: src/core/ktechlab.kcfg:225
@@ -658,7 +659,7 @@ msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
 #: src/core/ktechlab.kcfg:229
 #, kde-format
 msgid "Do not do loop reversal optimization"
-msgstr ""
+msgstr "Nevykonávať optimalizáciu obrátenia cyklu"
 
 #. i18n: ectx: label, entry (SDCC_opt_code_size), group (SDCC)
 #: src/core/ktechlab.kcfg:233
@@ -676,13 +677,13 @@ msgstr "&Optimalizovať pre rýchly kód (--opt-code-speed)"
 #: src/core/ktechlab.kcfg:241
 #, kde-format
 msgid "Pass inline assembler code through peep hole optimizer"
-msgstr ""
+msgstr "Prepustiť inline kód assemblera cez peephole optimalizátor"
 
 #. i18n: ectx: label, entry (SDCC_nojtbound), group (SDCC)
 #: src/core/ktechlab.kcfg:245
 #, kde-format
 msgid "Do not generate boundary check for jump tables"
-msgstr ""
+msgstr "Negenerovať kontrolu hraníc pre skokové tabuľky"
 
 #. i18n: ectx: label, entry (SDCC_nodefaultlibs), group (SDCC)
 #: src/core/ktechlab.kcfg:250
@@ -694,31 +695,31 @@ msgstr "Nepoužívať predvolené knižnice (--nodefaultlibs)"
 #: src/core/ktechlab.kcfg:254
 #, kde-format
 msgid "Do not generate BANKSEL directives"
-msgstr ""
+msgstr "Negenerovať direktívy BANKSEL"
 
 #. i18n: ectx: label, entry (SDCC_pstack_model_large), group (SDCC)
 #: src/core/ktechlab.kcfg:258
 #, kde-format
 msgid "Use large stack model"
-msgstr ""
+msgstr "Použiť veľký model zásobníka"
 
 #. i18n: ectx: label, entry (SDCC_debug_xtra), group (SDCC)
 #: src/core/ktechlab.kcfg:262
 #, kde-format
 msgid "Show more debug info in assembly output"
-msgstr ""
+msgstr "Zobraziť viac ladiacich informácií vo výstupe assemblera"
 
 #. i18n: ectx: label, entry (SDCC_denable_peeps), group (SDCC)
 #: src/core/ktechlab.kcfg:266
 #, kde-format
 msgid "Explicit enable of peepholes"
-msgstr ""
+msgstr "Explicitné povolenie peephole optimalizácie"
 
 #. i18n: ectx: label, entry (SDCC_calltree), group (SDCC)
 #: src/core/ktechlab.kcfg:270
 #, kde-format
 msgid "Dump call tree in .calltree file"
-msgstr ""
+msgstr "Vypísať strom volaní do súboru .calltree"
 
 #. i18n: ectx: label, entry (SDCC_fstack), group (SDCC)
 #: src/core/ktechlab.kcfg:274
@@ -730,50 +731,52 @@ msgstr "Zapnúť optimalizácie zásobníka (--fstack)"
 #: src/core/ktechlab.kcfg:278
 #, kde-format
 msgid "Try to use conditional BRA instead of GOTO"
-msgstr ""
+msgstr "Pokúsiť sa použiť podmienený BRA namiesto GOTO"
 
 #. i18n: ectx: label, entry (SDCC_optimize_cmp), group (SDCC)
 #: src/core/ktechlab.kcfg:282
 #, kde-format
 msgid "Try to optimize some compares"
-msgstr ""
+msgstr "Pokúsiť sa optimalizovať niektoré porovnania"
 
 #. i18n: ectx: label, entry (SDCC_optimize_df), group (SDCC)
 #: src/core/ktechlab.kcfg:286
 #, kde-format
 msgid "Thorough data flow analysis"
-msgstr ""
+msgstr "Dôkladná analýza toku dát"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_use_non_free)
 #. i18n: ectx: label, entry (SDCC_use_non_free), group (SDCC)
 #: src/core/ktechlab.kcfg:290 src/gui/sdccoptionswidget.ui:95
 #, kde-format
 msgid "Search / include non-free licensed libraries and header files"
-msgstr ""
+msgstr "Hľadať / zahrnúť neslobodne licencované knižnice a hlavičkové súbory"
 
 #. i18n: ectx: label, entry (SDCC_install_prefix), group (SDCC)
 #: src/core/ktechlab.kcfg:294
 #, kde-format
 msgid "Location where SDCC in installed"
-msgstr ""
+msgstr "Umiestnenie, kde je nainštalovaný SDCC"
 
 #. i18n: ectx: label, entry (PicProgrammerProgram), group (PicProgramming)
 #: src/core/ktechlab.kcfg:306
 #, kde-format
 msgid "The application to use to program the PIC."
-msgstr ""
+msgstr "Aplikácia, ktorá sa použije na programovanie PIC."
 
 #. i18n: ectx: label, entry (PicProgrammerPort), group (PicProgramming)
 #: src/core/ktechlab.kcfg:310
 #, kde-format
 msgid "The device (serial, parallel, etc...) used to program the PIC."
-msgstr ""
+msgstr "Zariadenie (sériové, paralelné, atď.), použité na programovanie PIC."
 
 #. i18n: ectx: label, entry (gplink_link_shared), group (Gplink)
 #: src/core/ktechlab.kcfg:317
 #, kde-format
 msgid "Check this if SDCC uses shared libs for compiling (newer SDCC does so)"
 msgstr ""
+"Zaškrtnite, ak SDCC používa zdieľané knižnice na kompiláciu (novšie SDCC to "
+"tak robí)"
 
 #: src/core/main.cpp:35
 #, kde-format
@@ -788,7 +791,7 @@ msgstr "IDE pre mikroradiče a elektroniku"
 #: src/core/main.cpp:35
 #, kde-format
 msgid "(C) 2003-2017, The KTechLab developers"
-msgstr ""
+msgstr "(C) 2003-2017, vývojári KTechLab"
 
 #: src/core/main.cpp:36
 #, kde-format
@@ -818,12 +821,12 @@ msgstr "Julian Bäume"
 #: src/core/main.cpp:38
 #, kde-format
 msgid "Developer, KDE4 Port, GUI"
-msgstr ""
+msgstr "Vývojár, KDE4 port, GUI"
 
 #: src/core/main.cpp:39
 #, kde-format
 msgid "Juan De Vincenzo"
-msgstr ""
+msgstr "Juan De Vincenzo"
 
 #: src/core/main.cpp:39
 #, kde-format
@@ -838,7 +841,7 @@ msgstr "Lawrence Shafer"
 #: src/core/main.cpp:40
 #, kde-format
 msgid "Website, wiki and forum"
-msgstr ""
+msgstr "Webová stránka, wiki a fórum"
 
 #: src/core/main.cpp:41
 #, kde-format
@@ -848,12 +851,12 @@ msgstr "Jason Lucas"
 #: src/core/main.cpp:41
 #, kde-format
 msgid "Keeping up the project during lack of developers"
-msgstr ""
+msgstr "Udržiavanie projektu počas nedostatku vývojárov"
 
 #: src/core/main.cpp:42
 #, kde-format
 msgid "Former developer, project founder, former maintainer"
-msgstr ""
+msgstr "Predošlý vývojár, zakladateľ projektu, predošlý správca"
 
 #: src/core/main.cpp:43
 #, kde-format
@@ -868,7 +871,7 @@ msgstr "Couriousous"
 #: src/core/main.cpp:44
 #, kde-format
 msgid "JK flip-flop, asynchronous preset/reset in the D flip-flop"
-msgstr ""
+msgstr "Klopný obvod JK, asynchrónny preset/reset v klopnom obvode D"
 
 #: src/core/main.cpp:45 src/electronics/components/rotoswitch.cpp:41
 #, kde-format
@@ -888,7 +891,7 @@ msgstr "Ali Akcaagac"
 #: src/core/main.cpp:46
 #, kde-format
 msgid "Glib friendliness"
-msgstr ""
+msgstr "Kompatibilita s Glib"
 
 #: src/core/main.cpp:47
 #, kde-format
@@ -898,7 +901,7 @@ msgstr "David Leggett"
 #: src/core/main.cpp:47
 #, kde-format
 msgid "Former website hosting and feedback during early development"
-msgstr ""
+msgstr "Predošlý hosting webovej stránky a spätná väzba počas raného vývoja"
 
 #: src/core/main.cpp:56
 #, kde-format
@@ -1052,7 +1055,7 @@ msgstr "Šípka"
 #: src/drawparts/dpline.cpp:158
 #, kde-format
 msgid "Head angle"
-msgstr ""
+msgstr "Uhol hrotu"
 
 #: src/drawparts/dptext.cpp:36
 #, kde-format
@@ -1650,12 +1653,12 @@ msgstr "Saturačný prúd"
 #: src/electronics/components/ecjfet.cpp:89
 #, kde-format
 msgid "PN emission coefficient"
-msgstr ""
+msgstr "Emisný koeficient PN"
 
 #: src/electronics/components/ecjfet.cpp:97
 #, kde-format
 msgid "Isr emission coefficient"
-msgstr ""
+msgstr "Emisný koeficient Isr"
 
 #: src/electronics/components/eckeypad.cpp:26
 #: src/electronics/components/eckeypad.cpp:34 src/flowparts/keypad.cpp:26
@@ -1717,17 +1720,17 @@ msgstr "MOSFET s rozšíreným kanálom N"
 #: src/electronics/components/ecmosfet.cpp:97
 #, kde-format
 msgid "P-Channel Enhancement MOSFET"
-msgstr ""
+msgstr "MOSFET s rozšíreným kanálom P"
 
 #: src/electronics/components/ecmosfet.cpp:104
 #, kde-format
 msgid "N-Channel Depletion MOSFET"
-msgstr ""
+msgstr "MOSFET s ochudobneným kanálom N"
 
 #: src/electronics/components/ecmosfet.cpp:110
 #, kde-format
 msgid "P-Channel Depletion MOSFET"
-msgstr ""
+msgstr "MOSFET s ochudobneným kanálom P"
 
 #: src/electronics/components/ecmosfet.cpp:122
 #, kde-format
@@ -2499,6 +2502,14 @@ msgid ""
 "dragged is indicated by being selected.<br><br>Note that connections cannot "
 "be made between FlowParts in different containers, or at different levels."
 msgstr ""
+"Vytvorte dokument FlowCode pretiahnutím prvkov FlowParts zo zoznamu vľavo. "
+"Všetky vývojové diagramy vyžadujú počiatočný prvok \"Start\", ktorý môže byť "
+"iba jeden.<br><br>Niektoré prvky FlowParts, ako napríklad Podprogramy, "
+"slúžia ako kontajner pre ďalšie prvky FlowParts. Pretiahnutím položiek ich "
+"vložte do kontajnera alebo z neho vyberte. Kontajner, ktorý sa stane "
+"rodičovským prvkom preťahovanej položky, je indikovaný jeho výberom."
+"<br><br>Pozn.: Spojenia nemožno vytvárať medzi prvkami FlowParts v rôznych "
+"kontajneroch alebo na rôznych úrovniach."
 
 #: src/flowparts/callsub.cpp:26 src/flowparts/embed.cpp:26
 #: src/flowparts/end.cpp:26 src/flowparts/interrupt.cpp:26
@@ -2940,7 +2951,7 @@ msgstr "Reset"
 #: src/gui/contexthelp.cpp:330
 #, kde-format
 msgid "Reset item help to last saved changes?"
-msgstr ""
+msgstr "Obnoviť pomoc položky na naposledy uložené zmeny?"
 
 #: src/gui/contexthelp.cpp:350
 #, kde-format
@@ -3232,6 +3243,9 @@ msgid ""
 "\" will suppress messages. <li>\"Errors\" will suppress both messages and "
 "warnings.</ul>"
 msgstr ""
+"Nastaví prah správ zobrazených v zobrazení logu.<ul><li>\"Všetky\" zobrazí "
+"celý výstup - informácie, varovania a chyby.<li>\"Varovania\" potlačí "
+"správy. <li>\"Chyby\" potlačí správy aj varovania.</ul>"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GpasmWarningLevel)
 #: src/gui/gpasmsettingswidget.ui:171
@@ -3262,7 +3276,7 @@ msgstr "Ostatné voľby:"
 #: src/gui/gplinksettingswidget.ui:26
 #, kde-format
 msgid "Link with shared libraries (&use this with new SDCC)"
-msgstr ""
+msgstr "Linkovať so zdieľanými knižnicami (po&užite s novým SDCC)"
 
 #: src/gui/imageexportdlg.cpp:32 src/itemdocument.cpp:848
 #: src/itemdocument.cpp:854
@@ -3303,12 +3317,12 @@ msgstr "Vyčistiť filter"
 #: src/gui/itemeditor/componentmodelwidget.cpp:62
 #, kde-format
 msgid "Enter space-separated terms to filter the component library."
-msgstr ""
+msgstr "Zadajte medzerou oddelené výrazy na filtrovanie knižnice súčiastok."
 
 #: src/gui/itemeditor/componentmodelwidget.cpp:76
 #, kde-format
 msgid "Select a predefined component configuration from this list."
-msgstr ""
+msgstr "Vyberte preddefinovanú konfiguráciu súčiastky z tohto zoznamu."
 
 #: src/gui/itemeditor/itemeditor.cpp:44
 #, kde-format
@@ -3328,6 +3342,11 @@ msgid ""
 "Properties\" to make them the same.<br/>Select \"Defaults\" to set all "
 "properties to their default values"
 msgstr ""
+"<p>Zobrazuje vlastnosti priradené k aktuálne vybranej položke(ám).<br/"
+">Vyberte vlastnosť na zmenu jej hodnoty. Ak je vybraných viacero položiek s "
+"rôznymi hodnotami, vlastnosť bude zobrazená šedou farbou; použite \"Zlúčiť "
+"vlastnosti\" na ich zjednotenie.<br/>Vyberte \"Predvolené\" na nastavenie "
+"všetkých vlastností na ich predvolené hodnoty"
 
 #: src/gui/itemeditor/itemeditor.cpp:87
 #, kde-format
@@ -3416,6 +3435,7 @@ msgstr "Prvok diagramu"
 #, kde-format
 msgid "Add mechanical parts to the mechanics work area by dragging them there."
 msgstr ""
+"Pridajte mechanické časti do mechanickej pracovnej oblasti ich pretiahnutím."
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3)
 #: src/gui/linkeroptionswidget.ui:56
@@ -3605,6 +3625,11 @@ msgid ""
 "and 0 an output.<br><br>The \"State (PORT)\" edit shows the initial high/low "
 "state of the ports; 1 represents a high, and 0 a low."
 msgstr ""
+"Tu upravte počiatočnú hodnotu portov. Pre každé binárne číslo je poradie "
+"sprava doľava piny 0 až 7.<br><br>Pole \"Typ (TRIS)\" zobrazuje počiatočný "
+"stav vstupov/výstupov portov; 1 predstavuje vstup a 0 výstup.<br><br>Pole "
+"\"Stav (PORT)\" zobrazuje počiatočný stav high/low portov; 1 predstavuje "
+"high a 0 low."
 
 #: src/gui/microsettingsdlg.cpp:75
 #, kde-format
@@ -3613,6 +3638,9 @@ msgid ""
 "the variable can only be in the range 0->255. These variables will be "
 "initialized before any other code is executed."
 msgstr ""
+"Tu upravte počiatočnú hodnotu premenných.<br><br>Upozornenie: hodnota "
+"premennej môže byť iba v rozsahu 0 až 255. Tieto premenné budú "
+"inicializované pred vykonaním akéhokoľvek iného kódu."
 
 #. i18n( "the type", "Type (TRIS register):" );
 #: src/gui/microsettingsdlg.cpp:109
@@ -4061,7 +4089,7 @@ msgstr "Tikov na interval"
 #: src/gui/scopescreenwidget.ui:134
 #, kde-format
 msgid "Offset (ticks)"
-msgstr ""
+msgstr "Posun (tiky)"
 
 #. i18n: ectx: attribute (title), widget (QWidget, general)
 #: src/gui/sdccoptionswidget.ui:36
@@ -4085,7 +4113,7 @@ msgstr "Nehľadať v štandardnom adresári include (--nostdinc)"
 #: src/gui/sdccoptionswidget.ui:59
 #, kde-format
 msgid "Disa&ble pedantic warnings (--less-pedantic)"
-msgstr ""
+msgstr "Zaká&zať pedantné varovania (--less-pedantic)"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_std_c89)
 #: src/gui/sdccoptionswidget.ui:66
@@ -4094,12 +4122,14 @@ msgid ""
 "Follow the C89 standard and disable SDCC features that conflict with the "
 "standard."
 msgstr ""
+"Dodržiavať štandard C89 a zakázať funkcie SDCC, ktoré sú v rozpore so "
+"štandardom."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_std_c89)
 #: src/gui/sdccoptionswidget.ui:69
 #, kde-format
 msgid "Use C&89 standard only (--std-c89)"
-msgstr ""
+msgstr "Použiť iba štandard C&89 (--std-c89)"
 
 #. i18n: ectx: property (shortcut), widget (QCheckBox, kcfg_SDCC_std_c89)
 #: src/gui/sdccoptionswidget.ui:72
@@ -4114,12 +4144,14 @@ msgid ""
 "Follow the C99 standard and disable SDCC features that conflict with the "
 "standard (incomplete support)."
 msgstr ""
+"Dodržiavať štandard C99 a zakázať funkcie SDCC, ktoré sú v rozpore so "
+"štandardom (neúplná podpora)."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_std_c99)
 #: src/gui/sdccoptionswidget.ui:85
 #, kde-format
 msgid "Use C&99 standard only (--std-c99)"
-msgstr ""
+msgstr "Použiť iba štandard C&99 (--std-c99)"
 
 #. i18n: ectx: property (shortcut), widget (QCheckBox, kcfg_SDCC_std_c99)
 #: src/gui/sdccoptionswidget.ui:88
@@ -4132,6 +4164,7 @@ msgstr "Alt+9"
 #, kde-format
 msgid "Use non-free licensed libraries and header files (--use-non-free)"
 msgstr ""
+"Použiť neslobodne licencované knižnice a hlavičkové súbory (--use-non-free)"
 
 #. i18n: ectx: attribute (title), widget (QWidget, code_generation)
 #: src/gui/sdccoptionswidget.ui:122
@@ -4157,7 +4190,7 @@ msgstr ""
 #: src/gui/sdccoptionswidget.ui:134
 #, kde-format
 msgid "Stack auto&matic variables (--stack-auto)"
-msgstr ""
+msgstr "Ukladať auto&matické premenné na zásobník (--stack-auto)"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_int_long_reent)
 #: src/gui/sdccoptionswidget.ui:144
@@ -4174,24 +4207,28 @@ msgstr ""
 #, kde-format
 msgid "Integer li&braries were compiled as reentrant (--int-long-reent)"
 msgstr ""
+"Celočíselné kni&žnice boli skompilované ako reentrantné (--int-long-reent)"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_float_reent)
 #: src/gui/sdccoptionswidget.ui:154
 #, kde-format
 msgid "Floating point library is compiled as reentrant."
 msgstr ""
+"Knižnica s pohyblivou rádovou čiarkou bola skompilovaná ako reentrantná."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_float_reent)
 #: src/gui/sdccoptionswidget.ui:157
 #, kde-format
 msgid "Floating point librar&y was compiled as reentrant (--float-reent)"
 msgstr ""
+"Knižnica s pohyblivou rádovou čiarkou bola skompilovaná ako reentrantn&á (--"
+"float-reent)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_fommit_frame_pointer)
 #: src/gui/sdccoptionswidget.ui:164
 #, kde-format
 msgid "Leave out the frame pointer (--fommit-frame-pointer)"
-msgstr ""
+msgstr "Vynechať ukazovateľ rámca (--fommit-frame-pointer)"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_no_xinit_opt)
 #: src/gui/sdccoptionswidget.ui:174
@@ -4200,18 +4237,21 @@ msgid ""
 "Will not memcpy initialized data from code space into xdata space. This "
 "saves a few bytes in code space if you do not have initialized data."
 msgstr ""
+"Nebude kopírovať inicializované dáta z priestoru kódu do priestoru xdata. "
+"Tým sa ušetrí niekoľko bajtov v priestore kódu, ak nemáte inicializované "
+"dáta."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_no_xinit_opt)
 #: src/gui/sdccoptionswidget.ui:177
 #, kde-format
 msgid "Do not memcpy initialized &xram from code (--no-xinit-opt)"
-msgstr ""
+msgstr "Nekopírovať inicializovanú &xram z kódu (--no-xinit-opt)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_all_callee_saves)
 #: src/gui/sdccoptionswidget.ui:184
 #, kde-format
 msgid "Callee will &always save registers used (--all-callee-saves)"
-msgstr ""
+msgstr "Volaná funkcia &vždy uloží použité registre (--all-callee-saves)"
 
 #. i18n: ectx: attribute (title), widget (QWidget, optimization)
 #: src/gui/sdccoptionswidget.ui:208
@@ -4226,12 +4266,15 @@ msgid ""
 "The compiler will not overlay parameters and local variables of any "
 "function, see section Parameters and local variables for more details."
 msgstr ""
+"Kompilátor nebude prekrývať parametre a lokálne premenné žiadnej funkcie, "
+"pozrite časť Parametre a lokálne premenné pre viac podrobností."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nooverlay)
 #: src/gui/sdccoptionswidget.ui:217
 #, kde-format
 msgid "Disable overlaying leaf function &auto variables (--nooverlay)"
 msgstr ""
+"Zakázať prekrývanie &automatických premenných listových funkcií (--nooverlay)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nogcse)
 #: src/gui/sdccoptionswidget.ui:224
@@ -4243,7 +4286,7 @@ msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
 #: src/gui/sdccoptionswidget.ui:234
 #, kde-format
 msgid "Will not optimize labels (makes the dumpfiles more readable)."
-msgstr ""
+msgstr "Nebude optimalizovať návestia (výpisy budú čitateľnejšie)."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nolabelopt)
 #: src/gui/sdccoptionswidget.ui:237
@@ -4261,7 +4304,7 @@ msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
 #: src/gui/sdccoptionswidget.ui:254
 #, kde-format
 msgid "Disable loop variable induction (--noinduction)"
-msgstr ""
+msgstr "Zakázať indukciu premennej cyklu (--noinduction)"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_no_peep)
 #: src/gui/sdccoptionswidget.ui:264
@@ -4279,7 +4322,7 @@ msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
 #: src/gui/sdccoptionswidget.ui:274
 #, kde-format
 msgid "Will not do loop reversal optimization."
-msgstr ""
+msgstr "Nebude vykonávať optimalizáciu obrátenia cyklu."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_noloopreverse)
 #: src/gui/sdccoptionswidget.ui:277
@@ -4294,6 +4337,8 @@ msgid ""
 "The compiler will optimize code generation towards compact code, possibly at "
 "the expense of code speed."
 msgstr ""
+"Kompilátor bude optimalizovať generovanie kódu pre kompaktný kód, prípadne "
+"na úkor rýchlosti kódu."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_opt_code_size)
 #: src/gui/sdccoptionswidget.ui:290
@@ -4308,6 +4353,8 @@ msgid ""
 "The compiler will optimize code generation towards fast code, possibly at "
 "the expense of code size."
 msgstr ""
+"Kompilátor bude optimalizovať generovanie kódu pre rýchly kód, prípadne na "
+"úkor veľkosti kódu."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_opt_code_speed)
 #: src/gui/sdccoptionswidget.ui:300
@@ -4324,18 +4371,22 @@ msgid ""
 "peephole optimizer rules defined in the source file tree '<target>/peeph."
 "def' before using this option."
 msgstr ""
+"Prepustiť inline kód assemblera cez peephole optimalizátor. Toto môže "
+"spôsobiť neočakávané zmeny v inline kóde assemblera; pred použitím tejto "
+"voľby si prezrite pravidlá peephole optimalizátora definované v strome "
+"zdrojových súborov '<target>/peeph.def'."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_peep_asm)
 #: src/gui/sdccoptionswidget.ui:310
 #, kde-format
 msgid "Ena&ble inline assembly peephole optimization (--peep-asm)"
-msgstr ""
+msgstr "Povo&liť peephole optimalizáciu inline assemblera (--peep-asm)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nojtbound)
 #: src/gui/sdccoptionswidget.ui:317
 #, kde-format
 msgid "Do not generate boundary check for &jump tables (--nojtbound)"
-msgstr ""
+msgstr "Negenerovať kontrolu hraníc pre &skokové tabuľky (--nojtbound)"
 
 #. i18n: ectx: attribute (title), widget (QWidget, pic16_specific)
 #: src/gui/sdccoptionswidget.ui:341
@@ -4353,31 +4404,32 @@ msgstr "Nepoužívať predvolené knižnice (--nodefaultlibs)"
 #: src/gui/sdccoptionswidget.ui:357
 #, kde-format
 msgid "Do not generate BANKSEL directives (--pno-banksel)"
-msgstr ""
+msgstr "Negenerovať direktívy BANKSEL (--pno-banksel)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_pstack_model_large)
 #: src/gui/sdccoptionswidget.ui:367
 #, kde-format
 msgid "Use large stac&k model (--pstack-model=large)"
-msgstr ""
+msgstr "Použiť veľký model zásobní&ka (--pstack-model=large)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_debug_xtra)
 #: src/gui/sdccoptionswidget.ui:374
 #, kde-format
 msgid "Show more debug info in assembl&y output (--debug-xtra)"
 msgstr ""
+"Zobraziť viac ladiacich informácií vo výstupe assembler&u (--debug-xtra)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_denable_peeps)
 #: src/gui/sdccoptionswidget.ui:381
 #, kde-format
 msgid "E&xplicit enable of peepholes (--denable-peeps)"
-msgstr ""
+msgstr "E&xplicitné povolenie peephole optimalizácie (--denable-peeps)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_calltree)
 #: src/gui/sdccoptionswidget.ui:388
 #, kde-format
 msgid "Du&mp call tree in .calltree file (--calltree)"
-msgstr ""
+msgstr "Vy&písať strom volaní do súboru .calltree (--calltree)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_fstack)
 #: src/gui/sdccoptionswidget.ui:395
@@ -4389,31 +4441,32 @@ msgstr "Zapnúť optimalizácie zásobníka (--fstack)"
 #: src/gui/sdccoptionswidget.ui:402
 #, kde-format
 msgid "Try to use conditional BRA instead of GOTO (--optimi&ze-goto)"
-msgstr ""
+msgstr "Pokúsiť sa použiť podmienený BRA namiesto GOTO (--optimi&ze-goto)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_optimize_cmp)
 #: src/gui/sdccoptionswidget.ui:409
 #, kde-format
 msgid "Try to optimize some compares (--optimize-cmp)"
-msgstr ""
+msgstr "Pokúsiť sa optimalizovať niektoré porovnania (--optimize-cmp)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_optimize_df)
 #: src/gui/sdccoptionswidget.ui:419
 #, kde-format
 msgid "Thorough data flow analysis (resource intensive) (--optimize-df)"
-msgstr ""
+msgstr "Dôkladná analýza toku dát (náročné na zdroje) (--optimize-df)"
 
 #. i18n: ectx: property (text), widget (QLabel, installPrefixLabel)
 #: src/gui/sdccoptionswidget.ui:475
 #, kde-format
 msgid "SDCC install prefix:"
-msgstr ""
+msgstr "Inštalačný prefix SDCC:"
 
 #. i18n: ectx: property (whatsThis), widget (QLineEdit, kcfg_SDCC_install_prefix)
 #: src/gui/sdccoptionswidget.ui:482
 #, kde-format
 msgid "Location where SDCC in installed. Empty for system default."
 msgstr ""
+"Umiestnenie, kde je nainštalovaný SDCC. Prázdne pre systémové predvolené."
 
 #: src/gui/settingsdlg.cpp:133
 #, kde-format
@@ -4541,7 +4594,7 @@ msgstr "Zarovnanie"
 #: src/itemdocument.cpp:848
 #, kde-format
 msgid "SVG export is sub-functional"
-msgstr ""
+msgstr "Export SVG je čiastočne funkčný"
 
 #: src/itemdocument.cpp:854
 #, kde-format
@@ -4767,7 +4820,7 @@ msgstr "Zobrazovač symbolov"
 #: src/ktechlab.cpp:227
 #, kde-format
 msgid "Scope Screen (Very Rough)"
-msgstr ""
+msgstr "Obrazovka osciloskopu (veľmi hrubá)"
 
 #. i18n("&New"), "document-new",
 #. KStandardShortcut::shortcut(KStandardShortcut::New), this, SLOT(slotFileNew()), ac, "newfile_popup" );
@@ -5176,7 +5229,7 @@ msgstr "*** Generovanie Microbe zlyhalo ***"
 #: src/languages/flowcode.cpp:173
 #, kde-format
 msgid "Warning: Floating connection for %1"
-msgstr ""
+msgstr "Varovanie: Voľné spojenie pre %1"
 
 #: src/languages/flowcode.cpp:187
 #, kde-format
@@ -5190,32 +5243,34 @@ msgstr ""
 #: src/languages/gpasm.cpp:27
 #, kde-format
 msgid "*** Assembly successful ***"
-msgstr ""
+msgstr "*** Assemblovanie úspešné ***"
 
 #: src/languages/gpasm.cpp:28
 #, kde-format
 msgid "*** Assembly failed ***"
-msgstr ""
+msgstr "*** Assemblovanie zlyhalo ***"
 
 #: src/languages/gpasm.cpp:114
 #, kde-format
 msgid "Assembly failed. Please check you have gputils installed."
 msgstr ""
+"Assemblovanie zlyhalo. Prosím skontrolujte, či máte nainštalované gputils."
 
 #: src/languages/gpdasm.cpp:27
 #, kde-format
 msgid "*** Disassembly successful ***"
-msgstr ""
+msgstr "*** Disassemblovanie úspešné ***"
 
 #: src/languages/gpdasm.cpp:28
 #, kde-format
 msgid "*** Disassembly failed ***"
-msgstr ""
+msgstr "*** Disassemblovanie zlyhalo ***"
 
 #: src/languages/gpdasm.cpp:49
 #, kde-format
 msgid "Disassembly failed. Please check you have gputils installed."
 msgstr ""
+"Disassemblovanie zlyhalo. Prosím skontrolujte, či máte nainštalované gputils."
 
 #: src/languages/gplib.cpp:22
 #, kde-format
@@ -5250,6 +5305,9 @@ msgid ""
 "compiling and assembling.<br><br>For error messages, clicking on the line "
 "will automatically open up the file at the position of the error."
 msgstr ""
+"Tieto správy zobrazujú výstup funkcionality súvisiacej s jazykom, ako je "
+"kompilácia a assemblovanie.<br><br>Pri chybových správach kliknutie na "
+"riadok automaticky otvorí súbor na pozícii chyby."
 
 #: src/languages/microbe.cpp:28 src/languages/sdcc.cpp:29
 #, kde-format
@@ -5267,6 +5325,8 @@ msgid ""
 "Assembly failed. Please check you have KTechlab installed properly (\"microbe"
 "\" could not be started)."
 msgstr ""
+"Assemblovanie zlyhalo. Prosím skontrolujte, či máte KTechlab správne "
+"nainštalovaný (\"microbe\" sa nepodarilo spustiť)."
 
 #: src/languages/picprogrammer.cpp:62 src/languages/picprogrammer.cpp:73
 #: src/languages/picprogrammer.cpp:84 src/languages/picprogrammer.cpp:94
@@ -5329,12 +5389,12 @@ msgstr "Kompilácia zlyhala. Prosím overte, či je nainštalovaný sdcc."
 #: src/mechanics/chassiscircular2.cpp:33 src/mechanics/chassiscircular2.cpp:39
 #, kde-format
 msgid "Circular 2-Wheel Chassis"
-msgstr ""
+msgstr "Kruhové podvozok s 2 kolesami"
 
 #: src/mechanics/chassiscircular2.cpp:33
 #, kde-format
 msgid "Chassis'"
-msgstr ""
+msgstr "Podvozky"
 
 #: src/mechanics/mechanicsitem.cpp:41
 #, kde-format
@@ -5344,7 +5404,7 @@ msgstr "Hmotnosť"
 #: src/mechanics/mechanicsitem.cpp:49
 #, kde-format
 msgid "Moment of Inertia"
-msgstr ""
+msgstr "Moment zotrvačnosti"
 
 #: src/picitem.cpp:236
 #, kde-format
@@ -5410,12 +5470,12 @@ msgstr "Odstrániť súbor projektu?"
 #: src/textdocument.cpp:84
 #, kde-format
 msgid "Failed to create editor"
-msgstr ""
+msgstr "Nepodarilo sa vytvoriť editor"
 
 #: src/textdocument.cpp:97
 #, kde-format
 msgid "Failed to create MarkInterface"
-msgstr ""
+msgstr "Nepodarilo sa vytvoriť MarkInterface"
 
 #: src/textdocument.cpp:613
 #, kde-format
@@ -5441,7 +5501,7 @@ msgstr "Nemožno ladiť hexa"
 #: src/textview.cpp:80
 #, kde-format
 msgid "Format Assembly Code"
-msgstr ""
+msgstr "Formátovať kód assemblera"
 
 #. i18n("Set &Breakpoint"), 0, 0, this, SLOT(toggleBreakpoint()), ac, "debug_toggle_breakpoint" );
 #: src/textview.cpp:91 src/textview.cpp:513
