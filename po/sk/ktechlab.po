@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sk\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-16 00:46+0000\n"
+"POT-Creation-Date: 2026-04-21 00:48+0000\n"
 "PO-Revision-Date: 2026-04-13 12:00+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -1146,7 +1146,7 @@ msgstr "Orientácia"
 #: src/flowcodedocument.cpp:173 src/flowcodedocument.cpp:197
 #: src/flowcodedocument.cpp:221 src/ktechlab.cpp:1193
 #: src/mechanics/mechanicsdocument.cpp:28 src/projectmanager.cpp:916
-#: src/textdocument.cpp:431 src/textdocument.cpp:469
+#: src/textdocument.cpp:472 src/textdocument.cpp:510
 #, kde-format
 msgid "All Files"
 msgstr "Všetky súbory"
@@ -2095,7 +2095,7 @@ msgid "Symbol File"
 msgstr "Súbor symbolov"
 
 #: src/electronics/components/piccomponent.cpp:89 src/flowcodedocument.cpp:196
-#: src/gui/newfiledlg.cpp:71 src/ktechlab.cpp:1194 src/textdocument.cpp:430
+#: src/gui/newfiledlg.cpp:71 src/ktechlab.cpp:1194 src/textdocument.cpp:471
 #, kde-format
 msgid "Assembly Code"
 msgstr "Kód asembléra"
@@ -2420,7 +2420,7 @@ msgstr "Súbor"
 msgid "SFR"
 msgstr "SFR"
 
-#: src/electronics/gpsimprocessor.cpp:744 src/textdocument.cpp:96
+#: src/electronics/gpsimprocessor.cpp:744 src/textdocument.cpp:137
 #, kde-format
 msgid "Breakpoint"
 msgstr "Bod prerušenia"
@@ -2445,17 +2445,17 @@ msgstr "Subobvody"
 msgid "Microbe Code Output"
 msgstr "Výstup kódu Microbe"
 
-#: src/flowcodedocument.cpp:193 src/textdocument.cpp:423
+#: src/flowcodedocument.cpp:193 src/textdocument.cpp:464
 #, kde-format
 msgid "Assembly Code Output"
 msgstr "Výstupný kód Assemblera"
 
-#: src/flowcodedocument.cpp:217 src/textdocument.cpp:465
+#: src/flowcodedocument.cpp:217 src/textdocument.cpp:506
 #, kde-format
 msgid "Hex Code Output"
 msgstr "Hexa výstupný kód"
 
-#: src/flowcodedocument.cpp:220 src/textdocument.cpp:468
+#: src/flowcodedocument.cpp:220 src/textdocument.cpp:509
 #, kde-format
 msgid "Hex Code"
 msgstr "Hexa výstupný kód"
@@ -5459,27 +5459,27 @@ msgstr "Naozaj chcete odstrániť \"%1\"?"
 msgid "Remove Project File?"
 msgstr "Odstrániť súbor projektu?"
 
-#: src/textdocument.cpp:85
+#: src/textdocument.cpp:128
 #, kde-format
 msgid "Failed to create editor"
 msgstr "Nepodarilo sa create editor"
 
-#: src/textdocument.cpp:597
+#: src/textdocument.cpp:638
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: src/textdocument.cpp:729
+#: src/textdocument.cpp:770
 #, kde-format
 msgid "Unknown code type."
 msgstr "Neznámy typ kódu."
 
-#: src/textdocument.cpp:729 src/textdocument.cpp:733
+#: src/textdocument.cpp:770 src/textdocument.cpp:774
 #, kde-format
 msgid "Cannot debug"
 msgstr "Nemožno ladiť"
 
-#: src/textdocument.cpp:733
+#: src/textdocument.cpp:774
 #, kde-format
 msgid "Cannot debug hex."
 msgstr "Nemožno ladiť hexa"
@@ -5491,7 +5491,7 @@ msgid "Format Assembly Code"
 msgstr "Format Assembly Code"
 
 #. i18n("Set &Breakpoint"), 0, 0, this, SLOT(toggleBreakpoint()), ac, "debug_toggle_breakpoint" );
-#: src/textview.cpp:94 src/textview.cpp:531
+#: src/textview.cpp:94 src/textview.cpp:553
 #, kde-format
 msgid "Set &Breakpoint"
 msgstr "Nastaviť &bod prerušenia"
@@ -5520,12 +5520,12 @@ msgstr "Krok cez"
 msgid "Step Out"
 msgstr "Krok do"
 
-#: src/textview.cpp:513
+#: src/textview.cpp:535
 #, kde-format
 msgid " Line: %1 Col: %2 "
 msgstr " Riadok: %1 Stĺpec: %2 "
 
-#: src/textview.cpp:529
+#: src/textview.cpp:551
 #, kde-format
 msgid "Clear &Breakpoint"
 msgstr "Zmazať &body prerušenia"
