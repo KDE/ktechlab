@@ -400,13 +400,23 @@ void TextView::gotFocus()
     if (KTechlab *ktl = KTechlab::self()) {
         qCDebug(KTL_LOG) << "TextView Focused In" << "enabling actions";
 
-        ktl->actionByName("file_save")->setEnabled(true);
-        ktl->actionByName("file_save_as")->setEnabled(true);
-        ktl->actionByName("file_close")->setEnabled(true);
-        ktl->actionByName("file_print")->setEnabled(true);
-        ktl->actionByName("edit_paste")->setEnabled(true);
-        ktl->actionByName("view_split_leftright")->setEnabled(true);
-        ktl->actionByName("view_split_topbottom")->setEnabled(true);
+        QStringList actionNameList = {
+            "file_save",
+            "file_save_as",
+            "file_close",
+            "file_print",
+            "edit_paste",
+            "view_split_leftright",
+            "view_split_topbottom"
+        };
+        for (const QString & actionName : actionNameList) {
+            QAction * actPtr = ktl->actionByName(actionName);
+            if (actPtr) {
+                actPtr->setEnabled(true);
+            } else {
+                qCWarning(KTL_LOG) << "no action named " << actionName;
+            }
+        }
     }
 
 #if HAVE_GPSIM
