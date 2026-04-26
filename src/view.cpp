@@ -12,6 +12,7 @@
 #include "document.h"
 #include "iteminterface.h"
 #include "ktechlab.h"
+#include "textview.h"
 #include "viewcontainer.h"
 #include "viewiface.h"
 
@@ -80,6 +81,21 @@ View::~View()
 QAction *View::actionByName(const QString &name) const
 {
     QAction *action = actionCollection()->action(name);
+    if (action) {
+        return action;
+    }
+    //  HACK look for some other types, descendents of this class
+    const TextView *textViewPtr = dynamic_cast<const TextView*>(this);
+    if (textViewPtr) {
+        KTextEditor::View *kateView = textViewPtr->kateView();
+        if (kateView) {
+            action = kateView->action(name);
+            if (action) {
+                return action;
+            }
+        }
+    }
+
     if (!action)
         qCCritical(KTL_LOG) << "No such action: " << name;
     return action;
