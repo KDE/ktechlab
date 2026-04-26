@@ -358,17 +358,28 @@ void DocManager::disableContextActions()
 
     qCDebug(KTL_LOG) << "disableContextActions";
 
-    ktl->actionByName("file_save")->setEnabled(false);
-    ktl->actionByName("file_save_as")->setEnabled(false);
-    ktl->actionByName("file_close")->setEnabled(false);
-    ktl->actionByName("file_print")->setEnabled(false);
-    ktl->actionByName("edit_undo")->setEnabled(false);
-    ktl->actionByName("edit_redo")->setEnabled(false);
-    ktl->actionByName("edit_cut")->setEnabled(false);
-    ktl->actionByName("edit_copy")->setEnabled(false);
-    ktl->actionByName("edit_paste")->setEnabled(false);
-    ktl->actionByName("view_split_leftright")->setEnabled(false);
-    ktl->actionByName("view_split_topbottom")->setEnabled(false);
+    QStringList actionNameList = {
+        "file_save",
+        "file_save_as",
+        "file_close",
+        "file_print",
+        "edit_undo",
+        "edit_redo",
+        "edit_cut",
+        "edit_copy",
+        "edit_paste",
+        "view_split_leftright",
+        "view_split_topbottom"
+    };
+    for (const QString & actionName : actionNameList) {
+        QAction * actPtr = ktl->actionByName(actionName);
+        if (actPtr) {
+            actPtr->setEnabled(false);
+        } else {
+            qCWarning(KTL_LOG) << "no action named " << actionName;
+        }
+    }
+
 }
 
 TextDocument *DocManager::createTextDocument()
