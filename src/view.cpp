@@ -136,24 +136,44 @@ bool View::eventFilter(QObject *watched, QEvent *e)
 
         Q_EMIT focused(this);
         if (KTechlab *ktl = KTechlab::self()) {
-            QStringList actionNameList = {
-                "file_save",
-                "file_save_as",
-                "file_close",
-                "file_print",
-                "edit_paste",
-                "view_split_leftright",
-                "view_split_topbottom"
-            };
-            for (const QString & actionName : actionNameList) {
-                QAction * actPtr = ktl->actionByName(actionName);
-                if (actPtr) {
-                    actPtr->setEnabled(true);
-                } else {
-                    qCWarning(KTL_LOG) << "no action named " << actionName;
+            {
+                QStringList actionNameListKtl = {
+                    // "file_save",
+                    "file_save_as",
+                    "file_close",
+                    "file_print",
+                    "edit_paste",
+                    "view_split_leftright",
+                    "view_split_topbottom"
+                };
+                for (const QString & actionName : actionNameListKtl) {
+                    QAction * actPtr = ktl->actionByName(actionName);
+                    if (actPtr) {
+                        actPtr->setEnabled(true);
+                    } else {
+                        qCWarning(KTL_LOG) << "no ktl action named " << actionName;
+                    }
                 }
             }
-
+            {
+                QStringList actionNameListView = {
+                    "file_save",
+                    // "file_save_as",
+                    // "file_close",
+                    // "file_print",
+                    // "edit_paste",
+                    // "view_split_leftright",
+                    // "view_split_topbottom"
+                };
+                for (const QString & actionName : actionNameListView) {
+                    QAction * actPtr = actionByName(actionName);
+                    if (actPtr) {
+                        actPtr->setEnabled(true);
+                    } else {
+                        qCWarning(KTL_LOG) << "no view action named " << actionName;
+                    }
+                }
+            }
             ItemInterface::self()->updateItemActions();
         }
 

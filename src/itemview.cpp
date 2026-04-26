@@ -48,6 +48,8 @@ ItemView::ItemView(ItemDocument *itemDocument, ViewContainer *viewContainer, uin
 {
     KActionCollection *ac = actionCollection();
 
+    KStandardAction::save(this, &ItemView::fileSaveInView, ac);
+
     KStandardAction::selectAll(itemDocument, SLOT(selectAll()), ac);
     KStandardAction::zoomIn(this, SLOT(zoomIn()), ac);
     KStandardAction::zoomOut(this, SLOT(zoomOut()), ac);
@@ -282,6 +284,11 @@ void ItemView::zoomOut()
 
     p_itemDocument->requestEvent(ItemDocument::ItemDocumentEvent::ResizeCanvasToItems);
     updateZoomActions();
+}
+
+void ItemView::fileSaveInView()
+{
+    m_pDocument->fileSave();
 }
 
 void ItemView::actualSize()

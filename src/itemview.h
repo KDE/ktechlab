@@ -69,6 +69,7 @@ public:
     QPoint mousePosToCanvasPos(const QPoint &contentsClick) const;
 
 public Q_SLOTS:
+    void fileSaveInView();
     void actualSize() override;
     void zoomIn();
     void zoomOut();

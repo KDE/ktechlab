@@ -245,7 +245,9 @@ TextView::TextView(TextDocument *textDocument, ViewContainer *viewContainer, uin
     //  all types of documents
     for (QAction *act : actionCollection()->actions()) {
         qCDebug(KTL_LOG) << "act: " << act->text() << " shortcut " << act->shortcut() << ":" << act;
-        if (((act->objectName()) == QLatin1String("file_save")) || ((act->objectName()) == QLatin1String("file_save_as"))
+        if (
+            // ((act->objectName()) == QLatin1String("file_save")) ||
+            ((act->objectName()) == QLatin1String("file_save_as"))
             || ((act->objectName()) == QLatin1String("file_print")) || ((act->objectName()) == QLatin1String("edit_undo")) ||
             ((act->objectName()) == QLatin1String("edit_redo")) || ((act->objectName()) == QLatin1String("edit_cut"))
             || ((act->objectName()) == QLatin1String("edit_copy")) || ((act->objectName()) == QLatin1String("edit_paste"))) {
@@ -400,8 +402,8 @@ void TextView::gotFocus()
     if (KTechlab *ktl = KTechlab::self()) {
         qCDebug(KTL_LOG) << "TextView Focused In" << "enabling actions";
 
-        QStringList actionNameList = {
-            "file_save",
+        QStringList actionNameListKtl = {
+            // "file_save",
             "file_save_as",
             "file_close",
             "file_print",
@@ -409,12 +411,30 @@ void TextView::gotFocus()
             "view_split_leftright",
             "view_split_topbottom"
         };
-        for (const QString & actionName : actionNameList) {
+        for (const QString & actionName : actionNameListKtl) {
             QAction * actPtr = ktl->actionByName(actionName);
             if (actPtr) {
                 actPtr->setEnabled(true);
             } else {
-                qCWarning(KTL_LOG) << "no action named " << actionName;
+                qCWarning(KTL_LOG) << "no ktl action named " << actionName;
+            }
+        }
+
+        QStringList actionNameListView = {
+            "file_save",
+            // "file_save_as",
+            // "file_close",
+            // "file_print",
+            // "edit_paste",
+            // "view_split_leftright",
+            // "view_split_topbottom"
+        };
+        for (const QString & actionName : actionNameListView) {
+            QAction * actPtr = actionByName(actionName);
+            if (actPtr) {
+                actPtr->setEnabled(true);
+            } else {
+                qCWarning(KTL_LOG) << "no view action named " << actionName;
             }
         }
     }

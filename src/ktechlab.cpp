@@ -442,7 +442,7 @@ void KTechlab::setupActions()
         QAction *openAction = KStandardAction::open(this, SLOT(slotFileOpen()), ac);
         openAction->setShortcutContext(Qt::WidgetWithChildrenShortcut);
     }
-    KStandardAction::save(this, SLOT(slotFileSave()), ac); // (1)!
+    // KStandardAction::save(this, SLOT(slotFileSave()), ac); // (1)!
     KStandardAction::saveAs(this, SLOT(slotFileSaveAs()), ac);
     KStandardAction::close(this, SLOT(slotViewClose()), ac);
     KStandardAction::print(this, SLOT(slotFilePrint()), ac); // (1)!
@@ -1297,6 +1297,7 @@ void KTechlab::slotDocUndoRedoChanged()
     action("edit_redo")->setEnabled(document->isRedoAvailable());
 }
 
+// TODO REMOVE
 void KTechlab::slotFileSave()
 {
     Document *document = DocManager::self()->getFocusedDocument();

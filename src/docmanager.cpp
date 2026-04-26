@@ -358,8 +358,8 @@ void DocManager::disableContextActions()
 
     qCDebug(KTL_LOG) << "disableContextActions";
 
-    QStringList actionNameList = {
-        "file_save",
+    QStringList actionNameListInKtl = {
+        // "file_save",
         "file_save_as",
         "file_close",
         "file_print",
@@ -371,15 +371,39 @@ void DocManager::disableContextActions()
         "view_split_leftright",
         "view_split_topbottom"
     };
-    for (const QString & actionName : actionNameList) {
-        QAction * actPtr = ktl->actionByName(actionName);
+    for (const QString & actionNameInKtl : actionNameListInKtl) {
+        QAction * actPtr = ktl->actionByName(actionNameInKtl);
         if (actPtr) {
             actPtr->setEnabled(false);
         } else {
-            qCWarning(KTL_LOG) << "no action named " << actionName;
+            qCWarning(KTL_LOG) << "no ktl action named " << actionNameInKtl;
         }
     }
 
+    View *focusedView = getFocusedView();
+    if (focusedView) {
+        QStringList actionNameListInView = {
+            "file_save",
+            // "file_save_as",
+            // "file_close",
+            // "file_print",
+            // "edit_undo",
+            // "edit_redo",
+            // "edit_cut",
+            // "edit_copy",
+            // "edit_paste",
+            // "view_split_leftright",
+            // "view_split_topbottom"
+        };
+        for (const QString & actionNameInView : actionNameListInView) {
+            QAction * actPtr = focusedView->actionByName(actionNameInView);
+            if (actPtr) {
+                actPtr->setEnabled(false);
+            } else {
+                qCWarning(KTL_LOG) << "no view action named " << actionNameInView;
+            }
+        }
+    }
 }
 
 TextDocument *DocManager::createTextDocument()
