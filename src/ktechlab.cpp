@@ -661,6 +661,7 @@ void KTechlab::setupActions()
     // We can call slotCloseProject now that the actions have been created
     ProjectManager::self()->updateActions();
     DocManager::self()->disableContextActions();
+    DocManager::self()->disableContextActionsInView();
 }
 
 void KTechlab::setupExampleActions()

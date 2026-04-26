@@ -93,6 +93,7 @@ public:
     void giveDocumentFocus(Document *toFocus, ViewArea *viewAreaForNew = nullptr);
     void removeDocumentAssociations(Document *document);
     void disableContextActions();
+    void disableContextActionsInView();
 
 public Q_SLOTS:
     /**

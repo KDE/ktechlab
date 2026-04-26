@@ -282,6 +282,7 @@ void DocManager::documentDestroyed(QObject *obj)
     m_documentList.removeAll(doc);
     removeDocumentAssociations(doc);
     disableContextActions();
+    // do not disable actions in view
 }
 
 void DocManager::slotViewFocused(View *view)
@@ -334,6 +335,7 @@ void DocManager::slotViewUnfocused()
 
     KTechlab::self()->removeGUIClients();
     disableContextActions();
+    disableContextActionsInView();
 
     if (!p_focusedView)
         return;
@@ -379,7 +381,8 @@ void DocManager::disableContextActions()
             qCWarning(KTL_LOG) << "no ktl action named " << actionNameInKtl;
         }
     }
-
+}
+void DocManager::disableContextActionsInView() {
     View *focusedView = getFocusedView();
     if (focusedView) {
         QStringList actionNameListInView = {
@@ -405,6 +408,7 @@ void DocManager::disableContextActions()
         }
     }
 }
+
 
 TextDocument *DocManager::createTextDocument()
 {
