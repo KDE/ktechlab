@@ -445,7 +445,7 @@ void KTechlab::setupActions()
     // KStandardAction::save(this, SLOT(slotFileSave()), ac); // (1)!
     KStandardAction::saveAs(this, SLOT(slotFileSaveAs()), ac);
     KStandardAction::close(this, SLOT(slotViewClose()), ac);
-    KStandardAction::print(this, SLOT(slotFilePrint()), ac); // (1)!
+    // KStandardAction::print(this, SLOT(slotFilePrint()), ac); // (1)!
     KStandardAction::quit(this, SLOT(slotFileQuit()), ac);
     KStandardAction::undo(this, SLOT(slotEditUndo()), ac);   // (1)!
     KStandardAction::redo(this, SLOT(slotEditRedo()), ac);   // (1)!
@@ -1313,6 +1313,7 @@ void KTechlab::slotFileSaveAs()
         document->fileSaveAs();
 }
 
+// TODO REMOVE
 void KTechlab::slotFilePrint()
 {
     Document *document = DocManager::self()->getFocusedDocument();
