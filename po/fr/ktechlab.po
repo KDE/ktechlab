@@ -1677,7 +1677,7 @@ msgstr "Tension de seuil"
 #: src/electronics/components/ecjfet.cpp:73
 #, kde-format
 msgid "Transcondutance"
-msgstr "Transcondutance"
+msgstr "Transductance"
 
 #: src/electronics/components/ecjfet.cpp:81
 #, kde-format
