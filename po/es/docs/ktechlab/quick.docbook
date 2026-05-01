@@ -1,0 +1,69 @@
+<!-- kate: tab-width 2; indent-mode xml; -->
+<chapter id="quick">
+	<title
+>Guía rápida</title>
+	
+	<sect1 id="introduction">
+		<title
+>Introducción</title>
+		
+		<para
+>&ktechlab; es un IDE para circuitos electrónicos y microcontroladores. Permite simular diversos componentes (lógicos, integrados, lineales, no lineales y reactivos), así como la depuración de microcontroladores PIC mediante gpsim. Además, incluye sus propios lenguajes de alto nivel, estrechamente vinculados y complementarios: &flowcode; y &microbe;.</para>
+		
+		<para
+>Ha sido diseñado para ser lo más fácil de usar y discreto posible; todos los componentes y FlowParts disponen de ayuda sensible al contexto, y simular la electrónica es tan simple como arrastrar los componentes al área de trabajo y crear conectores que se enrutan automáticamente entre sus pines. &flowcode; permite a los usuarios nuevos en PIC crear instantáneamente sus propios programas, mientras que la simulación electrónica permite recorrer paso a paso el programa de ensamblador de un PIC dentro de un circuito.</para>
+	</sect1>
+	
+	<sect1 id="documents">
+		<title
+>Documentos</title>
+		<para
+>Para comenzar a usar &ktechlab;, necesitará crear un nuevo documento, cuyo tipo dependerá de su tarea:</para>
+			
+			<itemizedlist>
+				<listitem
+><para
+>Documento de &flowcode;: Construir un programa PIC mediante diagramas de flujo.</para
+></listitem>
+				<listitem
+><para
+>Documento de circuito: Simular circuitos electrónicos y microcontroladores.</para
+></listitem>
+				<listitem
+><para
+>Documento de &microbe;: Lenguaje de alto nivel para PIC, usado también por &flowcode; para generar código en ensamblador.</para
+></listitem>
+				<listitem
+><para
+>Documento de ensamblador: Empezar a escribir un programa de ensamblador del PIC.</para
+></listitem>
+			</itemizedlist>
+			
+		<para
+>&ktechlab; usa un modelo documento-vista, en el que la lógica del documento es completamente independiente de las vistas abiertas del documento. Esto permite varias vistas del mismo archivo.</para>
+		
+		<para
+>Al crear un nuevo documento, la vista se crea en una pestaña independiente. Cada pestaña admite cualquier número de vistas, dispuestas en mosaico según cualquier patrón. Esto permite, por ejemplo, simular un programa PIC en un circuito mientras se ejecuta paso a paso en un documento de ensamblador en la misma pestaña.</para>
+		
+		<para
+>El contenido de las pestañas se puede duplicar arrastrándolas a un área vacía de la barra de pestañas. También se puede insertar en una pestaña existente arrastrándolas sobre ella.</para>
+		
+		<para
+>Las instrucciones detalladas sobre los documentos mencionados anteriormente se pueden encontrar en sus respectivos capítulos.</para>
+	</sect1>
+	
+	<sect1 id="drawing">
+		<title
+>Dibujo</title>
+		
+		<para
+>En los documentos de circuito y &flowcode;, hay varias herramientas de dibujo disponibles, que también incluyen texto. Puede acceder a ellas haciendo clic en el icono del pincel de la barra de herramientas. Para dibujar, arrastre el ratón para crear una forma o una línea según la herramienta de dibujo que esté usando.</para>
+		
+		<para
+>Al seleccionar un dibujo, se puede cambiar su tamaño arrastrando sus tiradores. Si mantiene pulsada la tecla &Shift; mientras arrastra, el tirador se ajustará a la cuadrícula subyacente. Cada herramienta tiene opciones básicas a las que puede acceder desde la barra de herramientas, como los colores. También existen opciones más avanzadas en la barra lateral del <guilabel
+>Editor de elementos</guilabel
+>, como los estilos de línea y de los extremos.</para>
+		
+	</sect1>
+	
+</chapter>

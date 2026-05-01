@@ -1,0 +1,83 @@
+<!-- kate: tab-width 2; indent-mode xml; -->
+<chapter id="debugging">
+	<title
+>Depuración</title>
+	
+	<sect1 id="starting_debugger">
+		<title
+>Inicio del depurador</title>
+		
+		<para
+>Se ofrece soporte para la depuración en ensamblador, SDCC y Microbe cuando se abren como documentos de texto. Desde aquí, el avance paso a paso se controla mediante el menú <guimenu
+>Depurar</guimenu
+>. Existen dos formas de iniciar el depurador.</para>
+		
+		<para
+>Si el programa PIC ya se está ejecutando en un circuito, al hacer doble clic en el componente PIC se abrirá el programa. Para los programas PIC en ensamblador, el depurador del documento de texto estará enlazado al componente PIC. En este caso, el menú de depuración no puede detener el programa PIC (ya que pertenece al componente PIC).</para>
+		
+		<para
+>Si el archivo de ensamblador ya está abierto, puede ejecutar el depurador mediante el menú <guimenu
+>Depurar</guimenu
+>. Tras compilar el programa, el depurador estará listo y el programa PIC se pausará en la primera instrucción. Tenga en cuenta que, al depurar lenguajes de alto nivel, no se mostrará el punto de ejecución actual si no existe una línea que corresponda a la primera instrucción de ensamblador que se va a ejecutar. En este caso, al hacer clic en <guibutton
+>Siguiente</guibutton
+>, el punto de ejecución se desplazará a la primera línea del programa.</para>
+	</sect1>
+	
+	<sect1 id="controlling_debugger">
+		<title
+>Control del depurador</title>
+		
+		<para
+>El depurador puede estar en uno de dos modos: ejecución y ejecución paso a paso. Durante la ejecución, el programa PIC se simula en tiempo real. Para permitir la ejecución paso a paso, el programa PIC debe estar en pausa, ya sea haciendo clic en <guimenuitem
+>Interrumpir</guimenuitem
+> en el menú <guimenu
+>Depurar</guimenu
+> o pulsando el botón de pausa del componente PIC.</para>
+		
+		<para
+>En el modo de ejecución paso a paso, una flecha verde en el margen del documento de texto indica la siguiente línea que se ejecutará (algo familiar para los usuarios de <application
+>KDevelop</application
+>). Puede ser de utilidad activar el borde de iconos mediante el menú <guimenu
+>Ver</guimenu
+> (puede activarlo de forma permanente mediante el diálogo <guilabel
+>Configuración del editor</guilabel
+>).</para>
+		
+		<para
+>Existen tres tipos de pasos:</para>
+		
+		<itemizedlist>
+				<listitem
+><para
+><guimenuitem
+>Paso</guimenuitem
+>: Ejecuta la instrucción actual. La flecha verde se mueve a la siguiente línea que se ejecutará.</para
+></listitem>
+				<listitem
+><para
+><guimenuitem
+>Saltar</guimenuitem
+>: Si la siguiente instrucción que se va a ejecutar es una llamada o similar, se «saltará sobre» la llamada, volviendo al modo de ejecución paso a paso una vez que la llamada haya finalizado. De lo contrario, saltar sobre una instrucción se comporta de forma idéntica a la ejecución paso a paso. En términos técnicos, se registra el nivel inicial de la pila y la ejecución del programa se pausa una vez que el nivel de la pila vuelva a su nivel inicial.</para
+></listitem>
+				<listitem
+><para
+><guimenuitem
+>Salir</guimenuitem
+>: Si la ejecución actual se encuentra dentro de una llamada o similar, esperará hasta que la llamada finalice. De forma similar a «saltar», esto equivale a esperar hasta que el nivel de la pila sea uno menos que el nivel inicial, si este último es mayor que cero.</para
+></listitem>
+		</itemizedlist>
+		
+		<para
+>Los puntos de interrupción permiten pausar la ejecución cuando el programa PIC alcanza una determinada instrucción. Para activar o desactivar un punto de interrupción en la línea donde se encuentra el cursor, use el menú <guimenu
+>Depurar</guimenu
+> o pulse el icono del borde del documento de texto.</para>
+		
+		<para
+>La barra lateral <guilabel
+>Visor de símbolos</guilabel
+> de la derecha muestra los valores de los registros de funciones especiales. Para encontrar el valor de una variable de los registros de propósito general, puede situar el puntero sobre el nombre de una instrucción que opere sobre dicho registro. Tenga en cuenta que la selección de la base en el <guilabel
+>Visor de símbolos</guilabel
+> también controla cómo se muestra el valor cuando sitúe el puntero sobre una variable.</para>
+	</sect1>
+	
+</chapter>
