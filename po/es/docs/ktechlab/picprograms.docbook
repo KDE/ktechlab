@@ -1,0 +1,116 @@
+<!-- kate: tab-width 2; indent-mode xml; -->
+<chapter id="pic_programs">
+	<title
+>Programas de PIC</title>
+	
+	<sect1 id="manipulation">
+		<title
+>Manipulación</title>
+		
+		<para
+>Al crear un documento FlowCode o de texto, verá un menú desplegable en la barra de herramientas con el icono de un cohete. Desde él puede manipular su programa PIC y cambiarlo a distintos formatos.</para>
+		
+		<itemizedlist>
+				<listitem
+><para
+><guimenuitem
+>Convertir a &microbe;</guimenuitem
+>: Esto solo se usa en documentos &flowcode;. Se explica con más detalle en <xref linkend="flowcode"/>.</para
+></listitem>
+			
+				<listitem
+><para
+><guimenuitem
+>Convertir a ensamblador</guimenuitem
+>: Esto se puede usar en cuatro contextos. Cuando se abre un documento &flowcode;, mostrará el &flowcode; como instrucciones de ensamblador. Cuando se abre un documento de &microbe;, se llamará al programa <command
+>microbe</command
+> que se distribuye con &ktechlab; para compilar el programa. Del mismo modo, si se abre un programa en C, se intentará compilarlo mediante SDCC. Cuando se abre un documento de texto que contiene código PIC en hexadecimal, se llamará a <command
+>gpdasm</command
+> para desensamblar el código hexadecimal.</para
+></listitem>
+			
+				<listitem
+><para
+><guimenuitem
+>Convertir a hexadecimal</guimenuitem
+>: Esto también se puede usar en cuatro contextos. Al igual que <guimenuitem
+>Convertir a ensamblador</guimenuitem
+>, se puede usar con documentos de &flowcode;, &microbe; y C. También estará activado cuando se abre un documento de ensamblador para ensamblarlo mediante <command
+>gpasm</command
+>.</para
+></listitem>
+			
+				<listitem
+><para
+><guimenuitem
+>Enviar al PIC</guimenuitem
+>: Esto ensambla el programa del PIC que se está editando y se envía usando el programador que haya seleccionado el usuario.</para
+></listitem>
+		</itemizedlist>
+		
+		<para
+>Ninguna de estas acciones requiere guardar el documento actual, lo cual resulta muy útil cuando se requiere un programa rápido. Para destinos que no sean PIC, el diálogo <guilabel
+>Salida</guilabel
+>, que se abre al hacer clic en una de estas acciones, puede generar el resultado (siempre texto en los tres casos anteriores) en un nuevo documento o en un archivo. Si el resultado se guarda en un archivo, también ofrece opciones para cargarlo después de crearlo y añadirlo al proyecto abierto (si hay uno abierto).</para>
+		
+		<para
+>Tenga en cuenta que puede hacer que &ktechlab; use siempre la misma vista para mostrar el contenido generado seleccionando la opción en la configuración <guilabel
+>General</guilabel
+>.</para>
+	</sect1>
+	
+	<sect1 id="uploading">
+		<title
+>Carga</title>
+		
+		<para
+>&ktechlab; usa programadores de terceras partes para cargar programas en el PIC. Vienen predefinidos diversos programas comunes. Puede añadir otros usando el diálogo de <guilabel
+>Preferencias</guilabel
+>.</para>
+		
+		<para
+>La lista de puertos se obtiene escaneando los puertos serie y paralelo con permisos de lectura y escritura. Los puertos serie se buscan en:</para>
+			<itemizedlist>
+				<listitem
+><para
+>/dev/ttyS<emphasis
+>[0..7]</emphasis
+></para
+></listitem>
+				<listitem
+><para
+>/dev/tts/<emphasis
+>[0..7]</emphasis
+></para
+></listitem>
+				<listitem
+><para
+>/dev/ttyUSB<emphasis
+>[0..7]</emphasis
+></para
+></listitem>
+				<listitem
+><para
+>/dev/usb/tts/<emphasis
+>[0..7]</emphasis
+></para
+></listitem>
+			</itemizedlist>
+		<para
+>Los puertos paralelos se buscan en: <itemizedlist>
+				<listitem
+><para
+>/dev/usb/parport<emphasis
+>[0..7]</emphasis
+></para
+></listitem>
+				<listitem
+><para
+>/dev/usb/parports/<emphasis
+>[0..7]</emphasis
+></para
+></listitem>
+			</itemizedlist>
+		</para>
+	</sect1>
+</chapter>

@@ -78,7 +78,7 @@ msgstr "Nepokúšať sa o optimalizáciu generovaných inštrukcií."
 #: microbe/main.cpp:66
 #, kde-format
 msgid "Input filename"
-msgstr "Vstupný rozsah"
+msgstr "Vstupný súbor"
 
 #: microbe/main.cpp:67
 #, kde-format
@@ -93,7 +93,7 @@ msgstr "Nemožno otvoriť '%1'\n"
 #: microbe/microbe.cpp:223
 #, kde-format
 msgid "Unknown statement"
-msgstr "Neznáma hodnota"
+msgstr "Neznámy príkaz"
 
 #: microbe/microbe.cpp:226
 #, kde-format
@@ -158,7 +158,7 @@ msgstr "Neznáma premenná '%1'"
 #: microbe/microbe.cpp:262
 #, kde-format
 msgid "Could not open include file '%1'"
-msgstr "Nemožno otvoriť súbor Obvodu \"%1\""
+msgstr "Nemožno otvoriť súbor include „%1“"
 
 #: microbe/microbe.cpp:265
 #, kde-format
@@ -168,7 +168,7 @@ msgstr "Delenie nulou"
 #: microbe/microbe.cpp:268
 #, kde-format
 msgid "Number too big"
-msgstr "Počet bitov"
+msgstr "Číslo je príliš veľké"
 
 #: microbe/microbe.cpp:271
 #, kde-format
@@ -188,7 +188,7 @@ msgstr "'high' alebo 'low' sa očakáva po výraze pinu '%1'"
 #: microbe/microbe.cpp:280
 #, kde-format
 msgid "Comparison operator in '%1' is not recognized"
-msgstr "Procesor súboru cod \"%1\" nie je rozpoznaný."
+msgstr "Operátor porovnávania v „%1“ nie je rozpoznaný."
 
 #: microbe/microbe.cpp:283
 #, kde-format
@@ -258,17 +258,17 @@ msgstr "Premenná '%1' je už definovaná"
 #: microbe/microbe.cpp:322
 #, kde-format
 msgid "'%1' is not a valid variable name"
-msgstr "Neplatná hodnota premennej: %1"
+msgstr "„%1“ nie je platný názov premennej"
 
 #: microbe/microbe.cpp:325
 #, kde-format
 msgid "Variable expected"
-msgstr "Premenný kondenzátor"
+msgstr "Očakávaná premenná"
 
 #: microbe/microbe.cpp:328
 #, kde-format
 msgid "Name expected"
-msgstr "Nič vybraté"
+msgstr "Očakávaný názov"
 
 #: microbe/optimizer.cpp:71
 #, kde-format
@@ -318,13 +318,13 @@ msgstr "Vytvoriť subobvod"
 #: src/circuitview.cpp:87
 #, kde-format
 msgid "Rotate Clockwise"
-msgstr "Otočiť vpravo"
+msgstr "Otočiť v smere hodinových ručičiek"
 
 #. i18n("Rotate Counter-Clockwise"), "object-rotate-left", "[", circuitDocument, SLOT(rotateCounterClockwise()), ac, "edit_rotate_ccw" );
 #: src/circuitview.cpp:94
 #, kde-format
 msgid "Rotate Counter-Clockwise"
-msgstr "Otočiť vľavo"
+msgstr "Otočiť proti smeru hodinových ručičiek"
 
 #. i18n("Flip Horizontally"), "", 0, circuitDocument, SLOT(flipHorizontally()), ac, "edit_flip_horizontally" );
 #: src/circuitview.cpp:101
@@ -365,7 +365,7 @@ msgstr ""
 #: src/circuitview.cpp:132
 #, kde-format
 msgid "Simulation Initializing"
-msgstr "Simulácia spustená"
+msgstr "Simulácia sa inicializuje"
 
 #: src/circuitview.cpp:144
 #, kde-format
@@ -387,37 +387,37 @@ msgstr "Maximálny počet krokov späť"
 #: src/core/ktechlab.kcfg:14
 #, kde-format
 msgid "Restore Documents on Startup"
-msgstr "Obnoviť otvorené &dokumenty pri štarte"
+msgstr "Obnoviť otvorené dokumenty pri štarte"
 
 #. i18n: ectx: label, entry (RaiseItemSelectors), group (General)
 #: src/core/ktechlab.kcfg:18
 #, kde-format
 msgid "Raise appropriate Item Selector on document creation"
-msgstr "Pri vytvorení nového dokumentu vyvol&ať príslušnú kartu výberu"
+msgstr "Pri vytvorení nového dokumentu vyvolať príslušnú kartu výberu"
 
 #. i18n: ectx: label, entry (RaiseMessagesLog), group (General)
 #: src/core/ktechlab.kcfg:22
 #, kde-format
 msgid "Raise Messages Log on Compiling"
-msgstr "Otvoriť okno správ pri ko&mpilácii"
+msgstr "Otvoriť okno správ pri kompilácii"
 
 #. i18n: ectx: label, entry (ShowVoltageBars), group (General)
 #: src/core/ktechlab.kcfg:26
 #, kde-format
 msgid "Show Voltage Bars"
-msgstr "Rozsah napätia"
+msgstr "Zobraziť napäťové lišty"
 
 #. i18n: ectx: label, entry (ShowVoltageColor), group (General)
 #: src/core/ktechlab.kcfg:30
 #, kde-format
 msgid "Show Voltage as Color"
-msgstr "Rozsah napätia"
+msgstr "Zobraziť napätie ako farbu"
 
 #. i18n: ectx: label, entry (AnimateWires), group (General)
 #: src/core/ktechlab.kcfg:34
 #, kde-format
 msgid "Animate Wires (current or power)"
-msgstr "Animovať vodiče podľa toku napätia alebo prúdu"
+msgstr "Animovať vodiče (prúd alebo výkon)"
 
 #. i18n: ectx: label, entry (RefreshRate), group (General)
 #: src/core/ktechlab.kcfg:38
@@ -441,43 +441,43 @@ msgstr "Či sa má mriežka zobrazovať."
 #: src/core/ktechlab.kcfg:50
 #, kde-format
 msgid "Whether the same output should be use for generation of code, etc"
-msgstr "Znova použiť rovnaký výstup pre generovanie kódu"
+msgstr "Či sa má pre generovanie kódu použiť rovnaký výstup"
 
 #. i18n: ectx: label, entry (IndentAsmName), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:57
 #, kde-format
 msgid "Indentation of Instruction Names"
-msgstr "Meno inštrukcie"
+msgstr "Odsadenie mien inštrukcií"
 
 #. i18n: ectx: label, entry (IndentAsmData), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:61
 #, kde-format
 msgid "Indentation of Instruction Data"
-msgstr "Data inštrukcií"
+msgstr "Odsadenie dát inštrukcií"
 
 #. i18n: ectx: label, entry (IndentComment), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:65
 #, kde-format
 msgid "Indentation of Comments"
-msgstr "Meno inštrukcie"
+msgstr "Odsadenie komentárov"
 
 #. i18n: ectx: label, entry (IndentEqu), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:69
 #, kde-format
 msgid "Indentation of 'equ'"
-msgstr "Data inštrukcií"
+msgstr "Odsadenie „equ“"
 
 #. i18n: ectx: label, entry (IndentEquValue), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:73
 #, kde-format
 msgid "Indentation of 'equ' Value"
-msgstr "Meno inštrukcie"
+msgstr "Odsadenie hodnoty „equ“"
 
 #. i18n: ectx: label, entry (AutoFormatMBOutput), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:77
 #, kde-format
 msgid "Automatically format Microbe output"
-msgstr "&Automaticky formátovať výstup Microbe"
+msgstr "Automaticky formátovať výstup Microbe"
 
 #. i18n: ectx: label, entry (LogicSymbolShapes), group (Logic)
 #: src/core/ktechlab.kcfg:84
@@ -501,37 +501,37 @@ msgstr "Hodnota hranice zníženia:"
 #: src/core/ktechlab.kcfg:100
 #, kde-format
 msgid "Logic Output High"
-msgstr "Logický výstup"
+msgstr "Logický výstup High"
 
 #. i18n: ectx: label, entry (LogicOutputHighImpedance), group (Logic)
 #: src/core/ktechlab.kcfg:104
 #, kde-format
 msgid "Logic Output High Impedance"
-msgstr "Impedancia výstupu (Low):"
+msgstr "Impedancia výstupu High"
 
 #. i18n: ectx: label, entry (LogicOutputLowImpedance), group (Logic)
 #: src/core/ktechlab.kcfg:108
 #, kde-format
 msgid "Logic Output Low Impedance"
-msgstr "Impedancia výstupu (Low):"
+msgstr "Impedancia výstupu Low"
 
 #. i18n: ectx: label, entry (HexFormat), group (Gpasm)
 #: src/core/ktechlab.kcfg:115
 #, kde-format
 msgid "Hex Format"
-msgstr "Formátovanie"
+msgstr "Hex formát"
 
 #. i18n: ectx: label, entry (Radix), group (Gpasm)
 #: src/core/ktechlab.kcfg:125
 #, kde-format
 msgid "Radix"
-msgstr "Základ (-r):"
+msgstr "Základ"
 
 #. i18n: ectx: label, entry (GpasmWarningLevel), group (Gpasm)
 #: src/core/ktechlab.kcfg:135
 #, kde-format
 msgid "GpasmWarning Level"
-msgstr "Úroveň upozornení (-w):"
+msgstr "Úroveň upozornení Gpasm"
 
 #. i18n: ectx: label, entry (IgnoreCase), group (Gpasm)
 #: src/core/ktechlab.kcfg:144
@@ -543,7 +543,7 @@ msgstr "Ignorovať veľkosť písmen"
 #: src/core/ktechlab.kcfg:148
 #, kde-format
 msgid "Dos Formatting"
-msgstr "Formátovanie asembléra"
+msgstr "Formátovanie DOS"
 
 #. i18n: ectx: label, entry (MiscGpasmOptions), group (Gpasm)
 #. i18n: ectx: label, entry (MiscSDCCOptions), group (SDCC)
@@ -556,19 +556,19 @@ msgstr "&Popisy"
 #: src/core/ktechlab.kcfg:159
 #, kde-format
 msgid "Do not search in the standard library directory"
-msgstr "Nehľadať v štandardnom adresári knižníc (--nostdlib)"
+msgstr "Nehľadať v štandardnom adresári knižníc"
 
 #. i18n: ectx: label, entry (SDCC_nostdinc), group (SDCC)
 #: src/core/ktechlab.kcfg:163
 #, kde-format
 msgid "Do not search in the standard include directory"
-msgstr "Nehľadať v štandardnom adresári include (--nostdinc)"
+msgstr "Nehľadať v štandardnom adresári include"
 
 #. i18n: ectx: label, entry (SDCC_less_pedantic), group (SDCC)
 #: src/core/ktechlab.kcfg:167
 #, kde-format
 msgid "Disable pedantic warnings"
-msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
+msgstr "Zakázať pedantické varovania"
 
 #. i18n: ectx: label, entry (SDCC_std_c89), group (SDCC)
 #: src/core/ktechlab.kcfg:171
@@ -641,7 +641,7 @@ msgstr "Neoptimalizovať návestia"
 #: src/core/ktechlab.kcfg:217
 #, kde-format
 msgid "Disable optimization of invariants"
-msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
+msgstr "Zakázať optimalizáciu invariantov"
 
 #. i18n: ectx: label, entry (SDCC_noinduction), group (SDCC)
 #: src/core/ktechlab.kcfg:221
@@ -653,7 +653,7 @@ msgstr "Zakázať indukciu premennej cyklu"
 #: src/core/ktechlab.kcfg:225
 #, kde-format
 msgid "Disable peep-hole optimization"
-msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
+msgstr "Zakázať optimalizáciu peep-hole"
 
 #. i18n: ectx: label, entry (SDCC_noloopreverse), group (SDCC)
 #: src/core/ktechlab.kcfg:229
@@ -665,13 +665,13 @@ msgstr "Nevykonávať optimalizáciu obrátenia cyklu"
 #: src/core/ktechlab.kcfg:233
 #, kde-format
 msgid "Optimize for compact code"
-msgstr "&Optimalizovať pre rýchly kód (--opt-code-speed)"
+msgstr "Optimalizovať pre kompaktný kód"
 
 #. i18n: ectx: label, entry (SDCC_opt_code_speed), group (SDCC)
 #: src/core/ktechlab.kcfg:237
 #, kde-format
 msgid "Optimize for fast code"
-msgstr "&Optimalizovať pre rýchly kód (--opt-code-speed)"
+msgstr "Optimalizovať pre rýchly kód (--opt-code-speed)"
 
 #. i18n: ectx: label, entry (SDCC_peep_asm), group (SDCC)
 #: src/core/ktechlab.kcfg:241
@@ -689,7 +689,7 @@ msgstr "Negenerovať kontrolu hraníc pre skokové tabuľky"
 #: src/core/ktechlab.kcfg:250
 #, kde-format
 msgid "Do not use default libraries"
-msgstr "Nepoužívať predvolené knižnice (--nodefaultlibs)"
+msgstr "Nepoužívať predvolené knižnice"
 
 #. i18n: ectx: label, entry (SDCC_pno_banksel), group (SDCC)
 #: src/core/ktechlab.kcfg:254
@@ -725,7 +725,7 @@ msgstr "Vypísať strom volaní do súboru .calltree"
 #: src/core/ktechlab.kcfg:274
 #, kde-format
 msgid "Enable stack optimizations"
-msgstr "Zapnúť optimalizácie zásobníka (--fstack)"
+msgstr "Zapnúť optimalizácie zásobníka"
 
 #. i18n: ectx: label, entry (SDCC_optimize_goto), group (SDCC)
 #: src/core/ktechlab.kcfg:278
@@ -801,7 +801,7 @@ msgstr "Alan Grimes"
 #: src/core/main.cpp:36
 #, kde-format
 msgid "Developer, Simulation"
-msgstr "Prerušiť simuláciu"
+msgstr "Vývojár, Simulácia"
 
 #: src/core/main.cpp:37
 #, kde-format
@@ -2106,7 +2106,7 @@ msgstr "Kód asembléra"
 #: src/electronics/components/piccomponent.cpp:91
 #, kde-format
 msgid "C Code"
-msgstr "Kód"
+msgstr "Kód C"
 
 #: src/electronics/components/piccomponent.cpp:157
 #, kde-format
@@ -2293,7 +2293,7 @@ msgstr "Jednoduchý prepínač"
 #: src/electronics/components/toggleswitch.cpp:214
 #, kde-format
 msgid "SPDT Toggle"
-msgstr "Jednoduchý prepínač"
+msgstr "Prepínač SPDT"
 
 #: src/electronics/components/toggleswitch.cpp:291
 #, kde-format
@@ -2303,7 +2303,7 @@ msgstr "Jednoduchý vypínač"
 #: src/electronics/components/toggleswitch.cpp:297
 #, kde-format
 msgid "SPST Toggle"
-msgstr "Jednoduchý vypínač"
+msgstr "Vypínač SPST"
 
 #: src/electronics/components/variablecapacitor.cpp:30
 #: src/electronics/components/variablecapacitor.cpp:36
@@ -2461,7 +2461,7 @@ msgstr "Hexa výstupný kód"
 #: src/flowcodedocument.cpp:220 src/textdocument.cpp:477
 #, kde-format
 msgid "Hex Code"
-msgstr "Hexa výstupný kód"
+msgstr "Hexa kód"
 
 #. i18n("Convert to..."), "fork", 0, 0, 0, ac, "program_convert" );
 #: src/flowcodeview.cpp:32
@@ -2908,7 +2908,7 @@ msgstr "Komentáre"
 #: src/gui/asmformattingwidget.ui:68
 #, kde-format
 msgid "'equ'"
-msgstr "Hodnota 'equ'"
+msgstr "„equ“"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel7)
 #: src/gui/asmformattingwidget.ui:78
@@ -3135,7 +3135,7 @@ msgstr "Úroveň upozornení (-w):"
 #: src/gui/gpasmsettingswidget.ui:52 src/gui/linkeroptionswidget.ui:69
 #, kde-format
 msgid "Hex Format (-a):"
-msgstr "Formátovanie"
+msgstr "Hex formát (-a):"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_IgnoreCase)
 #: src/gui/gpasmsettingswidget.ui:62
@@ -3447,13 +3447,13 @@ msgstr "Adresár knižnice (-I):"
 #: src/gui/linkeroptionswidget.ui:79
 #, kde-format
 msgid "&Output a map file (-m)"
-msgstr "Výstupný súbor"
+msgstr "&Výstup mapového súboru (-m)"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel8)
 #: src/gui/linkeroptionswidget.ui:86
 #, kde-format
 msgid "Linker Script (-s):"
-msgstr "Voľby linkera"
+msgstr "Skript linkera (-s):"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel4)
 #: src/gui/linkeroptionswidget.ui:102
@@ -3604,7 +3604,7 @@ msgstr "Rodina"
 #: src/gui/microselectwidget.cpp:47
 #, kde-format
 msgid "Micro"
-msgstr "Mikroprocesor"
+msgstr "Mikro"
 
 #: src/gui/microsettingsdlg.cpp:59 src/picitem.cpp:290
 #, kde-format
@@ -3661,7 +3661,7 @@ msgstr "Meno premennej"
 #: src/gui/microsettingsdlg.cpp:133
 #, kde-format
 msgid "Variable value"
-msgstr "Premenná"
+msgstr "Hodnota premennej"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3)
 #: src/gui/microsettingsdlg.cpp:259 src/gui/newpinmappingwidget.ui:48
@@ -4101,7 +4101,7 @@ msgstr "Všeobec&né"
 #: src/gui/sdccoptionswidget.ui:42
 #, kde-format
 msgid "Do not search in the standard librar&y directory (--nostdlib)"
-msgstr "Nehľadať v štandardnom adresári knižníc (--nostdlib)"
+msgstr "Nehľadať v štandardnom adresári &knižníc (--nostdlib)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nostdinc)
 #: src/gui/sdccoptionswidget.ui:49
@@ -4292,13 +4292,13 @@ msgstr "Nebude optimalizovať návestia (výpisy budú čitateľnejšie)."
 #: src/gui/sdccoptionswidget.ui:237
 #, kde-format
 msgid "Disable label optimi&zation (--nolabelopt)"
-msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
+msgstr "Zakázať optimaliz&áciu štítkov (--nolabelopt)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_noinvariant)
 #: src/gui/sdccoptionswidget.ui:244
 #, kde-format
 msgid "Disable optimization of invariants (--noinvariant)"
-msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
+msgstr "Zakázať optimalizáciu invariantov (--noinvariant)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_noinduction)
 #: src/gui/sdccoptionswidget.ui:254
@@ -4310,13 +4310,13 @@ msgstr "Zakázať indukciu premennej cyklu (--noinduction)"
 #: src/gui/sdccoptionswidget.ui:264
 #, kde-format
 msgid "Disable peep-hole optimization."
-msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
+msgstr "Zakázať optimalizáciu peep-hole."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_no_peep)
 #: src/gui/sdccoptionswidget.ui:267
 #, kde-format
 msgid "Disable peep-hole optimization (--&no-peep)"
-msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
+msgstr "Zakázať optimalizáciu peep-hole (--&no-peep)"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_noloopreverse)
 #: src/gui/sdccoptionswidget.ui:274
@@ -4328,7 +4328,7 @@ msgstr "Nebude vykonávať optimalizáciu obrátenia cyklu."
 #: src/gui/sdccoptionswidget.ui:277
 #, kde-format
 msgid "Disable loop reverse optimization (--noloopreverse)"
-msgstr "Zakázať GCSE optimalizáciu (--nogcse)"
+msgstr "Zakázať optimalizáciu obrátenia slučky (--noloopreverse)"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_opt_code_size)
 #: src/gui/sdccoptionswidget.ui:287
@@ -4344,7 +4344,7 @@ msgstr ""
 #: src/gui/sdccoptionswidget.ui:290
 #, kde-format
 msgid "Opti&mize for compact code (--opt-code-size)"
-msgstr "&Optimalizovať pre rýchly kód (--opt-code-speed)"
+msgstr "Opti&malizovať pre kompaktný kód (--opt-code-size)"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_opt_code_speed)
 #: src/gui/sdccoptionswidget.ui:297
@@ -4435,7 +4435,7 @@ msgstr "Vy&písať strom volaní do súboru .calltree (--calltree)"
 #: src/gui/sdccoptionswidget.ui:395
 #, kde-format
 msgid "Ena&ble stack optimizations (--fstack)"
-msgstr "Zapnúť optimalizácie zásobníka (--fstack)"
+msgstr "Za&pnúť optimalizácie zásobníka (--fstack)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_optimize_goto)
 #: src/gui/sdccoptionswidget.ui:402
@@ -4960,12 +4960,12 @@ msgstr "Štvorcová vlna"
 #: src/ktechlab.cpp:675
 #, kde-format
 msgid "2-Way Switch"
-msgstr "Rotačný prepínač"
+msgstr "Dvojpolohový prepínač"
 
 #: src/ktechlab.cpp:676
 #, kde-format
 msgid "3-Way Switch"
-msgstr "Rotačný prepínač"
+msgstr "Trojpolohový prepínač"
 
 #: src/ktechlab.cpp:678
 #, kde-format
@@ -5035,7 +5035,7 @@ msgstr "Neinvertujúci zosilňovač"
 #: src/ktechlab.cpp:692
 #, kde-format
 msgid "Instrumentation Amplifier"
-msgstr "Invertujúci zosilňovač"
+msgstr "Inštrumentačný zosilňovač"
 
 #: src/ktechlab.cpp:693
 #, kde-format
@@ -5045,7 +5045,7 @@ msgstr "Astabilný multivibrátor"
 #: src/ktechlab.cpp:695
 #, kde-format
 msgid "Schmitt Trigger"
-msgstr "Spúšťač"
+msgstr "Schmittov spúšťač"
 
 #: src/ktechlab.cpp:696
 #, kde-format

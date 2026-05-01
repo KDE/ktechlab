@@ -1,0 +1,31 @@
+<!-- kate: tab-width 2; indent-mode xml; -->
+<chapter id="faq">
+<title
+>Preguntas frecuentes</title>
+
+<qandaset>
+	<qandaentry>
+		<question>
+			<para
+>&ktechlab; usa mucha CPU</para>
+		</question>
+		
+		<answer>
+				<para
+>Hay varias causas posibles. La simulación de circuitos que contienen componentes tanto reactivos como no lineales (como condensadores y transistores) requiere mucho tiempo de CPU para su simulación. Puede pausar y reanudar la simulación usando el menú <guimenu
+>Herramientas</guimenu
+>.</para>
+			
+				<para
+>El dibujo del área de trabajo (en particular, volver a dibujar muchas barras de voltaje que se actualizan rápidamente en los pines) también requiere un uso intensivo de la CPU. Puede reducir la frecuencia de actualización o apagar las barras de voltaje mediante el diálogo de <guilabel
+>Configuración</guilabel
+>. La frecuencia de actualización del <guilabel
+>Osciloscopio</guilabel
+> también se puede reducir haciendo clic derecho en su pantalla.</para>
+
+			<para
+>Tenga en cuenta que la próxima versión principal de &ktechlab; puede ser mucho más rápida para visualizar el área de trabajo y en la simulación de componentes reactivos y no lineales.</para>
+		</answer>
+	</qandaentry>
+</qandaset>
+</chapter>
