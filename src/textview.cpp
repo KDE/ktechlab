@@ -252,8 +252,9 @@ TextView::TextView(TextDocument *textDocument, ViewContainer *viewContainer, uin
             // ((act->objectName()) == QLatin1String("file_print")) ||
             // ((act->objectName()) == QLatin1String("edit_undo")) ||
             // ((act->objectName()) == QLatin1String("edit_redo")) ||
-            ((act->objectName()) == QLatin1String("edit_cut"))
-            || ((act->objectName()) == QLatin1String("edit_copy")) || ((act->objectName()) == QLatin1String("edit_paste"))) {
+            // ((act->objectName()) == QLatin1String("edit_cut"))
+            // ||
+            ((act->objectName()) == QLatin1String("edit_copy")) || ((act->objectName()) == QLatin1String("edit_paste"))) {
 
             act->setShortcutContext(Qt::WidgetWithChildrenShortcut);
             // act->setShortcutConfigurable(true);
@@ -452,7 +453,15 @@ void TextView::gotFocus()
 
 void TextView::slotSelectionmChanged()
 {
-    KTechlab::self()->actionByName("edit_cut")->setEnabled(m_view->selection());
+    {
+        QAction *act = actionByName("edit_cut");
+        if (!act) {
+            qCWarning(KTL_LOG) << "no edit_cut action in view";
+        } else {
+            act->setEnabled(m_view->selection());
+        }
+    }
+    // KTechlab::self()->actionByName("edit_cut")->setEnabled(m_view->selection());
     KTechlab::self()->actionByName("edit_copy")->setEnabled(m_view->selection());
 }
 

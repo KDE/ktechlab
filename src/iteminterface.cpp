@@ -171,8 +171,16 @@ void ItemInterface::updateItemActions()
     itemView->actionByName("edit_raise")->setEnabled(itemsSelected);
     itemView->actionByName("edit_lower")->setEnabled(itemsSelected);
 
+    {
+        QAction *act = itemView->actionByName("edit_cut");
+        if (!act) {
+            qCWarning(KTL_LOG) << "no view action edit_cut";
+        } else {
+            act->setEnabled(itemsSelected);
+        }
+    }
     if (KTechlab::self()) {
-        KTechlab::self()->actionByName("edit_cut")->setEnabled(itemsSelected);
+        // KTechlab::self()->actionByName("edit_cut")->setEnabled(itemsSelected);
         KTechlab::self()->actionByName("edit_copy")->setEnabled(itemsSelected);
     }
 
