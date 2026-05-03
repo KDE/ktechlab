@@ -158,7 +158,7 @@ bool View::eventFilter(QObject *watched, QEvent *e)
                     // "file_save_as",
                     "file_close",
                     // "file_print",
-                    "edit_paste",
+                    // "edit_paste",
                     "view_split_leftright",
                     "view_split_topbottom"
                 };
@@ -176,7 +176,7 @@ bool View::eventFilter(QObject *watched, QEvent *e)
                     "file_save",
                     "file_save_as",
                     "file_print",
-                    // "edit_paste",
+                    "edit_paste",
                     // "view_split_leftright",
                     // "view_split_topbottom"
                 };
