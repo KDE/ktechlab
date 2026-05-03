@@ -368,7 +368,7 @@ void DocManager::disableContextActions()
         // "edit_undo",
         // "edit_redo",
         // "edit_cut",
-        "edit_copy",
+        // "edit_copy",
         "edit_paste",
         "view_split_leftright",
         "view_split_topbottom"
@@ -392,7 +392,7 @@ void DocManager::disableContextActionsInView() {
             "edit_undo",
             "edit_redo",
             "edit_cut",
-            // "edit_copy",
+            "edit_copy",
             // "edit_paste",
             // "view_split_leftright",
             // "view_split_topbottom"

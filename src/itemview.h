@@ -75,6 +75,7 @@ public Q_SLOTS:
     void editUndoInView();
     void editRedoInView();
     void editCutInView();
+    void editCopyInView();
     void actualSize() override;
     void zoomIn();
     void zoomOut();

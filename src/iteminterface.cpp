@@ -179,10 +179,18 @@ void ItemInterface::updateItemActions()
             act->setEnabled(itemsSelected);
         }
     }
-    if (KTechlab::self()) {
-        // KTechlab::self()->actionByName("edit_cut")->setEnabled(itemsSelected);
-        KTechlab::self()->actionByName("edit_copy")->setEnabled(itemsSelected);
+    {
+        QAction *act = itemView->actionByName("edit_copy");
+        if (!act) {
+            qCWarning(KTL_LOG) << "no view action edit_copy";
+        } else {
+            act->setEnabled(itemsSelected);
+        }
     }
+    // if (KTechlab::self()) {
+        // KTechlab::self()->actionByName("edit_cut")->setEnabled(itemsSelected);
+        // KTechlab::self()->actionByName("edit_copy")->setEnabled(itemsSelected);
+    // }
 
     CNItemGroup *cnItemGroup = dynamic_cast<CNItemGroup *>(static_cast<ItemGroup *>(p_itemGroup));
     CircuitView *circuitView = dynamic_cast<CircuitView *>(itemView);

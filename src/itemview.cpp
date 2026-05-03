@@ -56,6 +56,7 @@ ItemView::ItemView(ItemDocument *itemDocument, ViewContainer *viewContainer, uin
     KStandardAction::redo(this, &ItemView::editRedoInView, ac);
 
     KStandardAction::cut(this, &ItemView::editCutInView, ac);
+    KStandardAction::copy(this, &ItemView::editCopyInView, ac);
 
     KStandardAction::selectAll(itemDocument, SLOT(selectAll()), ac);
     KStandardAction::zoomIn(this, SLOT(zoomIn()), ac);
@@ -316,6 +317,10 @@ void ItemView::editRedoInView() {
 
 void ItemView::editCutInView() {
     m_pDocument->cut();
+}
+
+void ItemView::editCopyInView() {
+    m_pDocument->copy();
 }
 
 void ItemView::actualSize()

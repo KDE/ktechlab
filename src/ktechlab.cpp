@@ -450,7 +450,7 @@ void KTechlab::setupActions()
     // KStandardAction::undo(this, SLOT(slotEditUndo()), ac);   // (1)!
     // KStandardAction::redo(this, SLOT(slotEditRedo()), ac);   // (1)!
     // KStandardAction::cut(this, SLOT(slotEditCut()), ac);     // (1)!
-    KStandardAction::copy(this, SLOT(slotEditCopy()), ac);   // (1)!
+    // KStandardAction::copy(this, SLOT(slotEditCopy()), ac);   // (1)!
     KStandardAction::paste(this, SLOT(slotEditPaste()), ac); // (1)!
     KStandardAction::keyBindings(this, SLOT(slotOptionsConfigureKeys()), ac);
     KStandardAction::configureToolbars(this, SLOT(slotOptionsConfigureToolbars()), ac);
@@ -1399,6 +1399,7 @@ void KTechlab::slotEditCut()
         document->cut();
 }
 
+// TODO REMOVE
 void KTechlab::slotEditCopy()
 {
     Document *document = DocManager::self()->getFocusedDocument();

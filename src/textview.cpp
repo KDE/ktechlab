@@ -254,7 +254,8 @@ TextView::TextView(TextDocument *textDocument, ViewContainer *viewContainer, uin
             // ((act->objectName()) == QLatin1String("edit_redo")) ||
             // ((act->objectName()) == QLatin1String("edit_cut"))
             // ||
-            ((act->objectName()) == QLatin1String("edit_copy")) || ((act->objectName()) == QLatin1String("edit_paste"))) {
+            // ((act->objectName()) == QLatin1String("edit_copy")) ||
+            ((act->objectName()) == QLatin1String("edit_paste"))) {
 
             act->setShortcutContext(Qt::WidgetWithChildrenShortcut);
             // act->setShortcutConfigurable(true);
@@ -461,8 +462,16 @@ void TextView::slotSelectionmChanged()
             act->setEnabled(m_view->selection());
         }
     }
+        {
+        QAction *act = actionByName("edit_copy");
+        if (!act) {
+            qCWarning(KTL_LOG) << "no edit_copy action in view";
+        } else {
+            act->setEnabled(m_view->selection());
+        }
+    }
     // KTechlab::self()->actionByName("edit_cut")->setEnabled(m_view->selection());
-    KTechlab::self()->actionByName("edit_copy")->setEnabled(m_view->selection());
+    // KTechlab::self()->actionByName("edit_copy")->setEnabled(m_view->selection());
 }
 
 void TextView::initCodeActions()
