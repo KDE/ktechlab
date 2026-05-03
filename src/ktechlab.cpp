@@ -447,7 +447,7 @@ void KTechlab::setupActions()
     KStandardAction::close(this, SLOT(slotViewClose()), ac);
     // KStandardAction::print(this, SLOT(slotFilePrint()), ac); // (1)!
     KStandardAction::quit(this, SLOT(slotFileQuit()), ac);
-    KStandardAction::undo(this, SLOT(slotEditUndo()), ac);   // (1)!
+    // KStandardAction::undo(this, SLOT(slotEditUndo()), ac);   // (1)!
     KStandardAction::redo(this, SLOT(slotEditRedo()), ac);   // (1)!
     KStandardAction::cut(this, SLOT(slotEditCut()), ac);     // (1)!
     KStandardAction::copy(this, SLOT(slotEditCopy()), ac);   // (1)!
@@ -1294,7 +1294,27 @@ void KTechlab::slotDocUndoRedoChanged()
     if (!document)
         return;
 
-    action("edit_undo")->setEnabled(document->isUndoAvailable());
+    View *focusedView = DocManager::self()->getFocusedView();
+    if (!focusedView)
+        return; // note: maybe log this ?
+
+    {
+        QAction *act = focusedView->actionByName("edit_undo");
+        if (!act) {
+            qCDebug(KTL_LOG) << "no edit_undo action in focused view";
+        } else {
+            act->setEnabled(document->isUndoAvailable());
+        }
+    }
+    // TODO redo
+    // {
+    //     QAction *act = focusedView->actionByName("edit_redo");
+    //     if (!act) {
+    //         qCDebug(KTL_LOG) << "no edit_redo action in focused view";
+    //     } else {
+    //         act->setEnabled(document->isRedoAvailable();
+    // }
+
     action("edit_redo")->setEnabled(document->isRedoAvailable());
 }
 
@@ -1357,6 +1377,7 @@ void KTechlab::slotFileQuit()
     slotChangeStatusbar(i18n("Exiting..."));
 }
 
+// TODO REMOVE
 void KTechlab::slotEditUndo()
 {
     Document *document = DocManager::self()->getFocusedDocument();

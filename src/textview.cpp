@@ -250,7 +250,7 @@ TextView::TextView(TextDocument *textDocument, ViewContainer *viewContainer, uin
             // ((act->objectName()) == QLatin1String("file_save_as"))
             // ||
             // ((act->objectName()) == QLatin1String("file_print")) ||
-            ((act->objectName()) == QLatin1String("edit_undo")) ||
+            // ((act->objectName()) == QLatin1String("edit_undo")) ||
             ((act->objectName()) == QLatin1String("edit_redo")) || ((act->objectName()) == QLatin1String("edit_cut"))
             || ((act->objectName()) == QLatin1String("edit_copy")) || ((act->objectName()) == QLatin1String("edit_paste"))) {
 
