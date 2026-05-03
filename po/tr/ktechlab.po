@@ -1,21 +1,21 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the ktechlab package.
 #
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025, 2026 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 09:01+0000\n"
-"PO-Revision-Date: 2025-04-28 11:23+0300\n"
-"Last-Translator: Emir SARI <emir_sari@îcloud.com>\n"
+"PO-Revision-Date: 2026-05-02 18:45+0300\n"
+"Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.04.0\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -222,7 +222,7 @@ msgstr "Pim listesi bekleniyordu"
 #: microbe/microbe.cpp:301
 #, kde-format
 msgid "Alias already defined"
-msgstr "Arma halihazırda tanımlanmış"
+msgstr "Arma hâlihazırda tanımlanmış"
 
 #: microbe/microbe.cpp:304
 #, kde-format
@@ -232,7 +232,7 @@ msgstr "Yarıda kesme türü, hedef PIC tarafından desteklenmiyor"
 #: microbe/microbe.cpp:307
 #, kde-format
 msgid "Interrupt already defined"
-msgstr "Yarıda kesme halihazırda tanımlanmış"
+msgstr "Yarıda kesme hâlihazırda tanımlanmış"
 
 #: microbe/microbe.cpp:310
 #, kde-format
@@ -252,7 +252,7 @@ msgstr "Geçersiz pim listesi boyutu"
 #: microbe/microbe.cpp:319
 #, kde-format
 msgid "Variable '%1' is already defined"
-msgstr "“%1” değişkeni halihazırda tanımlanmış"
+msgstr "“%1” değişkeni hâlihazırda tanımlanmış"
 
 #: microbe/microbe.cpp:322
 #, kde-format
@@ -984,7 +984,7 @@ msgstr "Konumu Kaydet"
 msgid ""
 "A file named \"%1\" already exists. Are you sure you want to overwrite it?"
 msgstr ""
-"“%1” adlı bir dosya halihazırda var. Üzerine yazmak istediğinizden emin "
+"“%1” adlı bir dosya hâlihazırda var. Üzerine yazmak istediğinizden emin "
 "misiniz?"
 
 #: src/document.cpp:108 src/itemdocument.cpp:828
