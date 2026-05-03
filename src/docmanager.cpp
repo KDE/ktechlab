@@ -388,7 +388,6 @@ void DocManager::disableContextActionsInView() {
         QStringList actionNameListInView = {
             "file_save",
             "file_save_as",
-            // "file_close",
             "file_print",
             "edit_undo",
             "edit_redo",

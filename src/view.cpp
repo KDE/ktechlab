@@ -175,7 +175,6 @@ bool View::eventFilter(QObject *watched, QEvent *e)
                 QStringList actionNameListView = {
                     "file_save",
                     "file_save_as",
-                    // "file_close",
                     "file_print",
                     // "edit_paste",
                     // "view_split_leftright",
