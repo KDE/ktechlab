@@ -49,6 +49,7 @@ ItemView::ItemView(ItemDocument *itemDocument, ViewContainer *viewContainer, uin
     KActionCollection *ac = actionCollection();
 
     KStandardAction::save(this, &ItemView::fileSaveInView, ac);
+    KStandardAction::saveAs(this, &ItemView::fileSaveAsInView, ac);
     KStandardAction::print(this, &ItemView::filePrintInView, ac);
 
     KStandardAction::selectAll(itemDocument, SLOT(selectAll()), ac);
@@ -290,6 +291,10 @@ void ItemView::zoomOut()
 void ItemView::fileSaveInView()
 {
     m_pDocument->fileSave();
+}
+
+void ItemView::fileSaveAsInView() {
+    m_pDocument->fileSaveAs();
 }
 
 void ItemView::filePrintInView() {

@@ -247,8 +247,8 @@ TextView::TextView(TextDocument *textDocument, ViewContainer *viewContainer, uin
         qCDebug(KTL_LOG) << "act: " << act->text() << " shortcut " << act->shortcut() << ":" << act;
         if (
             // ((act->objectName()) == QLatin1String("file_save")) ||
-            ((act->objectName()) == QLatin1String("file_save_as"))
-            ||
+            // ((act->objectName()) == QLatin1String("file_save_as"))
+            // ||
             // ((act->objectName()) == QLatin1String("file_print")) ||
             ((act->objectName()) == QLatin1String("edit_undo")) ||
             ((act->objectName()) == QLatin1String("edit_redo")) || ((act->objectName()) == QLatin1String("edit_cut"))
@@ -406,7 +406,7 @@ void TextView::gotFocus()
 
         QStringList actionNameListKtl = {
             // "file_save",
-            "file_save_as",
+            // "file_save_as",
             "file_close",
             // "file_print",
             "edit_paste",
@@ -424,7 +424,7 @@ void TextView::gotFocus()
 
         QStringList actionNameListView = {
             "file_save",
-            // "file_save_as",
+            "file_save_as",
             // "file_close",
             "file_print",
             // "edit_paste",

@@ -362,7 +362,7 @@ void DocManager::disableContextActions()
 
     QStringList actionNameListInKtl = {
         // "file_save",
-        "file_save_as",
+        // "file_save_as",
         "file_close",
         // "file_print",
         "edit_undo",
@@ -387,7 +387,7 @@ void DocManager::disableContextActionsInView() {
     if (focusedView) {
         QStringList actionNameListInView = {
             "file_save",
-            // "file_save_as",
+            "file_save_as",
             // "file_close",
             "file_print",
             // "edit_undo",

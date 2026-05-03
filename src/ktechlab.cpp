@@ -443,7 +443,7 @@ void KTechlab::setupActions()
         openAction->setShortcutContext(Qt::WidgetWithChildrenShortcut);
     }
     // KStandardAction::save(this, SLOT(slotFileSave()), ac); // (1)!
-    KStandardAction::saveAs(this, SLOT(slotFileSaveAs()), ac);
+    // KStandardAction::saveAs(this, SLOT(slotFileSaveAs()), ac); // (1)!
     KStandardAction::close(this, SLOT(slotViewClose()), ac);
     // KStandardAction::print(this, SLOT(slotFilePrint()), ac); // (1)!
     KStandardAction::quit(this, SLOT(slotFileQuit()), ac);
@@ -1306,6 +1306,7 @@ void KTechlab::slotFileSave()
         document->fileSave();
 }
 
+// TODO REMOVE
 void KTechlab::slotFileSaveAs()
 {
     Document *document = DocManager::self()->getFocusedDocument();
