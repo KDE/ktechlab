@@ -53,6 +53,7 @@ ItemView::ItemView(ItemDocument *itemDocument, ViewContainer *viewContainer, uin
     KStandardAction::print(this, &ItemView::filePrintInView, ac);
 
     KStandardAction::undo(this, &ItemView::editUndoInView, ac);
+    KStandardAction::redo(this, &ItemView::editRedoInView, ac);
 
     KStandardAction::selectAll(itemDocument, SLOT(selectAll()), ac);
     KStandardAction::zoomIn(this, SLOT(zoomIn()), ac);
@@ -305,6 +306,10 @@ void ItemView::filePrintInView() {
 
 void ItemView::editUndoInView() {
     m_pDocument->undo();
+}
+
+void ItemView::editRedoInView() {
+    m_pDocument->redo();
 }
 
 void ItemView::actualSize()

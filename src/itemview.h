@@ -73,6 +73,7 @@ public Q_SLOTS:
     void fileSaveAsInView();
     void filePrintInView();
     void editUndoInView();
+    void editRedoInView();
     void actualSize() override;
     void zoomIn();
     void zoomOut();

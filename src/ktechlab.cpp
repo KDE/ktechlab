@@ -448,7 +448,7 @@ void KTechlab::setupActions()
     // KStandardAction::print(this, SLOT(slotFilePrint()), ac); // (1)!
     KStandardAction::quit(this, SLOT(slotFileQuit()), ac);
     // KStandardAction::undo(this, SLOT(slotEditUndo()), ac);   // (1)!
-    KStandardAction::redo(this, SLOT(slotEditRedo()), ac);   // (1)!
+    // KStandardAction::redo(this, SLOT(slotEditRedo()), ac);   // (1)!
     KStandardAction::cut(this, SLOT(slotEditCut()), ac);     // (1)!
     KStandardAction::copy(this, SLOT(slotEditCopy()), ac);   // (1)!
     KStandardAction::paste(this, SLOT(slotEditPaste()), ac); // (1)!
@@ -1306,16 +1306,14 @@ void KTechlab::slotDocUndoRedoChanged()
             act->setEnabled(document->isUndoAvailable());
         }
     }
-    // TODO redo
-    // {
-    //     QAction *act = focusedView->actionByName("edit_redo");
-    //     if (!act) {
-    //         qCDebug(KTL_LOG) << "no edit_redo action in focused view";
-    //     } else {
-    //         act->setEnabled(document->isRedoAvailable();
-    // }
-
-    action("edit_redo")->setEnabled(document->isRedoAvailable());
+    {
+        QAction *act = focusedView->actionByName("edit_redo");
+        if (!act) {
+            qCDebug(KTL_LOG) << "no edit_redo action in focused view";
+        } else {
+            act->setEnabled(document->isRedoAvailable());
+        }
+    }
 }
 
 // TODO REMOVE
@@ -1385,6 +1383,7 @@ void KTechlab::slotEditUndo()
         document->undo();
 }
 
+// TODO REMOVE
 void KTechlab::slotEditRedo()
 {
     Document *document = DocManager::self()->getFocusedDocument();
