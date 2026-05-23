@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-21 00:48+0000\n"
-"PO-Revision-Date: 2026-05-12 08:53+0300\n"
+"PO-Revision-Date: 2026-05-22 12:57+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -961,7 +961,7 @@ msgstr "לא ניתן לפתוח את קובץ המעגל: „%1”"
 #: src/docmanager.cpp:428
 #, kde-format
 msgid "Could not open FlowCode file \"%1\""
-msgstr "לא ניתן לפתוח את קובץ ה־FlowCode‏: „%1”"
+msgstr "לא ניתן לפתוח את קובץ ה־FlowCode‏ (קוד זרימה): „%1”"
 
 #: src/docmanager.cpp:443
 #, kde-format
@@ -2090,7 +2090,7 @@ msgstr "כל הקבצים הנתמכים"
 #: src/languages/flowcode.cpp:28
 #, kde-format
 msgid "FlowCode"
-msgstr "FlowCode"
+msgstr "קוד זרימה"
 
 #: src/electronics/components/piccomponent.cpp:88
 #, kde-format
@@ -2121,6 +2121,10 @@ msgid ""
 "flowcode\", \".basic\", \".microbe\" or \".c\".\n"
 "\".hex\" is allowed, provided that there is a corresponding \".cod\" file."
 msgstr ""
+"„%1” זאת לא תוכנית PIC תקפה.\n"
+"הקובץ חייב להיות קיים והסיומת אמורה להיות „‎.cod”,‏ „‎.asm”,‏ „‎.flowcode”,‏ „‎."
+"basic”,‏ „‎.microbe” או „‎.c”.\n"
+"מותר „‎.hex” בהנחה שיש קובץ „‎.cod” תואם."
 
 #: src/electronics/components/piccomponent.cpp:241
 #, kde-format
@@ -2498,6 +2502,12 @@ msgid ""
 "dragged is indicated by being selected.<br><br>Note that connections cannot "
 "be made between FlowParts in different containers, or at different levels."
 msgstr ""
+"אפשר להרכיב מסמך קוד זרימה (FlowCode) על ידי גרירת רכיבי זרימה מהרשימה "
+"מימין. כל רכיבי הזרימה דורשים עמוד „התחלה” ראשוני, שיכול להיות רק אחד ממנו."
+"<br><br>חלק מרכיבי הזרימה, כגון תת־שגרות, מתנהלים בתור רכיבי הכלה לרכיבי "
+"זרימה אחרים. אפשר לגרור את הפריטים אל או מתוך רכיב הכלה לפי הצורך. רכיב "
+"ההכלה יהפוך להורה של החלק שנגרר שמצוין על ידי כך שנבחר.<br><br>נא לשים לב "
+"שאי אפשר לקשר בין רכיבי זרימה ברכיבי הכלה שונים או ברמות שונות."
 
 #: src/flowparts/callsub.cpp:26 src/flowparts/embed.cpp:26
 #: src/flowparts/end.cpp:26 src/flowparts/interrupt.cpp:26
@@ -2770,7 +2780,7 @@ msgstr "התחלה"
 #: src/flowparts/sub.cpp:32
 #, kde-format
 msgid "Sub"
-msgstr ""
+msgstr "תת"
 
 #: src/flowparts/testpin.cpp:26 src/flowparts/testpin.cpp:32
 #, kde-format
@@ -4243,7 +4253,7 @@ msgstr ""
 #: src/gui/sdccoptionswidget.ui:217
 #, kde-format
 msgid "Disable overlaying leaf function &auto variables (--nooverlay)"
-msgstr ""
+msgstr "ביטול &שיתוף זיכרון עבור פונקציות קצה ומשתנים מקומיים (‎--nooverlay)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nogcse)
 #: src/gui/sdccoptionswidget.ui:224
