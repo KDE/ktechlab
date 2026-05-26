@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2026 This file is copyright:
 # This file is distributed under the same license as the ktechlab package.
-# Shinjo Park <kde@peremen.name>, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2026 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-04-21 00:48+0000\n"
-"PO-Revision-Date: 2023-08-08 00:05+0200\n"
+"PO-Revision-Date: 2026-05-25 21:38+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1053,7 +1053,7 @@ msgstr "화살표"
 #: src/drawparts/dpline.cpp:158
 #, kde-format
 msgid "Head angle"
-msgstr ""
+msgstr "헤드 각도"
 
 #: src/drawparts/dptext.cpp:36
 #, kde-format
@@ -2601,12 +2601,12 @@ msgstr "반복"
 #: src/flowparts/forloop.cpp:26
 #, kde-format
 msgid "For"
-msgstr ""
+msgstr "For"
 
 #: src/flowparts/forloop.cpp:32
 #, kde-format
 msgid "For Loop"
-msgstr ""
+msgstr "For 반복"
 
 #: src/flowparts/forloop.cpp:39 src/flowparts/keypad.cpp:39
 #: src/flowparts/readport.cpp:49 src/flowparts/repeat.cpp:38
@@ -3823,10 +3823,9 @@ msgstr "%1 fps"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/oscilloscopewidget.ui:91
-#, fuzzy, kde-format
-#| msgid "Zoom"
+#, kde-format
 msgid "Time Zoom"
-msgstr "확대/축소"
+msgstr "시간 확대/축소"
 
 #. i18n: ectx: property (text), widget (QRadioButton, displayDirectCheck)
 #: src/gui/outputmethodwidget.ui:44
@@ -4591,10 +4590,9 @@ msgid "Image Export"
 msgstr "그림 내보내기"
 
 #: src/itemdocumentdata.cpp:103 src/projectmanager.cpp:741
-#, fuzzy, kde-format
-#| msgid "Could not open item descriptions file \"%1\" for writing."
+#, kde-format
 msgid "Could not open temporary file for writing: %1"
-msgstr "항목 설명 파일 \"%1\"에 쓰려고 열 수 없습니다."
+msgstr "임시 파일에 쓰기 위해 열 수 없음: %1"
 
 #: src/itemdocumentdata.cpp:117 src/projectmanager.cpp:755
 #, kde-format
