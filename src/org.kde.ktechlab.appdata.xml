@@ -378,6 +378,7 @@
         <p xml:lang="he">המהדורה הזאת אמורה לעבור הידור ולרוץ על מערכות בהן ספריות KDELibs4Support אינן זמינות.</p>
         <p xml:lang="it">Questo rilascio dovrebbe compilare e poter essere eseguito nei sistemi in cui le librerie KDELibs4Support non sono disponibili.</p>
         <p xml:lang="ka">ეს ვერსია უნდა დაკომპილდეს და გაეშვას სისტემებზე, სადაც ბიბლიოთეკები KDELibs4Support ხელმისაწვდომი არაა.</p>
+        <p xml:lang="ko">이 릴리스는 KDELibs4Support가 없는 시스템에서도 컴파일 및 실행이 가능합니다.</p>
         <p xml:lang="nl">Deze uitgave zou moeten compileren en draaien op systemen waar de KDELibs4Support-bibliotheken niet beschikbaar zijn.</p>
         <p xml:lang="pl">To wydanie powinno budować i uruchamiać się na systemach, gdzie biblioteki KDELibs4Support nie są dostępne.</p>
         <p xml:lang="pt-BR">Esta versão deve compilar e executar em sistemas onde as bibliotecas KDELibs4Support não estão disponíveis.</p>
