@@ -27,6 +27,7 @@ Name[sk]=KTechlab
 Name[sl]=KTechlab
 Name[sv]=Ktechlab
 Name[tr]=KTechlab
+Name[ug]=KTechlab
 Name[uk]=KTechlab
 Name[zh_TW]=KTechlab
 #Exec=ktechlab %i -caption %c # 2019.10.03 - does not work; yet?
