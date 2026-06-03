@@ -36,6 +36,7 @@
   <name xml:lang="sl">KTechlab</name>
   <name xml:lang="sv">Ktechlab</name>
   <name xml:lang="tr">KTechlab</name>
+  <name xml:lang="ug">KTechlab</name>
   <name xml:lang="uk">KTechlab</name>
   <summary>IDE for microcontrollers and electronics</summary>
   <summary xml:lang="ar">نظام تطوير متكامل للمتحكمات الدقيقة والإلكترونيات</summary>
@@ -122,6 +123,7 @@
     <p xml:lang="sl">Zmožnosti:</p>
     <p xml:lang="sv">Funktioner:</p>
     <p xml:lang="tr">Özellikler:</p>
+    <p xml:lang="ug">ئىقتىدار:</p>
     <p xml:lang="uk">Можливості:</p>
     <ul>
       <li>Wide range of components with editable characteristics</li>

@@ -29,6 +29,7 @@
     <comment xml:lang="sl">KTechlab Circuit</comment>
     <comment xml:lang="sv">Ktechlab-krets</comment>
     <comment xml:lang="tr">KTechlab Devresi</comment>
+    <comment xml:lang="ug">KTechlab توك يولى</comment>
     <comment xml:lang="uk">схема KTechlab</comment>
     <comment xml:lang="zh_CN">KTechlab 电路图</comment>
     <glob pattern="*.circuit"/>
