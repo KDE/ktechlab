@@ -3964,9 +3964,9 @@ msgid ""
 msgstr ""
 "Les següents cadenes seran substituïdes quan s'execute l'ordre:\n"
 "<ul>\n"
-"<li><b>%port</b> - Port al qual està connectat el programador</li>\n"
-"<li><b>%device</b> - Dispositiu PIC</li>\n"
-"<li><b>%file</b> - Fitxer per a llegir o escriure</li>\n"
+"<li><b>%port</b> – Port al qual està connectat el programador</li>\n"
+"<li><b>%device</b> – Dispositiu PIC</li>\n"
+"<li><b>%file</b> – Fitxer per a llegir o escriure</li>\n"
 "</ul>"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel5)
@@ -5545,7 +5545,7 @@ msgstr "Ha fallat mentre es creava la MarkInterface"
 #: src/textdocument.cpp:613
 #, kde-format
 msgid "%1 - %2"
-msgstr "%1 - %2"
+msgstr "%1 – %2"
 
 #: src/textdocument.cpp:761
 #, kde-format
