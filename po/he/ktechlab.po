@@ -1,13 +1,13 @@
 # Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the ktechlab package.
 #
-# SPDX-FileCopyrightText: 2025, 2026 Yaron Shahrabani <sh.yaron@gmail.com>
+# SPDX-FileCopyrightText: 2025-2026 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 09:01+0000\n"
-"PO-Revision-Date: 2026-01-10 15:15+0200\n"
+"PO-Revision-Date: 2026-07-07 09:27+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 25.12.1\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1616,7 +1616,7 @@ msgstr "הארקה"
 #: src/electronics/components/ecjfet.cpp:32
 #, kde-format
 msgid "n-JFET"
-msgstr ""
+msgstr "n-JFET"
 
 #. i18n("p JFET"),
 #: src/electronics/components/ecjfet.cpp:43
@@ -2120,6 +2120,10 @@ msgid ""
 "flowcode\", \".basic\", \".microbe\" or \".c\".\n"
 "\".hex\" is allowed, provided that there is a corresponding \".cod\" file."
 msgstr ""
+"„%1” זאת לא תוכנית PIC תקפה.\n"
+"הקובץ חייב להיות קיים והסיומת אמורה להיות „‎.cod”,‏ „‎.asm”,‏ „‎.flowcode”,‏ „‎."
+"basic”,‏ „‎.microbe” או „‎.c”.\n"
+"מותר „‎.hex” בהנחה שיש קובץ „‎.cod” תואם."
 
 #: src/electronics/components/piccomponent.cpp:241
 #, kde-format
@@ -2208,12 +2212,12 @@ msgstr "הפרש בין ניתורים"
 #: src/electronics/components/pushswitch.cpp:113
 #, kde-format
 msgid "Push-to-Make"
-msgstr ""
+msgstr "מתג כפתור"
 
 #: src/electronics/components/pushswitch.cpp:119
 #, kde-format
 msgid "Push to Make"
-msgstr ""
+msgstr "מתג כפתור"
 
 #: src/electronics/components/ram.cpp:31 src/electronics/components/ram.cpp:37
 #, kde-format
@@ -2497,6 +2501,12 @@ msgid ""
 "dragged is indicated by being selected.<br><br>Note that connections cannot "
 "be made between FlowParts in different containers, or at different levels."
 msgstr ""
+"אפשר להרכיב מסמך קוד זרימה (FlowCode) על ידי גרירת רכיבי זרימה מהרשימה "
+"מימין. כל רכיבי הזרימה דורשים עמוד „התחלה” ראשוני, שיכול להיות רק אחד ממנו."
+"<br><br>חלק מרכיבי הזרימה, כגון תת־שגרות, מתנהלים בתור רכיבי הכלה לרכיבי "
+"זרימה אחרים. אפשר לגרור את הפריטים אל או מתוך רכיב הכלה לפי הצורך. רכיב "
+"ההכלה יהפוך להורה של החלק שנגרר שמצוין על ידי כך שנבחר.<br><br>נא לשים לב "
+"שאי אפשר לקשר בין רכיבי זרימה ברכיבי הכלה שונים או ברמות שונות."
 
 #: src/flowparts/callsub.cpp:26 src/flowparts/embed.cpp:26
 #: src/flowparts/end.cpp:26 src/flowparts/interrupt.cpp:26
@@ -2676,7 +2686,7 @@ msgstr "עורך מפת פינים"
 #: src/flowparts/pulse.cpp:25 src/flowparts/pulse.cpp:31
 #, kde-format
 msgid "Pulse"
-msgstr ""
+msgstr "מתקף"
 
 #: src/flowparts/pulse.cpp:37
 #, kde-format
@@ -2686,7 +2696,7 @@ msgstr "משך"
 #: src/flowparts/pulse.cpp:63
 #, kde-format
 msgid "Pulse %1 for %2 sec"
-msgstr ""
+msgstr "מתקף %1 למשך %2 שניות"
 
 #: src/flowparts/readport.cpp:26 src/flowparts/setpin.cpp:28
 #: src/flowparts/testpin.cpp:26 src/flowparts/writeport.cpp:26
@@ -2769,7 +2779,7 @@ msgstr "התחלה"
 #: src/flowparts/sub.cpp:32
 #, kde-format
 msgid "Sub"
-msgstr ""
+msgstr "תת"
 
 #: src/flowparts/testpin.cpp:26 src/flowparts/testpin.cpp:32
 #, kde-format
@@ -2785,7 +2795,7 @@ msgstr "משתנים"
 #: src/flowparts/unary.cpp:26 src/flowparts/unary.cpp:32
 #, kde-format
 msgid "Unary"
-msgstr ""
+msgstr "אונארי"
 
 #: src/flowparts/unary.cpp:44
 #, kde-format
@@ -3095,7 +3105,7 @@ msgstr "שחזור מסמכים &פתוחים עם ההפעלה"
 #: src/gui/generaloptionswidget.ui:215
 #, kde-format
 msgid "Raise the &appropriate item selector on creating a new document"
-msgstr ""
+msgstr "להגביה את בורר ה&פריטים המתאים בעת יצירת מסמך חדש"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_RaiseMessagesLog)
 #: src/gui/generaloptionswidget.ui:222
@@ -3128,6 +3138,8 @@ msgid ""
 "All user defined symbols and macros are case sensitive. This option makes "
 "them case insensitive."
 msgstr ""
+"כל הסמלים שהוגדרו על ידי המשתמש תלויי רישיות. האפשרות הזאת הופכת אותם שלא "
+"יהיו כאלה (אין חשיבות לאותיות גדולות/קטנות באנגלית)."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_IgnoreCase)
 #: src/gui/gpasmsettingswidget.ui:65
@@ -3225,6 +3237,9 @@ msgid ""
 "\" will suppress messages. <li>\"Errors\" will suppress both messages and "
 "warnings.</ul>"
 msgstr ""
+"מגדיר את סף ההודעות שמוצגות בתצוגת היומן.<ul><li>„הכול” יציג את כל הפלט - "
+"מידע, אזהרות ושגיאות.<li>„אזהרות” ינפה הודעות. <li>„”שגיאות ינפה הודעות "
+"ואזהרות.</ul>"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GpasmWarningLevel)
 #: src/gui/gpasmsettingswidget.ui:171
@@ -3321,6 +3336,10 @@ msgid ""
 "Properties\" to make them the same.<br/>Select \"Defaults\" to set all "
 "properties to their default values"
 msgstr ""
+"<p>הצגת מאפיינים שמשויכים לפריטים הנבחרים.<br/>יש לבחור מאפיין כדי לשנות את "
+"הערך שלו. אם נבחרו מספר פריטים עם ערכים שונים אז המאפיין יופיע באפור ונעול, "
+"יש להשתמש ב„מיזוג מאפיינים” כדי שיהיו אותו דבר.<br/>יש לבחור ב„ברירות מחדל” "
+"כדי להגדיר את כל המאפיינים לערכי ברירת המחדל שלהם"
 
 #: src/gui/itemeditor/itemeditor.cpp:87
 #, kde-format
@@ -3396,6 +3415,9 @@ msgid ""
 "click repeatedly in the FlowChart to place the component. Right click to "
 "stop placement."
 msgstr ""
+"אפשר להוסיף חלקי זרימה למסמך קוד הזרימה על ידי גרירתם לשם.<br><br>כדי להוסיף "
+"יותר מחלק זרימה אחד מאותו הסוג, יש ללחוץ פעמיים על חלק זרימה וללחוץ שוב ושוב "
+"בתרשים הזרימה כדי להציב את הרכיב. לחיצה ימנית תעצור את ההצבה."
 
 #: src/gui/itemselector.cpp:440
 #, kde-format
@@ -3488,13 +3510,13 @@ msgstr "רמת המתח הנדרשת לפני שקלט ייחשב נמוך."
 #: src/gui/logicwidget.ui:91
 #, kde-format
 msgid "Falling Trigger Threshold:"
-msgstr ""
+msgstr "סף הפעלה בירידה:"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
 #: src/gui/logicwidget.ui:129
 #, kde-format
 msgid "Rising Trigger Threshold:"
-msgstr ""
+msgstr "סף הפעלה בעלייה:"
 
 #. i18n: ectx: property (toolTip), widget (QLabel, textLabel2)
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, kcfg_LogicOutputHigh)
@@ -4230,7 +4252,7 @@ msgstr ""
 #: src/gui/sdccoptionswidget.ui:217
 #, kde-format
 msgid "Disable overlaying leaf function &auto variables (--nooverlay)"
-msgstr ""
+msgstr "ביטול &שיתוף זיכרון עבור פונקציות קצה ומשתנים מקומיים (‎--nooverlay)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nogcse)
 #: src/gui/sdccoptionswidget.ui:224
@@ -4323,12 +4345,15 @@ msgid ""
 "peephole optimizer rules defined in the source file tree '<target>/peeph."
 "def' before using this option."
 msgstr ""
+"העברת קוד האסמבלי הפנימי דרך ממטב חור הצצה. עלול לגרום לשינויים בלתי צפויים "
+"בקוד האסמבלי הפנימי, נא לעבור על כללי ממטב חור ההצצה בעץ קובץ המקור תחת "
+"‚<target>/peeph.def’ בטרם השימוש באפשרות הזאת."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_peep_asm)
 #: src/gui/sdccoptionswidget.ui:310
 #, kde-format
 msgid "Ena&ble inline assembly peephole optimization (--peep-asm)"
-msgstr ""
+msgstr "ה&פעלת מיטוב חור הצצה לאסמבלי פנימי (‎--peep-asm)"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nojtbound)
 #: src/gui/sdccoptionswidget.ui:317
@@ -4447,12 +4472,12 @@ msgstr "רכיבים לוגיים אלקטרוניים"
 #: src/gui/settingsdlg.cpp:177
 #, kde-format
 msgid "Lowest (%1 FPS)"
-msgstr ""
+msgstr "הכי נמוך (%1 תמוניות לשנייה)"
 
 #: src/gui/settingsdlg.cpp:180
 #, kde-format
 msgid "Low (%1 FPS)"
-msgstr ""
+msgstr "נמוך (%1 תמוניות לשנייה)"
 
 #: src/gui/settingsdlg.cpp:183
 #, kde-format
@@ -5134,7 +5159,7 @@ msgstr "דיודות"
 #: src/ktechlabui.rc:56
 #, kde-format
 msgid "JFETs"
-msgstr ""
+msgstr "JFETים"
 
 #. i18n: ectx: Menu (examples_matrix_disp_driver)
 #: src/ktechlabui.rc:59
@@ -5146,7 +5171,7 @@ msgstr "מנהלי תצוגות מטריצה"
 #: src/ktechlabui.rc:62
 #, kde-format
 msgid "MOSFETs"
-msgstr ""
+msgstr "MOSFETים"
 
 #. i18n: ectx: Menu (examples_transistors)
 #: src/ktechlabui.rc:65
