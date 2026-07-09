@@ -11,8 +11,6 @@
 #ifndef FILEFILTER_H
 #define FILEFILTER_H
 
-#include <kio_version.h>
-
 #include <QString>
 #include <QList>
 

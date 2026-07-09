@@ -18,7 +18,6 @@
 #include "filefilters.h"
 
 #include <KUrlRequester>
-#include <kio_version.h>
 
 #include <QCheckBox>
 #include <QDialogButtonBox>

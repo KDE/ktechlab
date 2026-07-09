@@ -26,7 +26,6 @@
 #include <KToolBar>
 #include <KUrlRequester>
 #include <KXMLGUIFactory>
-#include <kio_version.h>
 
 #include <QApplication>
 #include <QCheckBox>
