@@ -378,6 +378,7 @@
         <p xml:lang="ru">В этой версии сборка и запуск возможны в системах без библиотек KDELibs4Support.</p>
         <p xml:lang="sk">Toto vydanie by malo byť možné skompilovať a spustiť na systémoch, kde nie sú dostupné knižnice KDELibs4Support.</p>
         <p xml:lang="sl">Ta izdaja bi se morala prevesti in zagnati na sistemih, kjer knjižnice KDELibs4Support niso na voljo.</p>
+        <p xml:lang="sv">Utgåvan ska kunna kompileras och köra på system där KDELibs4Support bibliotek inte är tillgängliga.</p>
         <p xml:lang="tr">Bu yayım, KDELibs4Support kitaplıklarının olmadığı sistemlerde derlenip çalışmalıdır.</p>
         <p xml:lang="uk">Цей випуск має збиратися та запускатися у системах, де немає доступу до бібліотек KDELibs4Support.</p>
       </description>
