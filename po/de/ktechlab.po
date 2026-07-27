@@ -1,7 +1,7 @@
 # Translation of ktechlab.pot to German
 # This file is put in the public domain.
 # SPDX-FileCopyrightText: 2006 Thomas Winkel <mail@thomas-winkel.de>
-# SPDX-FileCopyrightText: 2017, 2018, 2019, 2021 Burkhard Lück <lueck@hube-lueck.de>
+# SPDX-FileCopyrightText: 2017-2019, 2021 Burkhard Lück <lueck@hube-lueck.de>
 # SPDX-FileCopyrightText: 2020, 2023 Frederik Schwarzer <schwarzer@kde.org>
 msgid ""
 msgstr ""
