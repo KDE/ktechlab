@@ -3015,7 +3015,7 @@ msgstr "Bibliothek"
 #: src/gui/generaloptionswidget.ui:29
 #, kde-format
 msgid "Reuse the same output view for code generation"
-msgstr "Das gleiche Ausgabefenster für Codegenerierung benutzen"
+msgstr "Das gleiche Ausgabefenster für Codegenerierung verwenden"
 
 #. i18n: ectx: property (toolTip), widget (KColorButton, kcfg_GridColor)
 #: src/gui/generaloptionswidget.ui:52
@@ -3183,7 +3183,7 @@ msgid ""
 "option controls which hex file format is used."
 msgstr ""
 "GPASM unterstützt inhx8m, inhx8s, inhx16 und inhx32 HEX.Formate. Mit dieser "
-"Option wird das benutzte Format gewählt."
+"Option wird das verwendete Format gewählt."
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_HexFormat)
 #. i18n: ectx: property (text), item, widget (KComboBox, m_pHexFormat)
@@ -4111,14 +4111,14 @@ msgid ""
 "Follow the C89 standard and disable SDCC features that conflict with the "
 "standard."
 msgstr ""
-"Benutzt C89 Standard und deaktiviert die SDCC-Funktionen, die den Standard "
+"Verwendet C89 Standard und deaktiviert die SDCC-Funktionen, die den Standard "
 "verletzen."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_std_c89)
 #: src/gui/sdccoptionswidget.ui:69
 #, kde-format
 msgid "Use C&89 standard only (--std-c89)"
-msgstr "Nur C&89 Standard benutzen (--std-c89)"
+msgstr "Nur C&89 Standard verwenden (--std-c89)"
 
 #. i18n: ectx: property (shortcut), widget (QCheckBox, kcfg_SDCC_std_c89)
 #: src/gui/sdccoptionswidget.ui:72
@@ -4133,14 +4133,14 @@ msgid ""
 "Follow the C99 standard and disable SDCC features that conflict with the "
 "standard (incomplete support)."
 msgstr ""
-"Benutzt C99 Standard und deaktiviert die SDCC Funktionen, die den Standard "
+"Verwendet C99 Standard und deaktiviert die SDCC Funktionen, die den Standard "
 "verletzen."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_std_c99)
 #: src/gui/sdccoptionswidget.ui:85
 #, kde-format
 msgid "Use C&99 standard only (--std-c99)"
-msgstr "Nur C&99 Standard benutzen (--std-c99)"
+msgstr "Nur C&99 Standard verwenden (--std-c99)"
 
 #. i18n: ectx: property (shortcut), widget (QCheckBox, kcfg_SDCC_std_c99)
 #: src/gui/sdccoptionswidget.ui:88
