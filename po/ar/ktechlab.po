@@ -168,12 +168,12 @@ msgstr "قسمة على الصفر"
 #: microbe/microbe.cpp:268
 #, kde-format
 msgid "Number too big"
-msgstr "الرقم كبير جداً"
+msgstr "الرقم كبير جدًا"
 
 #: microbe/microbe.cpp:271
 #, kde-format
 msgid "Step can only be a constant expression"
-msgstr "الخطوة يمكن أن تكون تعبيراً ثابتاً فقط"
+msgstr "الخطوة يمكن أن تكون تعبيرًا ثابتًا فقط"
 
 #: microbe/microbe.cpp:274
 #, kde-format
@@ -354,9 +354,9 @@ msgid ""
 msgstr ""
 "ابْنِ دائرة بسحب المكونات من مُحدِّد المكونات على اليسار. أنشئ التوصيلات بسحب سلك "
 "من موصلات المكونات.<br><br>المحاكاة قيد التشغيل مبدئي، ولكن يمكن إيقافها "
-"مؤقتاً واستئنافها من قائمة الأدوات.<br><br>لِحَذْف سلك، حدّده بصندوق تحديد، واضغط "
-"على حذف.<br><br>لِتَعْدِيل سمات مكون، حدّده (مُتأكِّداً من عدم تحديد مكونات أخرى من "
-"نوع آخر أيضاً)، وعَدِّلْه في شريط الأدوات. يمكن تعديل الخصائص الأكثر تقدماً "
+"مؤقتًا واستئنافها من قائمة الأدوات.<br><br>لِحَذْف سلك، حدّده بصندوق تحديد، واضغط "
+"على حذف.<br><br>لِتَعْدِيل سمات مكون، حدّده (مُتأكِّدًا من عدم تحديد مكونات أخرى من "
+"نوع آخر أيضًا)، وعَدِّلْه في شريط الأدوات. يمكن تعديل الخصائص الأكثر تقدمًا "
 "باستخدام مُحرِّر العناصر على اليمين.<br><br>يمكن إنشاء دوائر فرعية بتوصيل "
 "المكونات باتصال خارجي، وتحديد المكونات المطلوبة والنقر على \"أنشئ دائرة فرعية"
 "\" في قائمة النقر بزر الفأرة الأيمن."
@@ -374,7 +374,7 @@ msgstr "المحاكاة قيد التشغيل"
 #: src/circuitview.cpp:144
 #, kde-format
 msgid "Simulation Paused"
-msgstr "المحاكاة مُوقفة مؤقتاً"
+msgstr "المحاكاة مُوقفة مؤقتًا"
 
 #. i18n: ectx: label, entry (MaxUndo), group (General)
 #: src/core/ktechlab.kcfg:10
@@ -615,7 +615,7 @@ msgstr "لا تَنْسَخْ الذاكرة للبيانات المُهيَّأ
 #: src/core/ktechlab.kcfg:200
 #, kde-format
 msgid "Callee will always save registers used"
-msgstr "المستدعَي سيَحْفَظ دائماً السجلات المستخدمة"
+msgstr "المستدعَي سيَحْفَظ دائمًا السجلات المستخدمة"
 
 #. i18n: ectx: label, entry (SDCC_nooverlay), group (SDCC)
 #: src/core/ktechlab.kcfg:205
@@ -729,7 +729,7 @@ msgstr "فَعِّلْ تحسينات المكدس"
 #: src/core/ktechlab.kcfg:278
 #, kde-format
 msgid "Try to use conditional BRA instead of GOTO"
-msgstr "حاوِلْ استخدام BRA شرطي بدلاً من GOTO"
+msgstr "حاوِلْ استخدام BRA شرطي بدلًا من GOTO"
 
 #. i18n: ectx: label, entry (SDCC_optimize_cmp), group (SDCC)
 #: src/core/ktechlab.kcfg:282
@@ -2359,12 +2359,12 @@ msgstr "معالج غير متعرّف عليه"
 #: src/electronics/gpsimprocessor.cpp:145
 #, kde-format
 msgid "The file name \"%1\" is too long."
-msgstr "اسم الملف \"%1\" طويل جداً."
+msgstr "اسم الملف \"%1\" طويل جدًا."
 
 #: src/electronics/gpsimprocessor.cpp:145
 #, kde-format
 msgid "Filename Too Long"
-msgstr "اسم الملف طويل جداً"
+msgstr "اسم الملف طويل جدًا"
 
 #: src/electronics/gpsimprocessor.cpp:148
 #, kde-format
@@ -2501,7 +2501,7 @@ msgid ""
 "be made between FlowParts in different containers, or at different levels."
 msgstr ""
 "ابن وثيقة FlowCode بسحب أجزاء FlowParts من القائمة على اليسار. تتطلب كل "
-"المخططات الانسيابية جزء «بداية» مبدئياً، ولا أستطيع أن يكون إلا واحدًا.\n"
+"المخططات الانسيابية جزء «بداية» مبدئيًا، ولا أستطيع أن يكون إلا واحدًا.\n"
 "<br><br>تعمل بعض أجزاء FlowParts، كالإجراءات الفرعية، كعنصر حاوية لأجزاء "
 "FlowParts الأخرى. اسحب العناصر إلى داخل الحاوية أو خارجها حسب الاقتضاء. تشير "
 "الحاوية التي ستصبح الحاوية الأم للجزء المسحوب إلى أنه محدد.\n"
@@ -3155,8 +3155,8 @@ msgid ""
 "programmers required a DOS formatted file. This option will cause gpasm to "
 "generate a DOS formatted hex file. "
 msgstr ""
-"مبدئياً، يولّد gpasm ملفات سداسية عشرية باستخدام تنسيق ISO. ومع ذلك، يطلب بعض "
-"مبرمجي الأجهزة ملفاً بتنسيق DOS. هذا الخيار يجعل gpasm يولّد ملفاً سداسياً عشرياً "
+"مبدئيًا، يولّد gpasm ملفات سداسية عشرية باستخدام تنسيق ISO. ومع ذلك، يطلب بعض "
+"مبرمجي الأجهزة ملفًا بتنسيق DOS. هذا الخيار يجعل gpasm يولّد ملفًا سداسيًا عشريًا "
 "بتنسيق DOS."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DosFormat)
@@ -3316,7 +3316,7 @@ msgstr "أدخل مصطلحات مفصولة بمسافات لترشيح مكت�
 #: src/gui/itemeditor/componentmodelwidget.cpp:76
 #, kde-format
 msgid "Select a predefined component configuration from this list."
-msgstr "اختر اضبط مكون مبدئياً من هذه القائمة."
+msgstr "اختر اضبط مكون مبدئيًا من هذه القائمة."
 
 #: src/gui/itemeditor/itemeditor.cpp:44
 #, kde-format
