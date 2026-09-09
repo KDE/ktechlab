@@ -444,7 +444,7 @@ msgstr "Faire une animation des fils (de courant ou de puissance)"
 #: src/core/ktechlab.kcfg:38
 #, kde-format
 msgid "Refresh Rate"
-msgstr "Taux de rafraîchissement"
+msgstr "Taux de rafraichissement"
 
 #. i18n: ectx: label, entry (GridColor), group (General)
 #: src/core/ktechlab.kcfg:42
@@ -3111,13 +3111,13 @@ msgstr ""
 #: src/gui/generaloptionswidget.ui:125
 #, kde-format
 msgid "Display Refresh Rate"
-msgstr "Afficher le taux de rafraîchissement"
+msgstr "Afficher le taux de rafraichissement"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3_2)
 #: src/gui/generaloptionswidget.ui:152
 #, kde-format
 msgid "Refresh rate:"
-msgstr "Taux de rafraîchissement :"
+msgstr "Taux de rafraichissement :"
 
 #. i18n: ectx: property (text), widget (QLabel, refreshRateLabel)
 #: src/gui/generaloptionswidget.ui:162
@@ -3894,7 +3894,7 @@ msgstr "Oscilloscope"
 #: src/gui/oscilloscopeview.cpp:107
 #, kde-format
 msgid "Framerate"
-msgstr "Taux de rafraîchissement"
+msgstr "Taux de rafraichissement"
 
 #: src/gui/oscilloscopeview.cpp:118
 #, kde-format
