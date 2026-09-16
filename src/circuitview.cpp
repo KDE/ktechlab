@@ -88,6 +88,7 @@ CircuitView::CircuitView(CircuitDocument *circuitDocument, ViewContainer *viewCo
         ra->setObjectName("edit_rotate_cw");
         connect(ra, &QAction::triggered, circuitDocument, &CircuitDocument::rotateClockwise);
         ac->addAction(ra->objectName(), ra);
+        ac->setDefaultShortcut(ra, QKeySequence::fromString("R"));
     }
     {
         // new QAction( i18n("Rotate Counter-Clockwise"), "object-rotate-left", "[", circuitDocument, SLOT(rotateCounterClockwise()), ac, "edit_rotate_ccw" );
@@ -95,6 +96,7 @@ CircuitView::CircuitView(CircuitDocument *circuitDocument, ViewContainer *viewCo
         ra->setObjectName("edit_rotate_ccw");
         connect(ra, &QAction::triggered, circuitDocument, &CircuitDocument::rotateCounterClockwise);
         ac->addAction(ra->objectName(), ra);
+        ac->setDefaultShortcut(ra, QKeySequence::fromString("Shift+R"));
     }
     {
         // new QAction( i18n("Flip Horizontally"), "", 0, circuitDocument, SLOT(flipHorizontally()), ac, "edit_flip_horizontally" );
@@ -102,6 +104,7 @@ CircuitView::CircuitView(CircuitDocument *circuitDocument, ViewContainer *viewCo
         ra->setObjectName("edit_flip_horizontally");
         connect(ra, &QAction::triggered, circuitDocument, &CircuitDocument::flipHorizontally);
         ac->addAction(ra->objectName(), ra);
+        ac->setDefaultShortcut(ra, QKeySequence::fromString("E"));
     }
     {
         // new QAction( i18n("Flip Vertically"), "", 0, circuitDocument, SLOT(flipVertically()), ac, "edit_flip_vertically" );
@@ -109,6 +112,7 @@ CircuitView::CircuitView(CircuitDocument *circuitDocument, ViewContainer *viewCo
         ra->setObjectName("edit_flip_vertically");
         connect(ra, &QAction::triggered, circuitDocument, &CircuitDocument::flipVertically);
         ac->addAction(ra->objectName(), ra);
+        ac->setDefaultShortcut(ra, QKeySequence::fromString("Shift+E"));
     }
     // END Item Control Actions
 
