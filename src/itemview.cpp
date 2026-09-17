@@ -181,6 +181,13 @@ ItemView::ItemView(ItemDocument *itemDocument, ViewContainer *viewContainer, uin
     setAcceptDrops(true);
 
     setFocusWidget(m_CVBEditor->viewport());
+
+    if (p_itemDocument->m_cmManager->navigationMode() == CMManager::nav_horizon) {
+        // Hide scrollbars while still allowing them to be used to change scroll position
+        m_CVBEditor->horizontalScrollBar()->setStyleSheet("QScrollBar {height:0px;}");
+        m_CVBEditor->verticalScrollBar()->setStyleSheet("QScrollBar {height:0px;}");
+    }
+
 }
 
 ItemView::~ItemView()
@@ -340,6 +347,12 @@ void ItemView::dropEvent(QDropEvent *event)
     setFocus();
 }
 
+void ItemView::scrollBy(const QPoint &delta)
+{
+    QPoint viewDelta = delta * m_zoomLevel;
+    m_CVBEditor->scrollBy(viewDelta.x(), viewDelta.y());
+}
+
 void ItemView::scrollToMouse(const QPoint &pos)
 {
     QPoint viewPos = pos - p_itemDocument->canvas()->rect().topLeft();
@@ -390,7 +403,6 @@ void ItemView::contentsMousePressEvent(QMouseEvent *e)
         return;
 
     EventInfo eventInfo(this, e);
-
     if (eventInfo.isRightClick && m_pDragItem) {
         // We are dragging an item, and the user has right clicked.
         // Therefore, we want to rotate the item.
@@ -405,6 +417,7 @@ void ItemView::contentsMousePressEvent(QMouseEvent *e)
 
     p_itemDocument->canvas()->setMessage(QString());
     p_itemDocument->m_cmManager->mousePressEvent(eventInfo);
+    m_lastPressEvent = eventInfo;
 }
 
 void ItemView::contentsMouseDoubleClickEvent(QMouseEvent *e)
@@ -432,10 +445,10 @@ void ItemView::contentsMouseMoveEvent(QMouseEvent *e)
     e->accept();
 
     EventInfo eventInfo(this, e);
-
     p_itemDocument->m_cmManager->mouseMoveEvent(eventInfo);
     if (!m_pUpdateStatusTmr->isActive())
         startUpdatingStatus();
+    m_lastMoveEvent = eventInfo;
 }
 
 void ItemView::contentsMouseReleaseEvent(QMouseEvent *e)
@@ -444,8 +457,8 @@ void ItemView::contentsMouseReleaseEvent(QMouseEvent *e)
         return;
 
     e->accept();
-
     p_itemDocument->m_cmManager->mouseReleaseEvent(EventInfo(this, e));
+    m_lastPressEvent = EventInfo();
 }
 
 void ItemView::contentsWheelEvent(QWheelEvent *e)
@@ -455,7 +468,12 @@ void ItemView::contentsWheelEvent(QWheelEvent *e)
 
     e->accept();
     EventInfo eventInfo(this, e);
-    if (eventInfo.ctrlPressed) {
+
+    const auto navMode = p_itemDocument->m_cmManager->navigationMode();
+    if (
+        (navMode == CMManager::nav_default && eventInfo.ctrlPressed)
+        || (navMode == CMManager::nav_horizon)
+    ) {
         // Zooming in or out
 
         if (eventInfo.angleDelta.y() > 0)

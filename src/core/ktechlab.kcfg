@@ -50,6 +50,14 @@
 			<label>Whether the same output should be use for generation of code, etc</label>
 			<default>false</default>
 		</entry>
+		<entry name="NavigationMode" type="Enum">
+			<label>How the canvas is zoomed and panned</label>
+			<choices>
+				<choice name="Classic"/>
+				<choice name="Horizon"/>
+			</choices>
+			<default>Classic</default>
+		</entry>
 	</group>
 	
 	<group name="AsmFormatter">

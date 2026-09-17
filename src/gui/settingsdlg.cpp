@@ -151,6 +151,8 @@ SettingsDlg::SettingsDlg(QWidget *parent, const char *name, KCoreConfigSkeleton 
     connect(m_picProgrammerConfigWidget->eraseCommand, &KLineEdit::textChanged, this, &SettingsDlg::slotSaveCurrentProgrammerConfig);
 
     m_generalOptionsWidget->kcfg_GridColor->setEnabled(KTLConfig::showGrid());
+    m_generalOptionsWidget->kcfg_NavigationMode->setItemData(0, i18n("Pan vertically using mouse wheel. Pan horizontally using Alt+mouse wheel. Zoom with Ctrl+mouse wheel."), Qt::ToolTipRole);
+    m_generalOptionsWidget->kcfg_NavigationMode->setItemData(1, i18n("Pan by clicking the middle mouse button and dragging. Zoom with mouse wheel."), Qt::ToolTipRole);
 
     m_picProgrammerConfigWidget->kcfg_PicProgrammerPort->insertItems(m_picProgrammerConfigWidget->kcfg_PicProgrammerPort->count(), Port::ports());
     slotUpdatePicProgrammerDescription();

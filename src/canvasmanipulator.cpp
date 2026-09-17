@@ -55,6 +55,7 @@ CMManager::CMManager(ItemDocument *itemDocument)
 
     KConfigGroup grGen = KSharedConfig::openConfig()->group("General");
     slotSetManualRoute(grGen.readEntry("ManualRouting", false));
+    slotSetNavigationMode(static_cast<NavigationMode>(grGen.readEntry("NavigationMode", 0)));
 }
 
 CMManager::~CMManager()
@@ -93,9 +94,11 @@ void CMManager::mousePressEvent(EventInfo eventInfo)
     uint eventState = 0;
     if (eventInfo.isRightClick)
         eventState |= CMManager::es_right_click;
-
+    if (eventInfo.isMiddleClick)
+        eventState |= CMManager::es_middle_click;
     if (eventInfo.ctrlPressed)
         eventState |= CMManager::es_ctrl_pressed;
+
 
     uint itemType = 0;
     uint cnItemType = 0;
@@ -226,6 +229,13 @@ void CMManager::mouseMoveEvent(const EventInfo &eventInfo)
         p_lastItemClicked->mouseMoveEvent(eventInfo);
     } else if (item) {
         item->mouseMoveEvent(eventInfo);
+    } else if (navigationMode() == CMManager::nav_horizon) {
+        ItemView *itemView = dynamic_cast<ItemView *>(p_itemDocument->activeView());
+        if (itemView && itemView->lastPressEvent().isMiddleClick) {
+            const auto delta = itemView->lastPressEvent().pos - eventInfo.pos;
+            itemView->scrollBy(delta);
+            return; // Updating resize handle causes jitter
+        }
     }
     // END
 
@@ -304,6 +314,13 @@ void CMManager::slotSetManualRoute(bool manualRoute)
     grGen.writeEntry("ManualRouting", manualRoute);
 
     setCMState(cms_manual_route, manualRoute);
+}
+
+void CMManager::slotSetNavigationMode(NavigationMode mode)
+{
+    KConfigGroup grGen = KSharedConfig::openConfig()->group("General");
+    grGen.writeEntry("NavigationMode", static_cast<int>(mode));
+    m_navigationMode = mode;
 }
 
 void CMManager::setCMState(CMState type, bool state)
@@ -551,9 +568,9 @@ ManipulatorInfo *CMAutoConnector::manipulatorInfo()
     return eventInfo;
 }
 
-bool CMAutoConnector::acceptManipulation(uint /*eventState*/, uint cmState, uint itemType, uint /*cnItemType*/)
+bool CMAutoConnector::acceptManipulation(uint eventState, uint cmState, uint itemType, uint /*cnItemType*/)
 {
-    return (itemType & (CMManager::it_node | CMManager::it_connector)) && !(cmState & CMManager::cms_manual_route);
+    return (itemType & (CMManager::it_node | CMManager::it_connector)) && !(cmState & CMManager::cms_manual_route) && !(eventState & CMManager::es_middle_click);
 }
 
 bool CMAutoConnector::mousePressedInitial(const EventInfo &eventInfo)
@@ -687,9 +704,9 @@ ManipulatorInfo *CMManualConnector::manipulatorInfo()
     return eventInfo;
 }
 
-bool CMManualConnector::acceptManipulation(uint /*eventState*/, uint cmState, uint itemType, uint /*cnItemType*/)
+bool CMManualConnector::acceptManipulation(uint eventState, uint cmState, uint itemType, uint /*cnItemType*/)
 {
-    return (itemType & (CMManager::it_node | CMManager::it_connector)) && (cmState & CMManager::cms_manual_route);
+    return (itemType & (CMManager::it_node | CMManager::it_connector)) && (cmState & CMManager::cms_manual_route) && !(eventState & CMManager::es_middle_click);
 }
 
 bool CMManualConnector::mousePressedInitial(const EventInfo &eventInfo)
@@ -848,7 +865,7 @@ ManipulatorInfo *CMItemMove::manipulatorInfo()
 
 bool CMItemMove::acceptManipulation(uint eventState, uint /*cmState*/, uint itemType, uint cnItemType)
 {
-    return ((itemType & CMManager::it_canvas_item) || (itemType & CMManager::it_drawpart)) && (cnItemType & CMManager::isi_isMovable) && !(eventState & CMManager::es_right_click);
+    return ((itemType & CMManager::it_canvas_item) || (itemType & CMManager::it_drawpart)) && (cnItemType & CMManager::isi_isMovable) && !(eventState & (CMManager::es_right_click | CMManager::es_middle_click));
 }
 
 bool CMItemMove::mousePressedInitial(const EventInfo &eventInfo)
@@ -1349,9 +1366,9 @@ ManipulatorInfo *CMSelect::manipulatorInfo()
     return eventInfo;
 }
 
-bool CMSelect::acceptManipulation(uint /*eventState*/, uint /*cmState*/, uint itemType, uint /*cnItemType*/)
+bool CMSelect::acceptManipulation(uint eventState, uint /*cmState*/, uint itemType, uint /*cnItemType*/)
 {
-    return (itemType & CMManager::it_none);
+    return (itemType & CMManager::it_none) && !(eventState & CMManager::es_middle_click);
 }
 
 bool CMSelect::mousePressedInitial(const EventInfo &eventInfo)
@@ -1493,9 +1510,9 @@ ManipulatorInfo *CMDraw::manipulatorInfo()
     return eventInfo;
 }
 
-bool CMDraw::acceptManipulation(uint /*eventState*/, uint cmState, uint /*itemType*/, uint /*cnItemType*/)
+bool CMDraw::acceptManipulation(uint eventState, uint cmState, uint /*itemType*/, uint /*cnItemType*/)
 {
-    return (cmState & CMManager::cms_draw);
+    return (cmState & CMManager::cms_draw) && !(eventState & CMManager::es_middle_click);
 }
 
 bool CMDraw::mousePressedInitial(const EventInfo &eventInfo)

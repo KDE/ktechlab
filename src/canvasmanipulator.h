@@ -69,9 +69,10 @@ class CMManager : public QObject
 {
     Q_OBJECT
 public:
-    enum EventState { es_right_click = 1 << 0, es_ctrl_pressed = 1 << 1 };
+    enum EventState { es_right_click = 1 << 0, es_ctrl_pressed = 1 << 1, es_middle_click = 1 << 2 };
     enum CMState { cms_repeated_add = 1 << 0, cms_manual_route = 1 << 1, cms_draw = 1 << 2 };
     enum ItemType { it_none = 1 << 0, it_node = 1 << 1, it_connector = 1 << 2, it_pin = 1 << 3, it_canvas_item = 1 << 4, it_mechanics_item = 1 << 5, it_resize_handle = 1 << 6, it_drawpart = 1 << 7 };
+    enum NavigationMode { nav_default = 0, nav_horizon = 1 };
 
     enum ItemStateInfo { isi_isMovable = 0x2 };
     CMManager(ItemDocument *itemDocument);
@@ -124,8 +125,14 @@ public:
         return m_drawAction;
     }
 
+    NavigationMode navigationMode() const
+    {
+        return m_navigationMode;
+    }
+
 public Q_SLOTS:
     void slotSetManualRoute(bool manualRoute);
+    void slotSetNavigationMode(NavigationMode mode);
 
 Q_SIGNALS:
     void manualRoutingChanged(bool manualRouting);
@@ -149,6 +156,7 @@ protected:
                                   // scroll event if it was initiated over the canvas
     bool b_allowItemScroll;       // See above.
     int m_drawAction;
+    NavigationMode m_navigationMode;
 
 private Q_SLOTS:
     void slotAllowItemScroll()

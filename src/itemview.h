@@ -15,6 +15,7 @@
 
 #include <QPointer>
 #include <canvas.h>
+#include <eventinfo.h>
 
 class Canvas;
 class CVBEditor;
@@ -68,10 +69,22 @@ public:
      */
     QPoint mousePosToCanvasPos(const QPoint &contentsClick) const;
 
+    const EventInfo &lastPressEvent() const
+    {
+        return m_lastPressEvent;
+    }
+
+    const EventInfo &lastMoveEvent() const
+    {
+        return m_lastMoveEvent;
+    }
+
+
 public Q_SLOTS:
     void actualSize() override;
     void zoomIn();
     void zoomOut();
+    void scrollBy(const QPoint &delta);
     void scrollToMouse(const QPoint &pos);
     virtual void updateStatus();
 
@@ -120,7 +133,8 @@ protected:
     double m_zoomLevel;
     QTimer *m_pUpdateStatusTmr;
     Item *m_pDragItem;
-
+    EventInfo m_lastPressEvent;
+    EventInfo m_lastMoveEvent;
     // friend class CVBEditor; // 2018.09.26
 };
 

@@ -498,6 +498,7 @@ void ItemDocument::slotUpdateConfiguration()
 {
     updateBackground();
     m_canvas->setUpdatePeriod(int(1000. / KTLConfig::refreshRate()));
+    m_cmManager->slotSetNavigationMode(static_cast<CMManager::NavigationMode>(KTLConfig::navigationMode()));
 }
 
 KtlQCanvasItem *ItemDocument::itemAtTop(const QPoint &pos) const
