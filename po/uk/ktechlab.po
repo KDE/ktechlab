@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-21 00:48+0000\n"
+"POT-Creation-Date: 2026-09-18 00:48+0000\n"
 "PO-Revision-Date: 2026-04-13 08:39+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -324,24 +324,24 @@ msgid "Rotate Clockwise"
 msgstr "Обернути за годинниковою стрілкою"
 
 #. i18n("Rotate Counter-Clockwise"), "object-rotate-left", "[", circuitDocument, SLOT(rotateCounterClockwise()), ac, "edit_rotate_ccw" );
-#: src/circuitview.cpp:94
+#: src/circuitview.cpp:95
 #, kde-format
 msgid "Rotate Counter-Clockwise"
 msgstr "Обернути проти годинникової стрілки"
 
 #. i18n("Flip Horizontally"), "", 0, circuitDocument, SLOT(flipHorizontally()), ac, "edit_flip_horizontally" );
-#: src/circuitview.cpp:101
+#: src/circuitview.cpp:103
 #, kde-format
 msgid "Flip Horizontally"
 msgstr "Віддзеркалити горизонтально"
 
 #. i18n("Flip Vertically"), "", 0, circuitDocument, SLOT(flipVertically()), ac, "edit_flip_vertically" );
-#: src/circuitview.cpp:108
+#: src/circuitview.cpp:111
 #, kde-format
 msgid "Flip Vertically"
 msgstr "Віддзеркалити вертикально"
 
-#: src/circuitview.cpp:118
+#: src/circuitview.cpp:122
 #, kde-format
 msgid ""
 "Construct a circuit by dragging components from the Component selector from "
@@ -372,17 +372,17 @@ msgstr ""
 "«Створити підсхему» з контекстного меню (його можна викликати клацанням "
 "правою кнопкою миші)."
 
-#: src/circuitview.cpp:132
+#: src/circuitview.cpp:136
 #, kde-format
 msgid "Simulation Initializing"
 msgstr "Ініціалізуємо імітацію"
 
-#: src/circuitview.cpp:144
+#: src/circuitview.cpp:148
 #, kde-format
 msgid "Simulation Running"
 msgstr "Виконуємо імітацію"
 
-#: src/circuitview.cpp:144
+#: src/circuitview.cpp:148
 #, kde-format
 msgid "Simulation Paused"
 msgstr "Імітацію призупинено"

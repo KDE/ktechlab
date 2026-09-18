@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-21 00:48+0000\n"
+"POT-Creation-Date: 2026-09-18 00:48+0000\n"
 "PO-Revision-Date: 2026-04-13 08:54+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -325,24 +325,24 @@ msgid "Rotate Clockwise"
 msgstr "Gira en sentit horari"
 
 #. i18n("Rotate Counter-Clockwise"), "object-rotate-left", "[", circuitDocument, SLOT(rotateCounterClockwise()), ac, "edit_rotate_ccw" );
-#: src/circuitview.cpp:94
+#: src/circuitview.cpp:95
 #, kde-format
 msgid "Rotate Counter-Clockwise"
 msgstr "Gira en sentit antihorari"
 
 #. i18n("Flip Horizontally"), "", 0, circuitDocument, SLOT(flipHorizontally()), ac, "edit_flip_horizontally" );
-#: src/circuitview.cpp:101
+#: src/circuitview.cpp:103
 #, kde-format
 msgid "Flip Horizontally"
 msgstr "Inverteix horitzontalment"
 
 #. i18n("Flip Vertically"), "", 0, circuitDocument, SLOT(flipVertically()), ac, "edit_flip_vertically" );
-#: src/circuitview.cpp:108
+#: src/circuitview.cpp:111
 #, kde-format
 msgid "Flip Vertically"
 msgstr "Inverteix verticalment"
 
-#: src/circuitview.cpp:118
+#: src/circuitview.cpp:122
 #, kde-format
 msgid ""
 "Construct a circuit by dragging components from the Component selector from "
@@ -368,17 +368,17 @@ msgstr ""
 "components amb una «Connexió externa», seleccionant els components desitjats "
 "i fent clic sobre «Crea un subcircuit» al menú del clic dret."
 
-#: src/circuitview.cpp:132
+#: src/circuitview.cpp:136
 #, kde-format
 msgid "Simulation Initializing"
 msgstr "S'està inicialitzant la simulació"
 
-#: src/circuitview.cpp:144
+#: src/circuitview.cpp:148
 #, kde-format
 msgid "Simulation Running"
 msgstr "S'està executant la simulació"
 
-#: src/circuitview.cpp:144
+#: src/circuitview.cpp:148
 #, kde-format
 msgid "Simulation Paused"
 msgstr "La simulació es troba en pausa"

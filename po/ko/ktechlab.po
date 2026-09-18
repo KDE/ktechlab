@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-21 00:48+0000\n"
+"POT-Creation-Date: 2026-09-18 00:48+0000\n"
 "PO-Revision-Date: 2026-05-25 21:38+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -320,24 +320,24 @@ msgid "Rotate Clockwise"
 msgstr "시계 방향으로 회전"
 
 #. i18n("Rotate Counter-Clockwise"), "object-rotate-left", "[", circuitDocument, SLOT(rotateCounterClockwise()), ac, "edit_rotate_ccw" );
-#: src/circuitview.cpp:94
+#: src/circuitview.cpp:95
 #, kde-format
 msgid "Rotate Counter-Clockwise"
 msgstr "반시계 방향으로 회전"
 
 #. i18n("Flip Horizontally"), "", 0, circuitDocument, SLOT(flipHorizontally()), ac, "edit_flip_horizontally" );
-#: src/circuitview.cpp:101
+#: src/circuitview.cpp:103
 #, kde-format
 msgid "Flip Horizontally"
 msgstr "상하 반전"
 
 #. i18n("Flip Vertically"), "", 0, circuitDocument, SLOT(flipVertically()), ac, "edit_flip_vertically" );
-#: src/circuitview.cpp:108
+#: src/circuitview.cpp:111
 #, kde-format
 msgid "Flip Vertically"
 msgstr "좌우 반전"
 
-#: src/circuitview.cpp:118
+#: src/circuitview.cpp:122
 #, kde-format
 msgid ""
 "Construct a circuit by dragging components from the Component selector from "
@@ -361,17 +361,17 @@ msgstr ""
 "면 외부 연결이 있는 구성 요소를 연결하고, 필요한 구성 요소를 선택한 다음 오른"
 "쪽 클릭 메뉴에서 \"하위 회로 만들기\"를 선택하십시오."
 
-#: src/circuitview.cpp:132
+#: src/circuitview.cpp:136
 #, kde-format
 msgid "Simulation Initializing"
 msgstr "시뮬레이션 초기화 중"
 
-#: src/circuitview.cpp:144
+#: src/circuitview.cpp:148
 #, kde-format
 msgid "Simulation Running"
 msgstr "시뮬레이션 실행 중"
 
-#: src/circuitview.cpp:144
+#: src/circuitview.cpp:148
 #, kde-format
 msgid "Simulation Paused"
 msgstr "시뮬레이션 일시 정지됨"
