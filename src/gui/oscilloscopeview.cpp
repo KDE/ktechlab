@@ -250,7 +250,8 @@ void OscilloscopeView::drawTimeCursorLine(QPainter &p)
 
 void OscilloscopeView::updateOutputHeight()
 {
-    m_halfOutputHeight = int((Oscilloscope::self()->probePositioner->probeOutputHeight() - (probeArrowWidth / Oscilloscope::self()->numberOfProbes())) / 2) - 1;
+    const auto h = Oscilloscope::self()->probePositioner->arrowSize().height();
+    m_halfOutputHeight = int((Oscilloscope::self()->probePositioner->probeOutputHeight() - (h / Oscilloscope::self()->numberOfProbes())) / 2) - 1;
 }
 
 void OscilloscopeView::drawLogicData(QPainter &p)

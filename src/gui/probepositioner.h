@@ -17,8 +17,8 @@
 class ProbeData;
 typedef QMap<int, ProbeData *> ProbeDataMap;
 
-const float probeArrowWidth = 9;
-const float probeArrowHeight = 12;
+const QSize probeArrowMinSize = QSize(9, 12);
+const QSize probeLabelMinSize = QSize(10, probeArrowMinSize.height());
 
 /**
 Widget for positioning the output of Probes in the OscilloscopeView
@@ -53,6 +53,49 @@ public:
      */
     ProbeData *probeAtPosition(const QPoint &pos);
 
+    /**
+     * Gets the size of the arrow
+     */
+    void setArrowWidth(int width);
+
+    /**
+     * Get the size of the arrow
+     */
+    QSize arrowSize() const {
+        return QSize(m_arrowWidth, m_labelSize.height());
+    }
+
+    /**
+     * Sets the maximum number of characters shown
+     */
+    void setLabelMaxCharacters(int n);
+
+    /**
+     * Get the maximum number of label characters shown
+     */
+    int labelMaxCharacters() {
+        return m_labelMaxCharacters;
+    }
+
+    /**
+     * Returns the size of the label text area
+     */
+    const QSize& labelSize() const {
+        return m_labelSize;
+    }
+
+    /**
+     * Set whether labels should be shown
+     */
+    void setShowLabels(bool show);
+
+    /**
+     * Returns whether labels are shown
+     */
+    bool showLabels() const {
+        return m_showLabels;
+    }
+
 public Q_SLOTS:
     void forceRepaint();
 
@@ -66,11 +109,15 @@ protected:
     void mouseMoveEvent(QMouseEvent *e) override;
     void paintEvent(QPaintEvent *e) override;
     void resizeEvent(QResizeEvent *event) override;
+    void updateSize();
 
     ProbeDataMap m_probeDataMap;
     ProbeData *p_draggedProbe;
     int m_probePosOffset;
-
+    int m_arrowWidth;
+    int m_labelMaxCharacters;
+    QSize m_labelSize;
+    bool m_showLabels;
     bool b_needRedraw;
     QPixmap *m_pixmap;
 };

@@ -20,6 +20,7 @@
 #include <algorithm>
 #include <cmath>
 
+#include <ktlconfig.h>
 #include <ktechlab_debug.h>
 
 ProbePositioner::ProbePositioner(QWidget *parent)
@@ -27,9 +28,12 @@ ProbePositioner::ProbePositioner(QWidget *parent)
 {
     m_probePosOffset = 0;
     p_draggedProbe = nullptr;
-    setFixedWidth(int(probeArrowWidth));
     // setBackgroundMode(Qt::NoBackground); // 2018.12.07
     setBackgroundRole(QPalette::NoRole);
+    m_labelSize = probeLabelMinSize;
+    m_arrowWidth = probeArrowMinSize.width();
+    setLabelMaxCharacters(KTLConfig::probeLabelMaxCharacters());
+    setShowLabels(KTLConfig::showProbeLabels());
     b_needRedraw = true;
     m_pixmap = nullptr;
 }
@@ -42,12 +46,13 @@ ProbePositioner::~ProbePositioner()
 void ProbePositioner::forceRepaint()
 {
     b_needRedraw = true;
+    updateSize();
     repaint(/* false - 2018.12.07 */);
 }
 
 int ProbePositioner::probeOutputHeight() const
 {
-    int height = int(Oscilloscope::self()->oscilloscopeView->height() - probeArrowHeight);
+    int height = int(Oscilloscope::self()->oscilloscopeView->height() - m_labelSize.height());
     int numProbes = Oscilloscope::self()->numberOfProbes();
     if (numProbes == 0)
         numProbes = 1;
@@ -62,7 +67,45 @@ int ProbePositioner::probePosition(ProbeData *probeData) const
     int spacing = probeOutputHeight();
     int probeNum = Oscilloscope::self()->probeNumber(probeData->id());
 
-    return int(probeArrowHeight / 2 + spacing * (probeNum + probeData->drawPosition()));
+    return int(m_labelSize.height() / 2 + spacing * (probeNum + probeData->drawPosition()));
+}
+
+void ProbePositioner::setShowLabels(bool show)
+{
+    m_showLabels = show;
+    b_needRedraw = true;
+    setFixedWidth(m_showLabels ? m_arrowWidth+m_labelSize.width() : m_arrowWidth);
+}
+
+void ProbePositioner::setArrowWidth(int width)
+{
+    m_arrowWidth = std::max(width, probeArrowMinSize.width());
+    b_needRedraw = true;
+    setFixedWidth(m_showLabels ? m_arrowWidth+m_labelSize.width() : m_arrowWidth);
+}
+
+void ProbePositioner::setLabelMaxCharacters(int n)
+{
+    m_labelMaxCharacters = std::max(0, n);
+    updateSize();
+}
+
+void ProbePositioner::updateSize()
+{
+    QFontMetrics fm(font());
+    QSize newSize = probeLabelMinSize;
+    if (m_labelMaxCharacters > 0) {
+        for (auto [_, probe]: m_probeDataMap.asKeyValueRange()) {
+            const auto w = fm.horizontalAdvance(probe->label(), m_labelMaxCharacters);
+            newSize = newSize.expandedTo(QSize(w, fm.height()));
+        }
+    }
+    if (newSize != m_labelSize) {
+        m_labelSize = newSize;
+        b_needRedraw = true;
+        setFixedWidth(m_showLabels ? m_arrowWidth+m_labelSize.width() : m_arrowWidth);
+    }
+
 }
 
 void ProbePositioner::setProbePosition(ProbeData *probeData, int position)
@@ -70,6 +113,7 @@ void ProbePositioner::setProbePosition(ProbeData *probeData, int position)
     if (!probeData)
         return;
 
+    const auto probeArrowHeight = m_labelSize.height();
     int height = int(Oscilloscope::self()->oscilloscopeView->height() - probeArrowHeight);
     int numProbes = Oscilloscope::self()->numberOfProbes();
     int spacing = height / numProbes;
@@ -90,7 +134,8 @@ void ProbePositioner::setProbePosition(ProbeData *probeData, int position)
 
 ProbeData *ProbePositioner::probeAtPosition(const QPoint &pos)
 {
-    int relativeArrowHeight = int(probeArrowHeight * (1. - float(pos.x() / probeArrowWidth)));
+    const auto probeArrowHeight = m_labelSize.height();
+    int relativeArrowHeight = int(probeArrowHeight * (1. - float(pos.x() / width())));
 
     const ProbeDataMap::const_iterator end = m_probeDataMap.end();
     for (ProbeDataMap::const_iterator it = m_probeDataMap.begin(); it != end; ++it) {
@@ -118,8 +163,8 @@ void ProbePositioner::slotProbeDataRegistered(int id, ProbeData *probe)
 void ProbePositioner::slotProbeDataUnregistered(int id)
 {
     m_probeDataMap.remove(id);
-    // We "set" the position of each probe to force it into proper bounds
 
+    // We "set" the position of each probe to force it into proper bounds
     const ProbeDataMap::const_iterator end = m_probeDataMap.end();
     for (ProbeDataMap::const_iterator it = m_probeDataMap.begin(); it != end; ++it)
         setProbePosition(it.value(), probePosition(it.value()));
@@ -183,19 +228,36 @@ void ProbePositioner::paintEvent(QPaintEvent *e)
         }
 
         p.setClipRegion(e->region());
+        const auto probeArrowWidth = m_arrowWidth;
+        const auto probeArrowHeight = m_labelSize.height();
+        const auto labelWidth = m_labelSize.width();
 
         const ProbeDataMap::const_iterator end = m_probeDataMap.end();
         for (ProbeDataMap::const_iterator it = m_probeDataMap.begin(); it != end; ++it) {
             ProbeData *probeData = it.value();
             p.setBrush(probeData->color());
+            p.setPen(palette().color(backgroundRole()));
             int currentPos = probePosition(probeData);
-
-            QPolygon pa(3);
-            pa[0] = QPoint(0, int(currentPos - (probeArrowHeight / 2)));
-            pa[1] = QPoint(int(probeArrowWidth), currentPos);
-            pa[2] = QPoint(0, int(currentPos + (probeArrowHeight / 2)));
-
-            p.drawPolygon(pa);
+            const int ymin = currentPos - (probeArrowHeight / 2);
+            const int ymax = currentPos + (probeArrowHeight / 2);
+            if (m_showLabels && labelWidth > 0) {
+                QPolygon pa(5);
+                pa[0] = QPoint(labelWidth, ymin);
+                pa[1] = QPoint(labelWidth + int(probeArrowWidth), currentPos);
+                pa[2] = QPoint(labelWidth, ymax);
+                pa[3] = QPoint(0, ymax);
+                pa[4] = QPoint(0, ymin);
+                p.drawPolygon(pa);
+                p.setPen(palette().color(foregroundRole()));
+                QRectF rect(2, ymin, labelWidth, probeArrowHeight);
+                p.drawText(rect, Qt::AlignLeft, probeData->label());
+            } else {
+                QPolygon pa(3);
+                pa[0] = QPoint(0, ymin);
+                pa[1] = QPoint(int(probeArrowWidth), currentPos);
+                pa[2] = QPoint(0, ymax);
+                p.drawPolygon(pa);
+            }
         }
         b_needRedraw = false;
     }

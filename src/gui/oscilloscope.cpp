@@ -32,6 +32,7 @@
 
 #include <cassert>
 
+#include <ktlconfig.h>
 #include <ktechlab_debug.h>
 
 // BEGIN Oscilloscope Class
@@ -53,6 +54,7 @@ Oscilloscope::Oscilloscope(KateMDI::ToolView *parent)
     : QWidget(parent)
 {
     setupUi(this);
+    connect(KTechlab::self(), &KTechlab::configurationChanged, this, &Oscilloscope::slotUpdateConfiguration);
 
     if (parent->layout()) {
         parent->layout()->addWidget(this);
@@ -155,6 +157,12 @@ void Oscilloscope::setZoomLevel(double zoomLevel)
     }
 }
 
+void Oscilloscope::slotUpdateConfiguration()
+{
+    probePositioner->setShowLabels(KTLConfig::showProbeLabels());
+    probePositioner->setLabelMaxCharacters(KTLConfig::probeLabelMaxCharacters());
+}
+
 void Oscilloscope::slotZoomDialChanged(int value)
 {
     setZoomLevel(double(value) / double(zoomDial->maximum()));
@@ -185,7 +193,9 @@ ProbeData *Oscilloscope::registerProbe(Probe *probe)
     }
 
     probeData->setColor(probeColors[m_nextColor]);
+    probeData->setLabel(QString("CH%1").arg(probeNumber(id) + 1));
     m_nextColor = (m_nextColor + 1) % 9;
+
     //	probeData->setPaused(b_isPaused);
 
     Q_EMIT probeRegistered(id, probeData);

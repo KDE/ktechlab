@@ -33,6 +33,7 @@ protected:
 
     ProbeData *p_probeData; // As obtained via registering with the oscilloscope
     QColor m_color;
+    QString m_label;
 };
 
 /**

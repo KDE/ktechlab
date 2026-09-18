@@ -30,6 +30,14 @@
 			<label>Show Voltage as Color</label>
 			<default>true</default>
 		</entry>
+		<entry name="ShowProbeLabels" type="Bool">
+			<label>Show probe labels on Oscilloscope</label>
+			<default>false</default>
+		</entry>
+		<entry name="ProbeLabelMaxCharacters" type="Int">
+			<label>Maximum number of characters shown Oscilloscope probe labels</label>
+			<default>5</default>
+		</entry>
 		<entry name="AnimateWires" type="Bool">
 			<label>Animate Wires (current or power)</label>
 			<default>false</default>

@@ -19,6 +19,7 @@ ProbeData::ProbeData(int id)
     , m_drawPosition(0.5)
     , m_resetTime(Simulator::self()->time())
     , m_color(Qt::black)
+    , m_label("")
 {
 }
 
@@ -32,6 +33,13 @@ void ProbeData::setColor(QColor color)
     m_color = color;
     Q_EMIT displayAttributeChanged();
 }
+
+void ProbeData::setLabel(const QString &label)
+{
+    m_label = label;
+    Q_EMIT displayAttributeChanged();
+}
+
 // END class ProbeData
 
 // BEGIN class LogicProbeData

@@ -32,6 +32,8 @@ Probe::Probe(ICNDocument *icnDocument, bool newItem, const char *id)
     createProperty("color", Variant::Type::Color);
     property("color")->setCaption(i18n("Color"));
     property("color")->setValue(QColor(Qt::black));
+    createProperty("label", Variant::Type::String);
+    property("label")->setCaption(i18n("Label"));
 }
 
 Probe::~Probe()
@@ -42,8 +44,12 @@ Probe::~Probe()
 void Probe::dataChanged()
 {
     m_color = dataColor("color");
+    m_label = dataString("label");
     if (p_probeData)
+    {
         p_probeData->setColor(m_color);
+        p_probeData->setLabel(m_label);
+    }
     setChanged();
 }
 // END class Probe
@@ -54,6 +60,7 @@ FloatingProbe::FloatingProbe(ICNDocument *icnDocument, bool newItem, const char 
 {
     p_probeData = m_pFloatingProbeData = static_cast<FloatingProbeData *>(registerProbe(this));
     property("color")->setValue(p_probeData->color());
+    property("label")->setValue(p_probeData->label());
 
     createProperty("scaling", Variant::Type::Select);
     property("scaling")->setCaption(i18n("Scaling"));
@@ -217,6 +224,7 @@ LogicProbe::LogicProbe(ICNDocument *icnDocument, bool newItem, const char *id)
 
     p_probeData = p_logicProbeData = static_cast<LogicProbeData *>(registerProbe(this));
     property("color")->setValue(p_probeData->color());
+    property("label")->setValue(p_probeData->label());
 
     m_pSimulator = Simulator::self();
     //m_pIn->setCallback(this, (CallbackPtr)(&LogicProbe::logicCallback));

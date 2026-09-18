@@ -96,10 +96,24 @@ public:
     /**
      * @returns the colour that is used to display the probe in the oscilloscope
      */
-    QColor color() const
+    const QColor& color() const
     {
         return m_color;
     }
+
+    /**
+     * Set the label for the trace in the oscilloscope.
+     */
+    void setLabel(const QString &label);
+
+    /**
+     * @returns the label for the trace in the oscilloscope
+     */
+    const QString& label() const
+    {
+        return m_label;
+    }
+
     // 		/**
     // 		 * Will not record any data when paused
     // 		 */
@@ -138,6 +152,7 @@ protected:
     float m_drawPosition;
     uint64_t m_resetTime;
     QColor m_color;
+    QString m_label;
 };
 
 /**

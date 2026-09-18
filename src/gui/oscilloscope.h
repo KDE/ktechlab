@@ -165,6 +165,10 @@ public Q_SLOTS:
      * Pause the data capture (e.g. user clicked on pause button)
      */
     void slotTogglePause();
+    /**
+     * Called when configuration is changed
+     */
+    void slotUpdateConfiguration();
 
 protected:
     void getOldestProbe();
