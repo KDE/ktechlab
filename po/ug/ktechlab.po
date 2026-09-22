@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-18 00:48+0000\n"
-"PO-Revision-Date: 2026-05-31 19:48-0400\n"
+"PO-Revision-Date: 2026-09-22 18:03+0900\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
@@ -970,7 +970,7 @@ msgstr "ساقلاش ئورنى"
 #, kde-format
 msgid ""
 "A file named \"%1\" already exists. Are you sure you want to overwrite it?"
-msgstr "«%1» ئاتلىق ھۆججەت مەۋجۇت. ئۇنى راستتىنلا قاپلىۋېتەمسىز؟"
+msgstr ""
 
 #: src/document.cpp:114 src/itemdocument.cpp:840
 #, kde-format
@@ -2576,7 +2576,7 @@ msgstr ""
 #: src/flowparts/forloop.cpp:26
 #, kde-format
 msgid "For"
-msgstr ""
+msgstr "ئۈچۈن"
 
 #: src/flowparts/forloop.cpp:32
 #, kde-format
@@ -2612,7 +2612,7 @@ msgstr ""
 #: src/flowparts/forloop.cpp:54 src/textview.cpp:122
 #, kde-format
 msgid "Step"
-msgstr "Step"
+msgstr ""
 
 #: src/flowparts/inputbutton.cpp:25 src/flowparts/inputbutton.cpp:31
 #, kde-format
@@ -3443,7 +3443,7 @@ msgstr ""
 #: src/gui/logicwidget.ui:170
 #, kde-format
 msgid " V"
-msgstr " V"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QLabel, textLabel2_2)
 #. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, kcfg_LogicFallingTrigger)
@@ -5338,7 +5338,7 @@ msgstr ""
 #: src/textdocument.cpp:638
 #, kde-format
 msgid "%1 - %2"
-msgstr "%1 - %2"
+msgstr ""
 
 #: src/textdocument.cpp:770
 #, kde-format
