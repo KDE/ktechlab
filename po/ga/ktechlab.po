@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-18 00:48+0000\n"
+"POT-Creation-Date: 2026-09-25 00:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Irish Gaelic <kde-i18n-doc@kde.org>\n"
@@ -434,334 +434,340 @@ msgstr ""
 msgid "Whether the same output should be use for generation of code, etc"
 msgstr ""
 
+#. i18n: ectx: label, entry (NavigationMode), group (General)
+#: src/core/ktechlab.kcfg:54
+#, kde-format
+msgid "How the canvas is zoomed and panned"
+msgstr ""
+
 #. i18n: ectx: label, entry (IndentAsmName), group (AsmFormatter)
-#: src/core/ktechlab.kcfg:57
+#: src/core/ktechlab.kcfg:65
 #, kde-format
 msgid "Indentation of Instruction Names"
 msgstr ""
 
 #. i18n: ectx: label, entry (IndentAsmData), group (AsmFormatter)
-#: src/core/ktechlab.kcfg:61
+#: src/core/ktechlab.kcfg:69
 #, kde-format
 msgid "Indentation of Instruction Data"
 msgstr ""
 
 #. i18n: ectx: label, entry (IndentComment), group (AsmFormatter)
-#: src/core/ktechlab.kcfg:65
+#: src/core/ktechlab.kcfg:73
 #, kde-format
 msgid "Indentation of Comments"
 msgstr ""
 
 #. i18n: ectx: label, entry (IndentEqu), group (AsmFormatter)
-#: src/core/ktechlab.kcfg:69
+#: src/core/ktechlab.kcfg:77
 #, kde-format
 msgid "Indentation of 'equ'"
 msgstr ""
 
 #. i18n: ectx: label, entry (IndentEquValue), group (AsmFormatter)
-#: src/core/ktechlab.kcfg:73
+#: src/core/ktechlab.kcfg:81
 #, kde-format
 msgid "Indentation of 'equ' Value"
 msgstr ""
 
 #. i18n: ectx: label, entry (AutoFormatMBOutput), group (AsmFormatter)
-#: src/core/ktechlab.kcfg:77
+#: src/core/ktechlab.kcfg:85
 #, kde-format
 msgid "Automatically format Microbe output"
 msgstr ""
 
 #. i18n: ectx: label, entry (LogicSymbolShapes), group (Logic)
-#: src/core/ktechlab.kcfg:84
+#: src/core/ktechlab.kcfg:92
 #, kde-format
 msgid "Logic Symbol Shapes"
 msgstr ""
 
 #. i18n: ectx: label, entry (LogicRisingTrigger), group (Logic)
-#: src/core/ktechlab.kcfg:92
+#: src/core/ktechlab.kcfg:100
 #, kde-format
 msgid "Rising Trigger Threshold"
 msgstr ""
 
 #. i18n: ectx: label, entry (LogicFallingTrigger), group (Logic)
-#: src/core/ktechlab.kcfg:96
+#: src/core/ktechlab.kcfg:104
 #, kde-format
 msgid "Falling Trigger Threshold"
 msgstr ""
 
 #. i18n: ectx: label, entry (LogicOutputHigh), group (Logic)
-#: src/core/ktechlab.kcfg:100
+#: src/core/ktechlab.kcfg:108
 #, kde-format
 msgid "Logic Output High"
 msgstr ""
 
 #. i18n: ectx: label, entry (LogicOutputHighImpedance), group (Logic)
-#: src/core/ktechlab.kcfg:104
+#: src/core/ktechlab.kcfg:112
 #, kde-format
 msgid "Logic Output High Impedance"
 msgstr ""
 
 #. i18n: ectx: label, entry (LogicOutputLowImpedance), group (Logic)
-#: src/core/ktechlab.kcfg:108
+#: src/core/ktechlab.kcfg:116
 #, kde-format
 msgid "Logic Output Low Impedance"
 msgstr ""
 
 #. i18n: ectx: label, entry (HexFormat), group (Gpasm)
-#: src/core/ktechlab.kcfg:115
+#: src/core/ktechlab.kcfg:123
 #, kde-format
 msgid "Hex Format"
 msgstr ""
 
 #. i18n: ectx: label, entry (Radix), group (Gpasm)
-#: src/core/ktechlab.kcfg:125
+#: src/core/ktechlab.kcfg:133
 #, kde-format
 msgid "Radix"
 msgstr ""
 
 #. i18n: ectx: label, entry (GpasmWarningLevel), group (Gpasm)
-#: src/core/ktechlab.kcfg:135
+#: src/core/ktechlab.kcfg:143
 #, kde-format
 msgid "GpasmWarning Level"
 msgstr ""
 
 #. i18n: ectx: label, entry (IgnoreCase), group (Gpasm)
-#: src/core/ktechlab.kcfg:144
+#: src/core/ktechlab.kcfg:152
 #, kde-format
 msgid "Ignore Case"
 msgstr ""
 
 #. i18n: ectx: label, entry (DosFormat), group (Gpasm)
-#: src/core/ktechlab.kcfg:148
+#: src/core/ktechlab.kcfg:156
 #, kde-format
 msgid "Dos Formatting"
 msgstr ""
 
 #. i18n: ectx: label, entry (MiscGpasmOptions), group (Gpasm)
 #. i18n: ectx: label, entry (MiscSDCCOptions), group (SDCC)
-#: src/core/ktechlab.kcfg:152 src/core/ktechlab.kcfg:299
+#: src/core/ktechlab.kcfg:160 src/core/ktechlab.kcfg:307
 #, kde-format
 msgid "Other Options"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_nostdlib), group (SDCC)
-#: src/core/ktechlab.kcfg:159
+#: src/core/ktechlab.kcfg:167
 #, kde-format
 msgid "Do not search in the standard library directory"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_nostdinc), group (SDCC)
-#: src/core/ktechlab.kcfg:163
+#: src/core/ktechlab.kcfg:171
 #, kde-format
 msgid "Do not search in the standard include directory"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_less_pedantic), group (SDCC)
-#: src/core/ktechlab.kcfg:167
+#: src/core/ktechlab.kcfg:175
 #, kde-format
 msgid "Disable pedantic warnings"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_std_c89), group (SDCC)
-#: src/core/ktechlab.kcfg:171
+#: src/core/ktechlab.kcfg:179
 #, kde-format
 msgid "Strictly follow the C89 standard"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_std_c99), group (SDCC)
-#: src/core/ktechlab.kcfg:175
+#: src/core/ktechlab.kcfg:183
 #, kde-format
 msgid "Strictly follow the C99 standard"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_stack_auto), group (SDCC)
-#: src/core/ktechlab.kcfg:180
+#: src/core/ktechlab.kcfg:188
 #, kde-format
 msgid "Stack automatic variables"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_int_long_reent), group (SDCC)
-#: src/core/ktechlab.kcfg:184
+#: src/core/ktechlab.kcfg:192
 #, kde-format
 msgid "Integer libraries have been compiled as reentrant"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_float_reent), group (SDCC)
-#: src/core/ktechlab.kcfg:188
+#: src/core/ktechlab.kcfg:196
 #, kde-format
 msgid "Floating point library has been compiled as reentrant"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_fommit_frame_pointer), group (SDCC)
-#: src/core/ktechlab.kcfg:192
+#: src/core/ktechlab.kcfg:200
 #, kde-format
 msgid "Leave out the frame pointer"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_no_xinit_opt), group (SDCC)
-#: src/core/ktechlab.kcfg:196
+#: src/core/ktechlab.kcfg:204
 #, kde-format
 msgid "Do not memcpy initialized data from code space to xdata space"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_all_callee_saves), group (SDCC)
-#: src/core/ktechlab.kcfg:200
+#: src/core/ktechlab.kcfg:208
 #, kde-format
 msgid "Callee will always save registers used"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_nooverlay), group (SDCC)
-#: src/core/ktechlab.kcfg:205
+#: src/core/ktechlab.kcfg:213
 #, kde-format
 msgid "Do not overlay parameters and local variables"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_nogcse), group (SDCC)
-#: src/core/ktechlab.kcfg:209
+#: src/core/ktechlab.kcfg:217
 #, kde-format
 msgid "Disable the GCSE optimization"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_nolabelopt), group (SDCC)
-#: src/core/ktechlab.kcfg:213
+#: src/core/ktechlab.kcfg:221
 #, kde-format
 msgid "Do not optimize labels"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_noinvariant), group (SDCC)
-#: src/core/ktechlab.kcfg:217
+#: src/core/ktechlab.kcfg:225
 #, kde-format
 msgid "Disable optimization of invariants"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_noinduction), group (SDCC)
-#: src/core/ktechlab.kcfg:221
+#: src/core/ktechlab.kcfg:229
 #, kde-format
 msgid "Disable loop variable induction"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_no_peep), group (SDCC)
-#: src/core/ktechlab.kcfg:225
+#: src/core/ktechlab.kcfg:233
 #, kde-format
 msgid "Disable peep-hole optimization"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_noloopreverse), group (SDCC)
-#: src/core/ktechlab.kcfg:229
+#: src/core/ktechlab.kcfg:237
 #, kde-format
 msgid "Do not do loop reversal optimization"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_opt_code_size), group (SDCC)
-#: src/core/ktechlab.kcfg:233
+#: src/core/ktechlab.kcfg:241
 #, kde-format
 msgid "Optimize for compact code"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_opt_code_speed), group (SDCC)
-#: src/core/ktechlab.kcfg:237
+#: src/core/ktechlab.kcfg:245
 #, kde-format
 msgid "Optimize for fast code"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_peep_asm), group (SDCC)
-#: src/core/ktechlab.kcfg:241
+#: src/core/ktechlab.kcfg:249
 #, kde-format
 msgid "Pass inline assembler code through peep hole optimizer"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_nojtbound), group (SDCC)
-#: src/core/ktechlab.kcfg:245
+#: src/core/ktechlab.kcfg:253
 #, kde-format
 msgid "Do not generate boundary check for jump tables"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_nodefaultlibs), group (SDCC)
-#: src/core/ktechlab.kcfg:250
+#: src/core/ktechlab.kcfg:258
 #, kde-format
 msgid "Do not use default libraries"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_pno_banksel), group (SDCC)
-#: src/core/ktechlab.kcfg:254
+#: src/core/ktechlab.kcfg:262
 #, kde-format
 msgid "Do not generate BANKSEL directives"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_pstack_model_large), group (SDCC)
-#: src/core/ktechlab.kcfg:258
+#: src/core/ktechlab.kcfg:266
 #, kde-format
 msgid "Use large stack model"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_debug_xtra), group (SDCC)
-#: src/core/ktechlab.kcfg:262
+#: src/core/ktechlab.kcfg:270
 #, kde-format
 msgid "Show more debug info in assembly output"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_denable_peeps), group (SDCC)
-#: src/core/ktechlab.kcfg:266
+#: src/core/ktechlab.kcfg:274
 #, kde-format
 msgid "Explicit enable of peepholes"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_calltree), group (SDCC)
-#: src/core/ktechlab.kcfg:270
+#: src/core/ktechlab.kcfg:278
 #, kde-format
 msgid "Dump call tree in .calltree file"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_fstack), group (SDCC)
-#: src/core/ktechlab.kcfg:274
+#: src/core/ktechlab.kcfg:282
 #, kde-format
 msgid "Enable stack optimizations"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_optimize_goto), group (SDCC)
-#: src/core/ktechlab.kcfg:278
+#: src/core/ktechlab.kcfg:286
 #, kde-format
 msgid "Try to use conditional BRA instead of GOTO"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_optimize_cmp), group (SDCC)
-#: src/core/ktechlab.kcfg:282
+#: src/core/ktechlab.kcfg:290
 #, kde-format
 msgid "Try to optimize some compares"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_optimize_df), group (SDCC)
-#: src/core/ktechlab.kcfg:286
+#: src/core/ktechlab.kcfg:294
 #, kde-format
 msgid "Thorough data flow analysis"
 msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_use_non_free)
 #. i18n: ectx: label, entry (SDCC_use_non_free), group (SDCC)
-#: src/core/ktechlab.kcfg:290 src/gui/sdccoptionswidget.ui:95
+#: src/core/ktechlab.kcfg:298 src/gui/sdccoptionswidget.ui:95
 #, kde-format
 msgid "Search / include non-free licensed libraries and header files"
 msgstr ""
 
 #. i18n: ectx: label, entry (SDCC_install_prefix), group (SDCC)
-#: src/core/ktechlab.kcfg:294
+#: src/core/ktechlab.kcfg:302
 #, kde-format
 msgid "Location where SDCC in installed"
 msgstr ""
 
 #. i18n: ectx: label, entry (PicProgrammerProgram), group (PicProgramming)
-#: src/core/ktechlab.kcfg:306
+#: src/core/ktechlab.kcfg:314
 #, kde-format
 msgid "The application to use to program the PIC."
 msgstr ""
 
 #. i18n: ectx: label, entry (PicProgrammerPort), group (PicProgramming)
-#: src/core/ktechlab.kcfg:310
+#: src/core/ktechlab.kcfg:318
 #, kde-format
 msgid "The device (serial, parallel, etc...) used to program the PIC."
 msgstr ""
 
 #. i18n: ectx: label, entry (gplink_link_shared), group (Gplink)
-#: src/core/ktechlab.kcfg:317
+#: src/core/ktechlab.kcfg:325
 #, kde-format
 msgid "Check this if SDCC uses shared libs for compiling (newer SDCC does so)"
 msgstr ""
@@ -966,13 +972,13 @@ msgstr ""
 msgid "Save Location"
 msgstr ""
 
-#: src/document.cpp:113 src/itemdocument.cpp:837
+#: src/document.cpp:113 src/itemdocument.cpp:838
 #, kde-format
 msgid ""
 "A file named \"%1\" already exists. Are you sure you want to overwrite it?"
 msgstr ""
 
-#: src/document.cpp:114 src/itemdocument.cpp:840
+#: src/document.cpp:114 src/itemdocument.cpp:841
 #, kde-format
 msgid "Overwrite File?"
 msgstr ""
@@ -1839,7 +1845,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QLabel, m_pNameLabel)
 #: src/electronics/components/externalconnection.cpp:34
 #: src/gui/contexthelpwidget.ui:29 src/gui/microsettingsdlg.cpp:331
-#: src/gui/settingsdlg.cpp:287 src/gui/symbolviewer.cpp:124
+#: src/gui/settingsdlg.cpp:289 src/gui/symbolviewer.cpp:124
 #: src/gui/symbolviewer.cpp:126 src/gui/symbolviewer.cpp:191
 #: src/gui/symbolviewer.cpp:193
 #, kde-format
@@ -2983,26 +2989,38 @@ msgstr ""
 msgid "Reuse the same output view for code generation"
 msgstr ""
 
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowGrid)
+#: src/gui/generaloptionswidget.ui:39
+#, kde-format
+msgid "Show &grid:"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowVoltageColor)
+#: src/gui/generaloptionswidget.ui:46
+#, kde-format
+msgid "Color the wires to match the voltage"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_AnimateWires)
+#: src/gui/generaloptionswidget.ui:56
+#, kde-format
+msgid "Animate wires to show the current or power flow"
+msgstr ""
+
 #. i18n: ectx: property (toolTip), widget (KColorButton, kcfg_GridColor)
-#: src/gui/generaloptionswidget.ui:52
+#: src/gui/generaloptionswidget.ui:66
 #, kde-format
 msgid "The grid color in the work area."
 msgstr ""
 
 #. i18n: ectx: property (text), widget (KColorButton, kcfg_GridColor)
-#: src/gui/generaloptionswidget.ui:55
+#: src/gui/generaloptionswidget.ui:69
 #, kde-format
 msgid "Grid Colour"
 msgstr ""
 
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowGrid)
-#: src/gui/generaloptionswidget.ui:62
-#, kde-format
-msgid "Show &grid:"
-msgstr ""
-
 #. i18n: ectx: property (toolTip), widget (QLabel, textLabel1)
-#: src/gui/generaloptionswidget.ui:85
+#: src/gui/generaloptionswidget.ui:76
 #, kde-format
 msgid ""
 "Maximum undo steps for work area. This does not apply to text documents - "
@@ -3010,77 +3028,83 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel1)
-#: src/gui/generaloptionswidget.ui:88
+#: src/gui/generaloptionswidget.ui:79
 #, kde-format
 msgid "Maximum undo steps for work area:"
 msgstr ""
 
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowVoltageBars)
-#: src/gui/generaloptionswidget.ui:98
-#, kde-format
-msgid "Show voltage bars &on electronic components"
-msgstr ""
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowVoltageColor)
-#: src/gui/generaloptionswidget.ui:105
-#, kde-format
-msgid "Color the wires to match the voltage"
-msgstr ""
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_AnimateWires)
-#: src/gui/generaloptionswidget.ui:115
-#, kde-format
-msgid "Animate wires to show the current or power flow"
-msgstr ""
-
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox21)
-#: src/gui/generaloptionswidget.ui:125
+#: src/gui/generaloptionswidget.ui:89
 #, kde-format
 msgid "Display Refresh Rate"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel3_2)
-#: src/gui/generaloptionswidget.ui:152
+#: src/gui/generaloptionswidget.ui:116
 #, kde-format
 msgid "Refresh rate:"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, refreshRateLabel)
-#: src/gui/generaloptionswidget.ui:162
+#: src/gui/generaloptionswidget.ui:126
 #, kde-format
 msgid "Medium (50 FPS)"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel9_2)
-#: src/gui/generaloptionswidget.ui:180
+#: src/gui/generaloptionswidget.ui:144
 #, kde-format
 msgid ""
 "This is the number of times per second that the work area view is updated; a "
 "compromise between CPU usage and smoothness of display."
 msgstr ""
 
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowVoltageBars)
+#: src/gui/generaloptionswidget.ui:166
+#, kde-format
+msgid "Show voltage bars &on electronic components"
+msgstr ""
+
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox4)
-#: src/gui/generaloptionswidget.ui:202
+#: src/gui/generaloptionswidget.ui:186
 #, kde-format
 msgid "Convenience"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_RestoreDocumentsOnStartup)
-#: src/gui/generaloptionswidget.ui:208
+#: src/gui/generaloptionswidget.ui:192
 #, kde-format
 msgid "Restore opened doc&uments on startup"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_RaiseItemSelectors)
-#: src/gui/generaloptionswidget.ui:215
+#: src/gui/generaloptionswidget.ui:199
 #, kde-format
 msgid "Raise the &appropriate item selector on creating a new document"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_RaiseMessagesLog)
-#: src/gui/generaloptionswidget.ui:222
+#: src/gui/generaloptionswidget.ui:206
 #, kde-format
 msgid "Raise the &Messages log when compiling"
+msgstr ""
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_NavigationMode)
+#: src/gui/generaloptionswidget.ui:236
+#, kde-format
+msgid "Classic"
+msgstr ""
+
+#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_NavigationMode)
+#: src/gui/generaloptionswidget.ui:241
+#, kde-format
+msgid "Horizon"
+msgstr ""
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: src/gui/generaloptionswidget.ui:249
+#, kde-format
+msgid "Navigation mode"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
@@ -3232,8 +3256,8 @@ msgstr ""
 msgid "Link with shared libraries (&use this with new SDCC)"
 msgstr ""
 
-#: src/gui/imageexportdlg.cpp:32 src/itemdocument.cpp:862
-#: src/itemdocument.cpp:868
+#: src/gui/imageexportdlg.cpp:32 src/itemdocument.cpp:863
+#: src/itemdocument.cpp:869
 #, kde-format
 msgid "Export As Image"
 msgstr ""
@@ -4375,57 +4399,70 @@ msgstr ""
 msgid "Electronic Logic Values"
 msgstr ""
 
-#: src/gui/settingsdlg.cpp:177
+#: src/gui/settingsdlg.cpp:154
+#, kde-format
+msgid ""
+"Pan vertically using mouse wheel. Pan horizontally using Alt+mouse wheel. "
+"Zoom with Ctrl+mouse wheel."
+msgstr ""
+
+#: src/gui/settingsdlg.cpp:155
+#, kde-format
+msgid ""
+"Pan by clicking the middle mouse button and dragging. Zoom with mouse wheel."
+msgstr ""
+
+#: src/gui/settingsdlg.cpp:179
 #, kde-format
 msgid "Lowest (%1 FPS)"
 msgstr ""
 
-#: src/gui/settingsdlg.cpp:180
+#: src/gui/settingsdlg.cpp:182
 #, kde-format
 msgid "Low (%1 FPS)"
 msgstr ""
 
-#: src/gui/settingsdlg.cpp:183
+#: src/gui/settingsdlg.cpp:185
 #, kde-format
 msgid "Medium (%1 FPS)"
 msgstr ""
 
-#: src/gui/settingsdlg.cpp:186
+#: src/gui/settingsdlg.cpp:188
 #, kde-format
 msgid "High (%1 FPS)"
 msgstr ""
 
-#: src/gui/settingsdlg.cpp:189
+#: src/gui/settingsdlg.cpp:191
 #, kde-format
 msgid "Highest (%1 FPS)"
 msgstr ""
 
-#: src/gui/settingsdlg.cpp:192
+#: src/gui/settingsdlg.cpp:194
 #, kde-format
 msgid "Unknown value"
 msgstr ""
 
-#: src/gui/settingsdlg.cpp:213
+#: src/gui/settingsdlg.cpp:215
 #, kde-format
 msgid "<b>%1</b> cannot be found.<br>"
 msgstr ""
 
-#: src/gui/settingsdlg.cpp:215
+#: src/gui/settingsdlg.cpp:217
 #, kde-format
 msgid "<b>%1</b> found: %2<br>"
 msgstr ""
 
-#: src/gui/settingsdlg.cpp:264
+#: src/gui/settingsdlg.cpp:266
 #, kde-format
 msgid "Remove programmer configuration \"%1\"?"
 msgstr ""
 
-#: src/gui/settingsdlg.cpp:265
+#: src/gui/settingsdlg.cpp:267
 #, kde-format
 msgid "Remove \"%1\""
 msgstr ""
 
-#: src/gui/settingsdlg.cpp:287
+#: src/gui/settingsdlg.cpp:289
 #, kde-format
 msgid "Configuration Name"
 msgstr ""
@@ -4468,22 +4505,22 @@ msgstr ""
 msgid "Alignment"
 msgstr ""
 
-#: src/itemdocument.cpp:862
+#: src/itemdocument.cpp:863
 #, kde-format
 msgid "SVG export is sub-functional"
 msgstr ""
 
-#: src/itemdocument.cpp:868
+#: src/itemdocument.cpp:869
 #, kde-format
 msgid "There is nothing to crop"
 msgstr ""
 
-#: src/itemdocument.cpp:937
+#: src/itemdocument.cpp:938
 #, kde-format
 msgid "Export failed"
 msgstr ""
 
-#: src/itemdocument.cpp:937
+#: src/itemdocument.cpp:938
 #, kde-format
 msgid "Image Export"
 msgstr ""
@@ -4588,17 +4625,17 @@ msgstr ""
 msgid "Lower Selection"
 msgstr ""
 
-#: src/itemview.cpp:617 src/itemview.cpp:625
+#: src/itemview.cpp:635 src/itemview.cpp:643
 #, kde-format
 msgid "Left click to add. Right click to resume normal editing"
 msgstr ""
 
-#: src/itemview.cpp:620
+#: src/itemview.cpp:638
 #, kde-format
 msgid "Click and hold to start drawing."
 msgstr ""
 
-#: src/itemview.cpp:628
+#: src/itemview.cpp:646
 #, kde-format
 msgid "Right click to cancel the connector"
 msgstr ""
