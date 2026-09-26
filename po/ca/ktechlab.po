@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-25 00:49+0000\n"
-"PO-Revision-Date: 2026-04-13 08:54+0200\n"
+"PO-Revision-Date: 2026-09-25 13:18+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -455,7 +455,7 @@ msgstr "Si s'ha d'usar la mateixa sortida per a la generació del codi, etc."
 #: src/core/ktechlab.kcfg:54
 #, kde-format
 msgid "How the canvas is zoomed and panned"
-msgstr ""
+msgstr "Com es fa zoom i panoràmiques del llenç"
 
 #. i18n: ectx: label, entry (IndentAsmName), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:65
@@ -3159,23 +3159,21 @@ msgstr "Eleva el registre de &missatges en compilar"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_NavigationMode)
 #: src/gui/generaloptionswidget.ui:236
-#, fuzzy, kde-format
-#| msgid "Chassis'"
+#, kde-format
 msgid "Classic"
-msgstr "Xassís"
+msgstr "Clàssic"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_NavigationMode)
 #: src/gui/generaloptionswidget.ui:241
 #, kde-format
 msgid "Horizon"
-msgstr ""
+msgstr "Horitzó"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/generaloptionswidget.ui:249
-#, fuzzy, kde-format
-#| msgid "Configuration Name"
+#, kde-format
 msgid "Navigation mode"
-msgstr "Nom de la configuració"
+msgstr "Mode de navegació"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: src/gui/gpasmsettingswidget.ui:32
@@ -4584,12 +4582,16 @@ msgid ""
 "Pan vertically using mouse wheel. Pan horizontally using Alt+mouse wheel. "
 "Zoom with Ctrl+mouse wheel."
 msgstr ""
+"Desplaça verticalment amb la roda del ratolí. Desplaça horitzontalment "
+"utilitzant Alt+roda del ratolí. Zoom amb Ctrl+roda del ratolí."
 
 #: src/gui/settingsdlg.cpp:155
 #, kde-format
 msgid ""
 "Pan by clicking the middle mouse button and dragging. Zoom with mouse wheel."
 msgstr ""
+"Desplaça fent clic al botó del mig del ratolí i arrossegant. Zoom amb la "
+"roda del ratolí."
 
 #: src/gui/settingsdlg.cpp:179
 #, kde-format

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-25 00:49+0000\n"
-"PO-Revision-Date: 2026-08-10 18:44+0400\n"
+"PO-Revision-Date: 2026-09-25 16:45+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -3121,10 +3121,9 @@ msgstr "ارفع سجل &الرسائل عند التصريف"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_NavigationMode)
 #: src/gui/generaloptionswidget.ui:236
-#, fuzzy, kde-format
-#| msgid "Chassis'"
+#, kde-format
 msgid "Classic"
-msgstr "هيكل ميكانيكي"
+msgstr "تقليدي"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_NavigationMode)
 #: src/gui/generaloptionswidget.ui:241
@@ -3134,10 +3133,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/generaloptionswidget.ui:249
-#, fuzzy, kde-format
-#| msgid "Configuration Name"
+#, kde-format
 msgid "Navigation mode"
-msgstr "اسم التشكيلة"
+msgstr "وضع التنقل"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: src/gui/gpasmsettingswidget.ui:32

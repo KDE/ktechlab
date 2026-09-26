@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-25 00:49+0000\n"
-"PO-Revision-Date: 2026-04-13 06:43+0200\n"
+"PO-Revision-Date: 2026-09-25 06:57+0200\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -451,7 +451,7 @@ msgstr "Ali naj se isti izhodi uporabijo za tvorbo kode itn."
 #: src/core/ktechlab.kcfg:54
 #, kde-format
 msgid "How the canvas is zoomed and panned"
-msgstr ""
+msgstr "Kako se platno povečuje in premika"
 
 #. i18n: ectx: label, entry (IndentAsmName), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:65
@@ -3135,23 +3135,21 @@ msgstr "Dvigni &Dnevnik sporočil med prevajanjem"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_NavigationMode)
 #: src/gui/generaloptionswidget.ui:236
-#, fuzzy, kde-format
-#| msgid "Chassis'"
+#, kde-format
 msgid "Classic"
-msgstr "Ohišje"
+msgstr "Klasično"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_NavigationMode)
 #: src/gui/generaloptionswidget.ui:241
 #, kde-format
 msgid "Horizon"
-msgstr ""
+msgstr "Obzorje"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/generaloptionswidget.ui:249
-#, fuzzy, kde-format
-#| msgid "Configuration Name"
+#, kde-format
 msgid "Navigation mode"
-msgstr "Ime prilagoditve"
+msgstr "Način krmarjenja"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: src/gui/gpasmsettingswidget.ui:32
@@ -4551,12 +4549,17 @@ msgid ""
 "Pan vertically using mouse wheel. Pan horizontally using Alt+mouse wheel. "
 "Zoom with Ctrl+mouse wheel."
 msgstr ""
+"Navpično premikanje z miškinim kolescem. Vodoravno premikanje s tipko Alt in "
+"miškinim kolescem. Povečevanje/pomanjševanje s tipko Ctrl in miškinim "
+"kolescem."
 
 #: src/gui/settingsdlg.cpp:155
 #, kde-format
 msgid ""
 "Pan by clicking the middle mouse button and dragging. Zoom with mouse wheel."
 msgstr ""
+"Pomik s klikom srednjega gumba miške in povlekom. Povečava z miškinim "
+"kolescem."
 
 #: src/gui/settingsdlg.cpp:179
 #, kde-format

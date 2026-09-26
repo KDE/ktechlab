@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-25 00:49+0000\n"
-"PO-Revision-Date: 2026-05-23 11:39+0200\n"
+"PO-Revision-Date: 2026-09-25 11:14+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.04.1\n"
+"X-Generator: Lokalize 26.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -451,7 +451,7 @@ msgstr "Als u dezelfde uitvoer wilt gebruiken voor codegeneratie, enz."
 #: src/core/ktechlab.kcfg:54
 #, kde-format
 msgid "How the canvas is zoomed and panned"
-msgstr ""
+msgstr "Hoe het werkvlak wordt ingezoomd en gezwenkt"
 
 #. i18n: ectx: label, entry (IndentAsmName), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:65
@@ -3142,23 +3142,21 @@ msgstr "Open venster met &log-berichten tijdens compileren"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_NavigationMode)
 #: src/gui/generaloptionswidget.ui:236
-#, fuzzy, kde-format
-#| msgid "Chassis'"
+#, kde-format
 msgid "Classic"
-msgstr "Chassis'"
+msgstr "Klassiek"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_NavigationMode)
 #: src/gui/generaloptionswidget.ui:241
 #, kde-format
 msgid "Horizon"
-msgstr ""
+msgstr "Horizon"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/generaloptionswidget.ui:249
-#, fuzzy, kde-format
-#| msgid "Configuration Name"
+#, kde-format
 msgid "Navigation mode"
-msgstr "Configuratie naam"
+msgstr "Navigatiemodus"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: src/gui/gpasmsettingswidget.ui:32
@@ -4561,12 +4559,16 @@ msgid ""
 "Pan vertically using mouse wheel. Pan horizontally using Alt+mouse wheel. "
 "Zoom with Ctrl+mouse wheel."
 msgstr ""
+"Verticaal zwenken met het muiswiel. Horizontaal zwenken met Alt+muiswiel."
+"Zoomen met Ctrl+muiswiel."
 
 #: src/gui/settingsdlg.cpp:155
 #, kde-format
 msgid ""
 "Pan by clicking the middle mouse button and dragging. Zoom with mouse wheel."
 msgstr ""
+"Laat het beeld zwenken door de middelste muisknop in te drukken en te "
+"slepen. Zoom met het muiswiel."
 
 #: src/gui/settingsdlg.cpp:179
 #, kde-format

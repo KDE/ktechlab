@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-25 00:49+0000\n"
-"PO-Revision-Date: 2024-04-26 10:58+0200\n"
+"PO-Revision-Date: 2024-08-15 13:47+0200\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -3095,13 +3095,13 @@ msgstr ""
 #: src/gui/generaloptionswidget.ui:236
 #, kde-format
 msgid "Classic"
-msgstr ""
+msgstr "Klasické"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_NavigationMode)
 #: src/gui/generaloptionswidget.ui:241
 #, kde-format
 msgid "Horizon"
-msgstr ""
+msgstr "Horizont"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/generaloptionswidget.ui:249
