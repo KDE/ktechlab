@@ -1,0 +1,116 @@
+<!-- kate: tab-width 2; indent-mode xml; -->
+<chapter id="pic_programs">
+	<title
+>Программы PIC</title>
+	
+	<sect1 id="manipulation">
+		<title
+>Преобразования</title>
+		
+		<para
+>При создании документа FlowCode или текстового документа на панели инструментов появляется раскрывающееся меню со значком ракеты. С его помощью программу PIC возможно преобразовывать в разные формы.</para>
+		
+		<itemizedlist>
+				<listitem
+><para
+><guimenuitem
+>Преобразовать в → &microbe;</guimenuitem
+> — используется только в документах &flowcode;. Подробнее об этом — в разделе <xref linkend="flowcode"/>.</para
+></listitem>
+			
+				<listitem
+><para
+><guimenuitem
+>Преобразовать в → Ассемблер</guimenuitem
+> — применяется в четырёх случаях. Если открыт документ &flowcode;, программа &flowcode; выводится в виде инструкций ассемблера. Если открыт документ &microbe;, для компиляции вызывается программа <command
+>microbe</command
+>, поставляемая с &ktechlab;. Аналогично, если открыта программа на C, выполняется попытка скомпилировать её с помощью SDCC. Если открыт текстовый документ с шестнадцатеричным кодом PIC, для его дизассемблирования вызывается <command
+>gpdasm</command
+>.</para
+></listitem>
+			
+				<listitem
+><para
+><guimenuitem
+>Преобразовать в → Шестнадцатеричный код</guimenuitem
+> — тоже применяется в четырёх случаях. Как и <guimenuitem
+>Ассемблер</guimenuitem
+>, работает с документами &flowcode;, &microbe; и C. Кроме того, пункт доступен для открытого документа на ассемблере — тогда код ассемблируется с помощью <command
+>gpasm</command
+>.</para
+></listitem>
+			
+				<listitem
+><para
+><guimenuitem
+>Преобразовать в → PIC (передача)</guimenuitem
+> — ассемблирует редактируемую программу PIC и загружает её с помощью выбранного пользователем программатора.</para
+></listitem>
+		</itemizedlist>
+		
+		<para
+>Ни одно из этих действий не требует сохранять текущий документ — это очень удобно, когда нужно быстро написать программу. Для целей, отличных от PIC, диалог <guilabel
+>Выход</guilabel
+>, открывающийся при выборе одного из этих действий, позволяет вывести результат (в трёх перечисленных выше случаях это всегда текст) в новый документ или в файл. При сохранении в файл можно также открыть файл после создания и добавить его в открытый проект (если проект открыт).</para>
+		
+		<para
+>Чтобы &ktechlab; всегда выводил результат в одно и то же представление, включите соответствующий параметр на странице <guilabel
+>Общее</guilabel
+> диалога настройки.</para>
+	</sect1>
+	
+	<sect1 id="uploading">
+		<title
+>Загрузка в PIC</title>
+		
+		<para
+>Для загрузки программ в PIC &ktechlab; использует сторонние программаторы. Ряд распространённых программаторов уже настроен, другие возможно добавить в диалоге <guilabel
+>Настройка</guilabel
+>.</para>
+		
+		<para
+>Список портов составляется поиском доступных для чтения и записи последовательных и параллельных портов. Последовательные порты ищутся в:</para>
+			<itemizedlist>
+				<listitem
+><para
+>/dev/ttyS<emphasis
+>[0..7]</emphasis
+></para
+></listitem>
+				<listitem
+><para
+>/dev/tts/<emphasis
+>[0..7]</emphasis
+></para
+></listitem>
+				<listitem
+><para
+>/dev/ttyUSB<emphasis
+>[0..7]</emphasis
+></para
+></listitem>
+				<listitem
+><para
+>/dev/usb/tts/<emphasis
+>[0..7]</emphasis
+></para
+></listitem>
+			</itemizedlist>
+		<para
+>Параллельные порты ищутся в: <itemizedlist>
+				<listitem
+><para
+>/dev/usb/parport<emphasis
+>[0..7]</emphasis
+></para
+></listitem>
+				<listitem
+><para
+>/dev/usb/parports/<emphasis
+>[0..7]</emphasis
+></para
+></listitem>
+			</itemizedlist>
+		</para>
+	</sect1>
+</chapter>

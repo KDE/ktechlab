@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-27 00:48+0000\n"
-"PO-Revision-Date: 2026-07-05 16:08+0200\n"
+"PO-Revision-Date: 2026-09-27 14:55+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.04.2\n"
+"X-Generator: Lokalize 26.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -417,13 +417,13 @@ msgstr "Visa spänning som färg"
 #: src/core/ktechlab.kcfg:34
 #, kde-format
 msgid "Show probe labels on Oscilloscope"
-msgstr ""
+msgstr "Visa probbeteckningar på oscilloskopet"
 
 #. i18n: ectx: label, entry (ProbeLabelMaxCharacters), group (General)
 #: src/core/ktechlab.kcfg:38
 #, kde-format
 msgid "Maximum number of characters shown Oscilloscope probe labels"
-msgstr ""
+msgstr "Maximalt antal tecken som visar oscilloskopets probbeteckningar"
 
 #. i18n: ectx: label, entry (AnimateWires), group (General)
 #: src/core/ktechlab.kcfg:42
@@ -459,7 +459,7 @@ msgstr "Om samma utdata ska användas för kodgenerering, etc."
 #: src/core/ktechlab.kcfg:62
 #, kde-format
 msgid "How the canvas is zoomed and panned"
-msgstr ""
+msgstr "Hur duken zoomas och panoreras"
 
 #. i18n: ectx: label, entry (IndentAsmName), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:73
@@ -2162,7 +2162,7 @@ msgstr ""
 #: src/electronics/components/probe.cpp:36
 #, kde-format
 msgid "Label"
-msgstr ""
+msgstr "Beteckning"
 
 #: src/electronics/components/probe.cpp:66
 #, kde-format
@@ -3039,16 +3039,15 @@ msgstr "Bibliotek"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_NavigationMode)
 #: src/gui/generaloptionswidget.ui:33
-#, fuzzy, kde-format
-#| msgid "Chassis'"
+#, kde-format
 msgid "Classic"
-msgstr "Chassin"
+msgstr "Klassiskt"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_NavigationMode)
 #: src/gui/generaloptionswidget.ui:38
 #, kde-format
 msgid "Horizon"
-msgstr ""
+msgstr "Horisont"
 
 #. i18n: ectx: property (toolTip), widget (KColorButton, kcfg_GridColor)
 #: src/gui/generaloptionswidget.ui:46
@@ -3066,7 +3065,7 @@ msgstr "Rutnätsfärg"
 #: src/gui/generaloptionswidget.ui:71
 #, kde-format
 msgid "Max characters"
-msgstr ""
+msgstr "Maximalt antal tecken"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_AnimateWires)
 #: src/gui/generaloptionswidget.ui:90
@@ -3134,7 +3133,7 @@ msgstr ""
 #: src/gui/generaloptionswidget.ui:223
 #, kde-format
 msgid "Show probe labels in scope"
-msgstr ""
+msgstr "Visa probbeteckningar på oscilloskopet"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowGrid)
 #: src/gui/generaloptionswidget.ui:230
@@ -3174,10 +3173,9 @@ msgstr "Återanvänd samma utmatningsvy för kodgenerering"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/generaloptionswidget.ui:277
-#, fuzzy, kde-format
-#| msgid "Configuration Name"
+#, kde-format
 msgid "Navigation mode"
-msgstr "Inställningsnamn"
+msgstr "Navigeringsmetod"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: src/gui/gpasmsettingswidget.ui:32
@@ -4573,12 +4571,15 @@ msgid ""
 "Pan vertically using mouse wheel. Pan horizontally using Alt+mouse wheel. "
 "Zoom with Ctrl+mouse wheel."
 msgstr ""
+"Panorera vertikalt med mushjulet. Panorera horisontellt med Alt+mushjul. "
+"Zooma med Ctrl+mushjul."
 
 #: src/gui/settingsdlg.cpp:155
 #, kde-format
 msgid ""
 "Pan by clicking the middle mouse button and dragging. Zoom with mouse wheel."
 msgstr ""
+"Panorera genom att klicka musens mittenknapp och dra. Zooma med mushjulet."
 
 #: src/gui/settingsdlg.cpp:179
 #, kde-format
