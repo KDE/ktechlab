@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-27 00:48+0000\n"
-"PO-Revision-Date: 2026-09-25 13:18+0200\n"
+"PO-Revision-Date: 2026-09-28 09:43+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -423,13 +423,15 @@ msgstr "Mostra el voltatge en color"
 #: src/core/ktechlab.kcfg:34
 #, kde-format
 msgid "Show probe labels on Oscilloscope"
-msgstr ""
+msgstr "Mostra les etiquetes de la sonda a l'oscil·loscopi"
 
 #. i18n: ectx: label, entry (ProbeLabelMaxCharacters), group (General)
 #: src/core/ktechlab.kcfg:38
 #, kde-format
 msgid "Maximum number of characters shown Oscilloscope probe labels"
 msgstr ""
+"Nombre màxim de caràcters que es mostren a les etiquetes de la sonda de "
+"l'oscil·loscopi"
 
 # skip-rule: ff-current
 #. i18n: ectx: label, entry (AnimateWires), group (General)
@@ -2184,7 +2186,7 @@ msgstr ""
 #: src/electronics/components/probe.cpp:36
 #, kde-format
 msgid "Label"
-msgstr ""
+msgstr "Etiqueta"
 
 #: src/electronics/components/probe.cpp:66
 #, kde-format
@@ -3087,11 +3089,12 @@ msgstr "El color de la graella a l'àrea de treball."
 msgid "Grid Colour"
 msgstr "Color de la graella"
 
+# skip-rule: punctuation-period-no
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/generaloptionswidget.ui:71
 #, kde-format
 msgid "Max characters"
-msgstr ""
+msgstr "Caràcters màx."
 
 # skip-rule: ff-current
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_AnimateWires)
@@ -3160,7 +3163,7 @@ msgstr ""
 #: src/gui/generaloptionswidget.ui:223
 #, kde-format
 msgid "Show probe labels in scope"
-msgstr ""
+msgstr "Mostra les etiquetes de la sonda a l'oscil·loscopi"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowGrid)
 #: src/gui/generaloptionswidget.ui:230

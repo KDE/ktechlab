@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-27 00:48+0000\n"
-"PO-Revision-Date: 2026-09-25 21:35+0200\n"
+"PO-Revision-Date: 2026-09-28 18:33+0200\n"
 "Last-Translator: Alexander Yavorskiy <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -428,13 +428,13 @@ msgstr "Выделять напряжение цветом"
 #: src/core/ktechlab.kcfg:34
 #, kde-format
 msgid "Show probe labels on Oscilloscope"
-msgstr ""
+msgstr "Показывать метки зондов на осциллографе"
 
 #. i18n: ectx: label, entry (ProbeLabelMaxCharacters), group (General)
 #: src/core/ktechlab.kcfg:38
 #, kde-format
 msgid "Maximum number of characters shown Oscilloscope probe labels"
-msgstr ""
+msgstr "Максимальное число символов в метках зондов на осциллографе"
 
 #. i18n: ectx: label, entry (AnimateWires), group (General)
 #: src/core/ktechlab.kcfg:42
@@ -2177,7 +2177,7 @@ msgstr ""
 #: src/electronics/components/probe.cpp:36
 #, kde-format
 msgid "Label"
-msgstr ""
+msgstr "Метка"
 
 #: src/electronics/components/probe.cpp:66
 #, kde-format
@@ -3081,7 +3081,7 @@ msgstr "Цвет сетки"
 #: src/gui/generaloptionswidget.ui:71
 #, kde-format
 msgid "Max characters"
-msgstr ""
+msgstr "Максимум символов"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_AnimateWires)
 #: src/gui/generaloptionswidget.ui:90
@@ -3151,7 +3151,7 @@ msgstr ""
 #: src/gui/generaloptionswidget.ui:223
 #, kde-format
 msgid "Show probe labels in scope"
-msgstr ""
+msgstr "Показывать метки зондов на осциллографе"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowGrid)
 #: src/gui/generaloptionswidget.ui:230

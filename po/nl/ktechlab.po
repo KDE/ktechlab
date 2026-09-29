@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-27 00:48+0000\n"
-"PO-Revision-Date: 2026-09-25 11:14+0200\n"
+"PO-Revision-Date: 2026-09-28 11:19+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -421,13 +421,14 @@ msgstr "Toon spanning als kleur"
 #: src/core/ktechlab.kcfg:34
 #, kde-format
 msgid "Show probe labels on Oscilloscope"
-msgstr ""
+msgstr "Probe-labels op oscilloscoop tonen"
 
 #. i18n: ectx: label, entry (ProbeLabelMaxCharacters), group (General)
 #: src/core/ktechlab.kcfg:38
 #, kde-format
 msgid "Maximum number of characters shown Oscilloscope probe labels"
 msgstr ""
+"Maximaal aantal weergegeven tekens voor labels van probes op oscilloscoop"
 
 #. i18n: ectx: label, entry (AnimateWires), group (General)
 #: src/core/ktechlab.kcfg:42
@@ -2169,7 +2170,7 @@ msgstr ""
 #: src/electronics/components/probe.cpp:36
 #, kde-format
 msgid "Label"
-msgstr ""
+msgstr "Label"
 
 #: src/electronics/components/probe.cpp:66
 #, kde-format
@@ -3074,7 +3075,7 @@ msgstr "Kleur raster"
 #: src/gui/generaloptionswidget.ui:71
 #, kde-format
 msgid "Max characters"
-msgstr ""
+msgstr "Maximaal aantal tekens"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_AnimateWires)
 #: src/gui/generaloptionswidget.ui:90
@@ -3143,7 +3144,7 @@ msgstr ""
 #: src/gui/generaloptionswidget.ui:223
 #, kde-format
 msgid "Show probe labels in scope"
-msgstr ""
+msgstr "Labels van probes op de scope tonen"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowGrid)
 #: src/gui/generaloptionswidget.ui:230

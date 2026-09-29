@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-27 00:48+0000\n"
-"PO-Revision-Date: 2026-09-25 19:49+0300\n"
+"PO-Revision-Date: 2026-09-28 19:24+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -418,13 +418,13 @@ msgstr "Gerilimi Renk Olarak Göster"
 #: src/core/ktechlab.kcfg:34
 #, kde-format
 msgid "Show probe labels on Oscilloscope"
-msgstr ""
+msgstr "Salınımölçerde sonda etiketlerini göster"
 
 #. i18n: ectx: label, entry (ProbeLabelMaxCharacters), group (General)
 #: src/core/ktechlab.kcfg:38
 #, kde-format
 msgid "Maximum number of characters shown Oscilloscope probe labels"
-msgstr ""
+msgstr "Salınımölçer sonda etiketlerinde gösterilecek en çok karakter sayısı"
 
 #. i18n: ectx: label, entry (AnimateWires), group (General)
 #: src/core/ktechlab.kcfg:42
@@ -2161,7 +2161,7 @@ msgstr ""
 #: src/electronics/components/probe.cpp:36
 #, kde-format
 msgid "Label"
-msgstr ""
+msgstr "Etiketler"
 
 #: src/electronics/components/probe.cpp:66
 #, kde-format
@@ -3062,7 +3062,7 @@ msgstr "Izgara Rengi"
 #: src/gui/generaloptionswidget.ui:71
 #, kde-format
 msgid "Max characters"
-msgstr ""
+msgstr "En çok karakter"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_AnimateWires)
 #: src/gui/generaloptionswidget.ui:90
@@ -3131,7 +3131,7 @@ msgstr ""
 #: src/gui/generaloptionswidget.ui:223
 #, kde-format
 msgid "Show probe labels in scope"
-msgstr ""
+msgstr "Kapsamda sonda etiketlerini göster"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowGrid)
 #: src/gui/generaloptionswidget.ui:230
@@ -3889,7 +3889,7 @@ msgstr "Salınımölçer"
 #: src/gui/oscilloscopeview.cpp:108
 #, kde-format
 msgid "Framerate"
-msgstr "Kare Hızı"
+msgstr "Kare hızı"
 
 #: src/gui/oscilloscopeview.cpp:119
 #, kde-format

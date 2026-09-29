@@ -2139,7 +2139,7 @@ msgstr ""
 #: src/electronics/components/probe.cpp:36
 #, kde-format
 msgid "Label"
-msgstr ""
+msgstr "Popisek"
 
 #: src/electronics/components/probe.cpp:66
 #, kde-format
