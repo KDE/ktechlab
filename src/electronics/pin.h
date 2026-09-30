@@ -51,13 +51,11 @@ public:
         gt_low = 15,    // current sources
         gt_never = 20   // everything else
     };
-    Pin(ECNode *parent);
+    Pin(ECNode *parent = nullptr);
     ~Pin() override;
 
-    ECNode *parentECNode() const
-    {
-        return m_pECNode;
-    }
+    ECNode *parentECNode() const;
+
     /**
      * This function returns the pins that are directly connected to this pins:
      * either at the ends of connected wires, or via switches.
@@ -263,7 +261,6 @@ protected:
 
     WireList m_inputWireList;
     WireList m_outputWireList;
-    ECNode *m_pECNode;
 
     SwitchList m_switchList;
     SwitchList m_unknownSwitchCurrents;

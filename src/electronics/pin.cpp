@@ -9,6 +9,7 @@
  ***************************************************************************/
 
 #include "pin.h"
+#include "ecnode.h"
 
 #include <QDebug>
 
@@ -16,10 +17,8 @@
 
 #include <ktechlab_debug.h>
 
-Pin::Pin(ECNode *parent)
+Pin::Pin(ECNode *parent) : QObject(parent)
 {
-    assert(parent);
-    m_pECNode = parent;
     m_voltage = 0.;
     m_current = 0.;
     m_eqId = -2;
@@ -31,6 +30,12 @@ Pin::~Pin()
 {
     qDeleteAll(m_inputWireList);
     qDeleteAll(m_outputWireList);
+}
+
+ECNode* Pin::parentECNode() const
+{
+    Q_ASSERT(dynamic_cast<ECNode*>(parent()));
+    return static_cast<ECNode*>(parent());
 }
 
 PinList Pin::localConnectedPins() const
