@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>367</width>
-    <height>374</height>
+    <height>378</height>
    </rect>
   </property>
   <layout class="QVBoxLayout">
@@ -65,20 +65,20 @@
         <property name="whatsThis">
          <string/>
         </property>
-        <property name="value">
-         <double>0.300000000000000</double>
-        </property>
         <property name="suffix">
          <string> V</string>
+        </property>
+        <property name="decimals">
+         <number>1</number>
         </property>
         <property name="minimum">
          <double>0.100000000000000</double>
         </property>
         <property name="maximum">
-         <double>1.500000000000000</double>
+         <double>100.000000000000000</double>
         </property>
-        <property name="decimals">
-         <number>1</number>
+        <property name="value">
+         <double>0.300000000000000</double>
         </property>
        </widget>
       </item>
@@ -103,20 +103,20 @@
         <property name="whatsThis">
          <string/>
         </property>
-        <property name="value">
-         <double>0.200000000000000</double>
-        </property>
         <property name="suffix">
          <string> V</string>
+        </property>
+        <property name="decimals">
+         <number>1</number>
         </property>
         <property name="minimum">
          <double>0.100000000000000</double>
         </property>
         <property name="maximum">
-         <double>1.600000000000000</double>
+         <double>100.000000000000000</double>
         </property>
-        <property name="decimals">
-         <number>1</number>
+        <property name="value">
+         <double>0.200000000000000</double>
         </property>
        </widget>
       </item>
@@ -163,20 +163,20 @@
         <property name="whatsThis">
          <string/>
         </property>
-        <property name="value">
-         <double>0.500000000000000</double>
-        </property>
         <property name="suffix">
          <string> V</string>
+        </property>
+        <property name="decimals">
+         <number>1</number>
         </property>
         <property name="minimum">
          <double>0.100000000000000</double>
         </property>
         <property name="maximum">
-         <double>1.600000000000000</double>
+         <double>100.000000000000000</double>
         </property>
-        <property name="decimals">
-         <number>1</number>
+        <property name="value">
+         <double>0.500000000000000</double>
         </property>
        </widget>
       </item>
@@ -217,14 +217,14 @@
         <property name="suffix">
          <string/>
         </property>
-        <property name="value">
-         <number>15</number>
+        <property name="minimum">
+         <number>1</number>
         </property>
         <property name="maximum">
          <number>1000000000</number>
         </property>
-        <property name="minimum">
-         <number>1</number>
+        <property name="value">
+         <number>15</number>
         </property>
        </widget>
       </item>
@@ -242,13 +242,13 @@
         <property name="suffix">
          <string/>
         </property>
-        <property name="value">
+        <property name="minimum">
          <number>0</number>
         </property>
         <property name="maximum">
          <number>1000000000</number>
         </property>
-        <property name="minimum">
+        <property name="value">
          <number>0</number>
         </property>
        </widget>
@@ -264,7 +264,7 @@
 These values will apply to all components, apart from the PIC, whose pins' impedances depend on the pin in use.</string>
      </property>
      <property name="alignment">
-      <set>Qt::AlignVCenter</set>
+      <set>Qt::AlignmentFlag::AlignVCenter</set>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
@@ -274,10 +274,10 @@ These values will apply to all components, apart from the PIC, whose pins' imped
    <item>
     <spacer name="spacer10">
      <property name="orientation">
-      <enum>Qt::Vertical</enum>
+      <enum>Qt::Orientation::Vertical</enum>
      </property>
      <property name="sizeType">
-      <enum>QSizePolicy::MinimumExpanding</enum>
+      <enum>QSizePolicy::Policy::MinimumExpanding</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
