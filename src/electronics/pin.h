@@ -176,7 +176,7 @@ public:
      * Returns the ids of the pins whose voltages will affect this pin.
      * @see void setDependentPins( QStringList ids )
      */
-    PinList circuitDependentPins() const
+    const PinList& circuitDependentPins() const
     {
         return m_circuitDependentPins;
     }
@@ -184,7 +184,7 @@ public:
      * Returns the ids of the pins whose voltages will affect this pin.
      * @see void setDependentPins( QStringList ids )
      */
-    PinList groundDependentPins() const
+    const PinList& groundDependentPins() const
     {
         return m_groundDependentPins;
     }
@@ -209,7 +209,7 @@ public:
      * pin is part of a resistor, then that list will contain a pointer to a
      * Resistance element)
      */
-    ElementList elements() const
+    const ElementList& elements() const
     {
         return m_elementList;
     }
@@ -233,11 +233,11 @@ public:
     void addInputWire(Wire *wire);
     void addOutputWire(Wire *wire);
     void removeWire(Wire *wire);
-    WireList inputWireList() const
+    const WireList& inputWireList() const
     {
         return m_inputWireList;
     }
-    WireList outputWireList() const
+    const WireList& outputWireList() const
     {
         return m_outputWireList;
     }

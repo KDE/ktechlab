@@ -68,9 +68,13 @@ public:
         return m_pEndPin;
     }
 
-    // protected:
+protected:
+    /**
+     * Calculate current from either the start or end pin.
+     * Returns NAN if one of the wires has unknown current.
+     */
+    [[nodiscard]] double calculateCurrentFromPin(Pin* pin) const;
 
-private:
     double m_current;
     bool m_bCurrentIsKnown;
     QPointer<Pin> m_pStartPin;

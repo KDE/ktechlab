@@ -156,41 +156,34 @@ bool Switch::calculateCurrent()
     for (unsigned i = 0; i < 2; ++i) {
         pol = (i == 0) ? 1 : -1;
 
-        const WireList inputs = pins[i]->inputWireList();
-        const WireList outputs = pins[i]->outputWireList();
-
         currentKnown = true;
         current = 0.0;
 
-        WireList::const_iterator end = inputs.end();
-
-        for (WireList::const_iterator it = inputs.begin(); it != end; ++it) {
-            if (!(*it))
+        for (const auto& w: pins[i]->inputWireList()) {
+            if (!w)
                 continue;
 
-            if (!(*it)->currentIsKnown()) {
+            if (!w->currentIsKnown()) {
                 currentKnown = false;
                 break;
             }
 
-            current += (*it)->current();
+            current += w->current();
         }
 
         if (!currentKnown)
             continue;
 
-        end = outputs.end();
-
-        for (WireList::const_iterator it = outputs.begin(); it != end; ++it) {
-            if (!(*it))
+        for (const auto& w: pins[i]->outputWireList()) {
+            if (!w)
                 continue;
 
-            if (!(*it)->currentIsKnown()) {
+            if (!w->currentIsKnown()) {
                 currentKnown = false;
                 break;
             }
 
-            current -= (*it)->current();
+            current -= w->current();
         }
 
         if (currentKnown)

@@ -33,6 +33,26 @@ Wire::~Wire()
 {
 }
 
+double Wire::calculateCurrentFromPin(Pin* pin) const
+{
+    double i = pin->current();
+    for (const auto& w: pin->inputWireList()) {
+        if (w && w != this) {
+            if (!w->currentIsKnown())
+                return NAN;
+            i += w->current();
+        }
+    }
+    for (const auto& w: pin->outputWireList()) {
+        if (w && w != this) {
+            if (!w->currentIsKnown())
+                return NAN;
+            i -= w->current();
+        }
+    }
+    return i;
+}
+
 bool Wire::calculateCurrent()
 {
     if (m_pStartPin->currentIsKnown() && m_pStartPin->numWires() < 2) {
@@ -48,32 +68,8 @@ bool Wire::calculateCurrent()
     }
 
     if (m_pStartPin->currentIsKnown()) {
-        double i = m_pStartPin->current();
-        bool ok = true;
-
-        const WireList outlist = m_pStartPin->outputWireList();
-        WireList::const_iterator end = outlist.end();
-        for (WireList::const_iterator it = outlist.begin(); it != end && ok; ++it) {
-            if (*it && static_cast<Wire *>(*it) != this) {
-                if ((*it)->currentIsKnown())
-                    i -= (*it)->current();
-                else
-                    ok = false;
-            }
-        }
-
-        const WireList inlist = m_pStartPin->inputWireList();
-        end = inlist.end();
-        for (WireList::const_iterator it = inlist.begin(); it != end && ok; ++it) {
-            if (*it && static_cast<Wire *>(*it) != this) {
-                if ((*it)->currentIsKnown())
-                    i += (*it)->current();
-                else
-                    ok = false;
-            }
-        }
-
-        if (ok) {
+        double i = calculateCurrentFromPin(m_pStartPin);
+        if (!std::isnan(i)) {
             m_current = i;
             m_bCurrentIsKnown = true;
             return true;
@@ -81,33 +77,9 @@ bool Wire::calculateCurrent()
     }
 
     if (m_pEndPin->currentIsKnown()) {
-        double i = -m_pEndPin->current();
-        bool ok = true;
-        const WireList outlist = m_pEndPin->outputWireList();
-
-        WireList::const_iterator end = outlist.end();
-        for (WireList::const_iterator it = outlist.begin(); it != end && ok; ++it) {
-            if (*it && static_cast<Wire *>(*it) != this) {
-                if ((*it)->currentIsKnown())
-                    i += (*it)->current();
-                else
-                    ok = false;
-            }
-        }
-
-        const WireList inlist = m_pEndPin->inputWireList();
-        end = inlist.end();
-        for (WireList::const_iterator it = inlist.begin(); it != end && ok; ++it) {
-            if (*it && static_cast<Wire *>(*it) != this) {
-                if ((*it)->currentIsKnown())
-                    i -= (*it)->current();
-                else
-                    ok = false;
-            }
-        }
-
-        if (ok) {
-            m_current = i;
+        double i = calculateCurrentFromPin(m_pEndPin);
+        if (!std::isnan(i)) {
+            m_current = -i;
             m_bCurrentIsKnown = true;
             return true;
         }

@@ -189,26 +189,23 @@ void Circuit::init()
     for (PinListMap::iterator it = eqs.begin(); it != eqsEnd; ++it) {
         bool foundGround = false;
 
-        const PinList::iterator sEnd = it->second.end();
-        for (PinList::iterator sit = it->second.begin(); sit != sEnd; ++sit)
-            foundGround |= (*sit)->eqId() == -1;
+        for (const auto& pin: std::as_const(it->second))
+            foundGround |= pin->eqId() == -1;
 
         if (foundGround)
             continue;
 
         bool foundEnergyStoragePin = false;
 
-        for (PinList::iterator sit = it->second.begin(); sit != sEnd; ++sit) {
-            (*sit)->setEqId(i);
+        for (const auto& pin: std::as_const(it->second)) {
+            pin->setEqId(i);
 
             bool energyStorage = false;
-            const ElementList elements = (*sit)->elements();
-            ElementList::const_iterator elementsEnd = elements.end();
-            for (ElementList::const_iterator it = elements.begin(); it != elementsEnd; ++it) {
-                if (!*it)
+            for (const auto& e: pin->elements()) {
+                if (!e)
                     continue;
 
-                if (((*it)->type() == Element::Element_Capacitance) || ((*it)->type() == Element::Element_Inductance)) {
+                if ((e->type() == Element::Element_Capacitance) || (e->type() == Element::Element_Inductance)) {
                     energyStorage = true;
                     break;
                 }
@@ -221,7 +218,7 @@ void Circuit::init()
             if (foundEnergyStoragePin && !energyStorage)
                 continue;
 
-            double v = (*sit)->voltage();
+            double v = pin->voltage();
 
             if (energyStorage && !foundEnergyStoragePin) {
                 foundEnergyStoragePin = true;
@@ -394,19 +391,15 @@ bool Circuit::recursivePinAdd(Pin *node, PinList *unassignedNodes, PinList *asso
 
     bool foundGround = node->eqId() == -1;
 
-    const PinList circuitDependentPins = node->circuitDependentPins();
-    const PinList::const_iterator dEnd = circuitDependentPins.end();
-    for (PinList::const_iterator it = circuitDependentPins.begin(); it != dEnd; ++it) {
-        if (!associated->contains(*it))
-            associated->append(*it);
+    for (const auto& p: node->circuitDependentPins()) {
+        if (!associated->contains(p))
+            associated->append(p);
     }
 
     nodes->append(node);
 
-    const PinList localConnectedPins = node->localConnectedPins();
-    const PinList::const_iterator end = localConnectedPins.end();
-    for (PinList::const_iterator it = localConnectedPins.begin(); it != end; ++it)
-        foundGround |= recursivePinAdd(*it, unassignedNodes, associated, nodes);
+    for (const auto& p: node->localConnectedPins())
+        foundGround |= recursivePinAdd(p, unassignedNodes, associated, nodes);
 
     return foundGround;
 }
