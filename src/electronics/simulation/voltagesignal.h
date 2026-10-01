@@ -21,7 +21,7 @@
 class VoltageSignal : public Reactive, public ElementSignal
 {
 public:
-    VoltageSignal(const double delta, const double voltage);
+    VoltageSignal(const double delta, const double voltage, const double offset=0.);
     ~VoltageSignal() override;
 
     Element::Type type() const override
@@ -29,10 +29,17 @@ public:
         return Element_VoltageSignal;
     }
     void setVoltage(const double voltage);
-    double voltage()
+    double voltage() const
     {
         return m_voltage;
     }
+
+    void setOffset(const double offset);
+    double offset() const
+    {
+        return m_offset;
+    }
+
     void time_step() override;
 
 protected:
@@ -41,6 +48,7 @@ protected:
 
 private:
     double m_voltage; // Voltage
+    double m_offset;
 };
 
 #endif

@@ -9,6 +9,7 @@
  ***************************************************************************/
 
 #include "elementsignal.h"
+#include "klocalizedstring.h"
 #include <cmath>
 
 ElementSignal::ElementSignal()
@@ -16,18 +17,29 @@ ElementSignal::ElementSignal()
     m_type = ElementSignal::st_sinusoidal;
     m_time = 0.;
     m_frequency = 0.;
+    m_phase = 0.;
+    if (signalTypes.isEmpty()) {
+        signalTypes["Sinusoidal"] = i18n("Sinusoidal");
+        signalTypes["Square"] = i18n("Square");
+        signalTypes["Sawtooth"] = i18n("Sawtooth");
+        signalTypes["Reverse Sawtooth"] = i18n("Reverse Sawtooth");
+        signalTypes["Triangular"] = i18n("Triangular");
+    }
 }
 
 ElementSignal::~ElementSignal()
 {
 }
 
-void ElementSignal::setStep(Type type, double frequency)
+QStringMap ElementSignal::signalTypes;
+
+void ElementSignal::setStep(Type type, double frequency, double phase)
 {
     m_type = type;
     m_frequency = frequency;
     m_omega = 2 * M_PI * m_frequency;
     m_time = 1. / (4. * m_frequency);
+    m_phase = phase;
 }
 
 double ElementSignal::advance(double delta)
@@ -37,17 +49,16 @@ double ElementSignal::advance(double delta)
         m_time -= 1. / m_frequency;
 
     switch (m_type) {
-    case ElementSignal::st_sawtooth: {
-        double val = (m_time * m_omega / M_PI);
-        return 1 - remainder(val, 2);
-    }
+    case ElementSignal::st_reverse_sawtooth:
+        return remainder(m_time * 2 * m_frequency + m_phase, 2);
+    case ElementSignal::st_sawtooth:
+        return -remainder(m_time * 2 * m_frequency + m_phase, 2);
     case ElementSignal::st_square:
-        return ((int(trunc(m_time * m_omega / M_PI)) & 1) == 0) ? 1 : -1;
+        return ((int(trunc(m_time * 2 * m_frequency + m_phase)) & 1) == 0) ? 1 : -1;
     case ElementSignal::st_triangular:
-        // TODO Triangular signal
-        return 0.;
+        return 2 / M_PI * asin(sin(m_omega * m_time + m_phase));
     case ElementSignal::st_sinusoidal:
-    default:
-        return sin(m_time * m_omega);
+        return sin(m_time * m_omega + m_phase);
     }
+    return 0;
 }

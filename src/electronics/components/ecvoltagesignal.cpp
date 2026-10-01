@@ -45,12 +45,24 @@ ECVoltageSignal::ECVoltageSignal(ICNDocument *icnDocument, bool newItem, const c
     m_voltageSignal = createVoltageSignal(m_pNNode[0], m_pPNode[0], 0.);
     m_voltageSignal->setStep(ElementSignal::st_sinusoidal, 50.);
 
+    createProperty("signal", Variant::Type::Select);
+    property("signal")->setCaption(i18n("Signal Type"));
+    property("signal")->setAllowed(ElementSignal::signalTypes);
+    property("signal")->setValue("Sinusoidal");
+
     createProperty("frequency", Variant::Type::Double);
     property("frequency")->setCaption(i18n("Frequency"));
     property("frequency")->setUnit("Hz");
     property("frequency")->setMinValue(1e-9);
     property("frequency")->setMaxValue(1e3);
     property("frequency")->setValue(50.0);
+
+    createProperty("phase", Variant::Type::Double);
+    property("phase")->setCaption(i18n("Phase"));
+    property("phase")->setUnit("°");
+    property("phase")->setMinValue(-360);
+    property("phase")->setMaxValue(360);
+    property("phase")->setValue(0.0);
 
     createProperty("voltage", Variant::Type::Double);
     property("voltage")->setCaption(i18n("Voltage Range"));
@@ -59,7 +71,14 @@ ECVoltageSignal::ECVoltageSignal(ICNDocument *icnDocument, bool newItem, const c
     property("voltage")->setMaxValue(1e12);
     property("voltage")->setValue(5.0);
 
-    addDisplayText("~", QRect(-8, -8, 16, 16), "~");
+    createProperty("offset", Variant::Type::Double);
+    property("offset")->setCaption(i18n("Voltage Offset"));
+    property("offset")->setUnit("V");
+    property("offset")->setMinValue(-1e12);
+    property("offset")->setMaxValue(1e12);
+    property("offset")->setValue(0.0);
+
+    addDisplayText("signal", QRect(-8, -8, 16, 16), "∿");
     addDisplayText("voltage", QRect(-16, -24, 32, 16), "");
 
     createProperty("peak-rms", Variant::Type::Select);
@@ -79,18 +98,48 @@ void ECVoltageSignal::dataChanged()
 {
     const double voltage = dataDouble("voltage");
     const double frequency = dataDouble("frequency");
+    const double phase = dataDouble("phase") * M_PI/180.;
+    const double offset = dataDouble("offset");
+    const QString& signalType = dataString("signal");
     bool rms = dataString("peak-rms") == "RMS";
 
-    m_voltageSignal->setStep(ElementSignal::st_sinusoidal, frequency);
+    double scale = 1;
+    if (signalType == QLatin1String("Sinusoidal")) {
+        setDisplayText("signal", "∿");
+        m_voltageSignal->setStep(ElementSignal::st_sinusoidal, frequency, phase);
+        if (rms)
+            scale = M_SQRT2;
+    } else if (signalType == QLatin1String("Square")) {
+        setDisplayText("signal", "⑀");
+        m_voltageSignal->setStep(ElementSignal::st_square, frequency, phase);
+    } else if (signalType == QLatin1String("Sawtooth")) {
+        setDisplayText("signal", "⌁");
+        m_voltageSignal->setStep(ElementSignal::st_sawtooth, frequency, phase);
+        if (rms)
+            scale = std::sqrt(3);
+    } else if (signalType == QLatin1String("Reverse Sawtooth")) {
+        setDisplayText("signal", "⌁");
+        m_voltageSignal->setStep(ElementSignal::st_reverse_sawtooth, frequency, phase);
+        if (rms)
+            scale = std::sqrt(3);
+    } else if (signalType == QLatin1String("Triangular")) {
+        setDisplayText("signal", "Δ");
+        m_voltageSignal->setStep(ElementSignal::st_triangular, frequency, phase);
+        if (rms)
+            scale = std::sqrt(3);
+    } else {
+        return;
+    }
+
     if (rms) {
         QString display = QString::number(voltage / getMultiplier(voltage), 'g', 3) + getNumberMag(voltage) + "V RMS";
         setDisplayText("voltage", display);
-        m_voltageSignal->setVoltage(voltage * M_SQRT2);
     } else {
         QString display = QString::number(voltage / getMultiplier(voltage), 'g', 3) + getNumberMag(voltage) + "V Peak";
         setDisplayText("voltage", display);
-        m_voltageSignal->setVoltage(voltage);
     }
+    m_voltageSignal->setVoltage(voltage * scale);
+    m_voltageSignal->setOffset(offset);
 }
 
 void ECVoltageSignal::drawShape(QPainter &p)

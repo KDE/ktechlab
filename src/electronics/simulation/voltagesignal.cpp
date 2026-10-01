@@ -11,10 +11,11 @@
 #include "voltagesignal.h"
 #include "elementset.h"
 
-VoltageSignal::VoltageSignal(const double delta, const double voltage)
+VoltageSignal::VoltageSignal(const double delta, const double voltage, const double offset)
     : Reactive::Reactive(delta)
 {
     m_voltage = voltage;
+    m_offset = offset;
     m_numCNodes = 2;
     m_numCBranches = 1;
 }
@@ -26,6 +27,11 @@ VoltageSignal::~VoltageSignal()
 void VoltageSignal::setVoltage(const double v)
 {
     m_voltage = v;
+}
+
+void VoltageSignal::setOffset(const double offset)
+{
+    m_offset = offset;
 }
 
 void VoltageSignal::add_initial_dc()
@@ -43,7 +49,7 @@ void VoltageSignal::time_step()
 {
     if (!b_status)
         return;
-    b_v(0) = m_voltage * advance(m_delta);
+    b_v(0) = m_voltage * advance(m_delta) + m_offset;
 }
 
 void VoltageSignal::updateCurrents()
