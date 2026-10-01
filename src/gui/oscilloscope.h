@@ -169,9 +169,14 @@ public Q_SLOTS:
      * Called when configuration is changed
      */
     void slotUpdateConfiguration();
+    /**
+     * Called when simulator state changes
+     */
+    void slotSimulatorStateChanged();
 
 protected:
     void getOldestProbe();
+    void updateRunButton();
 
     int m_nextId;
     ProbeData *m_oldestProbe;

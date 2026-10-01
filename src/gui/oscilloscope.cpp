@@ -77,9 +77,15 @@ Oscilloscope::Oscilloscope(KateMDI::ToolView *parent)
     zoomDial->setStyle(QStyleFactory::create(QLatin1StringView("Fusion")));
     zoomDial->setNotchesVisible(true);
 
-    connect(resetBtn, &QPushButton::clicked, this, &Oscilloscope::reset);
+    connect(resetBtn, &QToolButton::clicked, this, &Oscilloscope::reset);
     connect(zoomDial, &QDial::valueChanged, this, &Oscilloscope::slotZoomDialChanged);
     connect(horizontalScroll, &QScrollBar::valueChanged, this, &Oscilloscope::slotSliderValueChanged);
+
+    connect(runBtn, &QToolButton::clicked, this, [this]{
+        m_pSimulator->slotSetSimulating(!m_pSimulator->isSimulating());
+    });
+    connect(m_pSimulator, &Simulator::simulatingStateChanged, this, &Oscilloscope::slotSimulatorStateChanged);
+    slotSimulatorStateChanged();
 
     // 	connect( pauseBtn, SIGNAL(clicked()), this, SLOT(slotTogglePause()));
 
@@ -166,6 +172,17 @@ void Oscilloscope::slotUpdateConfiguration()
 void Oscilloscope::slotZoomDialChanged(int value)
 {
     setZoomLevel(double(value) / double(zoomDial->maximum()));
+}
+
+void Oscilloscope::updateRunButton()
+{
+    if (m_pSimulator->isSimulating()) {
+        runBtn->setToolTip(i18n("Pause simulation"));
+        runBtn->setIcon(QIcon::fromTheme("media-playback-pause"));
+    } else {
+        runBtn->setToolTip(i18n("Run simulation"));
+        runBtn->setIcon(QIcon::fromTheme("media-playback-start"));
+    }
 }
 
 ProbeData *Oscilloscope::registerProbe(Probe *probe)
@@ -274,6 +291,11 @@ void Oscilloscope::slotSliderValueChanged(int value)
 {
     Q_UNUSED(value);
     oscilloscopeView->updateView();
+}
+
+void Oscilloscope::slotSimulatorStateChanged()
+{
+    updateRunButton();
 }
 
 void Oscilloscope::updateScrollbars()
