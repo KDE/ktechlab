@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-27 00:48+0000\n"
-"PO-Revision-Date: 2026-09-25 16:45+0400\n"
+"PO-Revision-Date: 2026-09-30 19:23+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -416,13 +416,13 @@ msgstr "أَظْهِرْ الجهد كلون"
 #: src/core/ktechlab.kcfg:34
 #, kde-format
 msgid "Show probe labels on Oscilloscope"
-msgstr ""
+msgstr "أظهر لصائق المسبار على مرسمة الذبذبات"
 
 #. i18n: ectx: label, entry (ProbeLabelMaxCharacters), group (General)
 #: src/core/ktechlab.kcfg:38
 #, kde-format
 msgid "Maximum number of characters shown Oscilloscope probe labels"
-msgstr ""
+msgstr "أقصى عدد من المحارف المعروضة في لصائق مسبار مرسمة الذبذبات"
 
 #. i18n: ectx: label, entry (AnimateWires), group (General)
 #: src/core/ktechlab.kcfg:42
@@ -458,7 +458,7 @@ msgstr "سواء يجب استخدام نفس الإخراج لتوليد الش
 #: src/core/ktechlab.kcfg:62
 #, kde-format
 msgid "How the canvas is zoomed and panned"
-msgstr ""
+msgstr "كيفية تكبير اللوحة وتحريكها"
 
 #. i18n: ectx: label, entry (IndentAsmName), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:73
@@ -2156,7 +2156,7 @@ msgstr ""
 #: src/electronics/components/probe.cpp:36
 #, kde-format
 msgid "Label"
-msgstr ""
+msgstr "اللصيقة"
 
 #: src/electronics/components/probe.cpp:66
 #, kde-format
@@ -3036,7 +3036,7 @@ msgstr "تقليدي"
 #: src/gui/generaloptionswidget.ui:38
 #, kde-format
 msgid "Horizon"
-msgstr ""
+msgstr "الأفق"
 
 #. i18n: ectx: property (toolTip), widget (KColorButton, kcfg_GridColor)
 #: src/gui/generaloptionswidget.ui:46
@@ -3054,7 +3054,7 @@ msgstr "لون الشبكة"
 #: src/gui/generaloptionswidget.ui:71
 #, kde-format
 msgid "Max characters"
-msgstr ""
+msgstr "أقصى عدد محارف"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_AnimateWires)
 #: src/gui/generaloptionswidget.ui:90
@@ -3122,7 +3122,7 @@ msgstr ""
 #: src/gui/generaloptionswidget.ui:223
 #, kde-format
 msgid "Show probe labels in scope"
-msgstr ""
+msgstr "أظهر لصائق المسبار في المرسمة"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowGrid)
 #: src/gui/generaloptionswidget.ui:230
@@ -4533,12 +4533,14 @@ msgid ""
 "Pan vertically using mouse wheel. Pan horizontally using Alt+mouse wheel. "
 "Zoom with Ctrl+mouse wheel."
 msgstr ""
+"حرّك عموديًا باستخدام عجلة الفأرة. حرّك أفقيًا باستخدام Alt+عجلة الفأرة. كبّر "
+"باستخدام Ctrl+عجلة الفأرة."
 
 #: src/gui/settingsdlg.cpp:155
 #, kde-format
 msgid ""
 "Pan by clicking the middle mouse button and dragging. Zoom with mouse wheel."
-msgstr ""
+msgstr "حرّك بالنقر على زر الفأرة الأوسط والسحب. كبّر بعجلة الفأرة."
 
 #: src/gui/settingsdlg.cpp:179
 #, kde-format
