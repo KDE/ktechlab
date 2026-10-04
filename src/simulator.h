@@ -252,6 +252,7 @@ private:
     qint64 m_stepLastNs;
     qint64 m_stepsSinceStart;
     qint64 m_stepsSincePrint;
+    double m_stepsTotalRuntime = 0.;
 
 public:
     Simulator();

@@ -237,6 +237,7 @@ void Simulator::step()
     {
         const qint64 elapsedNs = execTimer.nsecsElapsed();
         m_stepLastNs = elapsedNs;
+        m_stepsTotalRuntime += elapsedNs*1e-9;
         if (elapsedNs > m_stepMaxNs) {
             m_stepMaxNs = elapsedNs;
         }
@@ -254,7 +255,9 @@ void Simulator::printTimingStatistics() {
         << "m_stepRollingAvgNs=" << m_stepRollingAvgNs
         << "m_stepLastNs=" << m_stepLastNs
         << "m_stepsSinceStart=" << m_stepsSinceStart
-        << "m_stepsSincePrint=" << m_stepsSincePrint;
+        << "m_stepsSincePrint=" << m_stepsSincePrint
+        << "runtime" << m_stepsTotalRuntime
+        << "steps/s=" << (m_stepsTotalRuntime > 0 ? m_stepsSinceStart/m_stepsTotalRuntime: 0.);
     m_stepsSincePrint = 0;
 }
 
