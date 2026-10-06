@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-09-27 00:48+0000\n"
-"PO-Revision-Date: 2026-05-25 21:38+0200\n"
+"PO-Revision-Date: 2026-10-05 21:52+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -416,13 +416,13 @@ msgstr "전압을 색상으로 표시"
 #: src/core/ktechlab.kcfg:34
 #, kde-format
 msgid "Show probe labels on Oscilloscope"
-msgstr ""
+msgstr "오실로스코프에 프로브 레이블 표시"
 
 #. i18n: ectx: label, entry (ProbeLabelMaxCharacters), group (General)
 #: src/core/ktechlab.kcfg:38
 #, kde-format
 msgid "Maximum number of characters shown Oscilloscope probe labels"
-msgstr ""
+msgstr "오실로스코프 프로브 레이블에 표시할 최대 글자 수"
 
 #. i18n: ectx: label, entry (AnimateWires), group (General)
 #: src/core/ktechlab.kcfg:42
@@ -458,7 +458,7 @@ msgstr "코드 생성 등에 같은 출력을 사용할지 여부"
 #: src/core/ktechlab.kcfg:62
 #, kde-format
 msgid "How the canvas is zoomed and panned"
-msgstr ""
+msgstr "캔버스의 확대/축소 및 팬 방법"
 
 #. i18n: ectx: label, entry (IndentAsmName), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:73
@@ -2156,7 +2156,7 @@ msgstr ""
 #: src/electronics/components/probe.cpp:36
 #, kde-format
 msgid "Label"
-msgstr ""
+msgstr "레이블"
 
 #: src/electronics/components/probe.cpp:66
 #, kde-format
@@ -3029,31 +3029,31 @@ msgstr "라이브러리"
 #: src/gui/generaloptionswidget.ui:33
 #, kde-format
 msgid "Classic"
-msgstr ""
+msgstr "고전"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_NavigationMode)
 #: src/gui/generaloptionswidget.ui:38
 #, kde-format
 msgid "Horizon"
-msgstr ""
+msgstr "지평면"
 
 #. i18n: ectx: property (toolTip), widget (KColorButton, kcfg_GridColor)
 #: src/gui/generaloptionswidget.ui:46
 #, kde-format
 msgid "The grid color in the work area."
-msgstr "작업 영역의 모눈 색상입니다."
+msgstr "작업 영역의 격자 색상입니다."
 
 #. i18n: ectx: property (text), widget (KColorButton, kcfg_GridColor)
 #: src/gui/generaloptionswidget.ui:49
 #, kde-format
 msgid "Grid Colour"
-msgstr "모눈 색상"
+msgstr "격자 색상"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/generaloptionswidget.ui:71
 #, kde-format
 msgid "Max characters"
-msgstr ""
+msgstr "최대 글자 수"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_AnimateWires)
 #: src/gui/generaloptionswidget.ui:90
@@ -3121,7 +3121,7 @@ msgstr ""
 #: src/gui/generaloptionswidget.ui:223
 #, kde-format
 msgid "Show probe labels in scope"
-msgstr ""
+msgstr "스코프에 프로브 레이블 표시"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowGrid)
 #: src/gui/generaloptionswidget.ui:230
@@ -3161,10 +3161,9 @@ msgstr "코드 생성 시 같은 출력 보기 재사용"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/generaloptionswidget.ui:277
-#, fuzzy, kde-format
-#| msgid "Configuration Name"
+#, kde-format
 msgid "Navigation mode"
-msgstr "설정 이름"
+msgstr "탐색 모드"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: src/gui/gpasmsettingswidget.ui:32
@@ -4536,12 +4535,16 @@ msgid ""
 "Pan vertically using mouse wheel. Pan horizontally using Alt+mouse wheel. "
 "Zoom with Ctrl+mouse wheel."
 msgstr ""
+"마우스 휠을 사용하여 수직으로 팬합니다. Alt 키를 누르면서 마우스 휠을 사용하"
+"여 수평으로 팬합니다. Ctrl 키를 누르면서 마우스 휠을 사용하여 확대/축소합니"
+"다."
 
 #: src/gui/settingsdlg.cpp:155
 #, kde-format
 msgid ""
 "Pan by clicking the middle mouse button and dragging. Zoom with mouse wheel."
 msgstr ""
+"마우스 가운데 단추를 누르고 드래그하여 팬합니다. 마우스 휠로 확대/축소합니다."
 
 #: src/gui/settingsdlg.cpp:179
 #, kde-format
