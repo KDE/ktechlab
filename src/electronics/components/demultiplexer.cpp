@@ -128,13 +128,13 @@ void Demultiplexer::initPins(unsigned newAddressSize)
         m_xLogic.resize(newXLogicCount);
         for (unsigned i = oldXLogicCount; i < newXLogicCount; ++i) {
             node = ecNodeWithID("X" + QString::number(i));
-            m_xLogic.insert(i, createLogicOut(node, false));
+            m_xLogic[i]=createLogicOut(node, false);
         }
 
         m_aLogic.resize(newAddressSize);
         for (unsigned i = oldAddressSize; i < newAddressSize; ++i) {
             node = ecNodeWithID("A" + QString::number(i));
-            m_aLogic.insert(i, createLogicIn(node));
+            m_aLogic[i] = createLogicIn(node);
             //m_aLogic[i]->setCallback(this, (CallbackPtr)(&Demultiplexer::inStateChanged));
             m_aLogic[i]->setCallback2(Demultiplexer_inStateChanged, this);
         }

@@ -127,7 +127,7 @@ void Multiplexer::initPins(unsigned newAddressSize)
         m_xLogic.resize(newXLogicCount);
         for (unsigned i = oldXLogicCount; i < newXLogicCount; ++i) {
             node = ecNodeWithID("X" + QString::number(i));
-            m_xLogic.insert(i, createLogicIn(node));
+            m_xLogic[i] = createLogicIn(node);
             //m_xLogic[i]->setCallback(this, (CallbackPtr)(&Multiplexer::inStateChanged));
             m_xLogic[i]->setCallback2(Multiplexer_inStateChanged, this);
         }
@@ -135,7 +135,7 @@ void Multiplexer::initPins(unsigned newAddressSize)
         m_aLogic.resize(newAddressSize);
         for (unsigned i = oldAddressSize; i < newAddressSize; ++i) {
             node = ecNodeWithID("A" + QString::number(i));
-            m_aLogic.insert(i, createLogicIn(node));
+            m_aLogic[i] = createLogicIn(node);
             //m_aLogic[i]->setCallback(this, (CallbackPtr)(&Multiplexer::inStateChanged));
             m_aLogic[i]->setCallback2(Multiplexer_inStateChanged, this);
         }
