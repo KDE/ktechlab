@@ -168,12 +168,12 @@ void RAM::initPins()
 
         for (int i = oldWordSize; i < newWordSize; ++i) {
             node = ecNodeWithID(QString("DI%1").arg(QString::number(i)));
-            m_dataIn.insert(i, createLogicIn(node));
+            m_dataIn[i] = createLogicIn(node);
             //m_dataIn[i]->setCallback(this, (CallbackPtr)(&RAM::inStateChanged));
             m_dataIn[i]->setCallback2(RAM_inStateChanged, this);
 
             node = ecNodeWithID(QString("DO%1").arg(QString::number(i)));
-            m_dataOut.insert(i, createLogicOut(node, false));
+            m_dataOut[i] = createLogicOut(node, false);
         }
     } else if (newWordSize < oldWordSize) {
         for (int i = newWordSize; i < oldWordSize; ++i) {
@@ -197,7 +197,7 @@ void RAM::initPins()
 
         for (int i = oldAddressSize; i < newAddressSize; ++i) {
             node = ecNodeWithID(QString("A%1").arg(QString::number(i)));
-            m_address.insert(i, createLogicIn(node));
+            m_address[i] = createLogicIn(node);
             //m_address[i]->setCallback(this, (CallbackPtr)(&RAM::inStateChanged));
             m_address[i]->setCallback2(RAM_inStateChanged, this);
 

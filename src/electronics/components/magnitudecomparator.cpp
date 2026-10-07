@@ -132,7 +132,7 @@ void MagnitudeComparator::initPins()
         m_cLogic.resize(3);
         for (int i = 0; i < cascadingInputs; i++) {
             node = ecNodeWithID(inNames[i]);
-            m_cLogic.insert(i, createLogicIn(node));
+            m_cLogic[i] = createLogicIn(node);
             //m_cLogic[i]->setCallback(this, (CallbackPtr)(&MagnitudeComparator::inStateChangedWithVal));
             m_cLogic[i]->setCallback2(MagnitudeComparator_inStateChangedWithVal, this);
         }
@@ -140,7 +140,7 @@ void MagnitudeComparator::initPins()
         m_output.resize(3);
         for (int i = 0; i < outputs; i++) {
             node = ecNodeWithID(outNames[i]);
-            m_output.insert(i, createLogicOut(node, false));
+            m_output[i] = createLogicOut(node, false);
         }
         firstTime = false;
     }
@@ -149,7 +149,7 @@ void MagnitudeComparator::initPins()
         m_aLogic.resize(newABLogicCount);
         for (int i = m_oldABLogicCount; i < newABLogicCount; ++i) {
             node = ecNodeWithID("A" + QString::number(i));
-            m_aLogic.insert(i, createLogicIn(node));
+            m_aLogic[i] = createLogicIn(node);
             //m_aLogic[i]->setCallback(this, (CallbackPtr)(&MagnitudeComparator::inStateChangedWithVal));
             m_aLogic[i]->setCallback2(MagnitudeComparator_inStateChangedWithVal, this);
         }
@@ -157,7 +157,7 @@ void MagnitudeComparator::initPins()
         m_bLogic.resize(newABLogicCount);
         for (int i = m_oldABLogicCount; i < newABLogicCount; ++i) {
             node = ecNodeWithID("B" + QString::number(i));
-            m_bLogic.insert(i, createLogicIn(node));
+            m_bLogic[i] = createLogicIn(node);
             //m_bLogic[i]->setCallback(this, (CallbackPtr)(&MagnitudeComparator::inStateChangedWithVal));
             m_bLogic[i]->setCallback2(MagnitudeComparator_inStateChangedWithVal, this);
         }
