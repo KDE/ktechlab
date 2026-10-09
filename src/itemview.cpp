@@ -308,6 +308,58 @@ void ItemView::updateZoomActions()
     actionByName("view_actual_size")->setEnabled(m_zoomLevel != 1.0);
 }
 
+std::optional<bool> ItemView::canvasEvent(QEvent* e)
+{
+    switch (e->type()) {
+        case QEvent::MouseButtonPress:
+            contentsMousePressEvent(static_cast<QMouseEvent *>(e));
+            return (static_cast<QMouseEvent *>(e))->isAccepted();
+
+        case QEvent::MouseButtonRelease:
+            contentsMouseReleaseEvent(static_cast<QMouseEvent *>(e));
+            return (static_cast<QMouseEvent *>(e))->isAccepted();
+
+        case QEvent::MouseButtonDblClick:
+            contentsMouseDoubleClickEvent(static_cast<QMouseEvent *>(e));
+            return (static_cast<QMouseEvent *>(e))->isAccepted();
+
+        case QEvent::MouseMove:
+            contentsMouseMoveEvent(static_cast<QMouseEvent *>(e));
+            return (static_cast<QMouseEvent *>(e))->isAccepted();
+
+        case QEvent::DragEnter:
+            dragEnterEvent(static_cast<QDragEnterEvent *>(e));
+            return true;
+
+        case QEvent::DragMove:
+            dragMoveEvent(static_cast<QDragMoveEvent *>(e));
+            return true;
+
+        case QEvent::DragLeave:
+            dragLeaveEvent(static_cast<QDragLeaveEvent *>(e));
+            return true;
+
+        case QEvent::Drop:
+            dropEvent(static_cast<QDropEvent *>(e));
+            return true;
+
+        case QEvent::Enter:
+            enterEvent(static_cast<QEnterEvent *>(e));
+            return true;
+
+        case QEvent::Leave:
+            leaveEvent(e);
+            return true;
+
+        case QEvent::Wheel:
+            contentsWheelEvent(static_cast<QWheelEvent *>(e));
+            return (static_cast<QWheelEvent *>(e))->isAccepted();
+        default:
+            return std::nullopt;
+    }
+}
+
+
 void ItemView::dropEvent(QDropEvent *event)
 {
     removeDragItem();
@@ -783,55 +835,13 @@ bool CVBEditor::event(QEvent *e)
         b_ignoreEvents = false;
         return accepted;
     }
-
-    switch (e->type()) {
-    case QEvent::MouseButtonPress:
-        p_itemView->contentsMousePressEvent(static_cast<QMouseEvent *>(e));
-        return (static_cast<QMouseEvent *>(e))->isAccepted();
-
-    case QEvent::MouseButtonRelease:
-        p_itemView->contentsMouseReleaseEvent(static_cast<QMouseEvent *>(e));
-        return (static_cast<QMouseEvent *>(e))->isAccepted();
-
-    case QEvent::MouseButtonDblClick:
-        p_itemView->contentsMouseDoubleClickEvent(static_cast<QMouseEvent *>(e));
-        return (static_cast<QMouseEvent *>(e))->isAccepted();
-
-    case QEvent::MouseMove:
-        p_itemView->contentsMouseMoveEvent(static_cast<QMouseEvent *>(e));
-        return (static_cast<QMouseEvent *>(e))->isAccepted();
-
-    case QEvent::DragEnter:
-        p_itemView->dragEnterEvent(static_cast<QDragEnterEvent *>(e));
-        return true;
-
-    case QEvent::DragMove:
-        p_itemView->dragMoveEvent(static_cast<QDragMoveEvent *>(e));
-        return true;
-
-    case QEvent::DragLeave:
-        p_itemView->dragLeaveEvent(static_cast<QDragLeaveEvent *>(e));
-        return true;
-
-    case QEvent::Drop:
-        p_itemView->dropEvent(static_cast<QDropEvent *>(e));
-        return true;
-
-    case QEvent::Enter:
-        p_itemView->enterEvent(static_cast<QEnterEvent *>(e));
-        return true;
-
-    case QEvent::Leave:
-        p_itemView->leaveEvent(e);
-        return true;
-
-    case QEvent::Wheel:
-        p_itemView->contentsWheelEvent(static_cast<QWheelEvent *>(e));
-        return (static_cast<QWheelEvent *>(e))->isAccepted();
-
-    default:
-        return KtlQCanvasView::event(e);
+    const auto r = p_itemView->canvasEvent(e);
+    if (r.has_value()) {
+        if (KtlQCanvas* c = canvas())
+            c->requestUpdate(); // If simulator is paused request a canvas update
+        return r.value();
     }
+    return KtlQCanvasView::event(e);
 }
 
 void CVBEditor::viewportResizeEvent(QResizeEvent *e)

@@ -9,6 +9,7 @@
 
 #include "canvas.h"
 #include "canvas_private.h"
+#include "simulator.h"
 #include "ktlq3polygonscanner.h"
 #include "utils.h"
 
@@ -257,7 +258,9 @@ void KtlQCanvas::init(const QRect &r, int chunksze, int mxclusters)
     maxclusters = mxclusters;
     initChunkSize(r);
     chunks = new KtlQCanvasChunk[m_chunkSize.width() * m_chunkSize.height()];
-    update_timer = nullptr;
+    update_timer.setSingleShot(true);
+    connect(&update_timer, &QTimer::timeout, this, &KtlQCanvas::update);
+    connect(Simulator::self(), &Simulator::stepComplete, this, &KtlQCanvas::requestUpdate);
     bgcolor = Qt::white;
     grid = nullptr;
     htiles = 0;
@@ -433,14 +436,9 @@ void KtlQCanvas::removeView(KtlQCanvasView *view)
 void KtlQCanvas::setUpdatePeriod(int ms)
 {
     if (ms < 0) {
-        if (update_timer)
-            update_timer->stop();
+        update_timer.stop();
     } else {
-        if (update_timer)
-            delete update_timer;
-        update_timer = new QTimer(this);
-        connect(update_timer, &QTimer::timeout, this, &KtlQCanvas::update);
-        update_timer->start(ms);
+        update_timer.start(ms);
     }
 }
 
@@ -538,6 +536,13 @@ void KtlQCanvas::advance()
     qCWarning(KTL_LOG) << "KtlQCanvas::advance: TODO"; // TODO
 }
 
+void KtlQCanvas::requestUpdate()
+{
+    if (update_timer.isActive())
+        return;
+    update_timer.start();
+}
+
 /*!
     Repaints changed areas in all views of the canvas.
  */
@@ -629,6 +634,7 @@ void KtlQCanvas::setChanged(const QRect &area)
         }
         x++;
     }
+    requestUpdate();
 }
 
 /*!
@@ -932,6 +938,7 @@ void KtlQCanvas::setChangedChunk(int x, int y)
     if (validChunk(x, y)) {
         KtlQCanvasChunk &ch = chunk(x, y);
         ch.change();
+        requestUpdate();
     }
 }
 
@@ -950,6 +957,7 @@ void KtlQCanvas::setChangedChunkContaining(int x, int y)
     if (onCanvas(x, y)) {
         KtlQCanvasChunk &chunk = chunkContaining(x, y);
         chunk.change();
+        requestUpdate();
     }
 }
 

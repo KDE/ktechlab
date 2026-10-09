@@ -88,10 +88,9 @@ Oscilloscope::Oscilloscope(KateMDI::ToolView *parent)
     slotSimulatorStateChanged();
 
     // 	connect( pauseBtn, SIGNAL(clicked()), this, SLOT(slotTogglePause()));
-
-    QTimer *updateScrollTmr = new QTimer(this);
-    connect(updateScrollTmr, &QTimer::timeout, this, &Oscilloscope::updateScrollbars);
-    updateScrollTmr->start(20);
+    m_updateTimer.setSingleShot(true);
+    m_updateTimer.setInterval(int(1000 / KTLConfig::refreshRate()));
+    connect(&m_updateTimer, &QTimer::timeout, this, &Oscilloscope::updateScrollbars);
 
     // KGlobal::config()->setGroup("Oscilloscope");
     KConfigGroup grOscill(KSharedConfig::openConfig(), QLatin1StringView("Oscilloscope"));
@@ -167,6 +166,7 @@ void Oscilloscope::slotUpdateConfiguration()
 {
     probePositioner->setShowLabels(KTLConfig::showProbeLabels());
     probePositioner->setLabelMaxCharacters(KTLConfig::probeLabelMaxCharacters());
+    m_updateTimer.setInterval(int(1000 / KTLConfig::refreshRate()));
 }
 
 void Oscilloscope::slotZoomDialChanged(int value)
@@ -190,6 +190,7 @@ ProbeData *Oscilloscope::registerProbe(Probe *probe)
     if (!probe)
         return nullptr;
 
+    const uint oldProbeCount = numberOfProbes();
     const uint id = m_nextId++;
 
     ProbeData *probeData = nullptr;
@@ -216,6 +217,12 @@ ProbeData *Oscilloscope::registerProbe(Probe *probe)
     //	probeData->setPaused(b_isPaused);
 
     Q_EMIT probeRegistered(id, probeData);
+
+    if (oldProbeCount == 0) {
+        // Start tracking updates
+        connect(m_pSimulator, &Simulator::stepComplete, this, &Oscilloscope::requestUpdate);
+    }
+
     return probeData;
 }
 
@@ -238,6 +245,11 @@ void Oscilloscope::unregisterProbe(int id)
         getOldestProbe();
 
     Q_EMIT probeUnregistered(id);
+
+    if (numberOfProbes() == 0) {
+        // Stop tracking updates
+        disconnect(m_pSimulator, &Simulator::stepComplete, this, &Oscilloscope::requestUpdate);
+    }
 }
 
 ProbeData *Oscilloscope::probeData(int id) const
@@ -296,6 +308,12 @@ void Oscilloscope::slotSliderValueChanged(int value)
 void Oscilloscope::slotSimulatorStateChanged()
 {
     updateRunButton();
+}
+
+void Oscilloscope::requestUpdate()
+{
+    if (!m_updateTimer.isActive())
+        m_updateTimer.start();
 }
 
 void Oscilloscope::updateScrollbars()

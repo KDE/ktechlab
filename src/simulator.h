@@ -203,6 +203,10 @@ Q_SIGNALS:
      * @see slotSetSimulating
      */
     void simulatingStateChanged(bool isSimulating);
+    /**
+     * Emitted when a simulation step is complete
+     */
+    void stepComplete();
 
 public Q_SLOTS:
     /**

@@ -18,6 +18,8 @@
 #include <QBrush>
 #include <QList>
 #include <QPen>
+#include <QPointer>
+#include <QTimer>
 // #include "q3pointarray.h" // 2018.08.14
 
 #include "canvasitemlist.h"
@@ -143,7 +145,7 @@ Q_SIGNALS:
 public Q_SLOTS:
     virtual void advance();
     virtual void update();
-
+    void requestUpdate();
 protected:
     virtual void drawBackground(QPainter &, const QRect &area);
     virtual void drawForeground(QPainter &, const QRect &area);
@@ -179,7 +181,7 @@ private:
     ushort tileh;
     bool oneone;
     QPixmap pm;
-    QTimer *update_timer;
+    QTimer update_timer;
     QColor bgcolor;
     bool debug_redraw_areas;
 
@@ -216,7 +218,7 @@ protected:
 
 private:
     void drawContents(QPainter *) override;
-    KtlQCanvas *viewing;
+    QPointer<KtlQCanvas> viewing;
     KtlQCanvasViewData *d;
     friend void qt_unview(KtlQCanvas *c);
     KtlQCanvasView(const KtlQCanvasView &);

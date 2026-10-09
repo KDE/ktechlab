@@ -21,6 +21,7 @@
 
 #include "simulator.h"
 
+#include <QTimer>
 #include <QMap>
 #include <QWidget>
 
@@ -190,12 +191,14 @@ protected:
     Simulator *m_pSimulator;
 
 protected Q_SLOTS:
+    void requestUpdate();
     void updateScrollbars();
 
 private:
     Oscilloscope(KateMDI::ToolView *parent);
 
     static Oscilloscope *m_pSelf;
+    QTimer m_updateTimer;
     double m_zoomLevel;
 
     friend class OscilloscopeView;

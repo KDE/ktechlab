@@ -244,6 +244,8 @@ void Simulator::step()
         m_stepsSinceStart++;
         m_stepsSincePrint++;
     }
+
+    Q_EMIT stepComplete();
 }
 
 void Simulator::printTimingStatistics() {

@@ -108,6 +108,11 @@ protected:
 
 public:
     /**
+     * Canvas events passed from CVBEditor.
+     * @return bool if the event type was handled otherwise nullopt
+     */
+    std::optional<bool> canvasEvent(QEvent *e);
+    /**
      * Attempts to create a new CNItem if one was dragged onto the canvas
      */
     void dropEvent(QDropEvent *event) override;
