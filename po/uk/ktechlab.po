@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-27 00:48+0000\n"
+"POT-Creation-Date: 2026-10-10 00:49+0000\n"
 "PO-Revision-Date: 2026-09-28 09:33+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
@@ -1157,6 +1157,7 @@ msgid "Flat"
 msgstr "Плоский"
 
 #: src/drawparts/drawpart.cpp:225 src/drawparts/drawpart.cpp:235
+#: src/electronics/simulation/elementsignal.cpp:23
 #, kde-format
 msgid "Square"
 msgstr "Квадратний"
@@ -1200,12 +1201,12 @@ msgstr "Всі файли"
 msgid "Circuit"
 msgstr "Схема"
 
-#: src/electronics/circuitdocument.cpp:741
+#: src/electronics/circuitdocument.cpp:724
 #, kde-format
 msgid "No components were found in the selection."
 msgstr "У позначеному фрагменті компонентів не виявлено."
 
-#: src/electronics/circuitdocument.cpp:748
+#: src/electronics/circuitdocument.cpp:731
 #, kde-format
 msgid "No External Connection components were found in the selection."
 msgstr "У позначеному фрагменті компонентів зовнішнього з’єднання не виявлено."
@@ -1591,7 +1592,7 @@ msgid "Current Signal"
 msgstr "Сигнал сили струму"
 
 #: src/electronics/components/eccurrentsignal.cpp:45
-#: src/electronics/components/ecvoltagesignal.cpp:49
+#: src/electronics/components/ecvoltagesignal.cpp:54
 #, kde-format
 msgid "Frequency"
 msgstr "Частота"
@@ -1856,23 +1857,40 @@ msgstr "Підсхема"
 msgid "Voltage Signal"
 msgstr "Сигнал напруги"
 
-#: src/electronics/components/ecvoltagesignal.cpp:56
+#: src/electronics/components/ecvoltagesignal.cpp:49
+#, fuzzy, kde-format
+#| msgid "Signal Lamp"
+msgid "Signal Type"
+msgstr "Сигнальна лампа"
+
+#: src/electronics/components/ecvoltagesignal.cpp:61
+#, kde-format
+msgid "Phase"
+msgstr ""
+
+#: src/electronics/components/ecvoltagesignal.cpp:68
 #, kde-format
 msgid "Voltage Range"
 msgstr "Діапазон напруги"
 
+#: src/electronics/components/ecvoltagesignal.cpp:75
+#, fuzzy, kde-format
+#| msgid "Voltage Out"
+msgid "Voltage Offset"
+msgstr "Вихід напруги"
+
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox4)
-#: src/electronics/components/ecvoltagesignal.cpp:66 src/gui/logicwidget.ui:142
+#: src/electronics/components/ecvoltagesignal.cpp:85 src/gui/logicwidget.ui:142
 #, kde-format
 msgid "Output"
 msgstr "Вихід"
 
-#: src/electronics/components/ecvoltagesignal.cpp:68
+#: src/electronics/components/ecvoltagesignal.cpp:87
 #, kde-format
 msgid "Peak"
 msgstr "Пік"
 
-#: src/electronics/components/ecvoltagesignal.cpp:69
+#: src/electronics/components/ecvoltagesignal.cpp:88
 #, kde-format
 msgid "RMS"
 msgstr "СКВ"
@@ -2482,6 +2500,28 @@ msgstr "Некоректний"
 msgid "Unknown"
 msgstr "Невідомий"
 
+#: src/electronics/simulation/elementsignal.cpp:22
+#, kde-format
+msgid "Sinusoidal"
+msgstr ""
+
+#: src/electronics/simulation/elementsignal.cpp:24
+#, kde-format
+msgid "Sawtooth"
+msgstr ""
+
+#: src/electronics/simulation/elementsignal.cpp:25
+#, fuzzy, kde-format
+#| msgid "Reverse Beta"
+msgid "Reverse Sawtooth"
+msgstr "Зворотна β"
+
+#: src/electronics/simulation/elementsignal.cpp:26
+#, fuzzy, kde-format
+#| msgid "Rectangular"
+msgid "Triangular"
+msgstr "Прямокутна"
+
 #: src/electronics/subcircuits.cpp:110
 #, kde-format
 msgid "Subcircuits"
@@ -2985,9 +3025,9 @@ msgid "Multiple Items"
 msgstr "Декілька елементів"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, m_pResetButton)
-#. i18n: ectx: property (text), widget (QPushButton, resetBtn)
+#. i18n: ectx: property (text), widget (QToolButton, resetBtn)
 #: src/gui/contexthelp.cpp:334 src/gui/contexthelp.cpp:335
-#: src/gui/contexthelpwidget.ui:173 src/gui/oscilloscopewidget.ui:120
+#: src/gui/contexthelpwidget.ui:173 src/gui/oscilloscopewidget.ui:117
 #, kde-format
 msgid "Reset"
 msgstr "Скинути"
@@ -3588,8 +3628,8 @@ msgstr "Рівень напруги, для якого вхід вважатим
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, kcfg_LogicRisingTrigger)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, kcfg_LogicFallingTrigger)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, kcfg_LogicOutputHigh)
-#: src/gui/logicwidget.ui:72 src/gui/logicwidget.ui:110
-#: src/gui/logicwidget.ui:170
+#: src/gui/logicwidget.ui:69 src/gui/logicwidget.ui:107
+#: src/gui/logicwidget.ui:167
 #, kde-format
 msgid " V"
 msgstr " В"
@@ -3906,7 +3946,19 @@ msgstr "Параметри нового проєкту"
 msgid "Project Name:"
 msgstr "Назва проєкту:"
 
-#: src/gui/oscilloscope.cpp:334
+#: src/gui/oscilloscope.cpp:180
+#, fuzzy, kde-format
+#| msgid "Pause Simulation"
+msgid "Pause simulation"
+msgstr "Призупинити імітацію"
+
+#: src/gui/oscilloscope.cpp:183
+#, fuzzy, kde-format
+#| msgid "Run Simulation"
+msgid "Run simulation"
+msgstr "Почати імітацію"
+
+#: src/gui/oscilloscope.cpp:374
 #, kde-format
 msgid "Oscilloscope"
 msgstr "Осцилоскоп"
@@ -3922,10 +3974,17 @@ msgid "%1 fps"
 msgstr "%1 кд/с"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/gui/oscilloscopewidget.ui:91
+#: src/gui/oscilloscopewidget.ui:55
 #, kde-format
 msgid "Time Zoom"
 msgstr "Масштаб за часом"
+
+#. i18n("Run"), "debug-run", 0, textDocument, SLOT(debugRun()), ac, "debug_run" );
+#. i18n: ectx: property (text), widget (QToolButton, runBtn)
+#: src/gui/oscilloscopewidget.ui:127 src/textview.cpp:101
+#, kde-format
+msgid "Run"
+msgstr "Запустити"
 
 #. i18n: ectx: property (text), widget (QRadioButton, displayDirectCheck)
 #: src/gui/outputmethodwidget.ui:44
@@ -4834,19 +4893,19 @@ msgstr "Підняти позначене"
 msgid "Lower Selection"
 msgstr "Опустити позначене"
 
-#: src/itemview.cpp:635 src/itemview.cpp:643
+#: src/itemview.cpp:687 src/itemview.cpp:695
 #, kde-format
 msgid "Left click to add. Right click to resume normal editing"
 msgstr ""
 "Клацніть лівою, щоб додати. Клацніть правою, щоб відновити звичайне "
 "редагування."
 
-#: src/itemview.cpp:638
+#: src/itemview.cpp:690
 #, kde-format
 msgid "Click and hold to start drawing."
 msgstr "Натисніть і утримуйте кнопку миші, щоб розпочати креслення."
 
-#: src/itemview.cpp:646
+#: src/itemview.cpp:698
 #, kde-format
 msgid "Right click to cancel the connector"
 msgstr "Клацніть правою, щоб скасувати з’єднання"
@@ -5632,12 +5691,6 @@ msgstr "Форматувати код асемблера"
 #, kde-format
 msgid "Set &Breakpoint"
 msgstr "Встановити &точку зупинки"
-
-#. i18n("Run"), "debug-run", 0, textDocument, SLOT(debugRun()), ac, "debug_run" );
-#: src/textview.cpp:101
-#, kde-format
-msgid "Run"
-msgstr "Запустити"
 
 #. i18n("Stop"), "process-stop", 0, textDocument, SLOT(debugStop()), ac, "debug_stop" );
 #: src/textview.cpp:115

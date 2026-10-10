@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-27 00:48+0000\n"
+"POT-Creation-Date: 2026-10-10 00:49+0000\n"
 "PO-Revision-Date: 2026-09-28 08:51+0200\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
@@ -1171,6 +1171,7 @@ msgid "Flat"
 msgstr "Plat"
 
 #: src/drawparts/drawpart.cpp:225 src/drawparts/drawpart.cpp:235
+#: src/electronics/simulation/elementsignal.cpp:23
 #, kde-format
 msgid "Square"
 msgstr "Carré"
@@ -1214,12 +1215,12 @@ msgstr "Tous les fichiers"
 msgid "Circuit"
 msgstr "Circuit"
 
-#: src/electronics/circuitdocument.cpp:741
+#: src/electronics/circuitdocument.cpp:724
 #, kde-format
 msgid "No components were found in the selection."
 msgstr "Aucun composant sélectionné."
 
-#: src/electronics/circuitdocument.cpp:748
+#: src/electronics/circuitdocument.cpp:731
 #, kde-format
 msgid "No External Connection components were found in the selection."
 msgstr ""
@@ -1606,7 +1607,7 @@ msgid "Current Signal"
 msgstr "Signal courant"
 
 #: src/electronics/components/eccurrentsignal.cpp:45
-#: src/electronics/components/ecvoltagesignal.cpp:49
+#: src/electronics/components/ecvoltagesignal.cpp:54
 #, kde-format
 msgid "Frequency"
 msgstr "Fréquence"
@@ -1871,23 +1872,40 @@ msgstr "Sous-circuit"
 msgid "Voltage Signal"
 msgstr "Signal tension"
 
-#: src/electronics/components/ecvoltagesignal.cpp:56
+#: src/electronics/components/ecvoltagesignal.cpp:49
+#, fuzzy, kde-format
+#| msgid "Signal Lamp"
+msgid "Signal Type"
+msgstr "Lampe témoin"
+
+#: src/electronics/components/ecvoltagesignal.cpp:61
+#, kde-format
+msgid "Phase"
+msgstr ""
+
+#: src/electronics/components/ecvoltagesignal.cpp:68
 #, kde-format
 msgid "Voltage Range"
 msgstr "Échelle de tension"
 
+#: src/electronics/components/ecvoltagesignal.cpp:75
+#, fuzzy, kde-format
+#| msgid "Voltage Out"
+msgid "Voltage Offset"
+msgstr "Tension de sortie"
+
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox4)
-#: src/electronics/components/ecvoltagesignal.cpp:66 src/gui/logicwidget.ui:142
+#: src/electronics/components/ecvoltagesignal.cpp:85 src/gui/logicwidget.ui:142
 #, kde-format
 msgid "Output"
 msgstr "Sortie"
 
-#: src/electronics/components/ecvoltagesignal.cpp:68
+#: src/electronics/components/ecvoltagesignal.cpp:87
 #, kde-format
 msgid "Peak"
 msgstr "Heures pleines"
 
-#: src/electronics/components/ecvoltagesignal.cpp:69
+#: src/electronics/components/ecvoltagesignal.cpp:88
 #, kde-format
 msgid "RMS"
 msgstr "RMS"
@@ -2497,6 +2515,28 @@ msgstr "Non valable"
 msgid "Unknown"
 msgstr "Inconnu"
 
+#: src/electronics/simulation/elementsignal.cpp:22
+#, kde-format
+msgid "Sinusoidal"
+msgstr ""
+
+#: src/electronics/simulation/elementsignal.cpp:24
+#, kde-format
+msgid "Sawtooth"
+msgstr ""
+
+#: src/electronics/simulation/elementsignal.cpp:25
+#, fuzzy, kde-format
+#| msgid "Reverse Beta"
+msgid "Reverse Sawtooth"
+msgstr "Bêta inversé"
+
+#: src/electronics/simulation/elementsignal.cpp:26
+#, fuzzy, kde-format
+#| msgid "Rectangular"
+msgid "Triangular"
+msgstr "Rectangulaire"
+
 #: src/electronics/subcircuits.cpp:110
 #, kde-format
 msgid "Subcircuits"
@@ -3002,9 +3042,9 @@ msgid "Multiple Items"
 msgstr "Items multiples"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, m_pResetButton)
-#. i18n: ectx: property (text), widget (QPushButton, resetBtn)
+#. i18n: ectx: property (text), widget (QToolButton, resetBtn)
 #: src/gui/contexthelp.cpp:334 src/gui/contexthelp.cpp:335
-#: src/gui/contexthelpwidget.ui:173 src/gui/oscilloscopewidget.ui:120
+#: src/gui/contexthelpwidget.ui:173 src/gui/oscilloscopewidget.ui:117
 #, kde-format
 msgid "Reset"
 msgstr "Mise à zéro"
@@ -3618,8 +3658,8 @@ msgstr ""
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, kcfg_LogicRisingTrigger)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, kcfg_LogicFallingTrigger)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, kcfg_LogicOutputHigh)
-#: src/gui/logicwidget.ui:72 src/gui/logicwidget.ui:110
-#: src/gui/logicwidget.ui:170
+#: src/gui/logicwidget.ui:69 src/gui/logicwidget.ui:107
+#: src/gui/logicwidget.ui:167
 #, kde-format
 msgid " V"
 msgstr " V"
@@ -3941,7 +3981,19 @@ msgstr "Détails du nouveau projet"
 msgid "Project Name:"
 msgstr "Nom du projet :"
 
-#: src/gui/oscilloscope.cpp:334
+#: src/gui/oscilloscope.cpp:180
+#, fuzzy, kde-format
+#| msgid "Pause Simulation"
+msgid "Pause simulation"
+msgstr "Suspendre la simulation"
+
+#: src/gui/oscilloscope.cpp:183
+#, fuzzy, kde-format
+#| msgid "Run Simulation"
+msgid "Run simulation"
+msgstr "Lancer la simulation"
+
+#: src/gui/oscilloscope.cpp:374
 #, kde-format
 msgid "Oscilloscope"
 msgstr "Oscilloscope"
@@ -3957,10 +4009,17 @@ msgid "%1 fps"
 msgstr "%1 FPS"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/gui/oscilloscopewidget.ui:91
+#: src/gui/oscilloscopewidget.ui:55
 #, kde-format
 msgid "Time Zoom"
 msgstr "Zoom temporel"
+
+#. i18n("Run"), "debug-run", 0, textDocument, SLOT(debugRun()), ac, "debug_run" );
+#. i18n: ectx: property (text), widget (QToolButton, runBtn)
+#: src/gui/oscilloscopewidget.ui:127 src/textview.cpp:101
+#, kde-format
+msgid "Run"
+msgstr "Exécuter"
 
 #. i18n: ectx: property (text), widget (QRadioButton, displayDirectCheck)
 #: src/gui/outputmethodwidget.ui:44
@@ -4882,19 +4941,19 @@ msgstr "Monter la sélection"
 msgid "Lower Selection"
 msgstr "Descendre la sélection"
 
-#: src/itemview.cpp:635 src/itemview.cpp:643
+#: src/itemview.cpp:687 src/itemview.cpp:695
 #, kde-format
 msgid "Left click to add. Right click to resume normal editing"
 msgstr ""
 "Clic gauche pour ajouter. Clic droit pour retourner au mode d'édition "
 "normale."
 
-#: src/itemview.cpp:638
+#: src/itemview.cpp:690
 #, kde-format
 msgid "Click and hold to start drawing."
 msgstr "Cliquer et maintenir pour commencer à dessiner."
 
-#: src/itemview.cpp:646
+#: src/itemview.cpp:698
 #, kde-format
 msgid "Right click to cancel the connector"
 msgstr "Clic droit pour annuler la connexion"
@@ -5682,12 +5741,6 @@ msgstr "Formater le code assembleur"
 #, kde-format
 msgid "Set &Breakpoint"
 msgstr "&Placer un point d'arrêt"
-
-#. i18n("Run"), "debug-run", 0, textDocument, SLOT(debugRun()), ac, "debug_run" );
-#: src/textview.cpp:101
-#, kde-format
-msgid "Run"
-msgstr "Exécuter"
 
 #. i18n("Stop"), "process-stop", 0, textDocument, SLOT(debugStop()), ac, "debug_stop" );
 #: src/textview.cpp:115

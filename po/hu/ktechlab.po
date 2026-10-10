@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab 0.3.7\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-09-27 00:48+0000\n"
+"POT-Creation-Date: 2026-10-10 00:49+0000\n"
 "PO-Revision-Date: 2013-05-19 18:42+0200\n"
 "Last-Translator: Peter Bojtos <ptr@ulx.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -1215,6 +1215,7 @@ msgid "Flat"
 msgstr "Sík"
 
 #: src/drawparts/drawpart.cpp:225 src/drawparts/drawpart.cpp:235
+#: src/electronics/simulation/elementsignal.cpp:23
 #, kde-format
 msgid "Square"
 msgstr "Kocka"
@@ -1258,12 +1259,12 @@ msgstr "Az összes fájl"
 msgid "Circuit"
 msgstr "Áramkör"
 
-#: src/electronics/circuitdocument.cpp:741
+#: src/electronics/circuitdocument.cpp:724
 #, kde-format
 msgid "No components were found in the selection."
 msgstr "A kiválasztásban nem található összetevő."
 
-#: src/electronics/circuitdocument.cpp:748
+#: src/electronics/circuitdocument.cpp:731
 #, kde-format
 msgid "No External Connection components were found in the selection."
 msgstr "A kiválasztásban nem találhatóak külső kapcsolat-összetevők."
@@ -1650,7 +1651,7 @@ msgid "Current Signal"
 msgstr "Áram jel"
 
 #: src/electronics/components/eccurrentsignal.cpp:45
-#: src/electronics/components/ecvoltagesignal.cpp:49
+#: src/electronics/components/ecvoltagesignal.cpp:54
 #, kde-format
 msgid "Frequency"
 msgstr "Frekvencia"
@@ -1916,23 +1917,40 @@ msgstr "Aláramkör"
 msgid "Voltage Signal"
 msgstr "Feszültségjel"
 
-#: src/electronics/components/ecvoltagesignal.cpp:56
+#: src/electronics/components/ecvoltagesignal.cpp:49
+#, fuzzy, kde-format
+#| msgid "Signal Lamp"
+msgid "Signal Type"
+msgstr "Jelző lámpa"
+
+#: src/electronics/components/ecvoltagesignal.cpp:61
+#, kde-format
+msgid "Phase"
+msgstr ""
+
+#: src/electronics/components/ecvoltagesignal.cpp:68
 #, kde-format
 msgid "Voltage Range"
 msgstr "Feszültségtartomány"
 
+#: src/electronics/components/ecvoltagesignal.cpp:75
+#, fuzzy, kde-format
+#| msgid "Voltage Out"
+msgid "Voltage Offset"
+msgstr "Feszültség kimenet"
+
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox4)
-#: src/electronics/components/ecvoltagesignal.cpp:66 src/gui/logicwidget.ui:142
+#: src/electronics/components/ecvoltagesignal.cpp:85 src/gui/logicwidget.ui:142
 #, kde-format
 msgid "Output"
 msgstr "Kimenet"
 
-#: src/electronics/components/ecvoltagesignal.cpp:68
+#: src/electronics/components/ecvoltagesignal.cpp:87
 #, kde-format
 msgid "Peak"
 msgstr "Csúcs"
 
-#: src/electronics/components/ecvoltagesignal.cpp:69
+#: src/electronics/components/ecvoltagesignal.cpp:88
 #, fuzzy, kde-format
 #| msgid "RAM"
 msgid "RMS"
@@ -2547,6 +2565,28 @@ msgstr "Érvénytelen"
 msgid "Unknown"
 msgstr "Ismeretlen"
 
+#: src/electronics/simulation/elementsignal.cpp:22
+#, kde-format
+msgid "Sinusoidal"
+msgstr ""
+
+#: src/electronics/simulation/elementsignal.cpp:24
+#, kde-format
+msgid "Sawtooth"
+msgstr ""
+
+#: src/electronics/simulation/elementsignal.cpp:25
+#, fuzzy, kde-format
+#| msgid "Reverse Beta"
+msgid "Reverse Sawtooth"
+msgstr "Visszaáll a Bétára"
+
+#: src/electronics/simulation/elementsignal.cpp:26
+#, fuzzy, kde-format
+#| msgid "Rectangular"
+msgid "Triangular"
+msgstr "Téglalap"
+
 #: src/electronics/subcircuits.cpp:110
 #, kde-format
 msgid "Subcircuits"
@@ -3071,9 +3111,9 @@ msgid "Multiple Items"
 msgstr "<h2>Többszörös elemek</h2>"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, m_pResetButton)
-#. i18n: ectx: property (text), widget (QPushButton, resetBtn)
+#. i18n: ectx: property (text), widget (QToolButton, resetBtn)
 #: src/gui/contexthelp.cpp:334 src/gui/contexthelp.cpp:335
-#: src/gui/contexthelpwidget.ui:173 src/gui/oscilloscopewidget.ui:120
+#: src/gui/contexthelpwidget.ui:173 src/gui/oscilloscopewidget.ui:117
 #, kde-format
 msgid "Reset"
 msgstr "Alapállapot"
@@ -3693,8 +3733,8 @@ msgstr "A bemeneten szükséges feszültségszint ami előtt a magas lesz."
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, kcfg_LogicRisingTrigger)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, kcfg_LogicFallingTrigger)
 #. i18n: ectx: property (suffix), widget (QDoubleSpinBox, kcfg_LogicOutputHigh)
-#: src/gui/logicwidget.ui:72 src/gui/logicwidget.ui:110
-#: src/gui/logicwidget.ui:170
+#: src/gui/logicwidget.ui:69 src/gui/logicwidget.ui:107
+#: src/gui/logicwidget.ui:167
 #, kde-format
 msgid " V"
 msgstr " V"
@@ -4016,7 +4056,19 @@ msgstr "Új projekt részletei"
 msgid "Project Name:"
 msgstr "Projekt neve:"
 
-#: src/gui/oscilloscope.cpp:334
+#: src/gui/oscilloscope.cpp:180
+#, fuzzy, kde-format
+#| msgid "Pause Simulation"
+msgid "Pause simulation"
+msgstr "Szimuláció megállítása"
+
+#: src/gui/oscilloscope.cpp:183
+#, fuzzy, kde-format
+#| msgid "Run Simulation"
+msgid "Run simulation"
+msgstr "Szimuláció indítása"
+
+#: src/gui/oscilloscope.cpp:374
 #, kde-format
 msgid "Oscilloscope"
 msgstr "Oszcilloszkóp"
@@ -4032,11 +4084,18 @@ msgid "%1 fps"
 msgstr "%1 fps"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/gui/oscilloscopewidget.ui:91
+#: src/gui/oscilloscopewidget.ui:55
 #, fuzzy, kde-format
 #| msgid "Zoom"
 msgid "Time Zoom"
 msgstr "Nagyítás"
+
+#. i18n("Run"), "debug-run", 0, textDocument, SLOT(debugRun()), ac, "debug_run" );
+#. i18n: ectx: property (text), widget (QToolButton, runBtn)
+#: src/gui/oscilloscopewidget.ui:127 src/textview.cpp:101
+#, kde-format
+msgid "Run"
+msgstr "Futtatás"
 
 #. i18n: ectx: property (text), widget (QRadioButton, displayDirectCheck)
 #: src/gui/outputmethodwidget.ui:44
@@ -4957,19 +5016,19 @@ msgstr "Növekvő kiválasztás"
 msgid "Lower Selection"
 msgstr "Csökkenő kiválasztás"
 
-#: src/itemview.cpp:635 src/itemview.cpp:643
+#: src/itemview.cpp:687 src/itemview.cpp:695
 #, kde-format
 msgid "Left click to add. Right click to resume normal editing"
 msgstr ""
 "Bal kattintás a hozzáadáshoz. Jobb kattintás a normális szerkesztés "
 "folytatásához"
 
-#: src/itemview.cpp:638
+#: src/itemview.cpp:690
 #, kde-format
 msgid "Click and hold to start drawing."
 msgstr "Kattintson és tartsa lenyomva a rajzolás megkezdéséhez."
 
-#: src/itemview.cpp:646
+#: src/itemview.cpp:698
 #, kde-format
 msgid "Right click to cancel the connector"
 msgstr "Jobb kattintás a csatlakozó törléséhez"
@@ -5763,12 +5822,6 @@ msgstr "Assembly kód formálása"
 #, kde-format
 msgid "Set &Breakpoint"
 msgstr "&Töréspont beállítása"
-
-#. i18n("Run"), "debug-run", 0, textDocument, SLOT(debugRun()), ac, "debug_run" );
-#: src/textview.cpp:101
-#, kde-format
-msgid "Run"
-msgstr "Futtatás"
 
 #. i18n("Stop"), "process-stop", 0, textDocument, SLOT(debugStop()), ac, "debug_stop" );
 #: src/textview.cpp:115
