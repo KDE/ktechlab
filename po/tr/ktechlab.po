@@ -750,7 +750,7 @@ msgstr "Kapsamlı veri akışı çözümlemesi"
 #: src/core/ktechlab.kcfg:290 src/gui/sdccoptionswidget.ui:95
 #, kde-format
 msgid "Search / include non-free licensed libraries and header files"
-msgstr "Özgür olmayan lisanslı kitaplıkları ve üstbilgi dosyalarını ara/içer"
+msgstr "Özgür olmayan lisanslı kitaplıkları ve üst bilgi dosyalarını ara/içer"
 
 #. i18n: ectx: label, entry (SDCC_install_prefix), group (SDCC)
 #: src/core/ktechlab.kcfg:294
@@ -4175,7 +4175,7 @@ msgstr "Seçenek+9"
 #, kde-format
 msgid "Use non-free licensed libraries and header files (--use-non-free)"
 msgstr ""
-"Özgür olmayan lisanslı kitaplıkları ve üstbilgi dosyalarını kullan (--use-"
+"Özgür olmayan lisanslı kitaplıkları ve üst bilgi dosyalarını kullan (--use-"
 "non-free)"
 
 #. i18n: ectx: attribute (title), widget (QWidget, code_generation)
