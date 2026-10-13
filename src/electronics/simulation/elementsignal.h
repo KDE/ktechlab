@@ -37,6 +37,16 @@ public:
     // Map of names
     static QStringMap signalTypes;
 
+    double frequency() const
+    {
+        return m_frequency;
+    }
+
+    double phase() const
+    {
+        return m_phase;
+    }
+
 protected:
     Type m_type;
     double m_time;

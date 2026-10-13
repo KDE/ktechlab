@@ -83,8 +83,7 @@ void ElementSet::removeElement(Element *e)
         m_cnonLinearList.removeAll(static_cast<NonLinear *>(e));
     }
     if (LogicIn* it = dynamic_cast<LogicIn *>(e)) {
-        // TODO: Cleanup if LogicIn
-        // m_logicIn.removeAll(it);
+        m_logicIn.removeAll(it);
     }
 }
 

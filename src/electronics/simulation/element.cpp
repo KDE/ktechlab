@@ -82,6 +82,23 @@ void Element::elementSetDeleted()
     setCBranches();
 }
 
+void Element::setCNodesFromPins(const PinList& pins)
+{
+    Q_ASSERT(pins.size() == m_numCNodes);
+    Q_ASSERT(p_eSet);
+    for (uint i = m_numCNodes; i < MAX_CNODES; i++)
+        p_cnode[i] = nullptr;
+    for (uint i=0; i < m_numCNodes; i++) {
+        const auto eqId = pins[i]->eqId();
+        if (eqId == -1) {
+            p_cnode[i] = &p_eSet->ground();
+        } else {
+            p_cnode[i] = &p_eSet->cnode(eqId);
+        }
+    }
+    updateStatus();
+}
+
 void Element::setCNodes(const int n0, const int n1, const int n2, const int n3)
 {
     if (!p_eSet) {

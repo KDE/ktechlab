@@ -13,17 +13,18 @@
 
 #include <QList>
 #include <QPointer>
+#include <QMap>
 
+#include "element.h"
 #include "elementset.h"
 
 class CircuitDocument;
-class Wire;
-class Pin;
-class Element;
 class LogicOut;
 
 typedef QList<QPointer<Pin>> PinList;
 typedef QList<Element *> ElementList;
+typedef QMap<Element *, PinList> ElementPinMapping;
+
 
 class LogicCacheNode
 {
@@ -55,7 +56,60 @@ public:
     ~Circuit();
 
     void addPin(Pin *node);
+    void addPins(const PinList& pins)
+    {
+        for (Pin* p: pins)
+            addPin(p);
+    }
+    const PinList& pinList() const
+    {
+        return m_pinList;
+    }
+
+    void addWire(Wire *wire)
+    {
+        if (wire && !m_wireList.contains(wire))
+            m_wireList.append(wire);
+    }
+
+    void addWires(const WireList &wires)
+    {
+        for (Wire* wire: wires)
+            addWire(wire);
+    }
+    const WireList& wireList() const
+    {
+        return m_wireList;
+    }
+
     void addElement(Element *element);
+    void addElements(const ElementList& elements)
+    {
+        for (Element* e: elements)
+            addElement(e);
+    }
+    const ElementList& elementList() const
+    {
+        return m_elementList;
+    }
+
+    const ElementSet* elementSet() const
+    {
+        return m_elementSet;
+    }
+
+    /**
+     * Set the elements to node/pin mapping. If any of the elements
+     * or pins are not included in the circuit they will be added.
+     * The pins list size must equal the elements number of CNodes.
+     * This mapping is normally handled by the Component class and was
+     * added for testing purposes.
+     */
+    void setElementPinMapping(Element *element, const PinList& pins);
+
+    const ElementPinMapping& elementPinMapping() const {
+        return m_elementPinMapping;
+    }
 
     bool contains(Pin *node);
     bool containsNonLinear() const
@@ -116,6 +170,37 @@ public:
         return m_bCanAddChanged;
     }
 
+    /**
+     * Sets element cnodes equation ids. This requires
+     * all elements to have a pin mapping defined or it
+     * will return false.
+     * This should called after the circuit is initialized.
+     * It was added for testing purposes.
+     * @returns whether all of the assignment could be done.
+     */
+    [[nodiscard]] bool assignEquationIds();
+
+    /**
+     * Calls `add_initial_dc` on all elements.
+     * This should be called after the cnode equations are assigned
+     * and the matrix map is created. This is normally handled by
+     * the Component class and was added for testing purposes.
+     */
+    void addInitialDc()
+    {
+        Q_ASSERT(m_elementSet);
+        for (Element* e: std::as_const(m_elementList))
+            e->add_initial_dc();
+    }
+
+    /**
+     * Update nodal and wire currents from those calculated in ElementSet.
+     * This only works for elements which have an ElementPinMapping
+     * and was added for testing purposes.
+     * See CircuitDocument::calculateConnectorCurrents
+     */
+    [[nodiscard]] bool calculateCurrents();
+
 protected:
     void cacheAndUpdate();
     /**
@@ -134,6 +219,8 @@ protected:
     PinList m_pinList;
     ElementList m_elementList;
     ElementSet *m_elementSet = nullptr;
+    ElementPinMapping m_elementPinMapping; // Used for testing (doesn't depend on Component)
+    WireList m_wireList;
 
     // Stuff for caching
     bool m_bCanCache = false;

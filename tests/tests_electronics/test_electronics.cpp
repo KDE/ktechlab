@@ -6,6 +6,7 @@
 #include "pin.h"
 #include "resistance.h"
 #include "voltagepoint.h"
+#include "voltagesignal.h"
 #include "wire.h"
 
 #include <QDebug>
@@ -25,7 +26,7 @@ static double lambert(double x)
 }
 
 // Checks that actual is within expected +- the tolerance
-#define QCOMPARE_TOL(actual, expected, tol) if (!std::isfinite(actual) ||  !std::isfinite(expected) || std::abs(actual - expected) > tol) QCOMPARE(actual, expected);
+#define QCOMPARE_TOL(actual, expected, tol) if (!std::isfinite(actual) || !std::isfinite(expected) || std::abs((actual) - (expected)) > tol) QCOMPARE(actual, expected);
 
 
 class KtlElectronicsTests: public QObject
@@ -551,6 +552,364 @@ private Q_SLOTS:
         QCOMPARE_TOL(eset.cnodes()[0].v, Vs, tolerance);
         QCOMPARE_TOL(eset.cnodes()[1].v, Vr, tolerance);
         QCOMPARE_TOL(eset.cbranches()[0].i, I, tolerance);
+    }
+
+    void circuitResistorSanityTest()
+    {
+        // Circuit
+        // [5V]a--b[R1]c--d[GND]
+        Circuit circuit;
+        Pin a, b, c, d;
+        Wire w1(&a, &b);
+        Wire w2(&c, &d);
+
+        // See Component::createVoltagePoint
+        VoltagePoint source(5.0);
+        a.addElement(&source);
+
+        // See Component::createResistance
+        Resistance resistor(1000);
+        b.addElement(&resistor);
+        b.addCircuitDependentPin(&c);
+        c.addElement(&resistor);
+        c.addCircuitDependentPin(&b);
+        d.setGroundType(Pin::gt_always);
+
+        // See CircuitDocument::createCircuit
+        circuit.addPin(&d);
+        circuit.setElementPinMapping(&source, {&a});
+        circuit.setElementPinMapping(&resistor, {&b, &c});
+
+        // See usage in CircuitDocument::assignCircuits
+        // This sets the eqId's of some of the pins
+        // It's unclear why this is not in circuit.init
+        QCOMPARE(circuit.identifyGround(circuit.pinList()), 1);
+        circuit.init();
+
+        QVERIFY(!circuit.containsNonLinear());
+        QCOMPARE(circuit.elementSet()->cbranchCount(), 1);
+        QCOMPARE(circuit.elementSet()->cnodeCount(), 1);
+        QCOMPARE(circuit.wireList().size(), 2);
+
+        // Component::initElements(0)
+        QVERIFY(circuit.assignEquationIds());
+        circuit.createMatrixMap();
+        // Component::initElements(1)
+        circuit.addInitialDc();
+
+        // doNonLogic updates pin/node voltages
+        QCOMPARE(a.voltage(), 0);
+        QCOMPARE(b.voltage(), 0);
+        QCOMPARE(c.voltage(), 0);
+        circuit.doNonLogic();
+        circuit.displayEquations();
+        QCOMPARE(a.voltage(), 5.0);
+        QCOMPARE(b.voltage(), 5.0);
+        QCOMPARE(c.voltage(), 0);
+
+        // CircuitDocument::calculateConnectorCurrents
+        bool solved = circuit.calculateCurrents();
+        // Expected current is I = V/R
+        QCOMPARE(w1.current(), 0.005);
+        QCOMPARE(w2.current(), 0.005);
+        QVERIFY(solved);
+    }
+
+    void circuitResistorSeriesSanityTest()
+    {
+        // Circuit
+        // [5V]a--b[R1]c--d[R2]e--f[GND]
+        Circuit circuit;
+        Pin a, b, c, d, e, f;
+        Wire w1(&a, &b);
+        Wire w2(&c, &d);
+        Wire w3(&e, &f);
+
+        VoltagePoint source(12.0);
+        Resistance r1(1000);
+        Resistance r2(2000);
+        circuit.setElementPinMapping(&source, {&a});
+        circuit.setElementPinMapping(&r1, {&b, &c});
+        circuit.setElementPinMapping(&r2, {&d, &e});
+
+        f.setGroundType(Pin::gt_always);
+        circuit.addPin(&f);
+        QCOMPARE(circuit.identifyGround(circuit.pinList()), 1);
+        circuit.init();
+
+        QVERIFY(!circuit.containsNonLinear());
+        QCOMPARE(circuit.elementSet()->cbranchCount(), 1);
+        QCOMPARE(circuit.elementSet()->cnodeCount(), 2);
+        QCOMPARE(circuit.wireList().size(), 3);
+
+        QVERIFY(circuit.assignEquationIds());
+        circuit.createMatrixMap();
+        circuit.addInitialDc();
+
+        circuit.doNonLogic();
+        circuit.displayEquations();
+        QCOMPARE(a.voltage(), 12.0);
+        QCOMPARE(b.voltage(), 12.0);
+        QCOMPARE(c.voltage(), 8.0);
+        QCOMPARE(d.voltage(), 8.0);
+        QCOMPARE(e.voltage(), 0.0);
+        QCOMPARE(f.voltage(), 0.0);
+
+        bool solved = circuit.calculateCurrents();
+        // Expected current is I = V/R
+        QCOMPARE(w1.current(), 0.004);
+        QCOMPARE(w2.current(), 0.004);
+        QCOMPARE(w3.current(), 0.004);
+        QVERIFY(solved);
+    }
+
+    void circuitParallelResistorSanityTest()
+    {
+        // Circuit  c[R1]d
+        //          |    |
+        // [12V]a --b    g--h[GND]
+        //          |    |
+        //          e[R2]f
+        Circuit circuit;
+        Pin a, b, c, d, e, f, g, h;
+        Wire w1(&a, &b);
+        Wire w2(&b, &c);
+        Wire w3(&b, &e);
+        Wire w4(&d, &g);
+        Wire w5(&f, &g);
+        Wire w6(&g, &h);
+
+        circuit.addPins({&a, &b, &c, &d, &e, &f, &g, &h});
+        VoltagePoint source(12.0);
+        circuit.setElementPinMapping(&source, {&a});
+        Resistance r1(2000);
+        circuit.setElementPinMapping(&r1, {&c, &d});
+        Resistance r2(3000);
+        circuit.setElementPinMapping(&r2, {&e, &f});
+        h.setGroundType(Pin::gt_always);
+
+        QCOMPARE(circuit.identifyGround(circuit.pinList()), 1);
+        circuit.init();
+
+        QVERIFY(!circuit.containsNonLinear());
+        QCOMPARE(circuit.elementSet()->cbranchCount(), 1);
+        QCOMPARE(circuit.elementSet()->cnodeCount(), 1);
+        QCOMPARE(circuit.wireList().size(), 6);
+
+        QVERIFY(circuit.assignEquationIds());
+        circuit.createMatrixMap();
+        circuit.addInitialDc();
+        circuit.doNonLogic();
+        circuit.displayEquations();
+        QCOMPARE(a.voltage(), 12.0);
+        QCOMPARE(b.voltage(), 12.0);
+        QCOMPARE(c.voltage(), 12.0);
+        QCOMPARE(e.voltage(), 12.0);
+
+        QCOMPARE(d.voltage(), 0.0);
+        QCOMPARE(g.voltage(), 0.0);
+        QCOMPARE(f.voltage(), 0.0);
+        QCOMPARE(h.voltage(), 0.0);
+
+        bool solved = circuit.calculateCurrents();
+        QCOMPARE(w1.current(), 0.010);
+        QCOMPARE(w2.current(), 0.006);
+        QCOMPARE(w3.current(), 0.004);
+        QCOMPARE(w4.current(), 0.006);
+        QCOMPARE(w5.current(), 0.004);
+        QCOMPARE(w6.current(), 0.010);
+        QVERIFY(solved);
+    }
+
+    void circuitRLCSeriesTest()
+    {
+        // RLC series circuit
+        // (VS)a--b[R1]c--d[L1]e--f[C1]g--h[GND]
+        // See https://physicstasks.eu/1540/series-rlc-
+        // https://en.wikipedia.org/wiki/RLC_circuit
+        // https://circuits.mit.edu/_static/S23/handouts/lec09a/lecture09a.pdf
+        const double dt = 1./100000.;
+        Circuit circuit;
+        Pin a, b, c, d, e, f, g, h;
+        Wire w1(&a, &b);
+        Wire w2(&c, &d);
+        Wire w3(&e, &f);
+        Wire w4(&g, &h);
+        circuit.addPins({&a, &b, &c, &d, &e, &f, &g, &h});
+        VoltagePoint vs(25.0);
+        Resistance r1(50);
+        Inductance l1(0.3, dt);
+        Capacitance c1(15e-6, dt);
+        circuit.setElementPinMapping(&vs, {&a});
+        circuit.setElementPinMapping(&r1, {&b, &c});
+        circuit.setElementPinMapping(&l1, {&d, &e});
+        circuit.setElementPinMapping(&c1, {&f, &g});
+        h.setGroundType(Pin::gt_always);
+
+        QCOMPARE(circuit.identifyGround(circuit.pinList()), 1);
+        circuit.init();
+
+        QVERIFY(!circuit.containsNonLinear());
+        QCOMPARE(circuit.elementSet()->cbranchCount(), 2); // Inductor has one branch
+        QCOMPARE(circuit.elementSet()->cnodeCount(), 3);
+        QCOMPARE(circuit.wireList().size(), 4);
+
+        QVERIFY(circuit.assignEquationIds());
+        circuit.createMatrixMap();
+        circuit.addInitialDc();
+        // eqns 39
+        const double Vs = vs.voltage();
+        const double R = r1.resistance();
+        const double L = l1.inductance();
+        const double C = c1.capacitance();
+        const double alpha = R / (2. * L);
+        const double omega0 = 1.0 / sqrt(L * C);
+        const double omegad = sqrt(1./(L * C) - (R * R) / (4. * L * L));
+        const double dfactor = R / 2.0 * sqrt(C / L);
+        QVERIFY(dfactor < 1);
+        const double phi = atan2(-omegad, alpha) - M_PI_2; // eqn 50
+        const double V0 = -Vs;
+        const double A0 = V0*sqrt(1+alpha*alpha/(omegad*omegad)); // Constant in eqn 50
+        const double B0 = -V0/(omegad*L); // Constant in eqn 42
+        qInfo() << "alpha" << alpha << "omega0" << omega0 << "dfactor" << dfactor <<
+            "phi" << phi << "V0" << V0 << "A0" << A0 << "B0" << B0;
+
+        uint n = 10000;
+        double ierr = 0;
+        double verr = 0;
+        double t = 0;
+        for (uint i = 0; i < n; i++) {
+            t += dt;
+            circuit.doNonLogic();
+            if (i == 0) {
+                circuit.displayEquations();
+            }
+            bool solved = circuit.calculateCurrents();
+
+            // See eqns 42 and 50 in MIT lecture notes
+            const double Il = B0 * exp(-alpha*t) * sin(omegad*t);
+            const double Vr = Il*R;
+            const double Vc = Vs - Vr - A0 * exp(-alpha*t) * cos(omegad*t+phi);
+
+            if (i == 1 || i % 100 == 0) {
+                qDebug() << "t=" << t << "Vc=" << Vc << "V1" << e.voltage()
+                    << "Il=" << Il << "I" << w1.current();
+            }
+            ierr += pow(w1.current() - Il, 2);
+            verr += pow(e.voltage() - Vc, 2);
+            QCOMPARE_TOL(w1.current(), Il, 0.001);
+            QCOMPARE_TOL(w2.current(), Il, 0.001);
+            QCOMPARE_TOL(w3.current(), Il, 0.001);
+            QCOMPARE_TOL(w4.current(), Il, 0.001);
+            QCOMPARE_TOL(a.voltage(), Vs, 0.05);
+            QCOMPARE_TOL(b.voltage(), Vs, 0.05);
+            QCOMPARE_TOL(c.voltage(), Vs-Vr, 0.05);
+            QCOMPARE_TOL(d.voltage(), Vs-Vr, 0.05);
+            // TODO: Why is this off so much?
+            QCOMPARE_TOL(e.voltage(), Vc, 0.5);
+            QCOMPARE_TOL(f.voltage(), Vc, 0.5);
+            QCOMPARE(g.voltage(), 0.0);
+            QCOMPARE(h.voltage(), 0.0);
+            QVERIFY(solved);
+        }
+
+        const double Irms = sqrt(ierr/n);
+        const double Vrms = sqrt(verr/n);
+        qDebug() << "Irms" << Irms << "Vrms" << Vrms;
+    }
+
+    void circuitFullWaveRectifier()
+    {
+        // Test the following full wave rectifier circuit
+        // +-a[D1]b--c--d[D2]e-+
+        // |         |         |
+        // |         f         |
+        // |        (VS)       |
+        // |         g         |
+        // |         |         |
+        // h-i[D3]j--k--l[D4]m-n
+        // |                   |
+        // +-------o[R1]p------+
+        const double dt = 1./10000.;
+
+        Circuit circuit;
+        Resistance r1(1000);
+        Diode d1, d2, d3, d4;
+        VoltageSignal vs(dt, 5.0);
+        vs.setStep(VoltageSignal::st_sinusoidal, 1.0);
+        QVERIFY(vs.type() == Element::Element_VoltageSignal);
+        QCOMPARE(vs.voltage(), 5.0);
+        QCOMPARE(vs.offset(), 0.0);
+
+        Pin a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p;
+        Wire w1(&h, &a);
+        Wire w2(&h, &i);
+        Wire w3(&h, &o);
+        Wire w4(&b, &c);
+        Wire w5(&c, &d);
+        Wire w6(&c, &f);
+        Wire w7(&g, &k);
+        Wire w8(&j, &k);
+        Wire w9(&k, &l);
+        Wire w10(&e, &n);
+        Wire w11(&m, &n);
+        Wire w12(&n, &p);
+        circuit.addPins({&a, &b, &c, &d, &e, &f, &g, &h, &i, &j, &k, &l, &m, &n, &o, &p});
+        o.setGroundType(Pin::gt_always);
+        circuit.setElementPinMapping(&vs, {&g, &f});
+        circuit.setElementPinMapping(&r1, {&o, &p});
+        circuit.setElementPinMapping(&d1, {&a, &b});
+        circuit.setElementPinMapping(&d2, {&d, &e});
+        circuit.setElementPinMapping(&d3, {&i, &j});
+        circuit.setElementPinMapping(&d4, {&l, &m});
+
+        QCOMPARE(circuit.identifyGround(circuit.pinList()), 1);
+        circuit.init();
+
+        QVERIFY(circuit.containsNonLinear());
+        QCOMPARE(circuit.elementSet()->cbranchCount(), 1);
+        QCOMPARE(circuit.elementSet()->cnodeCount(), 3);
+        QCOMPARE(circuit.wireList().size(), 12);
+
+        QVERIFY(circuit.assignEquationIds());
+        circuit.addInitialDc();
+        double t = vs.frequency() / 4.0; // Voltage signal starts time at freq/4
+        const double omega = 2 * M_PI * vs.frequency();
+        for (uint i = 0; i < 10000; i++) {
+            t += dt;
+            circuit.doNonLogic();
+            if (i == 0) {
+                circuit.displayEquations();
+            }
+            // Input voltage should be
+            const double v = vs.voltage() * sin(t * omega + vs.phase());
+            const double vin = f.voltage()-g.voltage();
+            QCOMPARE_TOL(vin, v, 1e-6);
+
+            // The output vr should be the absolute of vs - two diode drops (~0.7*2)
+            const double vout = p.voltage()-o.voltage();
+            const double vexp = std::max(0., std::abs(v)-1.4);
+            QCOMPARE_TOL(vout, vexp, 0.1);
+
+            bool solved = circuit.calculateCurrents();
+            const double I = vexp/r1.resistance();
+            const double tol = 1e-4;
+            QCOMPARE_TOL(w12.current(), I, tol);
+            if (vin > 0) {
+                // Current through D3 and D2
+                QCOMPARE_TOL(w2.current(), I, tol);
+                QCOMPARE_TOL(w10.current(), I, tol);
+                QCOMPARE_TOL(w11.current(), 0, tol);
+                QCOMPARE_TOL(w4.current(), 0, tol);
+            } else {
+                // Current through D1 and D4
+                QCOMPARE_TOL(w10.current(), 0, tol);
+                QCOMPARE_TOL(w11.current(), I, tol);
+            }
+
+            QVERIFY(solved);
+        }
+
     }
 
     void cleanupTestCase()

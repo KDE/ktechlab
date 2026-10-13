@@ -51,6 +51,23 @@ void Circuit::addElement(Element *element)
     m_elementList.append(element);
 }
 
+void Circuit::setElementPinMapping(Element *element, const PinList& pins)
+{
+    Q_ASSERT(element->numCNodes() == pins.size());
+    addElement(element);
+    for (Pin* pin: pins) {
+        addPin(pin);
+        pin->addElement(element);
+        for (Pin* other: pins) {
+            if (pin != other) {
+                pin->addCircuitDependentPin(other);
+            }
+        }
+    }
+
+    m_elementPinMapping[element] = pins;
+}
+
 bool Circuit::contains(Pin *node)
 {
     return m_pinList.contains(node);
@@ -140,6 +157,18 @@ int Circuit::identifyGround(PinList nodeList, int *highest)
 
     return numGround;
 }
+
+bool Circuit::assignEquationIds()
+{
+    for (Element* e: std::as_const(m_elementList)) {
+        if (!m_elementPinMapping.contains(e)) {
+            return false;
+        }
+        e->setCNodesFromPins(m_elementPinMapping[e]);
+    }
+    return true;
+}
+
 
 void Circuit::init()
 {
@@ -257,6 +286,12 @@ void Circuit::init()
             // What the?!
             break;
         }
+    }
+
+    // Initialize wire list
+    for (Pin* p: std::as_const(m_pinList)) {
+        addWires(p->inputWireList());
+        addWires(p->outputWireList());
     }
 }
 
@@ -447,10 +482,76 @@ void Circuit::updateNodalVoltages()
 
 void Circuit::updateCurrents()
 {
-    ElementList::iterator listEnd = m_elementList.end();
-    for (ElementList::iterator it = m_elementList.begin(); it != listEnd; ++it) {
-        (*it)->updateCurrents();
+    for (Element* e: std::as_const(m_elementList))
+        e->updateCurrents();
+}
+
+bool Circuit::calculateCurrents()
+{
+    // See CircuitDocument::calculateConnectorCurrents
+    PinList groundPins;
+    updateCurrents();
+
+    for (Pin* pin: std::as_const(m_pinList)) {
+        pin->resetCurrent();
+
+        ElementList elements;
+        for (const auto& [element, pins] : m_elementPinMapping.asKeyValueRange()) {
+            if (pins.contains(pin)) {
+                elements.append(element);
+            }
+        }
+
+        if (pin->groundType() == Pin::gt_always) {
+            pin->setCurrentKnown(false);
+            groundPins.append(pin);
+        } else {
+            // A connection with one component can be
+            // calculated from the equations.
+            // A connection node with 0 components
+            // by KCL must have a current of 0.
+            pin->setCurrentKnown(elements.size() < 2);
+        }
     }
+
+    // See Component::setNodalCurrents
+    for (const auto& [element, pins] : m_elementPinMapping.asKeyValueRange()) {
+        for (int i=0; i < pins.size(); i++) {
+            pins[i]->mergeCurrent(element->m_cnodeI[i]);
+        }
+    }
+
+    for (Wire* w: std::as_const(m_wireList)) {
+        w->setCurrentKnown(false);
+    }
+
+    WireList wires = m_wireList;
+    bool found = true;
+    while (found) {
+        found = false;
+        if (!wires.isEmpty()) {
+            QMutableListIterator<QPointer<Wire>> it(wires);
+            while (it.hasNext()) {
+                Wire* w = it.next();
+                if (w->calculateCurrent()) {
+                    found = true;
+                    it.remove();
+                }
+            }
+        }
+        if (!groundPins.isEmpty()) {
+            QMutableListIterator<QPointer<Pin>> it(groundPins);
+            while (it.hasNext()) {
+                Pin* p = it.next();
+                if (p->calculateCurrentFromWires()) {
+                    found = true;
+                    it.remove();
+                }
+            }
+        }
+    }
+
+    return wires.isEmpty() && groundPins.isEmpty();
 }
 
 void Circuit::displayEquations()

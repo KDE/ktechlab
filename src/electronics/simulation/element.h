@@ -11,6 +11,7 @@
 #ifndef ELEMENT_H
 #define ELEMENT_H
 
+#include "pin.h"
 #include "elementset.h"
 #include "matrix.h"
 
@@ -83,6 +84,13 @@ public:
      * should refer to the individual elements for which nodes are used for what.
      */
     void setCNodes(const int n0 = noCNode, const int n1 = noCNode, const int n2 = noCNode, const int n3 = noCNode);
+
+    /**
+     * Sets CNodes equations from a list of pins. The size of the pin list
+     * must match the number of cnodes and be ordered properly.
+     */
+    void setCNodesFromPins(const PinList& pins);
+
     /**
      * Tells the element it's branch numbers (if it should have one). Not
      * all elements use this.
