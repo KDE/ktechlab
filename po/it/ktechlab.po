@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-10 00:49+0000\n"
-"PO-Revision-Date: 2026-09-27 22:42+0200\n"
+"PO-Revision-Date: 2026-10-11 19:08+0200\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 26.08.1\n"
+"X-Generator: Lokalize 26.08.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #, kde-format
@@ -1856,15 +1856,14 @@ msgid "Voltage Signal"
 msgstr "Segnale in tensione"
 
 #: src/electronics/components/ecvoltagesignal.cpp:49
-#, fuzzy, kde-format
-#| msgid "Signal Lamp"
+#, kde-format
 msgid "Signal Type"
-msgstr "Lampada di segnalazione"
+msgstr "Tipo di segnale"
 
 #: src/electronics/components/ecvoltagesignal.cpp:61
 #, kde-format
 msgid "Phase"
-msgstr ""
+msgstr "Fase"
 
 #: src/electronics/components/ecvoltagesignal.cpp:68
 #, kde-format
@@ -1872,10 +1871,9 @@ msgid "Voltage Range"
 msgstr "Intervallo di tensione"
 
 #: src/electronics/components/ecvoltagesignal.cpp:75
-#, fuzzy, kde-format
-#| msgid "Voltage Out"
+#, kde-format
 msgid "Voltage Offset"
-msgstr "Tensione di uscita"
+msgstr "Scostamento di tensione"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox4)
 #: src/electronics/components/ecvoltagesignal.cpp:85 src/gui/logicwidget.ui:142
@@ -2503,24 +2501,22 @@ msgstr "Sconosciuto"
 #: src/electronics/simulation/elementsignal.cpp:22
 #, kde-format
 msgid "Sinusoidal"
-msgstr ""
+msgstr "Sinusoidale"
 
 #: src/electronics/simulation/elementsignal.cpp:24
 #, kde-format
 msgid "Sawtooth"
-msgstr ""
+msgstr "A dente di sega"
 
 #: src/electronics/simulation/elementsignal.cpp:25
-#, fuzzy, kde-format
-#| msgid "Reverse Beta"
+#, kde-format
 msgid "Reverse Sawtooth"
-msgstr "Beta in modo inverso"
+msgstr "Dente di sega inverso"
 
 #: src/electronics/simulation/elementsignal.cpp:26
-#, fuzzy, kde-format
-#| msgid "Rectangular"
+#, kde-format
 msgid "Triangular"
-msgstr "Rettangolare"
+msgstr "Triangolare"
 
 #: src/electronics/subcircuits.cpp:110
 #, kde-format
@@ -3954,16 +3950,14 @@ msgid "Project Name:"
 msgstr "Nome progetto:"
 
 #: src/gui/oscilloscope.cpp:180
-#, fuzzy, kde-format
-#| msgid "Pause Simulation"
+#, kde-format
 msgid "Pause simulation"
-msgstr "Metti in pausa la simulazione"
+msgstr "Sospendi la simulazione"
 
 #: src/gui/oscilloscope.cpp:183
-#, fuzzy, kde-format
-#| msgid "Run Simulation"
+#, kde-format
 msgid "Run simulation"
-msgstr "Avvia simulazione"
+msgstr "Esegui la simulazione"
 
 #: src/gui/oscilloscope.cpp:374
 #, kde-format
