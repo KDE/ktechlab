@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-10 00:49+0000\n"
-"PO-Revision-Date: 2026-09-27 09:33+0300\n"
+"PO-Revision-Date: 2026-10-16 15:00+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 26.08.0\n"
+"X-Generator: Lokalize 26.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1837,15 +1837,14 @@ msgid "Voltage Signal"
 msgstr "אות מתח"
 
 #: src/electronics/components/ecvoltagesignal.cpp:49
-#, fuzzy, kde-format
-#| msgid "Signal Lamp"
+#, kde-format
 msgid "Signal Type"
-msgstr "מנורת אותות"
+msgstr "סוג אות"
 
 #: src/electronics/components/ecvoltagesignal.cpp:61
 #, kde-format
 msgid "Phase"
-msgstr ""
+msgstr "פאזה"
 
 #: src/electronics/components/ecvoltagesignal.cpp:68
 #, kde-format
@@ -1853,10 +1852,9 @@ msgid "Voltage Range"
 msgstr "טווח מתח"
 
 #: src/electronics/components/ecvoltagesignal.cpp:75
-#, fuzzy, kde-format
-#| msgid "Voltage Out"
+#, kde-format
 msgid "Voltage Offset"
-msgstr "מתח יוצא"
+msgstr "היסט מתח"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox4)
 #: src/electronics/components/ecvoltagesignal.cpp:85 src/gui/logicwidget.ui:142
@@ -2482,24 +2480,22 @@ msgstr "לא ידוע"
 #: src/electronics/simulation/elementsignal.cpp:22
 #, kde-format
 msgid "Sinusoidal"
-msgstr ""
+msgstr "סינוסואידי"
 
 #: src/electronics/simulation/elementsignal.cpp:24
 #, kde-format
 msgid "Sawtooth"
-msgstr ""
+msgstr "גל משונן"
 
 #: src/electronics/simulation/elementsignal.cpp:25
-#, fuzzy, kde-format
-#| msgid "Reverse Beta"
+#, kde-format
 msgid "Reverse Sawtooth"
-msgstr "בטא אחורית"
+msgstr "גל משונן הפוך"
 
 #: src/electronics/simulation/elementsignal.cpp:26
-#, fuzzy, kde-format
-#| msgid "Rectangular"
+#, kde-format
 msgid "Triangular"
-msgstr "מרובע"
+msgstr "משולש"
 
 #: src/electronics/subcircuits.cpp:110
 #, kde-format
@@ -3901,16 +3897,14 @@ msgid "Project Name:"
 msgstr "שם מיזם:"
 
 #: src/gui/oscilloscope.cpp:180
-#, fuzzy, kde-format
-#| msgid "Pause Simulation"
+#, kde-format
 msgid "Pause simulation"
 msgstr "השהיית הדמיה"
 
 #: src/gui/oscilloscope.cpp:183
-#, fuzzy, kde-format
-#| msgid "Run Simulation"
+#, kde-format
 msgid "Run simulation"
-msgstr "הפעלת הדמיה"
+msgstr "הרצת הדמיה"
 
 #: src/gui/oscilloscope.cpp:374
 #, kde-format
