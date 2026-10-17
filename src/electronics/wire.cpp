@@ -15,7 +15,7 @@
 
 #include <ktechlab_debug.h>
 
-Wire::Wire(Pin *startPin, Pin *endPin)
+Wire::Wire(Pin *startPin, Pin *endPin, QObject* parent): QObject(parent)
 {
     assert(startPin);
     assert(endPin);
@@ -55,13 +55,19 @@ double Wire::calculateCurrentFromPin(Pin* pin) const
 
 bool Wire::calculateCurrent()
 {
-    if (m_pStartPin->currentIsKnown() && m_pStartPin->numWires() < 2) {
+    if (!m_connected) {
+        m_current = 0.;
+        m_bCurrentIsKnown = true;
+        return true;
+    }
+
+    if (m_pStartPin->currentIsKnown() && m_pStartPin->numConnectedWires() < 2) {
         m_current = m_pStartPin->current();
         m_bCurrentIsKnown = true;
         return true;
     }
 
-    if (m_pEndPin->currentIsKnown() && m_pEndPin->numWires() < 2) {
+    if (m_pEndPin->currentIsKnown() && m_pEndPin->numConnectedWires() < 2) {
         m_current = -m_pEndPin->current();
         m_bCurrentIsKnown = true;
         return true;
@@ -95,7 +101,7 @@ double Wire::voltage() const
 
     // TODO: the external connections trigger this, need to figure out how
     // the Probe classes manage to get away with unknown voltages.
-    if ((temp = m_pStartPin->voltage() - m_pEndPin->voltage())) {
+    if (m_connected && (temp = m_pStartPin->voltage() - m_pEndPin->voltage())) {
         qCWarning(KTL_LOG) << "Wire voltage error: " << temp << m_pStartPin->voltage() << m_pEndPin->voltage();
     }
 

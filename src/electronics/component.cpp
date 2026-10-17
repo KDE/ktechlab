@@ -877,10 +877,8 @@ Switch *Component::createSwitch(Pin *n0, Pin *n1, bool open)
     // Note that a Switch is not really an element (although in many cases it
     // behaves very much like one).
 
-    Switch *e = new Switch(this, n0, n1, open ? Switch::Open : Switch::Closed);
+    Switch *e = new Switch(n0, n1, open ? Switch::Open : Switch::Closed, this);
     m_switchList.append(e);
-    n0->addSwitch(e);
-    n1->addSwitch(e);
     Q_EMIT switchCreated(e);
     return e;
 }

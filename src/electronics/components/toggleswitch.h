@@ -32,10 +32,10 @@ public:
 private:
     void drawShape(QPainter &p) override;
 
-    Switch *m_switch1;
-    Switch *m_switch2;
-    Switch *m_switch3;
-    Switch *m_switch4;
+    QPointer<Switch> m_switch1;
+    QPointer<Switch> m_switch2;
+    QPointer<Switch> m_switch3;
+    QPointer<Switch> m_switch4;
     bool pressed;
 };
 
@@ -58,8 +58,8 @@ public:
 private:
     void drawShape(QPainter &p) override;
 
-    Switch *m_switch1;
-    Switch *m_switch2;
+    QPointer<Switch> m_switch1;
+    QPointer<Switch> m_switch2;
     bool pressed;
 };
 
@@ -82,8 +82,8 @@ public:
 private:
     void drawShape(QPainter &p) override;
 
-    Switch *m_switch1;
-    Switch *m_switch2;
+    QPointer<Switch> m_switch1;
+    QPointer<Switch> m_switch2;
     bool pressed;
 };
 
@@ -105,7 +105,7 @@ public:
 
 private:
     void drawShape(QPainter &p) override;
-    Switch *m_switch;
+    QPointer<Switch> m_switch;
     bool pressed;
 };
 

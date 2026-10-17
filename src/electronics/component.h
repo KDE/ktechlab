@@ -48,7 +48,7 @@ class VoltageSource;
 
 typedef QList<ECNode *> ECNodeList;
 typedef QList<Element *> ElementList;
-typedef QList<Switch *> SwitchList;
+typedef QList<QPointer<Switch>> SwitchList;
 
 typedef QList<QList<Pin *>> PinListList;
 
@@ -244,7 +244,7 @@ public:
     /**
      * @return the list of switches that this component uses.
      */
-    SwitchList switchList() const
+    const SwitchList& switchList() const
     {
         return m_switchList;
     }

@@ -14,6 +14,7 @@
 #include "connector.h"
 #include "electronicconnector.h"
 #include "pin.h"
+#include "switch.h"
 
 #include <QPainter>
 
@@ -114,7 +115,7 @@ void ECNode::removeElement(Element *e)
 void ECNode::removeSwitch(Switch *sw)
 {
     for (int i = 0; i < m_pins.size(); i++)
-        m_pins[i]->removeSwitch(sw);
+        m_pins[i]->removeWire(sw);
 }
 
 // -- functionality from node.cpp --

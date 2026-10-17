@@ -24,29 +24,26 @@
 
 #include <ktechlab_debug.h>
 
-Switch::Switch(Component *parent, Pin *p1, Pin *p2, State state)
+Switch::Switch(Pin *p1, Pin *p2, State state, Component *parent): Wire(p1, p2, parent)
 {
     m_bouncePeriod_ms = 5;
     m_bBounce = false;
     m_bounceStart = 0;
     m_pBounceResistance = nullptr;
-    m_pP1 = p1;
-    m_pP2 = p2;
-    m_pComponent = parent;
-    m_pStopBouncingTimer = new QTimer(this);
-    connect(m_pStopBouncingTimer, SIGNAL(timeout()), this, SLOT(stopBouncing()));
+    connect(&m_pStopBouncingTimer, SIGNAL(timeout()), this, SLOT(stopBouncing()));
 
     // Force update
-    m_state = (state == Open) ? Closed : Open;
-    setState(state);
+    m_state = state;
+    m_connected = state == Closed;
 }
 
 Switch::~Switch()
 {
-    if (m_pP1)
-        m_pP1->setSwitchConnected(m_pP2, false);
-    if (m_pP2)
-        m_pP2->setSwitchConnected(m_pP1, false);
+}
+
+Component* Switch::parentComponent() const
+{
+    return static_cast<Component*>(parent());
 }
 
 void Switch::setState(State state)
@@ -76,13 +73,13 @@ void Switch::startBouncing()
         // Already active?
         return;
     }
-
-    if (!m_pComponent->circuitDocument())
+    Component* c = parentComponent();
+    if (!c || !c->circuitDocument())
         return;
 
     // 	qCDebug(KTL_LOG);
-
-    m_pBounceResistance = m_pComponent->createResistance(m_pP1, m_pP2, 10000);
+    m_connected = false; // Break the wire connection and replace it with the resistor
+    m_pBounceResistance = c->createResistance(m_pStartPin, m_pEndPin, 10000);
     m_bounceStart = Simulator::self()->time();
 
     // FIXME: I broke the bounce feature when I cleaned this out of the simulator,
@@ -104,9 +101,9 @@ void Switch::bounce()
     int bounced_ms = ((Simulator::self()->time() - m_bounceStart) * 1000) / LOGIC_UPDATE_RATE;
 
     if (bounced_ms >= m_bouncePeriod_ms) {
-        if (!m_pStopBouncingTimer->isActive()) {
-            m_pStopBouncingTimer->setSingleShot(true);
-            m_pStopBouncingTimer->start(0 /*, true */);
+        if (!m_pStopBouncingTimer.isActive()) {
+            m_pStopBouncingTimer.setSingleShot(true);
+            m_pStopBouncingTimer.start(0 /*, true */);
         }
 
         return;
@@ -122,83 +119,20 @@ void Switch::bounce()
 void Switch::stopBouncing()
 {
     //	Simulator::self()->detachSwitch( this );
-    m_pComponent->removeElement(m_pBounceResistance, true);
+    Component* c = parentComponent();
+    CircuitDocument *cd = nullptr;
+    if (c) {
+        c->removeElement(m_pBounceResistance, true);
+        cd = c->circuitDocument();
+    }
     m_pBounceResistance = nullptr;
 
-    bool connected = (m_state == Closed);
+    // Reconnect the wire if the switch is closed
+    m_connected = m_state == Closed;
 
-    if (m_pP1 && m_pP2) {
-        m_pP1->setSwitchConnected(m_pP2, connected);
-        m_pP2->setSwitchConnected(m_pP1, connected);
-    }
-
-    if (CircuitDocument *cd = m_pComponent->circuitDocument())
+    if (cd)
         cd->requestAssignCircuits();
 }
 
-bool Switch::calculateCurrent()
-{
-    if (!m_pP1 || !m_pP2)
-        return false;
-
-    if (state() == Open) {
-        m_pP1->setSwitchCurrentKnown(this);
-        m_pP2->setSwitchCurrentKnown(this);
-        return true;
-    }
-
-    Pin *pins[2] = {m_pP1, m_pP2};
-
-    double current = 0.0;
-    bool currentKnown = false;
-    int pol;
-
-    for (unsigned i = 0; i < 2; ++i) {
-        pol = (i == 0) ? 1 : -1;
-
-        currentKnown = true;
-        current = 0.0;
-
-        for (const auto& w: pins[i]->inputWireList()) {
-            if (!w)
-                continue;
-
-            if (!w->currentIsKnown()) {
-                currentKnown = false;
-                break;
-            }
-
-            current += w->current();
-        }
-
-        if (!currentKnown)
-            continue;
-
-        for (const auto& w: pins[i]->outputWireList()) {
-            if (!w)
-                continue;
-
-            if (!w->currentIsKnown()) {
-                currentKnown = false;
-                break;
-            }
-
-            current -= w->current();
-        }
-
-        if (currentKnown)
-            break;
-    }
-
-    if (!currentKnown)
-        return false;
-
-    m_pP1->setSwitchCurrentKnown(this);
-    m_pP2->setSwitchCurrentKnown(this);
-    m_pP1->mergeCurrent(-current * pol);
-    m_pP2->mergeCurrent(current * pol);
-
-    return true;
-}
 
 #include "moc_switch.cpp"

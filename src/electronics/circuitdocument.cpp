@@ -354,90 +354,67 @@ void CircuitDocument::componentRemoved(Item *item)
 
 void CircuitDocument::calculateConnectorCurrents()
 {
-    const CircuitList::iterator circuitEnd = m_circuitList.end();
-    for (CircuitList::iterator it = m_circuitList.begin(); it != circuitEnd; ++it)
-        (*it)->updateCurrents();
+    for (Circuit* c: std::as_const(m_circuitList))
+        c->updateCurrents();
 
     PinList groundPins;
 
     // Tell the Pins to reset their calculated currents to zero
     m_pinList.removeAll(static_cast<Pin *>(nullptr));
 
-    const PinList::iterator pinEnd = m_pinList.end();
-    for (PinList::iterator it = m_pinList.begin(); it != pinEnd; ++it) {
-        if (Pin *n = dynamic_cast<Pin *>(static_cast<Pin *>(*it))) {
-            n->resetCurrent();
-            n->setSwitchCurrentsUnknown();
+    for (Pin* n: std::as_const(m_pinList)) {
+        n->resetCurrent();
 
-            if (!n->parentECNode()->isChildNode()) {
-                n->setCurrentKnown(true);
-                // (and it has a current of 0 amps)
-            } else if (n->groundType() == Pin::gt_always) {
-                groundPins << n;
-                n->setCurrentKnown(false);
-            } else {
-                // Child node that is non ground
-                n->setCurrentKnown(n->parentECNode()->numPins() < 2);
-            }
+        if (!n->parentECNode()->isChildNode()) {
+            n->setCurrentKnown(true);
+            // (and it has a current of 0 amps)
+        } else if (n->groundType() == Pin::gt_always) {
+            groundPins << n;
+            n->setCurrentKnown(false);
+        } else {
+            // Child node that is non ground
+            n->setCurrentKnown(n->parentECNode()->numPins() < 2);
         }
     }
 
     // Tell the components to update their ECNode's currents' from the elements
     // currents are merged into PINS.
-    const ComponentList::iterator componentEnd = m_componentList.end();
-    for (ComponentList::iterator it = m_componentList.begin(); it != componentEnd; ++it)
-        (*it)->setNodalCurrents();
+    for (Component* c: std::as_const(m_componentList))
+        c->setNodalCurrents();
 
     // And now for the wires and switches...
     m_wireList.removeAll(static_cast<Wire *>(nullptr));
-    const WireList::iterator clEnd = m_wireList.end();
-    for (WireList::iterator it = m_wireList.begin(); it != clEnd; ++it)
-        (*it)->setCurrentKnown(false);
-
-    SwitchList switches = m_switchList;
     WireList wires = m_wireList;
+    for (Switch* sw: std::as_const(m_switchList))
+        wires.append(sw);
+    for (Wire* w: std::as_const(wires))
+        w->setCurrentKnown(false);
     bool found = true;
-    while ((!wires.isEmpty() || !switches.isEmpty() || !groundPins.isEmpty()) && found) {
+    while (found) {
         found = false;
-
-        for (WireList::iterator itW = wires.begin(); itW != wires.end();) {
-            if ((*itW)->calculateCurrent()) {
-                found = true;
-                itW = wires.erase(itW);
-                // note: assigning a temporary iterator, incrementing and erasing, seems to crash
-            } else {
-                ++itW;
+        if (!wires.isEmpty()) {
+            QMutableListIterator<QPointer<Wire>> it(wires);
+            while (it.hasNext()) {
+                Wire* w = it.next();
+                if (w->calculateCurrent()) {
+                    found = true;
+                    it.remove();
+                }
             }
-        }
-
-        SwitchList::iterator switchesEnd = switches.end();
-        for (SwitchList::iterator it = switches.begin(); it != switchesEnd;) {
-            if ((*it)->calculateCurrent()) {
-                found = true;
-                // note: assigning a temporary iterator, incrementing and erasing, seems to crash
-                // it = container.erase( it ) seems to crash other times
-                SwitchList::iterator oldIt = it;
-                ++it;
-                switches.erase(oldIt);
-            } else
-                ++it;
         }
 
         /*
         make the ground pins work. Current engine doesn't treat ground explicitly.
         */
-
-        PinList::iterator groundPinsEnd = groundPins.end();
-        for (PinList::iterator it = groundPins.begin(); it != groundPinsEnd;) {
-            if ((*it)->calculateCurrentFromWires()) {
-                found = true;
-                // note: assigning a temporary iterator, incrementing and erasing, seems to crash sometimes;
-                // it = container.erase( it ) seems to crash other times
-                PinList::iterator oldIt = it;
-                ++it;
-                groundPins.erase(oldIt);
-            } else
-                ++it;
+        if (!groundPins.isEmpty()) {
+            QMutableListIterator<QPointer<Pin>> it(groundPins);
+            while (it.hasNext()) {
+                Pin* p = it.next();
+                if (p->calculateCurrentFromWires()) {
+                    found = true;
+                    it.remove();
+                }
+            }
         }
     }
 }

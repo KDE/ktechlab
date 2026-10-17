@@ -34,7 +34,7 @@ typedef QList<QPointer<Connector>> ConnectorList;
 typedef QList<ECNode *> ECNodeList;
 typedef QList<Element *> ElementList;
 typedef QList<QPointer<Pin>> PinList;
-typedef QList<Switch *> SwitchList;
+typedef QList<QPointer<Switch>> SwitchList;
 typedef QList<QPointer<Wire>> WireList;
 
 class Circuitoid

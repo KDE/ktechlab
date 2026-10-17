@@ -11,27 +11,31 @@
 #ifndef SWITCH_H
 #define SWITCH_H
 
+#include "wire.h"
+
 #include <QObject>
 #include <QPointer>
+#include <QTimer>
 
 class CircuitDocument;
 class Component;
-class Pin;
 class Resistance;
-class QTimer;
 
 /**
 @author David Saxton
 */
 
-class Switch : public QObject
+class Switch : public Wire
 {
     Q_OBJECT
 public:
     enum State { Open, Closed };
 
-    Switch(Component *parent, Pin *p1, Pin *p2, State state);
+    Switch(Pin *p1, Pin *p2, State state=Open, Component *parent=nullptr);
     ~Switch() override;
+
+    Component* parentComponent() const;
+
     /**
      * If bouncing has been set to true, then the state will not switch
      * immediately to that given.
@@ -52,14 +56,6 @@ public:
      * Called from the simulator.
      */
     void bounce();
-    /**
-     * Attempts to calculate the current that is flowing through the switch.
-     * (If all the connectors at one of the ends know their currents, then
-     * this switch will give the current to the pins at either end).
-     * @return whether it was successful.
-     * @see CircuitDocument::calculateConnectorCurrents
-     */
-    bool calculateCurrent();
 
 protected Q_SLOTS:
     /**
@@ -77,10 +73,7 @@ protected:
     unsigned long long m_bounceStart; // Simulator time that bouncing started
     Resistance *m_pBounceResistance;
     State m_state;
-    Component *m_pComponent;
-    QPointer<Pin> m_pP1;
-    QPointer<Pin> m_pP2;
-    QTimer *m_pStopBouncingTimer;
+    QTimer m_pStopBouncingTimer;
 };
 
 #endif

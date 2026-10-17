@@ -25,7 +25,7 @@ class Wire;
 
 typedef QList<Element *> ElementList;
 typedef QList<QPointer<Pin>> PinList;
-typedef QList<Switch *> SwitchList;
+typedef QList<QPointer<Switch>> SwitchList;
 typedef QList<QPointer<Wire>> WireList;
 
 /**
@@ -33,6 +33,7 @@ typedef QList<QPointer<Wire>> WireList;
 */
 class Pin : public QObject
 {
+    Q_OBJECT
 public:
     /**
      * Priorities for ground pin. gt_always will (as expected) always assign
@@ -61,11 +62,6 @@ public:
      * either at the ends of connected wires, or via switches.
      */
     PinList localConnectedPins() const;
-    /**
-     * Adds/removes the given pin to the list of ones that this pin is/isn't
-     * connected to via a switch.
-     */
-    void setSwitchConnected(Pin *pin, bool isConnected);
     /**
      * After calculating the nodal voltages in the circuit, this function should
      * be called to tell the pin what its voltage is.
@@ -115,25 +111,13 @@ public:
         m_bCurrentIsKnown = isKnown;
     }
     /**
-     * Tell the Pin that none of the currents from the switches have yet
-     * been merged.
-     */
-    void setSwitchCurrentsUnknown(); // { m_switchList.erase(nullptr); m_unknownSwitchCurrents = m_switchList; }
-    /**
      * This returns the value given by setCurrentKnown AND'd with whether
      * we know the current from each switch attached to this pin.
      * @see setCurrentKnown
      */
     bool currentIsKnown() const
     {
-        return m_bCurrentIsKnown && m_unknownSwitchCurrents.isEmpty();
-    }
-    /**
-     * Tells the Pin that the current from the given switch has been merged.
-     */
-    void setSwitchCurrentKnown(Switch *sw)
-    {
-        m_unknownSwitchCurrents.removeAll(sw);
+        return m_bCurrentIsKnown;
     }
     /**
      * Tries to calculate the Pin current from the input / output wires.
@@ -219,14 +203,6 @@ public:
      * Removes an element from the list of those that will affect this pin.
      */
     void removeElement(Element *e);
-    /**
-     * Adds an switch to the list of those that will affect this pin.
-     */
-    void addSwitch(Switch *e);
-    /**
-     * Removes an switch from the list of those that will affect this pin.
-     */
-    void removeSwitch(Switch *e);
 
     void addInputWire(Wire *wire);
     void addOutputWire(Wire *wire);
@@ -239,10 +215,15 @@ public:
     {
         return m_outputWireList;
     }
-    int numWires() const
+    uint numWires() const
     {
         return m_inputWireList.size() + m_outputWireList.size();
     }
+
+    /**
+     * Returns number of connected wires.
+     */
+    uint numConnectedWires() const;
 
 protected:
     double m_voltage;
@@ -261,9 +242,6 @@ protected:
 
     WireList m_inputWireList;
     WireList m_outputWireList;
-
-    SwitchList m_switchList;
-    SwitchList m_unknownSwitchCurrents;
 };
 
 #endif

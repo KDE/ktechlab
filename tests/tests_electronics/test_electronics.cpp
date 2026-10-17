@@ -5,6 +5,7 @@
 #include "inductance.h"
 #include "pin.h"
 #include "resistance.h"
+#include "switch.h"
 #include "voltagepoint.h"
 #include "voltagesignal.h"
 #include "wire.h"
@@ -911,6 +912,114 @@ private Q_SLOTS:
         }
 
     }
+
+    void circuitSingleClosedSwitch() {
+        // Tests the following circuit
+        // (VS)a--b{S1}c--d[R1]e--f[GND]
+        Circuit circuit;
+        VoltagePoint vs(12);
+        Resistance r1(1000);
+        Pin a, b, c, d, e, f;
+        f.setGroundType(Pin::gt_always);
+        Wire w1(&a, &b);
+        Switch s1(&b, &c, Switch::Closed);
+        QVERIFY(s1.state() == Switch::Closed);
+        Wire w2(&c, &d);
+        Wire w3(&e, &f);
+        circuit.addPins({&a, &b, &c, &d, &e, &f});
+        circuit.setElementPinMapping(&vs, {&a});
+        circuit.setElementPinMapping(&r1, {&d, &e});
+
+        QCOMPARE(circuit.identifyGround(circuit.pinList()), 1);
+        circuit.init();
+        QCOMPARE(circuit.elementSet()->cbranchCount(), 1);
+        QCOMPARE(circuit.elementSet()->cnodeCount(), 1);
+        QCOMPARE(circuit.wireList().size(), 4);
+        QVERIFY(circuit.assignEquationIds());
+        circuit.addInitialDc();
+        circuit.doNonLogic();
+        circuit.displayEquations();
+        QVERIFY(circuit.calculateCurrents());
+        QCOMPARE(a.voltage(), vs.voltage());
+        QCOMPARE(b.voltage(), vs.voltage());
+        QCOMPARE(c.voltage(), vs.voltage());
+        QCOMPARE(d.voltage(), vs.voltage());
+        QCOMPARE(e.voltage(), 0);
+        QCOMPARE(f.voltage(), 0);
+        QCOMPARE(w1.current(), 0.012);
+        QCOMPARE(s1.current(), 0.012);
+        QCOMPARE(w2.current(), 0.012);
+        QCOMPARE(w3.current(), 0.012);
+
+        // TODO: This requires the circuit to be rebuilt into two separate circuits
+        // s1.setState(Switch::Open);
+        // circuit.init();
+        // QCOMPARE(circuit.identifyGround(circuit.pinList()), 1);
+        // QCOMPARE(circuit.elementSet()->cbranchCount(), 1);
+        // QCOMPARE(circuit.elementSet()->cnodeCount(), 2);
+        // QCOMPARE(circuit.wireList().size(), 4);
+        // QVERIFY(circuit.assignEquationIds());
+        // circuit.addInitialDc();
+        // circuit.doNonLogic();
+        //
+        // QVERIFY(circuit.calculateCurrents());
+        // QCOMPARE(a.voltage(), vs.voltage());
+        // QCOMPARE(b.voltage(), vs.voltage());
+        // QCOMPARE(c.voltage(), vs.voltage());
+        // QCOMPARE(d.voltage(), 0);
+        // QCOMPARE(e.voltage(), 0);
+        // QCOMPARE(f.voltage(), 0);
+        // QCOMPARE(w1.current(), 0);
+        // QCOMPARE(s1.current(), 0);
+        // QCOMPARE(w2.current(), 0);
+        // QCOMPARE(w3.current(), 0);
+    }
+
+    void circuitTwoClosedSwitches() {
+        // Tests the following circuit
+        // (VS)a--b{S1}c--d{S2}e--f[R1]g--h[GND]
+        // This tests the case where the pins
+        // c and d have no known current set
+        Circuit circuit;
+        VoltagePoint vs(12);
+        Resistance r1(1000);
+        Pin a, b, c, d, e, f, g, h;
+        h.setGroundType(Pin::gt_always);
+        Wire w1(&a, &b);
+        Switch s1(&b, &c, Switch::Closed);
+        Wire w2(&c, &d);
+        Switch s2(&d, &e, Switch::Closed);
+        Wire w3(&e, &f);
+        Wire w4(&g, &h);
+        circuit.addPins({&a, &b, &c, &d, &e, &f, &g, &h});
+        circuit.setElementPinMapping(&vs, {&a});
+        circuit.setElementPinMapping(&r1, {&f, &g});
+
+        QCOMPARE(circuit.identifyGround(circuit.pinList()), 1);
+        circuit.init();
+        QCOMPARE(circuit.elementSet()->cbranchCount(), 1);
+        QCOMPARE(circuit.elementSet()->cnodeCount(), 1);
+        QCOMPARE(circuit.wireList().size(), 6);
+        QVERIFY(circuit.assignEquationIds());
+        circuit.addInitialDc();
+        circuit.doNonLogic();
+        circuit.displayEquations();
+        QVERIFY(circuit.calculateCurrents());
+        QCOMPARE(a.voltage(), vs.voltage());
+        QCOMPARE(b.voltage(), vs.voltage());
+        QCOMPARE(c.voltage(), vs.voltage());
+        QCOMPARE(d.voltage(), vs.voltage());
+        QCOMPARE(e.voltage(), vs.voltage());
+        QCOMPARE(f.voltage(), vs.voltage());
+        QCOMPARE(g.voltage(), 0);
+        QCOMPARE(h.voltage(), 0);
+        QCOMPARE(w1.current(), 0.012);
+        QCOMPARE(s1.current(), 0.012);
+        QCOMPARE(s2.current(), 0.012);
+        QCOMPARE(w2.current(), 0.012);
+        QCOMPARE(w3.current(), 0.012);
+    }
+
 
     void cleanupTestCase()
     {

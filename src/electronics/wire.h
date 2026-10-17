@@ -23,8 +23,9 @@ class Pin;
 */
 class Wire : public QObject
 {
+    Q_OBJECT
 public:
-    Wire(Pin *startPin, Pin *endPin);
+    Wire(Pin *startPin, Pin *endPin, QObject* parent=nullptr);
     ~Wire() override;
 
     /**
@@ -38,6 +39,13 @@ public:
     bool currentIsKnown() const
     {
         return m_bCurrentIsKnown;
+    }
+    /**
+     * Returns whether the wire is connected.
+     */
+    bool isConnected() const
+    {
+        return m_connected;
     }
     /**
      * Set whether the actual current flowing into this node is known (in some
@@ -76,6 +84,7 @@ protected:
     [[nodiscard]] double calculateCurrentFromPin(Pin* pin) const;
 
     double m_current;
+    bool m_connected = true;
     bool m_bCurrentIsKnown;
     QPointer<Pin> m_pStartPin;
     QPointer<Pin> m_pEndPin;

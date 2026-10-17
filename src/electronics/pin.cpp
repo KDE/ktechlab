@@ -44,44 +44,16 @@ PinList Pin::localConnectedPins() const
 
     PinList pins;
 
-    WireList::const_iterator end = m_inputWireList.end();
-    for (WireList::const_iterator it = m_inputWireList.begin(); it != end; ++it) {
-        if (*it)
-            pins << (*it)->startPin();
+    for (Wire* w: std::as_const(m_inputWireList)) {
+        if (w && w->isConnected())
+            pins << w->startPin();
     }
 
-    end = m_outputWireList.end();
-    for (WireList::const_iterator it = m_outputWireList.begin(); it != end; ++it) {
-        if (*it)
-            pins << (*it)->endPin();
+    for (Wire* w: std::as_const(m_outputWireList)) {
+        if (w && w->isConnected())
+            pins << w->endPin();
     }
-
-    pins += m_switchConnectedPins;
-
     return pins;
-}
-
-void Pin::setSwitchConnected(Pin *pin, bool isConnected)
-{
-    if (!pin)
-        return;
-
-    if (isConnected) {
-        if (!m_switchConnectedPins.contains(pin))
-            m_switchConnectedPins.append(pin);
-    } else
-        m_switchConnectedPins.removeAll(pin);
-}
-
-void Pin::setSwitchCurrentsUnknown()
-{
-    if (!m_switchList.empty()) {
-        m_switchList.removeAt(0l);
-    } else {
-        // 2022.06.26 - too noisy, better keep it disabled
-        //qCDebug(KTL_LOG) << "Pin::setSwitchCurrentsUnknown - WARN - unexpected empty switch list";
-    }
-    m_unknownSwitchCurrents = m_switchList;
 }
 
 void Pin::addCircuitDependentPin(Pin *pin)
@@ -114,16 +86,10 @@ void Pin::removeElement(Element *e)
     m_elementList.removeAll(e);
 }
 
-void Pin::addSwitch(Switch *sw)
+void Pin::removeWire(Wire *w)
 {
-    if (!sw || m_switchList.contains(sw))
-        return;
-    m_switchList << sw;
-}
-
-void Pin::removeSwitch(Switch *sw)
-{
-    m_switchList.removeAll(sw);
+    m_inputWireList.removeAll(w);
+    m_outputWireList.removeAll(w);
 }
 
 void Pin::addInputWire(Wire *wire)
@@ -138,30 +104,39 @@ void Pin::addOutputWire(Wire *wire)
         m_outputWireList << wire;
 }
 
+uint Pin::numConnectedWires() const
+{
+    uint n = 0;
+    for (Wire* w: std::as_const(m_inputWireList)) {
+        if (w && w->isConnected())
+            n += 1;
+    }
+    for (Wire* w: std::as_const(m_outputWireList)) {
+        if (w && w->isConnected())
+            n += 1;
+    }
+    return n;
+}
+
 bool Pin::calculateCurrentFromWires()
 {
     m_inputWireList.removeAll(static_cast<Wire *>(nullptr));
     m_outputWireList.removeAll(static_cast<Wire *>(nullptr));
 
-    const WireList inputs = m_inputWireList;
-    const WireList outputs = m_outputWireList;
-
     m_current = 0.0;
 
-    WireList::const_iterator end = inputs.end();
-    for (WireList::const_iterator it = inputs.begin(); it != end; ++it) {
-        if (!(*it)->currentIsKnown())
+    for (Wire* w: std::as_const(m_inputWireList)) {
+        if (!w->currentIsKnown())
             return false;
 
-        m_current -= (*it)->current();
+        m_current -= w->current();
     }
 
-    end = outputs.end();
-    for (WireList::const_iterator it = outputs.begin(); it != end; ++it) {
-        if (!(*it)->currentIsKnown())
+    for (Wire* w: std::as_const(m_outputWireList)) {
+        if (!w->currentIsKnown())
             return false;
 
-        m_current += (*it)->current();
+        m_current += w->current();
     }
 
     m_bCurrentIsKnown = true;
