@@ -1,13 +1,13 @@
 # Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the ktechlab package.
 #
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025, 2026 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022-2026 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 09:01+0000\n"
-"PO-Revision-Date: 2026-05-02 18:45+0300\n"
+"PO-Revision-Date: 2026-10-16 19:57+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.08.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -593,7 +593,7 @@ msgstr "Otomatik değişkenleri yığ"
 #: src/core/ktechlab.kcfg:184
 #, kde-format
 msgid "Integer libraries have been compiled as reentrant"
-msgstr "Tamsayı kitaplıkları, yeniden girişli olarak derlendi"
+msgstr "Tam sayı kitaplıkları, yeniden girişli olarak derlendi"
 
 #. i18n: ectx: label, entry (SDCC_float_reent), group (SDCC)
 #: src/core/ktechlab.kcfg:188
@@ -4211,7 +4211,7 @@ msgid ""
 "Integer (16 bit) and long (32 bit) libraries have been compiled as "
 "reentrant. Note by default these libraries are compiled as non-reentrant."
 msgstr ""
-"Tamsayı (16 bit) ve uzun (32 bit) kitaplıklar yeniden girişli olarak "
+"Tam sayı (16 bit) ve uzun (32 bit) kitaplıklar yeniden girişli olarak "
 "derlendi. Bu kitaplıkların öntanımlı olarak yeniden girişli olmayan olarak "
 "derlendiğini dikkate alın."
 
@@ -4220,7 +4220,7 @@ msgstr ""
 #, kde-format
 msgid "Integer li&braries were compiled as reentrant (--int-long-reent)"
 msgstr ""
-"Tamsayı kitaplık&ları yeniden girişli olarak derlendi (--int-long-reent)"
+"Tam sayı kitaplık&ları yeniden girişli olarak derlendi (--int-long-reent)"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_float_reent)
 #: src/gui/sdccoptionswidget.ui:154
