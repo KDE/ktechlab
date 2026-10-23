@@ -243,6 +243,7 @@ SET(ktechlab_SRCS
     ./electronics/simulation/circuit.cpp
     ./electronics/simulation/element.cpp
     ./electronics/simulation/matrix.cpp
+    ./electronics/simulation/measurements.cpp
     ./electronics/simulation/diode.cpp
     ./electronics/simulation/elementsignal.cpp
     ./electronics/simulation/voltagesignal.cpp

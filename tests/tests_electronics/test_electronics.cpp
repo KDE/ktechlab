@@ -3,6 +3,7 @@
 #include "diode.h"
 #include "elementset.h"
 #include "inductance.h"
+#include "measurements.h"
 #include "pin.h"
 #include "resistance.h"
 #include "switch.h"
@@ -1020,6 +1021,40 @@ private Q_SLOTS:
         QCOMPARE(w3.current(), 0.012);
     }
 
+
+    void measurementsTest1()
+    {
+        Measurements mavg(Measurements::AVG, 3);
+        QCOMPARE(mavg.update(1.), 1.);
+        QCOMPARE(mavg.update(2.), 3./2.);
+        QCOMPARE(mavg.update(3.), 2.);
+        QCOMPARE(mavg.update(3.), 8./3.);
+
+        Measurements mrms(Measurements::RMS, 3);
+        QCOMPARE(mrms.update(1.), 1.);
+        QCOMPARE(mrms.update(2.), sqrt(2.5));
+        QCOMPARE(mrms.update(3.), sqrt(14./3.0));
+        QCOMPARE(mrms.update(2.), sqrt(17.0/3.0));
+
+        Measurements m(Measurements::MIN, 0);
+        QCOMPARE(m.mode(), Measurements::MIN);
+        m.setCapacity(2);
+
+        QCOMPARE(m.samples().size(), 0);
+        QCOMPARE(m.update(-1.), -1.);
+        QCOMPARE(m.update(0), -1.);
+        QCOMPARE(m.update(-2.), -2.);
+
+        m.setMode(Measurements::MAX);
+        QCOMPARE(m.mode(), Measurements::MAX);
+        QCOMPARE(m.samples().size(), 0);
+        QCOMPARE(m.update(1), 1.);
+        QCOMPARE(m.update(-2.), 1.);
+        QCOMPARE(m.update(4.), 4.);
+        QCOMPARE(m.samples().size(), 2);
+        m.clear();
+        QCOMPARE(m.samples().size(), 0);
+    }
 
     void cleanupTestCase()
     {

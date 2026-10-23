@@ -26,12 +26,8 @@
 Meter::Meter(ICNDocument *icnDocument, bool newItem, const char *id)
     : Component(icnDocument, newItem, id)
 {
-    b_timerStarted = false;
-    m_timeSinceUpdate = 0.;
-    m_old_value = 0.;
-    m_avgValue = 0.;
-    b_firstRun = true;
-    m_prevProp = 0.0;
+    m_refreshTimer.setSingleShot(true);
+    connect(&m_refreshTimer, &QTimer::timeout, this, &Meter::updateDisplay);
     setSize(-16, -16, 32, 32);
 
     p_displayText = addDisplayText("meter", QRect(-16, 16, 32, 16), displayText());
@@ -47,6 +43,12 @@ Meter::Meter(ICNDocument *icnDocument, bool newItem, const char *id)
     property("1-maxValue")->setMinValue(1e-12);
     property("1-maxValue")->setMaxValue(1e12);
     property("1-maxValue")->setValue(1e3);
+
+    createProperty("samples", Variant::Type::Int);
+    property("samples")->setCaption(i18n("Samples"));
+    property("samples")->setMinValue(1);
+    property("samples")->setMaxValue(10000000);
+    property("samples")->setValue(10000);
 }
 
 Meter::~Meter()
@@ -57,10 +59,20 @@ void Meter::dataChanged()
 {
     m_minValue = dataDouble("0-minValue");
     m_maxValue = dataDouble("1-maxValue");
+    m_measurements.clear();
+    m_measurements.setCapacity(dataInt("samples"));
     setChanged();
 }
 
 void Meter::stepNonLogic()
+{
+    m_value = meterValue();
+    if (m_value != m_old_value && !m_refreshTimer.isActive()) {
+        m_refreshTimer.start(100);
+    }
+}
+
+void Meter::updateDisplay()
 {
     if (b_firstRun) {
         p_displayText->setText(displayText());
@@ -69,21 +81,9 @@ void Meter::stepNonLogic()
         property("0-minValue")->setUnit(m_unit);
         property("1-maxValue")->setUnit(m_unit);
         b_firstRun = false;
-    }
-
-    const double v = meterValue();
-    if (!b_timerStarted && std::abs(((v - m_old_value) / m_old_value)) > 1e-6) {
-        b_timerStarted = true;
-    }
-
-    if (b_timerStarted) {
-        m_timeSinceUpdate += LINEAR_UPDATE_PERIOD;
-        m_avgValue += v * LINEAR_UPDATE_PERIOD;
-        // 		setChanged();
-        if (m_timeSinceUpdate > 0.05) {
-            if (p_displayText->setText(displayText()))
-                updateAttachedPositioning();
-        }
+    } else {
+        if (p_displayText->setText(displayText()))
+            updateAttachedPositioning();
     }
 }
 
@@ -137,15 +137,12 @@ double Meter::calcProp(double v) const
 
 QString Meter::displayText()
 {
-    double value = m_avgValue / m_timeSinceUpdate;
+    double value = m_value;
     if (!std::isfinite(value))
         value = m_old_value;
     if (std::abs((value)) < 1e-9)
         value = 0.;
     m_old_value = value;
-    m_avgValue = 0.;
-    m_timeSinceUpdate = 0.;
-    b_timerStarted = false;
     return QString::number(value / CNItem::getMultiplier(value), 'g', 3) + CNItem::getNumberMag(value) + m_unit;
 }
 // END class Meter
@@ -201,10 +198,35 @@ ECAmmeter::ECAmmeter(ICNDocument *icnDocument, bool newItem, const char *id)
     setSize(-16, -16, 32, 32);
     m_unit = "A";
 
+    createProperty("mode", Variant::Type::Select);
+    property("mode")->setCaption(i18n("Mode"));
+    QStringMap allowed;
+    allowed["DC"] = i18n("DC");
+    allowed["AC"] = i18n("AC");
+    allowed["MAX"] = i18n("MAX");
+    allowed["MIN"] = i18n("MIN");
+    property("mode")->setAllowed(allowed);
+    property("mode")->setValue("DC");
+
     init1PinLeft(0);
     init1PinRight(0);
 
     m_voltageSource = createVoltageSource(m_pNNode[0], m_pPNode[0], 0.);
+}
+
+void ECAmmeter::dataChanged()
+{
+    const QString& mode = dataString("mode");
+    if (mode == QLatin1String("DC")) {
+        m_measurements.setMode(Measurements::AVG);
+    } else if (mode == QLatin1String("AC")) {
+        m_measurements.setMode(Measurements::RMS);
+    } else if (mode == QLatin1String("MAX")) {
+        m_measurements.setMode(Measurements::MAX);
+    } else if (mode == QLatin1String("MIN")) {
+        m_measurements.setMode(Measurements::MIN);
+    }
+    Meter::dataChanged();
 }
 
 ECAmmeter::~ECAmmeter()
@@ -213,7 +235,8 @@ ECAmmeter::~ECAmmeter()
 
 double ECAmmeter::meterValue()
 {
-    return -m_voltageSource->cbranchCurrent(0);
+    const double i = -m_voltageSource->cbranchCurrent(0);
+    return m_measurements.update(i);
 }
 // END class ECAmmeter
 
@@ -234,8 +257,34 @@ ECVoltMeter::ECVoltMeter(ICNDocument *icnDocument, bool newItem, const char *id)
     m_name = i18n("Voltmeter");
     m_unit = "V";
 
+    createProperty("mode", Variant::Type::Select);
+    property("mode")->setCaption(i18n("Mode"));
+    QStringMap allowed;
+    allowed["DC"] = i18n("DC");
+    allowed["AC"] = i18n("AC");
+    allowed["MAX"] = i18n("MAX");
+    allowed["MIN"] = i18n("MIN");
+    property("mode")->setAllowed(allowed);
+    property("mode")->setValue("DC");
+
     init1PinLeft(0);
     init1PinRight(0);
+}
+
+
+void ECVoltMeter::dataChanged()
+{
+    const QString& mode = dataString("mode");
+    if (mode == QLatin1String("DC")) {
+        m_measurements.setMode(Measurements::AVG);
+    } else if (mode == QLatin1String("AC")) {
+        m_measurements.setMode(Measurements::RMS);
+    } else if (mode == QLatin1String("MAX")) {
+        m_measurements.setMode(Measurements::MAX);
+    } else if (mode == QLatin1String("MIN")) {
+        m_measurements.setMode(Measurements::MIN);
+    }
+    Meter::dataChanged();
 }
 
 ECVoltMeter::~ECVoltMeter()
@@ -244,6 +293,7 @@ ECVoltMeter::~ECVoltMeter()
 
 double ECVoltMeter::meterValue()
 {
-    return m_pNNode[0]->pin()->voltage() - m_pPNode[0]->pin()->voltage();
+    const double v = m_pNNode[0]->pin()->voltage() - m_pPNode[0]->pin()->voltage();
+    return m_measurements.update(v);
 }
 // END class ECVoltMeter

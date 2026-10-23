@@ -12,6 +12,8 @@
 #define METER_H
 
 #include <component.h>
+#include <measurements.h>
+#include <QTimer>
 
 /**
 @author David Saxton
@@ -33,6 +35,12 @@ public:
 protected:
     QString displayText();
     void dataChanged() override;
+
+    /**
+     * Update the meter arrow and text
+     */
+    void updateDisplay();
+
     /**
      * Return the value / current, or whatever the meter is measuring
      */
@@ -40,17 +48,17 @@ protected:
 
     double calcProp(double v) const;
 
-    bool b_firstRun;     // If true, then update the text displayed
-    bool b_timerStarted; // The timer to change the text is started on change
-    double m_timeSinceUpdate;
-    double m_avgValue;
-    double m_old_value;
+    bool b_firstRun = true;     // If true, then update the text displayed
+    double m_value = 0.;
+    double m_old_value = 0.;
     double m_minValue;
     double m_maxValue;
     Text *p_displayText;
     QString m_unit;
 
-    double m_prevProp; // Used in contentChanged()
+    double m_prevProp = 0.; // Used in contentChanged()
+    Measurements m_measurements;
+    QTimer m_refreshTimer;
 };
 
 /**
@@ -86,6 +94,7 @@ public:
 
 protected:
     double meterValue() override;
+    void dataChanged() override;
 
 private:
     VoltageSource *m_voltageSource;
@@ -106,6 +115,7 @@ public:
 
 protected:
     double meterValue() override;
+    void dataChanged() override;
 };
 
 #endif
