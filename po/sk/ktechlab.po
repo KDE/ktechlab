@@ -417,13 +417,13 @@ msgstr "Zobraziť napätie ako farbu"
 #: src/core/ktechlab.kcfg:34
 #, kde-format
 msgid "Show probe labels on Oscilloscope"
-msgstr ""
+msgstr "Zobrazovať popisy sond na osciloskope"
 
 #. i18n: ectx: label, entry (ProbeLabelMaxCharacters), group (General)
 #: src/core/ktechlab.kcfg:38
 #, kde-format
 msgid "Maximum number of characters shown Oscilloscope probe labels"
-msgstr ""
+msgstr "Najväčší počet znakov zobrazených v popisoch sond osciloskopu"
 
 #. i18n: ectx: label, entry (AnimateWires), group (General)
 #: src/core/ktechlab.kcfg:42
@@ -459,7 +459,7 @@ msgstr "Či sa má pre generovanie kódu atď. použiť rovnaký výstup"
 #: src/core/ktechlab.kcfg:62
 #, kde-format
 msgid "How the canvas is zoomed and panned"
-msgstr ""
+msgstr "Ako sa plátno približuje a posúva"
 
 #. i18n: ectx: label, entry (IndentAsmName), group (AsmFormatter)
 #: src/core/ktechlab.kcfg:73
@@ -1834,15 +1834,14 @@ msgid "Voltage Signal"
 msgstr "Napäťový signál"
 
 #: src/electronics/components/ecvoltagesignal.cpp:49
-#, fuzzy, kde-format
-#| msgid "Signal Lamp"
+#, kde-format
 msgid "Signal Type"
-msgstr "Žiarovka"
+msgstr "Typ signálu"
 
 #: src/electronics/components/ecvoltagesignal.cpp:61
 #, kde-format
 msgid "Phase"
-msgstr ""
+msgstr "Fáza"
 
 #: src/electronics/components/ecvoltagesignal.cpp:68
 #, kde-format
@@ -1850,10 +1849,9 @@ msgid "Voltage Range"
 msgstr "Rozsah napätia"
 
 #: src/electronics/components/ecvoltagesignal.cpp:75
-#, fuzzy, kde-format
-#| msgid "Voltage Out"
+#, kde-format
 msgid "Voltage Offset"
-msgstr "Napäťový výstup"
+msgstr "Posun napätia"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox4)
 #: src/electronics/components/ecvoltagesignal.cpp:85 src/gui/logicwidget.ui:142
@@ -2173,7 +2171,7 @@ msgstr ""
 #: src/electronics/components/probe.cpp:36
 #, kde-format
 msgid "Label"
-msgstr ""
+msgstr "Popis"
 
 #: src/electronics/components/probe.cpp:66
 #, kde-format
@@ -2479,24 +2477,22 @@ msgstr "Neznámy"
 #: src/electronics/simulation/elementsignal.cpp:22
 #, kde-format
 msgid "Sinusoidal"
-msgstr ""
+msgstr "Sínusový"
 
 #: src/electronics/simulation/elementsignal.cpp:24
 #, kde-format
 msgid "Sawtooth"
-msgstr ""
+msgstr "Pílovitý"
 
 #: src/electronics/simulation/elementsignal.cpp:25
-#, fuzzy, kde-format
-#| msgid "Reverse Beta"
+#, kde-format
 msgid "Reverse Sawtooth"
-msgstr "Reverse Beta"
+msgstr "Obrátený pílovitý"
 
 #: src/electronics/simulation/elementsignal.cpp:26
-#, fuzzy, kde-format
-#| msgid "Rectangular"
+#, kde-format
 msgid "Triangular"
-msgstr "Hranaté"
+msgstr "Trojuholníkový"
 
 #: src/electronics/subcircuits.cpp:110
 #, kde-format
@@ -3069,16 +3065,15 @@ msgstr "Knižnica"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_NavigationMode)
 #: src/gui/generaloptionswidget.ui:33
-#, fuzzy, kde-format
-#| msgid "Chassis'"
+#, kde-format
 msgid "Classic"
-msgstr "Podvozok"
+msgstr "Klasický"
 
 #. i18n: ectx: property (text), item, widget (QComboBox, kcfg_NavigationMode)
 #: src/gui/generaloptionswidget.ui:38
 #, kde-format
 msgid "Horizon"
-msgstr ""
+msgstr "Horizontálny"
 
 #. i18n: ectx: property (toolTip), widget (KColorButton, kcfg_GridColor)
 #: src/gui/generaloptionswidget.ui:46
@@ -3096,7 +3091,7 @@ msgstr "Farba mriežky"
 #: src/gui/generaloptionswidget.ui:71
 #, kde-format
 msgid "Max characters"
-msgstr ""
+msgstr "Najviac znakov"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_AnimateWires)
 #: src/gui/generaloptionswidget.ui:90
@@ -3165,7 +3160,7 @@ msgstr ""
 #: src/gui/generaloptionswidget.ui:223
 #, kde-format
 msgid "Show probe labels in scope"
-msgstr ""
+msgstr "Zobrazovať popisy sond v osciloskope"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowGrid)
 #: src/gui/generaloptionswidget.ui:230
@@ -3205,10 +3200,9 @@ msgstr "Znova použiť rovnaký výstup pre generovanie kódu"
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/generaloptionswidget.ui:277
-#, fuzzy, kde-format
-#| msgid "Configuration Name"
+#, kde-format
 msgid "Navigation mode"
-msgstr "Meno konfigurácie"
+msgstr "Režim navigácie"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: src/gui/gpasmsettingswidget.ui:32
@@ -3910,14 +3904,12 @@ msgid "Project Name:"
 msgstr "Meno projektu:"
 
 #: src/gui/oscilloscope.cpp:180
-#, fuzzy, kde-format
-#| msgid "Pause Simulation"
+#, kde-format
 msgid "Pause simulation"
-msgstr "Prerušiť simuláciu"
+msgstr "Pozastaviť simuláciu"
 
 #: src/gui/oscilloscope.cpp:183
-#, fuzzy, kde-format
-#| msgid "Run Simulation"
+#, kde-format
 msgid "Run simulation"
 msgstr "Spustiť simuláciu"
 
@@ -4606,12 +4598,16 @@ msgid ""
 "Pan vertically using mouse wheel. Pan horizontally using Alt+mouse wheel. "
 "Zoom with Ctrl+mouse wheel."
 msgstr ""
+"Zvislé posúvanie kolieskom myši. Vodorovné posúvanie Alt+koliesko myši. "
+"Približovanie Ctrl+koliesko myši."
 
 #: src/gui/settingsdlg.cpp:155
 #, kde-format
 msgid ""
 "Pan by clicking the middle mouse button and dragging. Zoom with mouse wheel."
 msgstr ""
+"Posúvanie kliknutím stredným tlačidlom myši a ťahaním. Približovanie "
+"kolieskom myši."
 
 #: src/gui/settingsdlg.cpp:179
 #, kde-format
