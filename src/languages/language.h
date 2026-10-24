@@ -53,9 +53,7 @@ public:
 class ProcessOptionsHelper : public QObject
 {
     Q_OBJECT
-#define protected public
 Q_SIGNALS:
-#undef protected
     void textOutputtedTo(TextDocument *outputtedTo);
 };
 
