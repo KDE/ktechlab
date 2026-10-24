@@ -222,7 +222,7 @@ protected Q_SLOTS:
      */
     virtual void slotUpdateConfiguration() {};
 
-#define protected public
+//#define protected public
 Q_SIGNALS:
     /**
      * Emitted when an operation has been performed that
@@ -230,7 +230,7 @@ Q_SIGNALS:
      * have changed
      */
     void undoRedoStateChanged();
-#undef protected
+//#undef protected
 
 Q_SIGNALS:
     /**
