@@ -26,8 +26,11 @@ class FileFilters : public QList<FileFilter>
 {
 public:
     FileFilters() = default;
-    FileFilters(const FileFilters& other) = default;
+    FileFilters(const FileFilters& other) : QList<FileFilter>(other) {}
     FileFilters(std::initializer_list<FileFilter> list) : QList<FileFilter>(list) {}
+
+    FileFilters &operator=(const FileFilters &other)
+    { QList<FileFilter>::operator=(other); return *this; }
 
     FileFilters &operator=(const QList<FileFilter> &other)
     { QList<FileFilter>::operator=(other); return *this; }
