@@ -7,6 +7,7 @@
  *   (at your option) any later version.                                   *
  ***************************************************************************/
 #pragma once
+#include <QtMinMax>
 #include <QContiguousCache>
 
 class Measurements
