@@ -57,11 +57,8 @@ public:
 
     enum ConvertToTarget { MicrobeOutput, AssemblyOutput, HexOutput, PICOutput };
 
-    // TODO clean up this preprocessor jewel :P
-#define protected public
 Q_SIGNALS:
     void picTypeChanged();
-#undef protected
 
 Q_SIGNALS:
     void pinMappingsChangedFlowCode();
