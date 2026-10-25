@@ -13,19 +13,21 @@
 
 #include "cbranch.h"
 #include "cnode.h"
-
+#include <Eigen/Dense>
 #include <QList>
 
 class Circuit;
 class Element;
 class ElementSet;
 class LogicIn;
-class Matrix;
 class NonLinear;
-class QuickVector; // not exactly sure how these types of declarations work.
 
 typedef QList<Element *> ElementList;
 typedef QList<NonLinear *> NonLinearList;
+
+typedef Eigen::MatrixXd Matrix;
+typedef Eigen::VectorXd Vector;
+
 
 /**
 Steps in simulation of a set of elements:
@@ -67,23 +69,37 @@ public:
      * Returns the matrix in use. This is created once on the creation of the ElementSet
      * class, and deleted in the destructor, so the pointer returned will never change.
      */
-    Matrix *matrix() const
+    Matrix& matrix()
     {
-        return p_A;
+        return m_A;
+    }
+    const Matrix &matrix() const
+    {
+        return m_A;
     }
     /**
      * Returns the vector for b (i.e. the independent currents & voltages)
      */
-    QuickVector *b() const
+    Vector &b()
     {
-        return p_b;
+        return m_b;
+    }
+
+    const Vector &b() const
+    {
+        return m_b;
     }
     /**
      * Returns the vector for x (i.e. the currents & voltages at the branches and nodes)
      */
-    QuickVector *x() const
+    Vector &x()
     {
-        return p_x;
+        return m_x;
+    }
+
+    const Vector &x() const
+    {
+        return m_x;
     }
     /**
      * @return if we have any nonlinear elements (e.g. diodes, tranaistors).
@@ -150,11 +166,15 @@ public:
      */
     void updateInfo();
 
+    bool a_changed = false;
+    bool b_changed = false;
 private:
     // calc engine stuff
-    Matrix *p_A;
-    QuickVector *p_x;
-    QuickVector *p_b;
+    Matrix m_A;
+    Vector m_x;
+    Vector m_x_prev;
+    Vector m_b;
+    Eigen::FullPivLU<Matrix> m_LU;
     // end calc engine stuff.
 
     ElementList m_elementList;

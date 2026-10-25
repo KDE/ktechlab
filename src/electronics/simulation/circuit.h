@@ -29,12 +29,18 @@ typedef QMap<Element *, PinList> ElementPinMapping;
 class LogicCacheNode
 {
 public:
-    LogicCacheNode();
-    ~LogicCacheNode();
+    LogicCacheNode() {}
+    ~LogicCacheNode() { clear(); }
 
-    LogicCacheNode *high;
-    LogicCacheNode *low;
-    QuickVector *data;
+    void clear() {
+        delete high;
+        delete low;
+        data.resize(0);
+    }
+
+    LogicCacheNode *high = nullptr;
+    LogicCacheNode *low = nullptr;
+    Vector data;
 };
 
 /**
@@ -224,7 +230,7 @@ protected:
 
     // Stuff for caching
     bool m_bCanCache = false;
-    LogicCacheNode *m_pLogicCacheBase;
+    LogicCacheNode m_logicCacheBase;
     QList<LogicOut *> m_logicOut;
 
     bool m_bCanAddChanged = true;

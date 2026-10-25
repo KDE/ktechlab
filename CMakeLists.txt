@@ -59,6 +59,7 @@ find_package(KF6 REQUIRED COMPONENTS
     )
 
 find_package(GPSim)
+find_package(Eigen3 REQUIRED)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 add_definitions(
@@ -93,7 +94,7 @@ if (KTECHLAB_DEVELOPER_BUILD)
 
 endif ()
 
-add_definitions( -fno-inline )  # do not inline any method calls; this is useful for crash debugging
+# add_definitions( -fno-inline )  # do not inline any method calls; this is useful for crash debugging
 
 if (GPSim_FOUND)
     set(HAVE_GPSIM TRUE)

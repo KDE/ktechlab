@@ -28,13 +28,11 @@ typedef std::multimap<int, PinList> PinListMap;
 Circuit::Circuit()
 {
     m_pNextChanged[0] = m_pNextChanged[1] = nullptr;
-    m_pLogicCacheBase = new LogicCacheNode;
 }
 
 Circuit::~Circuit()
 {
     delete m_elementSet;
-    delete m_pLogicCacheBase;
 }
 
 void Circuit::addPin(Pin *node)
@@ -195,8 +193,7 @@ void Circuit::init()
         }
     }
 
-    delete m_pLogicCacheBase;
-    m_pLogicCacheBase = nullptr;
+    m_logicCacheBase.clear();
 
     delete m_elementSet;
 
@@ -207,7 +204,9 @@ void Circuit::init()
     m_elementSet = new ElementSet(this, cnodeCount, branchCount);
 
     // Now, we can give the nodes their cnode ids, or tell them they are ground
-    QuickVector *x = m_elementSet->x();
+    // and restore the initial voltages of energy storage elements back into x
+    // these may be from a previous circuit before switches were toggled
+    Vector &x = m_elementSet->x();
     int i = 0;
     const PinListMap::iterator eqsEnd = eqs.end();
     for (PinListMap::iterator it = eqs.begin(); it != eqsEnd; ++it) {
@@ -246,12 +245,12 @@ void Circuit::init()
 
             if (energyStorage && !foundEnergyStoragePin) {
                 foundEnergyStoragePin = true;
-                (*x)[i] = v;
+                x[i] = v;
                 continue;
             }
 
-            if (std::abs(v) > std::abs((*x)[i]))
-                (*x)[i] = v;
+            if (std::abs(v) > std::abs(x[i]))
+                x[i] = v;
         }
         i++;
     }
@@ -304,8 +303,7 @@ void Circuit::initCache()
 
     m_logicOut.clear();
 
-    delete m_pLogicCacheBase;
-    m_pLogicCacheBase = nullptr;
+    m_logicCacheBase.clear();
 
     for (Element* e: std::as_const(m_elementList)) {
         switch (e->type()) {
@@ -348,26 +346,16 @@ void Circuit::initCache()
             m_logicOut[i++] = static_cast<LogicOut *>(e);
     }
 
-    m_pLogicCacheBase = new LogicCacheNode;
 }
 
 void Circuit::setCacheInvalidated()
 {
-    if (m_pLogicCacheBase) {
-        delete m_pLogicCacheBase->high;
-        m_pLogicCacheBase->high = nullptr;
-
-        delete m_pLogicCacheBase->low;
-        m_pLogicCacheBase->low = nullptr;
-
-        delete m_pLogicCacheBase->data;
-        m_pLogicCacheBase->data = nullptr;
-    }
+    m_logicCacheBase.clear();
 }
 
 void Circuit::cacheAndUpdate()
 {
-    LogicCacheNode *node = m_pLogicCacheBase;
+    LogicCacheNode *node = &m_logicCacheBase;
     for (unsigned i = 0; i < m_logicOut.size(); i++) {
         if (m_logicOut[i]->outputState()) {
             if (!node->high)
@@ -382,8 +370,8 @@ void Circuit::cacheAndUpdate()
         }
     }
 
-    if (node->data) {
-        (*m_elementSet->x()) = *node->data;
+    if (node->data.size() > 0) {
+        m_elementSet->x() = node->data;
         m_elementSet->updateInfo();
         return;
     }
@@ -393,11 +381,7 @@ void Circuit::cacheAndUpdate()
     else
         m_elementSet->doLinear(true);
 
-    if (node->data) {
-        node->data = m_elementSet->x();
-    } else {
-        node->data = new QuickVector(m_elementSet->x());
-    }
+    node->data = m_elementSet->x();
 
     //	node->data = new Vector( m_elementSet->x()->size() );
     //	*node->data = *m_elementSet->x();
@@ -435,11 +419,11 @@ void Circuit::doNonLogic()
         return;
 
     if (m_bCanCache) {
-        if (!m_elementSet->b()->isChanged() && !m_elementSet->matrix()->isChanged())
+        if (!m_elementSet->b_changed && !m_elementSet->a_changed)
             return;
         cacheAndUpdate();
         updateNodalVoltages();
-        m_elementSet->b()->setUnchanged();
+        m_elementSet->b_changed = false;
         return;
     }
 
@@ -561,21 +545,3 @@ void Circuit::displayEquations()
     m_elementSet->displayEquations();
 }
 // END class Circuit
-
-// BEGIN class LogicCacheNode
-
-LogicCacheNode::LogicCacheNode()
-{
-    low = nullptr;
-    high = nullptr;
-    data = nullptr;
-}
-
-LogicCacheNode::~LogicCacheNode()
-{
-    delete low;
-    delete high;
-    if (data)
-        delete data;
-}
-// END class LogicCacheNode

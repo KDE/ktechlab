@@ -15,6 +15,9 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/micro
     ${CMAKE_CURRENT_SOURCE_DIR}/ktlqt3support
 )
+
+include_directories(SYSTEM ${EIGEN3_INCLUDE_DIR})
+
 if(GPSim_FOUND)
     # mark SYSTEM to have the compiler not emit warnings for those headers
     include_directories(SYSTEM ${GPSim_INCLUDE_DIRS})
@@ -30,7 +33,6 @@ add_subdirectory(electronics)
 add_subdirectory(languages)
 add_subdirectory(drawparts)
 add_subdirectory(contexthelp)
-add_subdirectory(math)
 add_subdirectory(ktlqt3support)
 
 ########### next target ###############
@@ -152,8 +154,6 @@ SET(ktechlab_SRCS
     ./flowparts/keypad.cpp
     ./flowparts/sevenseg.cpp
     ./flowparts/varcomparison.cpp
-    ./math/qvector.cpp
-    ./math/qmatrix.cpp
     ./picitem.cpp
 #     ./core/main.cpp
     ./core/diagnosticstyle.cpp
@@ -242,7 +242,6 @@ SET(ktechlab_SRCS
     ./electronics/circuiticndocument.cpp
     ./electronics/simulation/circuit.cpp
     ./electronics/simulation/element.cpp
-    ./electronics/simulation/matrix.cpp
     ./electronics/simulation/measurements.cpp
     ./electronics/simulation/diode.cpp
     ./electronics/simulation/elementsignal.cpp
@@ -363,6 +362,8 @@ target_link_libraries( ktechlab
     KF6::WidgetsAddons
     KF6::WindowSystem
 
+    Eigen3::Eigen
+
     Qt6::Widgets
     Qt6::PrintSupport
     Qt6::SerialPort
@@ -408,6 +409,8 @@ if(BUILD_TESTING)
         KF6::KIOCore
         KF6::KIOFileWidgets
         KF6::KIOWidgets
+
+        Eigen3::Eigen
 
         Qt6::Widgets
         Qt6::PrintSupport

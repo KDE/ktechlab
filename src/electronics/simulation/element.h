@@ -13,7 +13,6 @@
 
 #include "pin.h"
 #include "elementset.h"
-#include "matrix.h"
 
 #include <stdint.h>
 
@@ -215,38 +214,47 @@ double &Element::A_g(uint i, uint j)
 {
     if (p_cnode[i]->num == CNode::GROUND || p_cnode[j]->num == CNode::GROUND)
         return m_temp;
-    return p_eSet->matrix()->g(p_cnode[i]->num, p_cnode[j]->num);
+    p_eSet->a_changed = true;
+    return p_eSet->matrix()(p_cnode[i]->num, p_cnode[j]->num);
 }
 
 double &Element::A_b(uint i, uint j)
 {
     if (p_cnode[i]->num == CNode::GROUND)
         return m_temp;
-    return p_eSet->matrix()->b(p_cnode[i]->num, p_cbranch[j]->num);
+    p_eSet->a_changed = true;
+    const uint n = p_eSet->cnodeCount();
+    return p_eSet->matrix()(p_cnode[i]->num, n+p_cbranch[j]->num);
 }
 
 double &Element::A_c(uint i, uint j)
 {
     if (p_cnode[j]->num == CNode::GROUND)
         return m_temp;
-    return p_eSet->matrix()->c(p_cbranch[i]->num, p_cnode[j]->num);
+    p_eSet->a_changed = true;
+    const uint n = p_eSet->cnodeCount();
+    return p_eSet->matrix()(n+p_cbranch[i]->num, p_cnode[j]->num);
 }
 
 double &Element::A_d(uint i, uint j)
 {
-    return p_eSet->matrix()->d(p_cbranch[i]->num, p_cbranch[j]->num);
+    p_eSet->a_changed = true;
+    const uint n = p_eSet->cnodeCount();
+    return p_eSet->matrix()(n+p_cbranch[i]->num, n+p_cbranch[j]->num);
 }
 
 double &Element::b_i(uint i)
 {
     if (p_cnode[i]->num == CNode::GROUND)
         return m_temp;
-    return (*(p_eSet->b()))[p_cnode[i]->num];
+    p_eSet->b_changed = true;
+    return p_eSet->b()[p_cnode[i]->num];
 }
 
 double &Element::b_v(uint i)
 {
-    return (*(p_eSet->b()))[p_eSet->cnodeCount() + p_cbranch[i]->num];
+    p_eSet->b_changed = true;
+    return p_eSet->b()[p_eSet->cnodeCount() + p_cbranch[i]->num];
 }
 
 #endif
