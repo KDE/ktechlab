@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-10 00:49+0000\n"
+"POT-Creation-Date: 2026-10-25 00:53+0000\n"
 "PO-Revision-Date: 2020-04-28 10:48+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -1171,12 +1171,12 @@ msgstr "Kõik failid"
 msgid "Circuit"
 msgstr "Vooluring"
 
-#: src/electronics/circuitdocument.cpp:724
+#: src/electronics/circuitdocument.cpp:701
 #, kde-format
 msgid "No components were found in the selection."
 msgstr "Valikus ei leitud ühtegi komponenti."
 
-#: src/electronics/circuitdocument.cpp:731
+#: src/electronics/circuitdocument.cpp:708
 #, kde-format
 msgid "No External Connection components were found in the selection."
 msgstr "Valikus ei leitud ühtegi välise ühenduse komponenti."
@@ -1243,9 +1243,9 @@ msgstr "Kahesuunaline LED"
 #: src/electronics/components/led.cpp:28
 #: src/electronics/components/ledbargraphdisplay.cpp:86
 #: src/electronics/components/matrixdisplay.cpp:32
-#: src/electronics/components/meter.cpp:161
-#: src/electronics/components/meter.cpp:194
-#: src/electronics/components/meter.cpp:228
+#: src/electronics/components/meter.cpp:158
+#: src/electronics/components/meter.cpp:191
+#: src/electronics/components/meter.cpp:251
 #: src/electronics/components/probe.cpp:142
 #: src/electronics/components/probe.cpp:174
 #: src/electronics/components/probe.cpp:214
@@ -1983,34 +1983,72 @@ msgstr ""
 msgid "Matrix Display Driver"
 msgstr ""
 
-#: src/electronics/components/meter.cpp:40
+#: src/electronics/components/meter.cpp:36
 #, kde-format
 msgid "Minimum Value"
 msgstr "Miinimumväärtus"
 
-#: src/electronics/components/meter.cpp:46
+#: src/electronics/components/meter.cpp:42
 #, kde-format
 msgid "Maximum Value"
 msgstr "Maksimumväärtus"
 
-#: src/electronics/components/meter.cpp:161
+#: src/electronics/components/meter.cpp:48
+#, fuzzy, kde-format
+#| msgid "Examples"
+msgid "Samples"
+msgstr "Näited"
+
+#: src/electronics/components/meter.cpp:158
 #, kde-format
 msgid "Frequency Meter (TODO)"
 msgstr "Sagedusmõõdik (veel teostamata)"
 
-#: src/electronics/components/meter.cpp:167
+#: src/electronics/components/meter.cpp:164
 #, kde-format
 msgid "Frequency Meter"
 msgstr "Sagedusmõõdik"
 
-#: src/electronics/components/meter.cpp:194
-#: src/electronics/components/meter.cpp:200
+#: src/electronics/components/meter.cpp:191
+#: src/electronics/components/meter.cpp:197
 #, kde-format
 msgid "Ammeter"
 msgstr "Ampermeeter"
 
-#: src/electronics/components/meter.cpp:228
-#: src/electronics/components/meter.cpp:234
+#: src/electronics/components/meter.cpp:202
+#: src/electronics/components/meter.cpp:261
+#, kde-format
+msgid "Mode"
+msgstr ""
+
+#: src/electronics/components/meter.cpp:204
+#: src/electronics/components/meter.cpp:263
+#, fuzzy, kde-format
+#| msgid "ADC"
+msgid "DC"
+msgstr "ADC"
+
+#: src/electronics/components/meter.cpp:205
+#: src/electronics/components/meter.cpp:264
+#, fuzzy, kde-format
+#| msgid "ADC"
+msgid "AC"
+msgstr "ADC"
+
+#: src/electronics/components/meter.cpp:206
+#: src/electronics/components/meter.cpp:265
+#, kde-format
+msgid "MAX"
+msgstr ""
+
+#: src/electronics/components/meter.cpp:207
+#: src/electronics/components/meter.cpp:266
+#, kde-format
+msgid "MIN"
+msgstr ""
+
+#: src/electronics/components/meter.cpp:251
+#: src/electronics/components/meter.cpp:257
 #, kde-format
 msgid "Voltmeter"
 msgstr "Voltmeeter"

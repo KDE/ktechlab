@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-10 00:49+0000\n"
+"POT-Creation-Date: 2026-10-25 00:53+0000\n"
 "PO-Revision-Date: 2026-10-10 04:48+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
@@ -1193,12 +1193,12 @@ msgstr "ყველა ფაილი"
 msgid "Circuit"
 msgstr "წრედი"
 
-#: src/electronics/circuitdocument.cpp:724
+#: src/electronics/circuitdocument.cpp:701
 #, kde-format
 msgid "No components were found in the selection."
 msgstr "მონიშნულში კომპონენტები აღმოჩენილი არაა."
 
-#: src/electronics/circuitdocument.cpp:731
+#: src/electronics/circuitdocument.cpp:708
 #, kde-format
 msgid "No External Connection components were found in the selection."
 msgstr "მონიშნულში გარე კავშირის კომპონენტები აღმოჩენილი არაა."
@@ -1265,9 +1265,9 @@ msgstr "ორმხრივი LED"
 #: src/electronics/components/led.cpp:28
 #: src/electronics/components/ledbargraphdisplay.cpp:86
 #: src/electronics/components/matrixdisplay.cpp:32
-#: src/electronics/components/meter.cpp:161
-#: src/electronics/components/meter.cpp:194
-#: src/electronics/components/meter.cpp:228
+#: src/electronics/components/meter.cpp:158
+#: src/electronics/components/meter.cpp:191
+#: src/electronics/components/meter.cpp:251
 #: src/electronics/components/probe.cpp:142
 #: src/electronics/components/probe.cpp:174
 #: src/electronics/components/probe.cpp:214
@@ -2003,34 +2003,72 @@ msgstr "სვეტის კათოდი"
 msgid "Matrix Display Driver"
 msgstr "მატრიცული ეკრანის დრაივერი"
 
-#: src/electronics/components/meter.cpp:40
+#: src/electronics/components/meter.cpp:36
 #, kde-format
 msgid "Minimum Value"
 msgstr "მინიმალური მნიშვნელობა"
 
-#: src/electronics/components/meter.cpp:46
+#: src/electronics/components/meter.cpp:42
 #, kde-format
 msgid "Maximum Value"
 msgstr "მაქსიმალური მნიშვნელობა"
 
-#: src/electronics/components/meter.cpp:161
+#: src/electronics/components/meter.cpp:48
+#, fuzzy, kde-format
+#| msgid "Examples"
+msgid "Samples"
+msgstr "მაგალითები"
+
+#: src/electronics/components/meter.cpp:158
 #, kde-format
 msgid "Frequency Meter (TODO)"
 msgstr "სიხშირესაზომი"
 
-#: src/electronics/components/meter.cpp:167
+#: src/electronics/components/meter.cpp:164
 #, kde-format
 msgid "Frequency Meter"
 msgstr "სიხშირესაზომი"
 
-#: src/electronics/components/meter.cpp:194
-#: src/electronics/components/meter.cpp:200
+#: src/electronics/components/meter.cpp:191
+#: src/electronics/components/meter.cpp:197
 #, kde-format
 msgid "Ammeter"
 msgstr "ამპერმეტრი"
 
-#: src/electronics/components/meter.cpp:228
-#: src/electronics/components/meter.cpp:234
+#: src/electronics/components/meter.cpp:202
+#: src/electronics/components/meter.cpp:261
+#, kde-format
+msgid "Mode"
+msgstr ""
+
+#: src/electronics/components/meter.cpp:204
+#: src/electronics/components/meter.cpp:263
+#, fuzzy, kde-format
+#| msgid "ADC"
+msgid "DC"
+msgstr "ADC"
+
+#: src/electronics/components/meter.cpp:205
+#: src/electronics/components/meter.cpp:264
+#, fuzzy, kde-format
+#| msgid "ADC"
+msgid "AC"
+msgstr "ADC"
+
+#: src/electronics/components/meter.cpp:206
+#: src/electronics/components/meter.cpp:265
+#, kde-format
+msgid "MAX"
+msgstr ""
+
+#: src/electronics/components/meter.cpp:207
+#: src/electronics/components/meter.cpp:266
+#, kde-format
+msgid "MIN"
+msgstr ""
+
+#: src/electronics/components/meter.cpp:251
+#: src/electronics/components/meter.cpp:257
 #, kde-format
 msgid "Voltmeter"
 msgstr "ვოლტმეტრი"
