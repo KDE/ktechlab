@@ -1998,10 +1998,9 @@ msgid "Maximum Value"
 msgstr "Maximálna hodnota"
 
 #: src/electronics/components/meter.cpp:48
-#, fuzzy, kde-format
-#| msgid "Examples"
+#, kde-format
 msgid "Samples"
-msgstr "Príklady"
+msgstr "Vzorky"
 
 #: src/electronics/components/meter.cpp:158
 #, kde-format
@@ -2023,33 +2022,31 @@ msgstr "Ampérmeter"
 #: src/electronics/components/meter.cpp:261
 #, kde-format
 msgid "Mode"
-msgstr ""
+msgstr "Režim"
 
 #: src/electronics/components/meter.cpp:204
 #: src/electronics/components/meter.cpp:263
-#, fuzzy, kde-format
-#| msgid "ADC"
+#, kde-format
 msgid "DC"
-msgstr "Analógovo-digitálny prevodník"
+msgstr "DC"
 
 #: src/electronics/components/meter.cpp:205
 #: src/electronics/components/meter.cpp:264
-#, fuzzy, kde-format
-#| msgid "ADC"
+#, kde-format
 msgid "AC"
-msgstr "Analógovo-digitálny prevodník"
+msgstr "AC"
 
 #: src/electronics/components/meter.cpp:206
 #: src/electronics/components/meter.cpp:265
 #, kde-format
 msgid "MAX"
-msgstr ""
+msgstr "MAX"
 
 #: src/electronics/components/meter.cpp:207
 #: src/electronics/components/meter.cpp:266
 #, kde-format
 msgid "MIN"
-msgstr ""
+msgstr "MIN"
 
 #: src/electronics/components/meter.cpp:251
 #: src/electronics/components/meter.cpp:257

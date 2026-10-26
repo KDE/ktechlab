@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-25 00:53+0000\n"
-"PO-Revision-Date: 2026-10-16 20:11+0300\n"
+"PO-Revision-Date: 2026-10-25 20:26+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -2004,10 +2004,9 @@ msgid "Maximum Value"
 msgstr "En yüksek değer"
 
 #: src/electronics/components/meter.cpp:48
-#, fuzzy, kde-format
-#| msgid "Examples"
+#, kde-format
 msgid "Samples"
-msgstr "Örnekler"
+msgstr "Örneklemler"
 
 #: src/electronics/components/meter.cpp:158
 #, kde-format
@@ -2029,33 +2028,31 @@ msgstr "Akımölçer"
 #: src/electronics/components/meter.cpp:261
 #, kde-format
 msgid "Mode"
-msgstr ""
+msgstr "Kip"
 
 #: src/electronics/components/meter.cpp:204
 #: src/electronics/components/meter.cpp:263
-#, fuzzy, kde-format
-#| msgid "ADC"
+#, kde-format
 msgid "DC"
-msgstr "ADC"
+msgstr "DC"
 
 #: src/electronics/components/meter.cpp:205
 #: src/electronics/components/meter.cpp:264
-#, fuzzy, kde-format
-#| msgid "ADC"
+#, kde-format
 msgid "AC"
-msgstr "ADC"
+msgstr "AC"
 
 #: src/electronics/components/meter.cpp:206
 #: src/electronics/components/meter.cpp:265
 #, kde-format
 msgid "MAX"
-msgstr ""
+msgstr "MAKS"
 
 #: src/electronics/components/meter.cpp:207
 #: src/electronics/components/meter.cpp:266
 #, kde-format
 msgid "MIN"
-msgstr ""
+msgstr "MİN"
 
 #: src/electronics/components/meter.cpp:251
 #: src/electronics/components/meter.cpp:257

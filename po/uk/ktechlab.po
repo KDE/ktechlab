@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-25 00:53+0000\n"
-"PO-Revision-Date: 2026-10-10 10:01+0300\n"
+"PO-Revision-Date: 2026-10-25 12:27+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -2022,10 +2022,9 @@ msgid "Maximum Value"
 msgstr "Максимальне значення"
 
 #: src/electronics/components/meter.cpp:48
-#, fuzzy, kde-format
-#| msgid "Examples"
+#, kde-format
 msgid "Samples"
-msgstr "Приклади"
+msgstr "Зразки"
 
 #: src/electronics/components/meter.cpp:158
 #, kde-format
@@ -2047,33 +2046,31 @@ msgstr "Амперметр"
 #: src/electronics/components/meter.cpp:261
 #, kde-format
 msgid "Mode"
-msgstr ""
+msgstr "Режим"
 
 #: src/electronics/components/meter.cpp:204
 #: src/electronics/components/meter.cpp:263
-#, fuzzy, kde-format
-#| msgid "ADC"
+#, kde-format
 msgid "DC"
-msgstr "ADC"
+msgstr "ПС"
 
 #: src/electronics/components/meter.cpp:205
 #: src/electronics/components/meter.cpp:264
-#, fuzzy, kde-format
-#| msgid "ADC"
+#, kde-format
 msgid "AC"
-msgstr "ADC"
+msgstr "ЗС"
 
 #: src/electronics/components/meter.cpp:206
 #: src/electronics/components/meter.cpp:265
 #, kde-format
 msgid "MAX"
-msgstr ""
+msgstr "MAX"
 
 #: src/electronics/components/meter.cpp:207
 #: src/electronics/components/meter.cpp:266
 #, kde-format
 msgid "MIN"
-msgstr ""
+msgstr "MIN"
 
 #: src/electronics/components/meter.cpp:251
 #: src/electronics/components/meter.cpp:257
