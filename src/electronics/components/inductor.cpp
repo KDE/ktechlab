@@ -43,6 +43,14 @@ Inductor::Inductor(ICNDocument *icnDocument, bool newItem, const char *id)
     property("Inductance")->setMaxValue(1e12);
     property("Inductance")->setValue(1e-3);
 
+    createProperty("method", Variant::Type::Select);
+    property("method")->setCaption(i18n("Method"));
+    QStringMap allowed;
+    allowed["euler"] = i18n("Euler");
+    allowed["trap"] = i18n("Trapezoidal");
+    property("method")->setAllowed(allowed);
+    property("method")->setValue("euler");
+
     addDisplayText("inductance", QRect(-8, -24, 16, 16), "", false);
 }
 
@@ -53,11 +61,18 @@ Inductor::~Inductor()
 void Inductor::dataChanged()
 {
     double inductance = dataDouble("Inductance");
+    const QString method = dataString("method");
 
     QString display = QString::number(inductance / getMultiplier(inductance), 'g', 3) + getNumberMag(inductance) + "H";
     setDisplayText("inductance", display);
 
     m_pInductance->setInductance(inductance);
+
+    if (method == QLatin1String("euler")) {
+        m_pInductance->setMethod(Inductance::m_euler);
+    } else if (method == QLatin1String("trap")) {
+        m_pInductance->setMethod(Inductance::m_trap);
+    }
 }
 
 void Inductor::drawShape(QPainter &p)

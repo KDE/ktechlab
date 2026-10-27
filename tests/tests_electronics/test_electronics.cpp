@@ -408,11 +408,21 @@ private Q_SLOTS:
         QCOMPARE(eset.cnodeCount(), 2);
         QCOMPARE(eset.cbranchCount(), 2);
 
-        const double dt = 1./10000.;
+        QFETCH(Inductance::Method, method);
+        QFETCH(double, inductance);
+        QFETCH(double, v_tol);
+        QFETCH(double, i_tol);
+
+        const double n = 10000.;
+        const double dt = 1./n;
         VoltagePoint v1(12.0);
         Resistance r1(10);
-        Inductance l1(47e-3, dt);
+        Inductance l1(1, dt);
+        l1.setInductance(inductance);
+        QVERIFY(l1.inductance() == inductance);
         QVERIFY(l1.type() == Element::Element_Inductance);
+        l1.setMethod(method);
+        QVERIFY(l1.method() == method);
         eset.addElement(&v1);
         eset.addElement(&r1);
         eset.addElement(&l1);
@@ -430,9 +440,12 @@ private Q_SLOTS:
         r1.add_initial_dc();
         l1.add_initial_dc();
 
-        const double tolerance = 0.05;
+        double ierr = 0.;
+        double verr = 0.;
         const double R_L = r1.resistance()/l1.inductance();
-        for (uint i = 1; i < 10000; i++) {
+        // The error on the euler method is really bad the first few steps
+        const uint esteps = l1.method() == Inductance::m_euler ? 10 : 2;
+        for (uint i = 0; i < static_cast<uint>(n); i++) {
             l1.time_step();
             eset.doLinear(true);
             if (i == 1) {
@@ -441,19 +454,37 @@ private Q_SLOTS:
             const double t = i * dt;
             const double Vl = 12 * std::exp(-t*R_L);
             const double I = (12-Vl)/r1.resistance();
-            if (i == 1 || i % 100 == 0) {
+            if (i < 10 || i % 500 == 0) {
                 qDebug() << "t=" << t << "Vl=" << Vl << "V1=" << eset.cnodes()[1].v
                 << "I=" << I << "I1=" << eset.cbranches()[0].i << "I2=" << eset.cbranches()[1].i;
             }
-            QCOMPARE_TOL(eset.cnodes()[0].v, 12, tolerance);
-            QCOMPARE_TOL(eset.cnodes()[1].v, Vl, tolerance);
-            QCOMPARE_TOL(eset.cbranches()[0].i, I,  tolerance);
-            QCOMPARE_TOL(eset.cbranches()[1].i, I, tolerance);
+            QCOMPARE_TOL(eset.cnodes()[0].v, 12, v_tol);
+            QCOMPARE_TOL(eset.cnodes()[1].v, Vl, i < esteps ? 0.25 : v_tol);
+            QCOMPARE_TOL(eset.cbranches()[0].i, I, i < esteps ? 0.05 : i_tol);
+            QCOMPARE_TOL(eset.cbranches()[1].i, I, i < esteps ? 0.05 : i_tol);
+            verr += pow(eset.cnodes()[1].v - Vl, 2);
+            ierr += pow(eset.cbranches()[0].i - I, 2);
         }
 
-        QCOMPARE_TOL(eset.cnodes()[1].v, 0, tolerance);
-        QCOMPARE_TOL(eset.cbranches()[0].i, 1.2, tolerance);
+        QCOMPARE_TOL(eset.cnodes()[1].v, 0, v_tol);
+        QCOMPARE_TOL(eset.cbranches()[0].i, 1.2, i_tol);
+
+        const double Irms = sqrt(ierr/n);
+        const double Vrms = sqrt(verr/n);
+        qDebug() << "Irms" << Irms << "Vrms" << Vrms;
+
     }
+
+    void inductanceTest1_data()
+    {
+        QTest::addColumn<Inductance::Method>("method");
+        QTest::addColumn<double>("inductance");
+        QTest::addColumn<double>("v_tol");
+        QTest::addColumn<double>("i_tol");
+        QTest::newRow("euler") << Inductance::m_euler << 47e-3 << 0.2 << 0.02;
+        QTest::newRow("trap") << Inductance::m_trap << 47e-3 << 0.05 << 0.005;
+    }
+
 
     void diodeForwardBiasTest1()
     {

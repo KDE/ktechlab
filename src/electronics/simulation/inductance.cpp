@@ -11,14 +11,13 @@
 #include "inductance.h"
 #include "elementset.h"
 
-Inductance::Inductance(double inductance, double delta)
+Inductance::Inductance(double inductance, double delta, Method method)
     : Reactive(delta)
 {
     m_inductance = inductance;
-    scaled_inductance = v_eq_old = 0.0;
     m_numCNodes = 2;
     m_numCBranches = 1;
-    setMethod(Inductance::m_euler);
+    setMethod(method);
 }
 
 Inductance::~Inductance()
@@ -39,7 +38,7 @@ void Inductance::add_initial_dc()
 
     // The adding of r_eg and v_eq will be done for us by time_step.
     // So for now, just reset the constants used.
-    scaled_inductance = v_eq_old = 0.0;
+    m_r = m_v_old = v_eq_old = 0.0;
 }
 
 void Inductance::updateCurrents()
@@ -57,34 +56,32 @@ void Inductance::time_step()
         return;
 
     double i = p_cbranch[0]->i;
-    double v_eq_new = 0.0, r_eq_new = 0.0;
+    double v_eq_new, r_eq_new;
 
+    // For a description of these equations see
+    // https://qucs.sourceforge.net/tech/node26.html
+    // https://courses.grainger.illinois.edu/ece552/fa2017/ECE552-F17-Chapter9.pdf
     if (m_method == Inductance::m_euler) {
         r_eq_new = m_inductance / m_delta;
         v_eq_new = -i * r_eq_new;
     } else if (m_method == Inductance::m_trap) {
-        // TODO Implement + test trapezoidal method
         r_eq_new = 2.0 * m_inductance / m_delta;
+        v_eq_new = -i * r_eq_new - m_v_old;
+        m_v_old = p_cnode[0]->v - p_cnode[1]->v;
+    } else {
+        Q_UNREACHABLE(); // LCOV_EXCL_LINE
     }
 
-    if (scaled_inductance != r_eq_new) {
-        A_d(0, 0) -= r_eq_new - scaled_inductance;
+    if (m_r != r_eq_new) {
+        A_d(0, 0) -= r_eq_new - m_r;
+        m_r = r_eq_new;
     }
 
     if (v_eq_new != v_eq_old) {
         b_v(0) += v_eq_new - v_eq_old;
+        v_eq_old = v_eq_new;
     }
 
-    scaled_inductance = r_eq_new;
-    v_eq_old = v_eq_new;
-}
-
-bool Inductance::updateStatus()
-{
-    b_status = Reactive::updateStatus();
-    if (m_method == Inductance::m_none)
-        b_status = false;
-    return b_status;
 }
 
 void Inductance::setMethod(Method m)

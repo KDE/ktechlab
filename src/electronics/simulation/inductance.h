@@ -21,11 +21,10 @@ class Inductance : public Reactive
 {
 public:
     enum Method {
-        m_none,  // None
         m_euler, // Backward Euler
-        m_trap   // Trapezoidal (currently unimplemented)
+        m_trap   // Trapezoidal
     };
-    Inductance(double inductance, double delta);
+    Inductance(double inductance, double delta, Method method=m_euler);
     ~Inductance() override;
 
     Type type() const override
@@ -38,6 +37,10 @@ public:
      * interval between successive updates.
      */
     void setMethod(Method m);
+    Method method() const
+    {
+        return m_method;
+    }
     void time_step() override;
     void add_initial_dc() override;
     void setInductance(double i);
@@ -48,14 +51,14 @@ public:
 
 protected:
     void updateCurrents() override;
-    bool updateStatus() override;
 
 private:
     double m_inductance; // Inductance
     Method m_method;     // Method of integration
 
-    double scaled_inductance;
-    double v_eq_old;
+    double m_r = 0.; // Series resistance component
+    double v_eq_old = 0.; // Series voltage component
+    double m_v_old = 0.; // Voltage from previous iteration
 };
 
 #endif
