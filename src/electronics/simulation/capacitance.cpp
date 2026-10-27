@@ -10,13 +10,12 @@
 
 #include "capacitance.h"
 
-Capacitance::Capacitance(const double capacitance, const double delta)
+Capacitance::Capacitance(const double capacitance, const double delta, Method method)
     : Reactive(delta)
 {
     m_cap = capacitance;
-    m_scaled_cap = i_eq_old = 0.;
     m_numCNodes = 2;
-    setMethod(Capacitance::m_euler);
+    setMethod(method);
 }
 
 Capacitance::~Capacitance()
@@ -32,15 +31,15 @@ void Capacitance::add_initial_dc()
 {
     // We don't need to do anything here, as time_step() will do that for us,
     // apart from to make sure our old values are 0
-    m_scaled_cap = i_eq_old = 0.;
+    m_g = m_i_old = i_eq_old = 0.;
 }
 
 void Capacitance::updateCurrents()
 {
     if (!b_status)
         return;
-    const double r_i = (p_cnode[0]->v - p_cnode[1]->v) * m_scaled_cap;
-    m_cnodeI[0] = -i_eq_old - r_i;
+    const double i = (p_cnode[1]->v - p_cnode[0]->v) * m_g;
+    m_cnodeI[0] = i - i_eq_old;
     m_cnodeI[1] = -m_cnodeI[0];
 }
 
@@ -49,41 +48,38 @@ void Capacitance::time_step()
     if (!b_status)
         return;
 
-    double v = p_cnode[0]->v - p_cnode[1]->v;
-    double i_eq_new = 0.0, scaled_cap_new = 0.0;
+    const double v = p_cnode[1]->v - p_cnode[0]->v;
+    double i_eq_new, g;
 
+    // For a description of these equations see
+    // https://qucs.sourceforge.net/tech/node26.html
+    // https://courses.grainger.illinois.edu/ece552/fa2017/ECE552-F17-Chapter9.pdf
     if (m_method == Capacitance::m_euler) {
-        scaled_cap_new = m_cap / m_delta;
-        i_eq_new = -v * scaled_cap_new;
+        g = m_cap / m_delta;
+        i_eq_new = v * g;
     } else if (m_method == Capacitance::m_trap) {
-        // TODO Implement + test trapezoidal method
-        scaled_cap_new = 2. * m_cap / m_delta;
+        g = 2. * m_cap / m_delta;
+        i_eq_new = v * g + m_i_old;
+        m_i_old = v * g - i_eq_old;
+    } else {
+        Q_UNREACHABLE(); // LCOV_EXCL_LINE
     }
 
-    if (m_scaled_cap != scaled_cap_new) {
-        const double tmp = scaled_cap_new - m_scaled_cap;
+    if (m_g != g) {
+        const double tmp = g - m_g;
         A_g(0, 0) += tmp;
         A_g(0, 1) -= tmp;
         A_g(1, 0) -= tmp;
         A_g(1, 1) += tmp;
+        m_g = g;
     }
 
     if (i_eq_new != i_eq_old) {
         const double tmp = i_eq_new - i_eq_old;
         b_i(0) -= tmp;
         b_i(1) += tmp;
+        i_eq_old = i_eq_new;
     }
-
-    m_scaled_cap = scaled_cap_new;
-    i_eq_old = i_eq_new;
-}
-
-bool Capacitance::updateStatus()
-{
-    b_status = Reactive::updateStatus();
-    if (m_method == Capacitance::m_none)
-        b_status = false;
-    return b_status;
 }
 
 void Capacitance::setMethod(Method m)

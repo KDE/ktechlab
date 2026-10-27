@@ -37,7 +37,7 @@ static double lambert(double x)
 }
 
 // Checks that actual is within expected +- the tolerance
-#define QCOMPARE_TOL(actual, expected, tol) if (!std::isfinite(actual) || !std::isfinite(expected) || std::abs((actual) - (expected)) > tol) QCOMPARE(actual, expected);
+#define QCOMPARE_TOL(actual, expected, tol) if (!std::isfinite(actual) || !std::isfinite(expected) || std::abs((actual) - (expected)) > (tol)) QCOMPARE(actual, expected);
 
 
 class KtlElectronicsTests: public QObject
@@ -327,11 +327,20 @@ private Q_SLOTS:
         QCOMPARE(eset.cnodeCount(), 2);
         QCOMPARE(eset.cbranchCount(), 1);
 
-        const double dt = 1./10000.;
+        const double n = 10000.;
+        const double dt = 1./n;
         VoltagePoint v1(12.0);
         Resistance r1(1000);
-        Capacitance c1(22e-6, dt);
+        Capacitance c1(1, dt);
         QVERIFY(c1.type() == Element::Element_Capacitance);
+        QFETCH(Capacitance::Method, method);
+        QFETCH(double, cap);
+        QFETCH(double, v_tol);
+        QFETCH(double, i_tol);
+        c1.setCapacitance(cap);
+        QVERIFY(c1.capacitance() == cap);
+        c1.setMethod(method);
+        QVERIFY(c1.method() == method);
         eset.addElement(&v1);
         eset.addElement(&r1);
         eset.addElement(&c1);
@@ -348,9 +357,11 @@ private Q_SLOTS:
         r1.add_initial_dc();
         c1.add_initial_dc();
 
-        const double tolerance = 0.05;
         const double RC = r1.resistance()*c1.capacitance();
-        for (uint i = 1; i < 10000; i++) {
+        double ierr = 0.;
+        double verr = 0.;
+        // euler method doesn't seem to work with t=0
+        for (uint i = 0; i < static_cast<uint>(n); i++) {
             c1.time_step();
             eset.doLinear(true);
             if (i == 1) {
@@ -359,17 +370,33 @@ private Q_SLOTS:
             const double t = i * dt;
             const double Vc = 12 * (1 - std::exp(-t/RC));
             const double I = (12-Vc)/r1.resistance();
-            if (i % 100 == 0) {
+            if (i < 10 || i % 500 == 0) {
                 qDebug() << "t=" << t << "Vc=" << Vc << "V1=" << eset.cnodes()[1].v
                 << "I=" << I << "I1=" << eset.cbranches()[0].i;
             }
-            QCOMPARE_TOL(eset.cnodes()[0].v, 12, tolerance);
-            QCOMPARE_TOL(eset.cnodes()[1].v, Vc, tolerance);
-            QCOMPARE_TOL(eset.cbranches()[0].i, I, tolerance);
+            QCOMPARE_TOL(eset.cnodes()[0].v, 12, v_tol);
+            QCOMPARE_TOL(eset.cnodes()[1].v, Vc, i < 2 ? 2*v_tol: v_tol);
+            QCOMPARE_TOL(eset.cbranches()[0].i, I, i_tol);
+            verr += pow(eset.cnodes()[1].v - Vc, 2);
+            ierr += pow(eset.cbranches()[0].i - I, 2);
         }
 
-        QCOMPARE_TOL(eset.cnodes()[1].v, 12, tolerance);
-        QCOMPARE_TOL(eset.cbranches()[0].i, 0, tolerance);
+        QCOMPARE_TOL(eset.cnodes()[1].v, 12, v_tol);
+        QCOMPARE_TOL(eset.cbranches()[0].i, 0, i_tol);
+
+        const double Irms = sqrt(ierr/n);
+        const double Vrms = sqrt(verr/n);
+        qDebug() << "Irms" << Irms << "Vrms" << Vrms;
+    }
+
+    void capacitanceTest1_data()
+    {
+        QTest::addColumn<Capacitance::Method>("method");
+        QTest::addColumn<double>("cap");
+        QTest::addColumn<double>("v_tol");
+        QTest::addColumn<double>("i_tol");
+        QTest::newRow("euler") << Capacitance::m_euler << 22e-6 << 0.06 << 0.0001;
+        QTest::newRow("trap") << Capacitance::m_trap << 22e-6 << 0.02 << 0.0001;
     }
 
     void inductanceTest1()

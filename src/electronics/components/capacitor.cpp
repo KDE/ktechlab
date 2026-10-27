@@ -44,6 +44,14 @@ Capacitor::Capacitor(ICNDocument *icnDocument, bool newItem, const char *id)
     property("Capacitance")->setMaxValue(1e12);
     property("Capacitance")->setValue(1e-3);
 
+    createProperty("method", Variant::Type::Select);
+    property("method")->setCaption(i18n("Method"));
+    QStringMap allowed;
+    allowed["euler"] = i18n("Euler");
+    allowed["trap"] = i18n("Trapezoidal");
+    property("method")->setAllowed(allowed);
+    property("method")->setValue("euler");
+
     addDisplayText("capacitance", QRect(-8, -24, 16, 16), "", false);
 }
 
@@ -54,11 +62,17 @@ Capacitor::~Capacitor()
 void Capacitor::dataChanged()
 {
     double capacitance = dataDouble("Capacitance");
+    const QString method = dataString("method");
 
     QString display = QString::number(capacitance / getMultiplier(capacitance), 'g', 3) + getNumberMag(capacitance) + "F";
     setDisplayText("capacitance", display);
-
     m_capacitance->setCapacitance(capacitance);
+
+    if (method == QLatin1String("euler")) {
+        m_capacitance->setMethod(Capacitance::m_euler);
+    } else if (method == QLatin1String("trap")) {
+        m_capacitance->setMethod(Capacitance::m_trap);
+    }
 }
 
 void Capacitor::drawShape(QPainter &p)

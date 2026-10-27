@@ -21,11 +21,10 @@ class Capacitance : public Reactive
 {
 public:
     enum Method {
-        m_none,  // None
         m_euler, // Backward Euler
-        m_trap   // Trapezoidal (currently unimplemented)
+        m_trap   // Trapezoidal
     };
-    Capacitance(const double capacitance, const double delta);
+    Capacitance(const double capacitance, const double delta, Method method = m_euler);
     ~Capacitance() override;
 
     Type type() const override
@@ -37,6 +36,10 @@ public:
      * and the interval between successive updates
      */
     void setMethod(Method m);
+    Method method() const
+    {
+        return m_method;
+    }
     void time_step() override;
     void add_initial_dc() override;
     void setCapacitance(const double c);
@@ -47,14 +50,15 @@ public:
 
 protected:
     void updateCurrents() override;
-    bool updateStatus() override;
 
 private:
     double m_cap;    // Capacitance
     Method m_method; // Method of integration
 
-    double m_scaled_cap; // capacitance scaled to time base of latest m_delta
-    double i_eq_old;
+    double m_g = 0.; // Conductance component of capacitor model
+    double i_eq_old = 0.; // Current source component of capacitor model
+    double m_i_old = 0.; // Current from previous time_step iteration
+
 };
 
 #endif
