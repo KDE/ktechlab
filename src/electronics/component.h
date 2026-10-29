@@ -177,8 +177,8 @@ public:
     CurrentSource *createCurrentSource(Pin *n0, Pin *n1, double current);
     CurrentSource *createCurrentSource(ECNode *n0, ECNode *n1, double current);
 
-    Diode *createDiode(Pin *n0, Pin *n1);
-    Diode *createDiode(ECNode *n0, ECNode *n1);
+    Diode *createDiode(Pin *n0, Pin *n1, bool ideal=true);
+    Diode *createDiode(ECNode *n0, ECNode *n1, bool ideal=true);
 
     JFET *createJFET(Pin *D, Pin *G, Pin *S, int JFET_type);
     JFET *createJFET(ECNode *D, ECNode *G, ECNode *S, int JFET_type);

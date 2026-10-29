@@ -36,9 +36,9 @@ ECDiode::ECDiode(ICNDocument *icnDocument, bool newItem, const char *id)
     init1PinLeft();
     init1PinRight();
 
-    m_diode = createDiode(m_pNNode[0], m_pPNode[0]);
-
     DiodeSettings ds; // it will have the default properties that we use
+
+    m_diode = createDiode(m_pNNode[0], m_pPNode[0], ds.R == 0.);
 
     createProperty("I_S", Variant::Type::Double);
     property("I_S")->setCaption("Saturation Current");
@@ -63,13 +63,13 @@ ECDiode::ECDiode(ICNDocument *icnDocument, bool newItem, const char *id)
     property("V_B")->setValue(ds.V_B);
     property("V_B")->setAdvanced(true);
 
-    // 	createProperty( "R", Variant::Type::Double );
-    // 	property("R")->setCaption( i18n("Series Resistance") );
-    // 	property("R")->setUnit( QChar(0x3a9) );
-    // 	property("R")->setMinValue(1e-5);
-    // 	property("R")->setMaxValue(1e0);
-    // 	property("R")->setValue( ds.R );
-    // 	property("R")->setAdvanced(true);
+    createProperty( "R", Variant::Type::Double );
+    property("R")->setCaption( i18n("Series Resistance") );
+    property("R")->setUnit( QChar(0x3a9) );
+    property("R")->setMinValue(0);
+    property("R")->setMaxValue(1e6);
+    property("R")->setValue( ds.R );
+    property("R")->setAdvanced(true);
 }
 
 ECDiode::~ECDiode()
@@ -83,8 +83,16 @@ void ECDiode::dataChanged()
     ds.I_S = dataDouble("I_S");
     ds.V_B = dataDouble("V_B");
     ds.N = dataDouble("N");
-    // 	ds.R = dataDouble("R");
+    ds.R = dataDouble("R");
 
+    const bool old_ideal = m_diode->settings().R == 0.;
+    const bool new_ideal = ds.R == 0.;
+    if (old_ideal != new_ideal) {
+        // If the series resistance was added or removed the
+        // circuit must be rebuilt
+        removeElement(m_diode, false);
+        m_diode = createDiode(m_pNNode[0], m_pPNode[0], ds.R == 0.);
+    }
     m_diode->setDiodeSettings(ds);
 }
 

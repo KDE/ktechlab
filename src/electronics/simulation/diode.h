@@ -16,10 +16,10 @@
 class DiodeSettings
 {
 public:
-    double I_S = 1e-15; ///< Diode saturation current
+    double I_S = 1e-15; ///< Diode saturation current (A)
     double N = 1.0;   ///< Emission coefficient
-    double V_B = 4.7; ///< Reverse breakdown
-    // 		double R;	///< Series resistance
+    double V_B = 4.7; ///< Reverse breakdown (V)
+    double R = 0.0;	///< Series resistance (Ω)
 };
 
 /**
@@ -56,6 +56,17 @@ public:
      * Returns the current flowing through the diode
      */
     double current() const;
+    /**
+     * Returns the internal pin used when the series resistance is non-zero
+     */
+    Pin& internalPin()
+    {
+        return m_internalPin;
+    }
+    const Pin& internalPin() const
+    {
+        return m_internalPin;
+    }
 
 protected:
     void updateCurrents() override;
@@ -64,10 +75,11 @@ protected:
     void updateLim();
 
     double g_new, g_old;
+    double g_rs = 0.; // Series conductance component of large singal model
     double I_new, I_old;
     double V_prev;
     double V_lim;
-
+    Pin m_internalPin;
     DiodeSettings m_diodeSettings;
 };
 

@@ -623,9 +623,9 @@ CurrentSource *Component::createCurrentSource(ECNode *n0, ECNode *n1, double cur
     return createCurrentSource(n0->pin(), n1->pin(), current);
 }
 
-Diode *Component::createDiode(ECNode *n0, ECNode *n1)
+Diode *Component::createDiode(ECNode *n0, ECNode *n1, bool ideal)
 {
-    return createDiode(n0->pin(), n1->pin());
+    return createDiode(n0->pin(), n1->pin(), ideal);
 }
 
 JFET *Component::createJFET(ECNode *D, ECNode *G, ECNode *S, int JFET_type)
@@ -774,12 +774,14 @@ CurrentSource *Component::createCurrentSource(Pin *n0, Pin *n1, double current)
     return e;
 }
 
-Diode *Component::createDiode(Pin *n0, Pin *n1)
+Diode *Component::createDiode(Pin *n0, Pin *n1, bool ideal)
 {
     Diode *e = new Diode();
 
-    QList<Pin *> pins;
-    pins << n0 << n1;
+    QList<Pin *> pins = {n0, n1};
+    if (!ideal) {
+        pins.insert(1, &e->internalPin());
+    }
 
     ElementMapList::iterator it = handleElement(e, pins);
     setInterDependent(it, pins);

@@ -1088,6 +1088,55 @@ private Q_SLOTS:
         QCOMPARE(w3.current(), 0.012);
     }
 
+    void circuitShortedDiodeTest()
+    {
+        // Circuit
+        // [5V]a--b[D1]c--d[GND]
+        Circuit circuit;
+        Pin a, b, c, d;
+        Wire w1(&a, &b);
+        Wire w2(&c, &d);
+
+        VoltagePoint vs(5.0);
+        // Add series resistance of 2 ohms to diode
+        Diode d1;
+        auto settings = d1.settings();
+        settings.R = 2;
+        d1.setDiodeSettings(settings);
+        d.setGroundType(Pin::gt_always);
+
+        circuit.addPin(&d);
+        circuit.setElementPinMapping(&vs, {&a});
+        circuit.setElementPinMapping(&d1, {&b, &d1.internalPin(), &c});
+        QCOMPARE(circuit.identifyGround(circuit.pinList()), 1);
+        circuit.init();
+
+        QVERIFY(circuit.containsNonLinear());
+        QCOMPARE(circuit.elementSet()->cbranchCount(), 1);
+        QCOMPARE(circuit.elementSet()->cnodeCount(), 2);
+
+        QVERIFY(circuit.assignEquationIds());
+        circuit.createMatrixMap();
+        circuit.addInitialDc();
+        circuit.doNonLogic();
+
+        const double Is = d1.settings().I_S;
+        const double n = d1.settings().N;
+        const double R = d1.settings().R;
+        const double Vs = vs.voltage();
+        const double nVT = n*V_T;
+        const double I = nVT/R*lambert(Is*R/nVT*std::exp(Vs/nVT));
+        const double Vr = I*R;
+        const double Vd = Vs-Vr;
+        QCOMPARE(a.voltage(), 5.0);
+        QCOMPARE(b.voltage(), 5.0);
+        QCOMPARE_TOL(d1.internalPin().voltage(), Vd, 0.05);
+        bool solved = circuit.calculateCurrents();
+        qDebug() << "I" << I << "I1" << w1.current();
+        QCOMPARE_TOL(w1.current(), I, 0.001);
+        QCOMPARE_TOL(w2.current(), I, 0.001);
+        QVERIFY(solved);
+    }
 
     void measurementsTest1()
     {
