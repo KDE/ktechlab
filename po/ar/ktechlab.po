@@ -1,13 +1,13 @@
 # Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the ktechlab package.
-# SPDX-FileCopyrightText: 2025, 2026 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2025-2026 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-10-25 00:53+0000\n"
-"PO-Revision-Date: 2026-09-30 19:23+0400\n"
+"PO-Revision-Date: 2026-10-31 20:03+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Lokalize 25.12.3\n"
+"X-Generator: Lokalize 26.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1835,15 +1835,14 @@ msgid "Voltage Signal"
 msgstr "إشارة الجهد"
 
 #: src/electronics/components/ecvoltagesignal.cpp:49
-#, fuzzy, kde-format
-#| msgid "Signal Lamp"
+#, kde-format
 msgid "Signal Type"
-msgstr "مصباح الإشارة"
+msgstr "نوع الإشارة"
 
 #: src/electronics/components/ecvoltagesignal.cpp:61
 #, kde-format
 msgid "Phase"
-msgstr ""
+msgstr "الطور"
 
 #: src/electronics/components/ecvoltagesignal.cpp:68
 #, kde-format
@@ -1851,10 +1850,9 @@ msgid "Voltage Range"
 msgstr "نطاق الجهد"
 
 #: src/electronics/components/ecvoltagesignal.cpp:75
-#, fuzzy, kde-format
-#| msgid "Voltage Out"
+#, kde-format
 msgid "Voltage Offset"
-msgstr "الجهد الخارج"
+msgstr "إزاحة الجهد"
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox4)
 #: src/electronics/components/ecvoltagesignal.cpp:85 src/gui/logicwidget.ui:142
@@ -2001,10 +1999,9 @@ msgid "Maximum Value"
 msgstr "القيمة القصوى"
 
 #: src/electronics/components/meter.cpp:48
-#, fuzzy, kde-format
-#| msgid "Examples"
+#, kde-format
 msgid "Samples"
-msgstr "أمثلة"
+msgstr "العينات"
 
 #: src/electronics/components/meter.cpp:158
 #, kde-format
@@ -2026,33 +2023,31 @@ msgstr "مقياس التيار الكهربائي"
 #: src/electronics/components/meter.cpp:261
 #, kde-format
 msgid "Mode"
-msgstr ""
+msgstr "الوضع"
 
 #: src/electronics/components/meter.cpp:204
 #: src/electronics/components/meter.cpp:263
-#, fuzzy, kde-format
-#| msgid "ADC"
+#, kde-format
 msgid "DC"
-msgstr "ADC محوّل تناظري-رقمي"
+msgstr "DC"
 
 #: src/electronics/components/meter.cpp:205
 #: src/electronics/components/meter.cpp:264
-#, fuzzy, kde-format
-#| msgid "ADC"
+#, kde-format
 msgid "AC"
-msgstr "ADC محوّل تناظري-رقمي"
+msgstr "AC"
 
 #: src/electronics/components/meter.cpp:206
 #: src/electronics/components/meter.cpp:265
 #, kde-format
 msgid "MAX"
-msgstr ""
+msgstr "الأقصى"
 
 #: src/electronics/components/meter.cpp:207
 #: src/electronics/components/meter.cpp:266
 #, kde-format
 msgid "MIN"
-msgstr ""
+msgstr "الأدنى"
 
 #: src/electronics/components/meter.cpp:251
 #: src/electronics/components/meter.cpp:257
@@ -2518,24 +2513,22 @@ msgstr "مجهول"
 #: src/electronics/simulation/elementsignal.cpp:22
 #, kde-format
 msgid "Sinusoidal"
-msgstr ""
+msgstr "جيبي"
 
 #: src/electronics/simulation/elementsignal.cpp:24
 #, kde-format
 msgid "Sawtooth"
-msgstr ""
+msgstr "منشاري"
 
 #: src/electronics/simulation/elementsignal.cpp:25
-#, fuzzy, kde-format
-#| msgid "Reverse Beta"
+#, kde-format
 msgid "Reverse Sawtooth"
-msgstr "بيتا العكسي"
+msgstr "منشاري معكوس"
 
 #: src/electronics/simulation/elementsignal.cpp:26
-#, fuzzy, kde-format
-#| msgid "Rectangular"
+#, kde-format
 msgid "Triangular"
-msgstr "مستطيل"
+msgstr "مثلثي"
 
 #: src/electronics/subcircuits.cpp:110
 #, kde-format
@@ -3938,16 +3931,14 @@ msgid "Project Name:"
 msgstr "اسم المشروع:"
 
 #: src/gui/oscilloscope.cpp:180
-#, fuzzy, kde-format
-#| msgid "Pause Simulation"
+#, kde-format
 msgid "Pause simulation"
-msgstr "أوقِف المحاكاة مؤقتًا"
+msgstr "ألبث المحاكاة"
 
 #: src/gui/oscilloscope.cpp:183
-#, fuzzy, kde-format
-#| msgid "Run Simulation"
+#, kde-format
 msgid "Run simulation"
-msgstr "شغل المحاكاة"
+msgstr "شغّل المحاكاة"
 
 #: src/gui/oscilloscope.cpp:374
 #, kde-format
