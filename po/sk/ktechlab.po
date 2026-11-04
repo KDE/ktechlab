@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sk\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-25 00:53+0000\n"
+"POT-Creation-Date: 2026-11-04 01:06+0000\n"
 "PO-Revision-Date: 2026-04-13 12:00+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
@@ -1348,6 +1348,25 @@ msgstr "Kondenzátor"
 msgid "Capacitance"
 msgstr "Capacitance"
 
+#: src/electronics/components/capacitor.cpp:48
+#: src/electronics/components/inductor.cpp:47
+#, fuzzy, kde-format
+#| msgid "Output Method"
+msgid "Method"
+msgstr "Výstupná metóda"
+
+#: src/electronics/components/capacitor.cpp:50
+#: src/electronics/components/inductor.cpp:49
+#, kde-format
+msgid "Euler"
+msgstr ""
+
+#: src/electronics/components/capacitor.cpp:51
+#: src/electronics/components/inductor.cpp:50
+#, kde-format
+msgid "Trapezoidal"
+msgstr ""
+
 #: src/electronics/components/demultiplexer.cpp:27
 #: src/electronics/components/demultiplexer.cpp:38
 #, kde-format
@@ -1606,6 +1625,12 @@ msgstr "Emission Coefficient"
 #, kde-format
 msgid "Breakdown Voltage"
 msgstr "Breakdown Voltage"
+
+#: src/electronics/components/ecdiode.cpp:67
+#, fuzzy, kde-format
+#| msgid "Resistance"
+msgid "Series Resistance"
+msgstr "Odpor"
 
 #: src/electronics/components/ecfixedvoltage.cpp:26
 #: src/electronics/components/ecfixedvoltage.cpp:32
@@ -5740,9 +5765,6 @@ msgstr "Otvoriť dokument"
 
 #~ msgid "Pin Map Definitions"
 #~ msgstr "Definícia mapy pinov"
-
-#~ msgid "Output Method"
-#~ msgstr "Výstupná metóda"
 
 #~ msgid "Output File Options"
 #~ msgstr "Voľby výstupného súboru"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab 0.3.7\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-25 00:53+0000\n"
+"POT-Creation-Date: 2026-11-04 01:06+0000\n"
 "PO-Revision-Date: 2013-05-19 18:42+0200\n"
 "Last-Translator: Peter Bojtos <ptr@ulx.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -1430,6 +1430,25 @@ msgstr "Kapacitás"
 msgid "Capacitance"
 msgstr "Kapacitás"
 
+#: src/electronics/components/capacitor.cpp:48
+#: src/electronics/components/inductor.cpp:47
+#, fuzzy, kde-format
+#| msgid "Output Method"
+msgid "Method"
+msgstr "Kimeneti eljárás"
+
+#: src/electronics/components/capacitor.cpp:50
+#: src/electronics/components/inductor.cpp:49
+#, kde-format
+msgid "Euler"
+msgstr ""
+
+#: src/electronics/components/capacitor.cpp:51
+#: src/electronics/components/inductor.cpp:50
+#, kde-format
+msgid "Trapezoidal"
+msgstr ""
+
 #: src/electronics/components/demultiplexer.cpp:27
 #: src/electronics/components/demultiplexer.cpp:38
 #, kde-format
@@ -1689,6 +1708,11 @@ msgstr "Kibocsátási együttható"
 #, kde-format
 msgid "Breakdown Voltage"
 msgstr "Átütési feszültség"
+
+#: src/electronics/components/ecdiode.cpp:67
+#, kde-format
+msgid "Series Resistance"
+msgstr "Soros ellenállás"
 
 #: src/electronics/components/ecfixedvoltage.cpp:26
 #: src/electronics/components/ecfixedvoltage.cpp:32
@@ -5948,9 +5972,6 @@ msgstr "Dokumentum megnyitása"
 #~ msgid "Pin Map Definitions"
 #~ msgstr "Pin térkép meghatározások"
 
-#~ msgid "Output Method"
-#~ msgstr "Kimeneti eljárás"
-
 #~ msgid "Output File Options"
 #~ msgstr "Kimenetei fájl beállítások"
 
@@ -6105,9 +6126,6 @@ msgstr "Dokumentum megnyitása"
 
 #~ msgid "The output is high if and only if all of the inputs are high."
 #~ msgstr "A kimenet magas akkor és csak akkor, ha minden bemenet magas."
-
-#~ msgid "Series Resistance"
-#~ msgstr "Soros ellenállás"
 
 #~ msgid "PIC"
 #~ msgstr "PIC"

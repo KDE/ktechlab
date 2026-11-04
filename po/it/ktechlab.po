@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-25 00:53+0000\n"
+"POT-Creation-Date: 2026-11-04 01:06+0000\n"
 "PO-Revision-Date: 2026-10-26 07:49+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -1368,6 +1368,25 @@ msgstr "Condensatore"
 msgid "Capacitance"
 msgstr "Capacità"
 
+#: src/electronics/components/capacitor.cpp:48
+#: src/electronics/components/inductor.cpp:47
+#, fuzzy, kde-format
+#| msgid "Output Method"
+msgid "Method"
+msgstr "Metodo di output"
+
+#: src/electronics/components/capacitor.cpp:50
+#: src/electronics/components/inductor.cpp:49
+#, kde-format
+msgid "Euler"
+msgstr ""
+
+#: src/electronics/components/capacitor.cpp:51
+#: src/electronics/components/inductor.cpp:50
+#, kde-format
+msgid "Trapezoidal"
+msgstr ""
+
 #: src/electronics/components/demultiplexer.cpp:27
 #: src/electronics/components/demultiplexer.cpp:38
 #, kde-format
@@ -1628,6 +1647,11 @@ msgstr "Coefficiente di emissione"
 #, kde-format
 msgid "Breakdown Voltage"
 msgstr "Tensione di breakdown"
+
+#: src/electronics/components/ecdiode.cpp:67
+#, kde-format
+msgid "Series Resistance"
+msgstr "Resistenze in serie"
 
 #: src/electronics/components/ecfixedvoltage.cpp:26
 #: src/electronics/components/ecfixedvoltage.cpp:32
@@ -5811,9 +5835,6 @@ msgstr "Apri documento"
 #~ msgid "Pin Map Definitions"
 #~ msgstr "Definizioni della mappa dei piedini"
 
-#~ msgid "Output Method"
-#~ msgstr "Metodo di output"
-
 #~ msgid "Output File Options"
 #~ msgstr "Opzioni del file di uscita"
 
@@ -5987,9 +6008,6 @@ msgstr "Apri documento"
 #~ msgstr ""
 #~ "Permette alla corrente di scorrere nella direzione indicata dalla freccia "
 #~ "quando si ha una certa differenza di potenziale ai capi."
-
-#~ msgid "Series Resistance"
-#~ msgstr "Resistenze in serie"
 
 #~ msgid "PIC"
 #~ msgstr "PIC"

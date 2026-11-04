@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-25 00:53+0000\n"
+"POT-Creation-Date: 2026-11-04 01:06+0000\n"
 "PO-Revision-Date: 2026-10-26 08:56+0100\n"
 "Last-Translator: Xavier Besnard <xavier.besnard@kde.org>\n"
 "Language-Team: fr\n"
@@ -1387,6 +1387,25 @@ msgstr "Condensateur"
 msgid "Capacitance"
 msgstr "Capacité"
 
+#: src/electronics/components/capacitor.cpp:48
+#: src/electronics/components/inductor.cpp:47
+#, fuzzy, kde-format
+#| msgid "Output Method"
+msgid "Method"
+msgstr "Methode de sortie"
+
+#: src/electronics/components/capacitor.cpp:50
+#: src/electronics/components/inductor.cpp:49
+#, kde-format
+msgid "Euler"
+msgstr ""
+
+#: src/electronics/components/capacitor.cpp:51
+#: src/electronics/components/inductor.cpp:50
+#, kde-format
+msgid "Trapezoidal"
+msgstr ""
+
 #: src/electronics/components/demultiplexer.cpp:27
 #: src/electronics/components/demultiplexer.cpp:38
 #, kde-format
@@ -1645,6 +1664,11 @@ msgstr "Coefficient d'émission"
 #, kde-format
 msgid "Breakdown Voltage"
 msgstr "Tension de désamorçage"
+
+#: src/electronics/components/ecdiode.cpp:67
+#, kde-format
+msgid "Series Resistance"
+msgstr "Résistance en série"
 
 #: src/electronics/components/ecfixedvoltage.cpp:26
 #: src/electronics/components/ecfixedvoltage.cpp:32
@@ -5855,9 +5879,6 @@ msgstr "Ouvrir un document"
 #~ msgid "Initial Variable Values"
 #~ msgstr "Valeur initiale de la variable"
 
-#~ msgid "Output Method"
-#~ msgstr "Methode de sortie"
-
 #~ msgid "Output File Options"
 #~ msgstr "Options du fichier de sortie"
 
@@ -6095,9 +6116,6 @@ msgstr "Ouvrir un document"
 #~ msgstr ""
 #~ "Permet au courant de circuler dans le sens de la flèche quand une "
 #~ "certaine tension a été atteinte."
-
-#~ msgid "Series Resistance"
-#~ msgstr "Résistance en série"
 
 #~ msgid "PIC"
 #~ msgstr "PIC"

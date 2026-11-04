@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-25 00:53+0000\n"
+"POT-Creation-Date: 2026-11-04 01:06+0000\n"
 "PO-Revision-Date: 2025-01-03 21:16+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
@@ -1339,6 +1339,24 @@ msgstr "Kondensilo"
 msgid "Capacitance"
 msgstr "Kapacitanco"
 
+#: src/electronics/components/capacitor.cpp:48
+#: src/electronics/components/inductor.cpp:47
+#, kde-format
+msgid "Method"
+msgstr ""
+
+#: src/electronics/components/capacitor.cpp:50
+#: src/electronics/components/inductor.cpp:49
+#, kde-format
+msgid "Euler"
+msgstr ""
+
+#: src/electronics/components/capacitor.cpp:51
+#: src/electronics/components/inductor.cpp:50
+#, kde-format
+msgid "Trapezoidal"
+msgstr ""
+
 #: src/electronics/components/demultiplexer.cpp:27
 #: src/electronics/components/demultiplexer.cpp:38
 #, kde-format
@@ -1597,6 +1615,12 @@ msgstr "Emisiokoeficiento"
 #, kde-format
 msgid "Breakdown Voltage"
 msgstr "Rompa Tensio"
+
+#: src/electronics/components/ecdiode.cpp:67
+#, fuzzy, kde-format
+#| msgid "Resistance"
+msgid "Series Resistance"
+msgstr "Rezisto"
 
 #: src/electronics/components/ecfixedvoltage.cpp:26
 #: src/electronics/components/ecfixedvoltage.cpp:32

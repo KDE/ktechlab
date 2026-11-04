@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-10-25 00:53+0000\n"
-"PO-Revision-Date: 2026-10-16 15:00+0300\n"
+"POT-Creation-Date: 2026-11-04 01:06+0000\n"
+"PO-Revision-Date: 2026-11-03 20:27+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1351,6 +1351,24 @@ msgstr "קבל"
 msgid "Capacitance"
 msgstr "קיבול"
 
+#: src/electronics/components/capacitor.cpp:48
+#: src/electronics/components/inductor.cpp:47
+#, kde-format
+msgid "Method"
+msgstr ""
+
+#: src/electronics/components/capacitor.cpp:50
+#: src/electronics/components/inductor.cpp:49
+#, kde-format
+msgid "Euler"
+msgstr ""
+
+#: src/electronics/components/capacitor.cpp:51
+#: src/electronics/components/inductor.cpp:50
+#, kde-format
+msgid "Trapezoidal"
+msgstr ""
+
 #: src/electronics/components/demultiplexer.cpp:27
 #: src/electronics/components/demultiplexer.cpp:38
 #, kde-format
@@ -1609,6 +1627,12 @@ msgstr "מקדם פליטה"
 #, kde-format
 msgid "Breakdown Voltage"
 msgstr "מתח פריצה"
+
+#: src/electronics/components/ecdiode.cpp:67
+#, fuzzy, kde-format
+#| msgid "Resistance"
+msgid "Series Resistance"
+msgstr "התנגדות"
 
 #: src/electronics/components/ecfixedvoltage.cpp:26
 #: src/electronics/components/ecfixedvoltage.cpp:32
@@ -2001,10 +2025,9 @@ msgid "Maximum Value"
 msgstr "ערך מרבי"
 
 #: src/electronics/components/meter.cpp:48
-#, fuzzy, kde-format
-#| msgid "Examples"
+#, kde-format
 msgid "Samples"
-msgstr "דוגמאות"
+msgstr "דגימות"
 
 #: src/electronics/components/meter.cpp:158
 #, kde-format
@@ -2026,33 +2049,31 @@ msgstr "מד זרם"
 #: src/electronics/components/meter.cpp:261
 #, kde-format
 msgid "Mode"
-msgstr ""
+msgstr "מצב"
 
 #: src/electronics/components/meter.cpp:204
 #: src/electronics/components/meter.cpp:263
-#, fuzzy, kde-format
-#| msgid "ADC"
+#, kde-format
 msgid "DC"
-msgstr "ממיר אנלוגי לדיגיטלי (ADC)"
+msgstr "מתח ישיר (DC)"
 
 #: src/electronics/components/meter.cpp:205
 #: src/electronics/components/meter.cpp:264
-#, fuzzy, kde-format
-#| msgid "ADC"
+#, kde-format
 msgid "AC"
-msgstr "ממיר אנלוגי לדיגיטלי (ADC)"
+msgstr "מתח חילופין (AC)"
 
 #: src/electronics/components/meter.cpp:206
 #: src/electronics/components/meter.cpp:265
 #, kde-format
 msgid "MAX"
-msgstr ""
+msgstr "מרבי"
 
 #: src/electronics/components/meter.cpp:207
 #: src/electronics/components/meter.cpp:266
 #, kde-format
 msgid "MIN"
-msgstr ""
+msgstr "מזערי"
 
 #: src/electronics/components/meter.cpp:251
 #: src/electronics/components/meter.cpp:257
