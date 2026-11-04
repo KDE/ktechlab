@@ -234,15 +234,26 @@ void OscilloscopeView::drawTimeCursorLine(QPainter &p)
     // Fetch the time from Oscilloscope and prepare for display.
     int x = mapFromGlobal(QCursor::pos()).x();
     double time = (double(Oscilloscope::self()->scrollTime()) / LOGIC_UPDATE_RATE) + (x / Oscilloscope::self()->pixelsPerSecond());
-    QString timeText = QString::number(time, 'f', 6);
+    uint64_t t = time * LOGIC_UPDATE_RATE;
+    QString timeText = QStringLiteral("Time: %1\n").arg(QString::number(time, 'f', 6));
 
     QFont font = p.font();
     font.setPointSize(10); // Set font size.
     p.setFont(font);
 
     QRect textRect = p.fontMetrics().boundingRect(timeText);
+    int extraLines = 0;
+    for (const auto& [id, probe]: Oscilloscope::self()->m_floatingProbeDataMap.asKeyValueRange()) {
+        auto v = probe->dataAtTime(t);
+        QString probeText = QStringLiteral("%1: %2 %3\n").arg(probe->label(), QString::number(v, 'f', 6), probe->unit());
+        textRect = textRect.united(p.fontMetrics().boundingRect(probeText));
+        timeText += probeText;
+        extraLines += 1;
+    }
+
     textRect.moveCenter(QPoint(m_mouseXPos, 20));
-    textRect.adjust(-2, -2, 2, 2);
+    auto dy = extraLines * textRect.height();
+    textRect.adjust(-2, -2-dy/2+textRect.height()/2, 2, 2+dy/2);
     p.fillRect(textRect.adjusted(-2, -2, 2, 2), Qt::white);
     p.setPen(Qt::black);
     p.drawText(textRect, Qt::AlignCenter, timeText);
@@ -259,8 +270,7 @@ void OscilloscopeView::drawLogicData(QPainter &p)
 {
     const double pixelsPerSecond = Oscilloscope::self()->pixelsPerSecond();
 
-    const LogicProbeDataMap::iterator end = Oscilloscope::self()->m_logicProbeDataMap.end();
-    for (LogicProbeDataMap::iterator it = Oscilloscope::self()->m_logicProbeDataMap.begin(); it != end; ++it) {
+    for (const auto& [id, probe]: Oscilloscope::self()->m_logicProbeDataMap.asKeyValueRange()) {
         // When searching for the next logic value to display, we look along
         // until there is a recorded point which is at least one pixel along
         // If we are zoomed out far, there might be thousands of data points
@@ -270,10 +280,8 @@ void OscilloscopeView::drawLogicData(QPainter &p)
         int64_t deltaAt = 1;
         int totalDeltaAt = 1;
 
-        LogicProbeData *probe = it.value();
-
-        vector<LogicDataPoint> *data = probe->m_data;
-        if (!data->size())
+        const auto& data = probe->data();
+        if (!data.size())
             continue;
 
         const int midHeight = Oscilloscope::self()->probePositioner->probePosition(probe);
@@ -290,10 +298,10 @@ void OscilloscopeView::drawLogicData(QPainter &p)
         const int minTimeStep = int(LOGIC_UPDATE_RATE / pixelsPerSecond);
 
         int64_t at = probe->findPos(timeOffset);
-        const int64_t maxAt = probe->m_data->size();
-        int64_t prevTime = (*data)[at].time;
+        const int64_t maxAt = data.lastIndex();
+        int64_t prevTime = data.at(at).time;
         int prevX = (at > 0) ? 0 : int((prevTime - timeOffset) * (pixelsPerSecond / LOGIC_UPDATE_RATE));
-        bool prevHigh = (*data)[at].value;
+        bool prevHigh = data.at(at).value;
         int prevY = midHeight + int(prevHigh ? -m_halfOutputHeight : +m_halfOutputHeight);
 
         while (at < maxAt) {
@@ -301,14 +309,14 @@ void OscilloscopeView::drawLogicData(QPainter &p)
             int64_t previousAt = at;
             int64_t dAt = deltaAt / totalDeltaAt;
 
-            while ((dAt > 1) && (at < maxAt) && ((int64_t((*data)[at].time) - prevTime) != minTimeStep)) {
+            while ((dAt > 1) && (at < maxAt) && ((int64_t(data.at(at).time) - prevTime) != minTimeStep)) {
                 // Search forwards until we overshoot
-                while (at < maxAt && (int64_t((*data)[at].time) - prevTime) < minTimeStep)
+                while (at < maxAt && (int64_t(data.at(at).time) - prevTime) < minTimeStep)
                     at += dAt;
                 dAt /= 2;
 
                 // Search backwards until we undershoot
-                while ((at < maxAt) && (int64_t((*data)[at].time) - prevTime) > minTimeStep) {
+                while ((at < maxAt) && (int64_t(data.at(at).time) - prevTime) > minTimeStep) {
                     at -= dAt;
                     if (at < 0)
                         at = 0;
@@ -317,7 +325,7 @@ void OscilloscopeView::drawLogicData(QPainter &p)
             }
 
             // Possibly increment the value of at found by one (or more if this is the first go)
-            while ((previousAt == at) || ((at < maxAt) && (int64_t((*data)[at].time) - prevTime) < minTimeStep))
+            while ((previousAt == at) || ((at < maxAt) && (int64_t(data.at(at).time) - prevTime) < minTimeStep))
                 at++;
 
             if (at >= maxAt)
@@ -327,11 +335,11 @@ void OscilloscopeView::drawLogicData(QPainter &p)
             deltaAt += at - previousAt;
             totalDeltaAt++;
 
-            bool nextHigh = (*data)[at].value;
+            bool nextHigh = data.at(at).value;
             if (nextHigh == prevHigh)
                 continue;
 
-            int64_t nextTime = (*data)[at].time;
+            int64_t nextTime = data.at(at).time;
             int nextX = int((nextTime - timeOffset) * (pixelsPerSecond / LOGIC_UPDATE_RATE));
             int nextY = midHeight + int(nextHigh ? -m_halfOutputHeight : +m_halfOutputHeight);
 
@@ -358,14 +366,13 @@ void OscilloscopeView::drawLogicData(QPainter &p)
 
 void OscilloscopeView::drawFloatingData(QPainter &p)
 {
-    const double pixelsPerSecond = Oscilloscope::self()->pixelsPerSecond();
+    const double pixelsPerSecond = Oscilloscope::self()->pixelsPerSecond() / LOGIC_UPDATE_RATE;
+    const int64_t timeOffset = Oscilloscope::self()->scrollTime();
 
-    const FloatingProbeDataMap::iterator end = Oscilloscope::self()->m_floatingProbeDataMap.end();
-    for (FloatingProbeDataMap::iterator it = Oscilloscope::self()->m_floatingProbeDataMap.begin(); it != end; ++it) {
-        FloatingProbeData *probe = it.value();
-        vector<float> *data = probe->m_data;
+    for (const auto& [id, probe]: Oscilloscope::self()->m_floatingProbeDataMap.asKeyValueRange()) {
+        const auto& data = probe->data();
 
-        if (!data->size())
+        if (!data.size())
             continue;
 
         bool logarithmic = probe->scaling() == FloatingProbeData::Logarithmic;
@@ -373,7 +380,6 @@ void OscilloscopeView::drawFloatingData(QPainter &p)
         double sf = m_halfOutputHeight / (logarithmic ? log(probe->upperAbsValue() / lowerAbsValue) : probe->upperAbsValue());
 
         const int midHeight = Oscilloscope::self()->probePositioner->probePosition(probe);
-        const int64_t timeOffset = Oscilloscope::self()->scrollTime();
 
         // Draw the horizontal line indicating the midpoint of our output
         p.setPen(QColor(228, 228, 228));
@@ -383,26 +389,28 @@ void OscilloscopeView::drawFloatingData(QPainter &p)
         p.setPen(probe->color());
 
         int64_t at = probe->findPos(timeOffset);
-        const int64_t atEnd = probe->m_data->size();
+        const int64_t atEnd = data.lastIndex();
         if (at > atEnd)
             at = atEnd;
+        if (at < data.firstIndex())
+            at = data.firstIndex();
         int64_t prevTime = probe->toTime(at);
 
         double v = 0;
         if (at < atEnd) {
-            v = (*data)[(at > 0) ? at : 0];
+            v = data.at(at);
         }
         int prevY = v_to_y;
-        int prevX = int((prevTime - timeOffset) * (pixelsPerSecond / LOGIC_UPDATE_RATE));
+        int prevX = int((prevTime - timeOffset) * pixelsPerSecond);
 
         while (at < atEnd - 1) {
             at++;
 
             uint64_t nextTime = prevTime + uint64_t(LOGIC_UPDATE_RATE * LINEAR_UPDATE_PERIOD);
 
-            double v = (*data)[(at > 0) ? at : 0];
+            double v = data.at(at);
             int nextY = v_to_y;
-            int nextX = int((nextTime - timeOffset) * (pixelsPerSecond / LOGIC_UPDATE_RATE));
+            int nextX = int((nextTime - timeOffset) * pixelsPerSecond);
 
             p.drawLine(prevX, prevY, nextX, nextY);
 

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>492</width>
-    <height>528</height>
+    <height>567</height>
    </rect>
   </property>
   <layout class="QGridLayout">
@@ -23,46 +23,6 @@
    <property name="bottomMargin">
     <number>0</number>
    </property>
-   <item row="11" column="1">
-    <widget class="QComboBox" name="kcfg_NavigationMode">
-     <property name="currentIndex">
-      <number>0</number>
-     </property>
-     <item>
-      <property name="text">
-       <string>Classic</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Horizon</string>
-      </property>
-     </item>
-    </widget>
-   </item>
-   <item row="10" column="1">
-    <widget class="KColorButton" name="kcfg_GridColor">
-     <property name="toolTip">
-      <string>The grid color in the work area.</string>
-     </property>
-     <property name="text">
-      <string>Grid Colour</string>
-     </property>
-    </widget>
-   </item>
-   <item row="12" column="1">
-    <widget class="QSpinBox" name="kcfg_MaxUndo">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="maximum">
-      <number>100000</number>
-     </property>
-    </widget>
-   </item>
    <item row="4" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
@@ -94,49 +54,23 @@
      </property>
     </widget>
    </item>
-   <item row="15" column="1">
-    <spacer name="spacer3">
-     <property name="orientation">
-      <enum>Qt::Orientation::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Policy::Expanding</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="1" column="0" colspan="2">
-    <widget class="QCheckBox" name="kcfg_ShowVoltageBars">
+   <item row="10" column="0">
+    <widget class="QCheckBox" name="kcfg_ShowGrid">
      <property name="text">
-      <string>Show voltage bars &amp;on electronic components</string>
+      <string>Show &amp;grid:</string>
      </property>
     </widget>
    </item>
-   <item row="12" column="0">
-    <widget class="QLabel" name="textLabel1">
-     <property name="toolTip">
-      <string>Maximum undo steps for work area. This does not apply to text documents - that is configurable separately under Configure Editor.</string>
+   <item row="12" column="1">
+    <widget class="QSpinBox" name="kcfg_MaxUndo">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-     <property name="text">
-      <string>Maximum undo steps for work area:</string>
-     </property>
-     <property name="wordWrap">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="2">
-    <widget class="QCheckBox" name="kcfg_ShowVoltageColor">
-     <property name="text">
-      <string>Color the wires to match the voltage</string>
-     </property>
-     <property name="shortcut">
-      <string/>
+     <property name="maximum">
+      <number>100000</number>
      </property>
     </widget>
    </item>
@@ -217,6 +151,49 @@
      </layout>
     </widget>
    </item>
+   <item row="11" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Navigation mode</string>
+     </property>
+    </widget>
+   </item>
+   <item row="15" column="1">
+    <spacer name="spacer3">
+     <property name="orientation">
+      <enum>Qt::Orientation::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Policy::Expanding</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="10" column="1">
+    <widget class="KColorButton" name="kcfg_GridColor">
+     <property name="toolTip">
+      <string>The grid color in the work area.</string>
+     </property>
+     <property name="text">
+      <string>Grid Colour</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QCheckBox" name="kcfg_ReuseSameViewForOutput">
+     <property name="text">
+      <string>Reuse the same output view for code generation</string>
+     </property>
+     <property name="shortcut">
+      <string/>
+     </property>
+    </widget>
+   </item>
    <item row="4" column="0">
     <widget class="QCheckBox" name="kcfg_ShowProbeLabels">
      <property name="text">
@@ -224,10 +201,43 @@
      </property>
     </widget>
    </item>
-   <item row="10" column="0">
-    <widget class="QCheckBox" name="kcfg_ShowGrid">
+   <item row="2" column="0" colspan="2">
+    <widget class="QCheckBox" name="kcfg_ShowVoltageColor">
      <property name="text">
-      <string>Show &amp;grid:</string>
+      <string>Color the wires to match the voltage</string>
+     </property>
+     <property name="shortcut">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="1">
+    <widget class="QComboBox" name="kcfg_NavigationMode">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <item>
+      <property name="text">
+       <string>Classic</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Horizon</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="12" column="0">
+    <widget class="QLabel" name="textLabel1">
+     <property name="toolTip">
+      <string>Maximum undo steps for work area. This does not apply to text documents - that is configurable separately under Configure Editor.</string>
+     </property>
+     <property name="text">
+      <string>Maximum undo steps for work area:</string>
+     </property>
+     <property name="wordWrap">
+      <bool>false</bool>
      </property>
     </widget>
    </item>
@@ -261,20 +271,27 @@
      </layout>
     </widget>
    </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QCheckBox" name="kcfg_ReuseSameViewForOutput">
+   <item row="1" column="0" colspan="2">
+    <widget class="QCheckBox" name="kcfg_ShowVoltageBars">
      <property name="text">
-      <string>Reuse the same output view for code generation</string>
-     </property>
-     <property name="shortcut">
-      <string/>
+      <string>Show voltage bars &amp;on electronic components</string>
      </property>
     </widget>
    </item>
-   <item row="11" column="0">
-    <widget class="QLabel" name="label">
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>Navigation mode</string>
+      <string>Scope probe buffer size (in KB)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QSpinBox" name="kcfg_ScopeBufferSize">
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>102400</number>
      </property>
     </widget>
    </item>

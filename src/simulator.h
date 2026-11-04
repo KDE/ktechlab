@@ -214,9 +214,12 @@ public Q_SLOTS:
      * @see isSimulating
      */
     void slotSetSimulating(bool simulate);
+    /**
+     * Execute a simulation step
+     */
+    void step();
 
 private Q_SLOTS:
-    void step();
     void printTimingStatistics();
 
 private:

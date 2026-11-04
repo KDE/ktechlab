@@ -24,8 +24,9 @@ class Simulator;
 */
 class Probe : public Component
 {
+    Q_OBJECT
 public:
-    Probe(ICNDocument *icnDocument, bool newItem, const char *id = nullptr);
+    Probe(ICNDocument *icnDocument, bool newItem, const char *id=nullptr, const QString& unit=QStringLiteral(""));
     ~Probe() override;
 
 protected:
@@ -34,6 +35,7 @@ protected:
     ProbeData *p_probeData; // As obtained via registering with the oscilloscope
     QColor m_color;
     QString m_label;
+    QString m_unit;
 };
 
 /**
@@ -41,8 +43,9 @@ protected:
  */
 class FloatingProbe : public Probe
 {
+    Q_OBJECT
 public:
-    FloatingProbe(ICNDocument *icnDocument, bool newItem, const char *id = nullptr);
+    FloatingProbe(ICNDocument *icnDocument, bool newItem, const char *id=nullptr, const QString& unit=QStringLiteral(""));
     ~FloatingProbe() override;
 
     bool doesStepNonLogic() const override
@@ -62,6 +65,7 @@ protected:
  */
 class VoltageProbe : public FloatingProbe
 {
+    Q_OBJECT
 public:
     VoltageProbe(ICNDocument *icnDocument, bool newItem, const char *id = nullptr);
     ~VoltageProbe() override;
@@ -81,6 +85,7 @@ protected:
  */
 class CurrentProbe : public FloatingProbe
 {
+    Q_OBJECT
 public:
     CurrentProbe(ICNDocument *icnDocument, bool newItem, const char *id = nullptr);
     ~CurrentProbe() override;
@@ -97,8 +102,9 @@ protected:
 /**
 @author David Saxton
  */
-class LogicProbe : public CallbackClass, public Probe
+class LogicProbe : public Probe, public CallbackClass
 {
+    Q_OBJECT
 public:
     LogicProbe(ICNDocument *icnDocument, bool newItem, const char *id = nullptr);
     ~LogicProbe() override;

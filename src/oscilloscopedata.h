@@ -12,25 +12,8 @@
 #define OSCILLOSCOPEDATA_H
 
 #include <QColor>
+#include <QContiguousCache>
 #include <QObject>
-#include <stdint.h>
-#include <vector>
-
-#define DATA_CHUNK_SIZE (8192 / sizeof(T))
-
-/*
-#define DATA_CHUNK_ARRAY_SIZE ((8192-sizeof(uint32_t))/sizeof(DataChunk<T>*))
-
-// Allow a minimum of 64 megabytes of stored data (67108864 bytes)
-/// \todo The maximum allowed amount of stored data should be configurable or
-/// more intelligent (e.g. taking into account the number of probes or the
-/// amount of physical memory on the system).
-#define DCARRAY_ARRAY_SIZE ((67108864/(8192*DATA_CHUNK_ARRAY_SIZE))+1)
-*/
-
-/** max number of samples that a probe can hold */
-#define MAX_PROBE_DATA_SIZE (1 * 1024 * 1024)
-// TODO ^ should be configurable
 
 /**
 For use in LogicProbe: Every time the input changes state, the new input state
@@ -39,12 +22,7 @@ is recorded in value, along with the simulator time that it occurs at.
 class LogicDataPoint
 {
 public:
-    LogicDataPoint()
-        : value(0)
-        , time(0)
-    {
-    }
-    LogicDataPoint(bool v, uint64_t t)
+    LogicDataPoint(bool v = false, uint64_t t = 0)
         : value(v)
         , time(t)
     {
@@ -61,7 +39,7 @@ class ProbeData : public QObject
 {
     Q_OBJECT
 public:
-    ProbeData(int id);
+    ProbeData(int id, uint64_t time);
     ~ProbeData() override;
 
     /**
@@ -92,7 +70,7 @@ public:
      * Set the colour that is used to display the probe in the oscilloscope.
      * Default is black.
      */
-    void setColor(QColor color);
+    void setColor(const QColor &color);
     /**
      * @returns the colour that is used to display the probe in the oscilloscope
      */
@@ -114,6 +92,19 @@ public:
         return m_label;
     }
 
+    /**
+     * Set the units for the trace in the oscilloscope.
+     */
+    void setUnit(const QString &unit);
+
+    /**
+     * @returns the units for the trace in the oscilloscope
+     */
+    const QString& unit() const
+    {
+        return m_unit;
+    }
+
     // 		/**
     // 		 * Will not record any data when paused
     // 		 */
@@ -126,11 +117,17 @@ public:
     {
         return m_resetTime;
     }
+
     /**
-     * Erases all recorded data, and sets m_resetTime to the current
-     * simulator time.
+     * Erases all recorded data, and sets the probe resetTime to the provided time
      */
-    virtual void eraseData() = 0;
+    virtual void eraseData(uint64_t time) = 0;
+
+    /**
+     * Set the buffer capacity.
+     */
+    virtual void setCapacity(uint n) = 0;
+
     /**
      * Searches for and returns the position of the last DataPoint that was
      * added before or at the given Simulator time. If no DataPoints were
@@ -153,6 +150,7 @@ protected:
     uint64_t m_resetTime;
     QColor m_color;
     QString m_label;
+    QString m_unit = QStringLiteral("");
 };
 
 /**
@@ -160,31 +158,48 @@ protected:
 */
 class LogicProbeData : public ProbeData
 {
+    Q_OBJECT
 public:
-    LogicProbeData(int id);
-    ~LogicProbeData() override
-    {
-        delete m_data;
-    }
+    LogicProbeData(int id, uint capacity, uint64_t time);
 
     /**
      * Appends the data point to the set of data.
+     * If data points exceeds the capacity the oldest points are discarded.
      */
-    void addDataPoint(LogicDataPoint data); /* {
-       m_data->push_back(data);
-   } */                                     // 2016.05.06 - moved to cpp
+    void addDataPoint(LogicDataPoint data)
+    {
+       m_data.append(data);
+    }
 
-    void eraseData() override;
+    void eraseData(uint64_t time) override;
     uint64_t findPos(uint64_t time) const override;
+
+    void setCapacity(uint n) override
+    {
+        m_data.setCapacity(n);
+    }
 
     bool isEmpty() const
     {
-        return m_data->size() == 0;
+        return m_data.size() == 0;
+    }
+
+    const QContiguousCache<LogicDataPoint>& data() const
+    {
+        return m_data;
+    }
+
+    /**
+     * Retrieve the data point closest to the given time.
+     * This is expensive and should only be used for single point queries
+     */
+    LogicDataPoint dataAtTime(uint64_t time) const
+    {
+        return m_data.at(findPos(time));
     }
 
 protected:
-    std::vector<LogicDataPoint> *m_data;
-    friend class OscilloscopeView;
+    QContiguousCache<LogicDataPoint> m_data;
 };
 
 /**
@@ -192,15 +207,20 @@ protected:
 */
 class FloatingProbeData : public ProbeData
 {
+    Q_OBJECT
 public:
     enum Scaling { Linear, Logarithmic };
 
-    FloatingProbeData(int id);
+    FloatingProbeData(int id, uint capacity, uint64_t time, double timePerStep);
 
     /**
      * Appends the data point to the set of data.
+     * If data points exceeds the size the oldest points are discarded.
      */
-    void addDataPoint(float data); // { m_data->push_back(data); } // 2016.05.06 - moved to cpp
+    void addDataPoint(float data)
+    {
+        m_data.append(data);
+    }
     /**
      * Converts the insert position to a Simulator time.
      */
@@ -241,20 +261,40 @@ public:
         return m_lowerAbsValue;
     }
 
-    void eraseData() override;
+    void eraseData(uint64_t time) override;
     uint64_t findPos(uint64_t time) const override;
+
+    void setCapacity(uint n) override
+    {
+        m_data.setCapacity(n);
+    }
 
     bool isEmpty() const
     {
-        return m_data->size() == 0;
+        return m_data.size() == 0;
+    }
+
+    const QContiguousCache<float>& data() const
+    {
+        return m_data;
+    }
+
+    /**
+     * Retrieve the data point closest to the given time.
+     * This is expensive and should only be used for single point queries
+     */
+    double dataAtTime(uint64_t time) const
+    {
+        return m_data.at(findPos(time));
     }
 
 protected:
     Scaling m_scaling;
+    double m_posFromTime; // Factor to convert a time to an index
+    double m_timeFromPos; // Factor to convert an index to a time
     double m_upperAbsValue;
     double m_lowerAbsValue;
-    std::vector<float> *m_data;
-    friend class OscilloscopeView;
+    QContiguousCache<float> m_data;
 };
 
 #endif

@@ -110,9 +110,6 @@ long long Simulator::time() const
 
 void Simulator::step()
 {
-    if (!m_bIsSimulating)
-        return;
-
     QElapsedTimer execTimer;
     execTimer.start();
 

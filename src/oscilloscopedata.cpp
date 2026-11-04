@@ -14,10 +14,10 @@
 using namespace std;
 
 // BEGIN class ProbeData
-ProbeData::ProbeData(int id)
+ProbeData::ProbeData(int id, uint64_t time)
     : m_id(id)
     , m_drawPosition(0.5)
-    , m_resetTime(Simulator::self()->time())
+    , m_resetTime(time)
     , m_color(Qt::black)
     , m_label("")
 {
@@ -28,7 +28,7 @@ ProbeData::~ProbeData()
     unregisterProbe(m_id);
 }
 
-void ProbeData::setColor(QColor color)
+void ProbeData::setColor(const QColor& color)
 {
     m_color = color;
     Q_EMIT displayAttributeChanged();
@@ -40,36 +40,36 @@ void ProbeData::setLabel(const QString &label)
     Q_EMIT displayAttributeChanged();
 }
 
+void ProbeData::setUnit(const QString &unit)
+{
+    if (m_unit == unit)
+        return;
+    m_unit = unit;
+    Q_EMIT displayAttributeChanged();
+}
+
 // END class ProbeData
 
 // BEGIN class LogicProbeData
-LogicProbeData::LogicProbeData(int id)
-    : ProbeData(id)
+LogicProbeData::LogicProbeData(int id, uint capacity, uint64_t time)
+    : ProbeData(id, time)
+    , m_data(capacity)
 {
-    m_data = new vector<LogicDataPoint>;
 }
 
-void LogicProbeData::addDataPoint(LogicDataPoint data)
-{
-    if (m_data->size() < MAX_PROBE_DATA_SIZE) {
-        m_data->push_back(data);
-    }
-}
-
-void LogicProbeData::eraseData()
+void LogicProbeData::eraseData(uint64_t time)
 {
     bool lastValue = false;
     bool hasLastValue = false;
 
-    if (!m_data->empty()) {
-        lastValue = m_data->back().value;
+    if (!m_data.isEmpty()) {
+        lastValue = m_data.last().value;
         hasLastValue = true;
     }
 
-    delete m_data;
-    m_data = new vector<LogicDataPoint>;
+    m_data.clear();
 
-    m_resetTime = Simulator::self()->time();
+    m_resetTime = time;
 
     if (hasLastValue)
         addDataPoint(LogicDataPoint(lastValue, m_resetTime));
@@ -77,19 +77,19 @@ void LogicProbeData::eraseData()
 
 uint64_t LogicProbeData::findPos(uint64_t time) const
 {
-    unsigned int pos = m_data->size();
-    if (!time || !pos)
-        return 0;
-
+    uint64_t pos = m_data.size();
+    if (time <= m_resetTime || !pos)
+        return m_data.firstIndex();
     // binary search
 
     // TODO: test and debug this code.
-    unsigned int top = pos;
+    uint64_t start_offset = m_data.firstIndex();
+    uint64_t top = pos;
     pos >>= 1;
-    unsigned int bottom = 0;
+    uint64_t bottom = 0;
 
     do {
-        uint64_t datatime = (*m_data)[pos].time;
+        uint64_t datatime = m_data.at(pos+start_offset).time;
         if (datatime == time)
             return pos;
 
@@ -110,54 +110,41 @@ uint64_t LogicProbeData::findPos(uint64_t time) const
 
     } while (top != bottom && pos != bottom);
 
-    return pos;
+    return pos + start_offset;
 }
 // END class LogicProbeData
 
 // BEGIN class FloatingProbeData
-FloatingProbeData::FloatingProbeData(int id)
-    : ProbeData(id)
+FloatingProbeData::FloatingProbeData(int id, uint capacity, uint64_t time, double timePerStep)
+    : ProbeData(id, time)
+    , m_posFromTime(1./timePerStep)
+    , m_timeFromPos(timePerStep)
+    , m_data(capacity)
 {
-    m_data = new vector<float>;
     m_scaling = Linear;
     m_upperAbsValue = 10.0;
     m_lowerAbsValue = 0.1;
 }
 
-void FloatingProbeData::addDataPoint(float data)
+void FloatingProbeData::eraseData(uint64_t time)
 {
-    if (m_data->size() < MAX_PROBE_DATA_SIZE) {
-        m_data->push_back(data);
-    }
-}
-
-void FloatingProbeData::eraseData()
-{
-    delete m_data;
-    m_data = new vector<float>;
-
-    m_resetTime = Simulator::self()->time();
+    m_data.clear();
+    m_resetTime = time;
 }
 
 uint64_t FloatingProbeData::findPos(uint64_t time) const
 {
-    if (time <= 0 || uint64_t(time) <= m_resetTime)
-        return 0;
+    if (time <= m_resetTime)
+        return m_data.firstIndex();
 
-    uint64_t at = uint64_t((time - m_resetTime) * double(LINEAR_UPDATE_RATE) / double(LOGIC_UPDATE_RATE));
-
-    if (m_data->size() <= at) { // index is out of bound
-        if (at > 0) {
-            --at;
-        }
-    }
-
-    return at;
+    uint64_t at =  uint64_t(time - m_resetTime) * m_posFromTime;
+    uint64_t maxAt = m_data.lastIndex();
+    return std::min(at, maxAt);
 }
 
 uint64_t FloatingProbeData::toTime(uint64_t at) const
 {
-    return uint64_t(m_resetTime + (at * LOGIC_UPDATE_RATE * LINEAR_UPDATE_PERIOD));
+    return uint64_t(m_resetTime + (at * m_timeFromPos));
 }
 
 void FloatingProbeData::setScaling(Scaling scaling)

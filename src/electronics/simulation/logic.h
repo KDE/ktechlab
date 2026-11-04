@@ -34,6 +34,7 @@ public:
     float lowImpedance;   ///< Output impedance when low
 };
 
+// This should be inherited second to avoid breaking qobject_cast
 class CallbackClass
 {
 };

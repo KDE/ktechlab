@@ -167,6 +167,12 @@ void Oscilloscope::slotUpdateConfiguration()
     probePositioner->setShowLabels(KTLConfig::showProbeLabels());
     probePositioner->setLabelMaxCharacters(KTLConfig::probeLabelMaxCharacters());
     m_updateTimer.setInterval(int(1000 / KTLConfig::refreshRate()));
+
+    auto bufSize = KTLConfig::scopeBufferSize() * 1024;
+    for (const auto& [id, probe]: m_floatingProbeDataMap.asKeyValueRange())
+        probe->setCapacity(bufSize);
+    for (const auto& [id, probe]: m_logicProbeDataMap.asKeyValueRange())
+        probe->setCapacity(bufSize);
 }
 
 void Oscilloscope::slotZoomDialChanged(int value)
@@ -194,12 +200,11 @@ ProbeData *Oscilloscope::registerProbe(Probe *probe)
     const uint id = m_nextId++;
 
     ProbeData *probeData = nullptr;
-
-    if (dynamic_cast<LogicProbe *>(probe)) {
-        probeData = new LogicProbeData(id);
+    if (qobject_cast<LogicProbe *>(probe)) {
+        probeData = new LogicProbeData(id, KTLConfig::scopeBufferSize()*1024, m_pSimulator->time());
         m_logicProbeDataMap[id] = static_cast<LogicProbeData *>(probeData);
     } else {
-        probeData = new FloatingProbeData(id);
+        probeData = new FloatingProbeData(id, KTLConfig::scopeBufferSize()*1024, m_pSimulator->time(), LOGIC_UPDATE_PER_STEP);
         m_floatingProbeDataMap[id] = static_cast<FloatingProbeData *>(probeData);
     }
 
@@ -292,9 +297,9 @@ void Oscilloscope::getOldestProbe()
 
 void Oscilloscope::reset()
 {
-    const ProbeDataMap::iterator end = m_probeDataMap.end();
-    for (ProbeDataMap::iterator it = m_probeDataMap.begin(); it != end; ++it)
-        (*it)->eraseData();
+    const auto t = Simulator::self()->time();
+    for (ProbeData* data: std::as_const(m_probeDataMap))
+        data->eraseData(t);
 
     oscilloscopeView->updateView();
 }

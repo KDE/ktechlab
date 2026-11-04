@@ -23,8 +23,9 @@
 #include <QPainterPath>
 
 // BEGIN class Probe
-Probe::Probe(ICNDocument *icnDocument, bool newItem, const char *id)
+Probe::Probe(ICNDocument *icnDocument, bool newItem, const char *id, const QString& unit)
     : Component(icnDocument, newItem, id)
+    , m_unit(unit)
 {
     p_probeData = nullptr;
     setSize(-16, -8, 32, 16);
@@ -49,14 +50,15 @@ void Probe::dataChanged()
     {
         p_probeData->setColor(m_color);
         p_probeData->setLabel(m_label);
+        p_probeData->setUnit(m_unit);
     }
     setChanged();
 }
 // END class Probe
 
 // BEGIN class FloatingProbe
-FloatingProbe::FloatingProbe(ICNDocument *icnDocument, bool newItem, const char *id)
-    : Probe(icnDocument, newItem, id)
+FloatingProbe::FloatingProbe(ICNDocument *icnDocument, bool newItem, const char *id, const QString& unit)
+    : Probe(icnDocument, newItem, id, unit)
 {
     p_probeData = m_pFloatingProbeData = static_cast<FloatingProbeData *>(registerProbe(this));
     property("color")->setValue(p_probeData->color());
@@ -75,14 +77,14 @@ FloatingProbe::FloatingProbe(ICNDocument *icnDocument, bool newItem, const char 
     property("upper_abs_value")->setCaption(i18n("Upper Absolute Value"));
     property("upper_abs_value")->setValue(10.0);
     property("upper_abs_value")->setMinValue(0.0);
-    property("upper_abs_value")->setUnit("V");
+    property("upper_abs_value")->setUnit(m_unit);
     property("upper_abs_value")->setAdvanced(true);
 
     createProperty("lower_abs_value", Variant::Type::Double);
     property("lower_abs_value")->setCaption(i18n("Lower Absolute Value"));
     property("lower_abs_value")->setValue(0.1);
     property("lower_abs_value")->setMinValue(0.0);
-    property("lower_abs_value")->setUnit("V");
+    property("lower_abs_value")->setUnit(m_unit);
     property("lower_abs_value")->setAdvanced(true);
 }
 
@@ -143,7 +145,7 @@ LibraryItem *VoltageProbe::libraryItem()
 }
 
 VoltageProbe::VoltageProbe(ICNDocument *icnDocument, bool newItem, const char *id)
-    : FloatingProbe(icnDocument, newItem, id ? id : "voltageprobe")
+    : FloatingProbe(icnDocument, newItem, id ? id : "voltageprobe", QStringLiteral("V"))
 {
     m_name = i18n("Voltage Probe");
 
@@ -175,7 +177,7 @@ LibraryItem *CurrentProbe::libraryItem()
 }
 
 CurrentProbe::CurrentProbe(ICNDocument *icnDocument, bool newItem, const char *id)
-    : FloatingProbe(icnDocument, newItem, id ? id : "currentprobe")
+    : FloatingProbe(icnDocument, newItem, id ? id : "currentprobe", QStringLiteral("A"))
 {
     m_name = i18n("Current Probe");
 

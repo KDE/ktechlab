@@ -38,6 +38,10 @@
 			<label>Maximum number of characters shown Oscilloscope probe labels</label>
 			<default>5</default>
 		</entry>
+		<entry name="ScopeBufferSize" type="UInt">
+			<label>Maximum number of samples to retain for each Oscilloscope probe (in KB)</label>
+			<default>1024</default>
+		</entry>
 		<entry name="AnimateWires" type="Bool">
 			<label>Animate Wires (current or power)</label>
 			<default>false</default>
