@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-04 01:06+0000\n"
-"PO-Revision-Date: 2026-10-25 07:45+0200\n"
+"PO-Revision-Date: 2026-11-04 07:45+0200\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -1374,19 +1374,19 @@ msgstr "Ёмкость"
 #: src/electronics/components/inductor.cpp:47
 #, kde-format
 msgid "Method"
-msgstr ""
+msgstr "Метод"
 
 #: src/electronics/components/capacitor.cpp:50
 #: src/electronics/components/inductor.cpp:49
 #, kde-format
 msgid "Euler"
-msgstr ""
+msgstr "Эйлера"
 
 #: src/electronics/components/capacitor.cpp:51
 #: src/electronics/components/inductor.cpp:50
 #, kde-format
 msgid "Trapezoidal"
-msgstr ""
+msgstr "Трапеций"
 
 #: src/electronics/components/demultiplexer.cpp:27
 #: src/electronics/components/demultiplexer.cpp:38
@@ -1648,10 +1648,9 @@ msgid "Breakdown Voltage"
 msgstr "Пробивное напряжение"
 
 #: src/electronics/components/ecdiode.cpp:67
-#, fuzzy, kde-format
-#| msgid "Resistance"
+#, kde-format
 msgid "Series Resistance"
-msgstr "Сопротивление"
+msgstr "Последовательное сопротивление"
 
 #: src/electronics/components/ecfixedvoltage.cpp:26
 #: src/electronics/components/ecfixedvoltage.cpp:32

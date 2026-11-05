@@ -1343,7 +1343,7 @@ msgstr "Kapacitance"
 #: src/electronics/components/inductor.cpp:47
 #, kde-format
 msgid "Method"
-msgstr ""
+msgstr "Metoda"
 
 #: src/electronics/components/capacitor.cpp:50
 #: src/electronics/components/inductor.cpp:49

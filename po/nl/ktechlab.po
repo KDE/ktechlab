@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-04 01:06+0000\n"
-"PO-Revision-Date: 2026-10-25 17:10+0100\n"
-"Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
+"PO-Revision-Date: 2026-11-04 11:59+0100\n"
+"Last-Translator: freek <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 26.08.2\n"
+"X-Generator: Lokalize 26.04.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -1364,22 +1364,21 @@ msgstr "Capaciteit"
 
 #: src/electronics/components/capacitor.cpp:48
 #: src/electronics/components/inductor.cpp:47
-#, fuzzy, kde-format
-#| msgid "Output Method"
+#, kde-format
 msgid "Method"
-msgstr "Uitvoer methode"
+msgstr "Methode"
 
 #: src/electronics/components/capacitor.cpp:50
 #: src/electronics/components/inductor.cpp:49
 #, kde-format
 msgid "Euler"
-msgstr ""
+msgstr "Euler"
 
 #: src/electronics/components/capacitor.cpp:51
 #: src/electronics/components/inductor.cpp:50
 #, kde-format
 msgid "Trapezoidal"
-msgstr ""
+msgstr "Trapezoidaal"
 
 #: src/electronics/components/demultiplexer.cpp:27
 #: src/electronics/components/demultiplexer.cpp:38
@@ -1641,10 +1640,9 @@ msgid "Breakdown Voltage"
 msgstr "Doorslagspanning"
 
 #: src/electronics/components/ecdiode.cpp:67
-#, fuzzy, kde-format
-#| msgid "Resistance"
+#, kde-format
 msgid "Series Resistance"
-msgstr "Weerstand"
+msgstr "Weerstandsreeks"
 
 #: src/electronics/components/ecfixedvoltage.cpp:26
 #: src/electronics/components/ecfixedvoltage.cpp:32

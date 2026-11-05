@@ -1666,7 +1666,8 @@ msgid "Breakdown Voltage"
 msgstr "Tension de désamorçage"
 
 #: src/electronics/components/ecdiode.cpp:67
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Series Resistance"
 msgid "Series Resistance"
 msgstr "Résistance en série"
 
