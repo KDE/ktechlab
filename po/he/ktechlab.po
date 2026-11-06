@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-04 01:06+0000\n"
-"PO-Revision-Date: 2026-11-03 20:27+0200\n"
+"PO-Revision-Date: 2026-11-05 13:01+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1355,13 +1355,13 @@ msgstr "קיבול"
 #: src/electronics/components/inductor.cpp:47
 #, kde-format
 msgid "Method"
-msgstr ""
+msgstr "שיטה"
 
 #: src/electronics/components/capacitor.cpp:50
 #: src/electronics/components/inductor.cpp:49
 #, kde-format
 msgid "Euler"
-msgstr ""
+msgstr "אוילר"
 
 #: src/electronics/components/capacitor.cpp:51
 #: src/electronics/components/inductor.cpp:50
