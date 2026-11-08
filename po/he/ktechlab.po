@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-04 01:06+0000\n"
-"PO-Revision-Date: 2026-11-05 13:01+0200\n"
+"POT-Creation-Date: 2026-11-08 03:00+0000\n"
+"PO-Revision-Date: 2026-11-07 21:41+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -1367,7 +1367,7 @@ msgstr "אוילר"
 #: src/electronics/components/inductor.cpp:50
 #, kde-format
 msgid "Trapezoidal"
-msgstr ""
+msgstr "טרפזי"
 
 #: src/electronics/components/demultiplexer.cpp:27
 #: src/electronics/components/demultiplexer.cpp:38
@@ -1629,10 +1629,9 @@ msgid "Breakdown Voltage"
 msgstr "מתח פריצה"
 
 #: src/electronics/components/ecdiode.cpp:67
-#, fuzzy, kde-format
-#| msgid "Resistance"
+#, kde-format
 msgid "Series Resistance"
-msgstr "התנגדות"
+msgstr "התנגדות טורית"
 
 #: src/electronics/components/ecfixedvoltage.cpp:26
 #: src/electronics/components/ecfixedvoltage.cpp:32
