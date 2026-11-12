@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-08 03:00+0000\n"
-"PO-Revision-Date: 2026-11-04 22:03+0300\n"
+"PO-Revision-Date: 2026-11-10 21:38+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -1060,12 +1060,12 @@ msgstr "Çizgi genişliği"
 #: src/drawparts/dpline.cpp:49 src/drawparts/solidshape.cpp:62
 #, kde-format
 msgid "Line Style"
-msgstr "Çizgi biçemi"
+msgstr "Çizgi stili"
 
 #: src/drawparts/dpline.cpp:54
 #, kde-format
 msgid "Cap Style"
-msgstr "Başlık biçemi"
+msgstr "Başlık stili"
 
 #: src/drawparts/dpline.cpp:142 src/drawparts/dpline.cpp:148
 #: src/itemview.cpp:127
