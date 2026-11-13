@@ -1,0 +1,608 @@
+<!-- kate: tab-width 2; indent-mode xml; -->
+<chapter id="microbe">
+<title
+>&microbe;</title>
+<sect1>
+	<title
+>مقدمة وبناء الجملة العام</title>
+	<para
+>يُجمّع <application
+>ميكروب</application
+> البرامج المكتوبة بلغة مخصصة لوحدات التحكم PIC، كبرنامج مساعد لـ معمل الدوائر. صُمّم بناء الجملة ليتناسب مع برنامج فلو كود. بناء الجملة لتشغيل <command
+>ميكروب</command
+> من سطر الأوامر هو: <programlisting
+>ميكروب [خيارات] [مدخل.ميكروب] [مخرج.asm]</programlisting
+> حيث الخيارات هي: </para>
+		<itemizedlist>
+			<listitem
+><para
+><function
+>--إظهار-المصدر</function
+> - يضع كل سطر من شيفرة مصدر &microbe; كتعليق في مخرجات التجميع قبل تعليمات التجميع الخاصة بذلك السطر.</para
+></listitem>
+			<listitem
+><para
+><function
+>--لا-تحسين</function
+> - يمنع تحسين التعليمات المُنشأة من المصدر. عادةً ما يكون التحسين آمنًا، لذا يُستخدم هذا الخيار أساسًا للتنقيح.</para
+></listitem>
+		</itemizedlist>
+		
+	<para
+>يجب أن يُحدد ملف الإدخال .ميكروب وحدة التحكم PIC المستهدفة بإدراج اسم PIC في أعلى ملف .ميكروب؛ مثلًا اسم PIC16F84 هو "P16F84". <example
+><title
+>برنامج &microbe; كامل بسيط</title>
+			<programlisting role="correct"
+>P16F84
+
+a = 0
+repeat
+{
+        PORTA = a
+        a = a + 1
+}
+until a == 5
+
+end</programlisting>
+			</example>
+		</para>
+
+	<sect2 id="namingconventions">
+		<title
+>اصطلاحات التسمية</title>
+		<para
+>تنطبق القواعد التالية على أسماء المتغيرات والوسوم: <itemizedlist>
+				<listitem
+><para
+>يمكن أن تحتوي فقط على أحرف أبجدية رقمية [أ..ي][A..Z][0..9] والشرطة السفلية "_".</para
+></listitem>
+				<listitem
+><para
+>هي حساسة لحالة الأحرف.</para
+></listitem>
+				<listitem
+><para
+>لا يمكن أن تبدأ برقم.</para
+></listitem>
+				<listitem
+><para
+>لا ينبغي أن تبدأ بـ <quote
+>__</quote
+> (شرطة سفلية مزدوجة)، لأن هذا محجوز لاستخدام المترجم.</para
+></listitem>
+			</itemizedlist>
+		</para>
+	</sect2>
+
+	<sect2 id="bracingconventions">
+		<title
+>اصطلاحات الأقواس</title>
+		<para
+>تشير الأقواس المعقوفة، {}، إلى بداية ونهاية كتلة شيفرة. يمكن أن تظهر في أي مكان قبل بداية وبعد نهاية كتلة الشيفرة. أمثلة على كتل شيفرة مقبولة: <programlisting role="correct"
+>statement1 {
+        some code
+}</programlisting>
+		<programlisting role="correct"
+>statement2 {
+        other code }</programlisting>
+		
+		<programlisting role="correct"
+>statement3
+{
+        other code
+}</programlisting>
+		
+		<programlisting role="correct"
+>statement5 {
+        code block
+} statement6</programlisting>
+			</para>
+		</sect2>
+		<sect2 id="commenting">
+			<title
+>التعليق</title>
+			<para
+>التعليق مشابه للغة C. // يُعلّق على باقي السطر. /* و */ يُشيران إلى تعليق متعدد الأسطر. <programlisting role="correct"
+>// This is a comment
+x = 2 
+/* As is this
+multiline comment */</programlisting>
+		</para>
+	</sect2>
+
+	<sect2 id="structure">
+		<title
+>هيكل البرنامج</title>
+		<para
+>يجب إدراج معرف PIC في أعلى البرنامج. يُشار إلى نهاية البرنامج الرئيس بـ <quote
+>نهاية</quote
+>. يجب وضع الإجراءات الفرعية بعد <quote
+>نهاية</quote
+>. </para>
+	</sect2>
+
+	<sect2 id="subroutines">
+		<title
+>الوظائف الفرعية</title>
+		<para
+>يمكن استدعاء إجراء فرعي من أي مكان في الشيفرة. بناء الجملة: </para>
+		<programlisting role="correct"
+>sub SubName
+{
+        // Code...
+}</programlisting>
+<para
+>يُستدعى الروتين الفرعي باستخدام <quote
+>call <replaceable
+>اسم_الروتين</replaceable
+></quote
+>.</para>
+	</sect2>
+</sect1>
+
+<sect1 id="languagereference">
+	<title
+>مرجع لغة &microbe;</title>
+	<sect2 id="if">
+		<title
+>if</title>
+		<para
+>التفرع الشرطي. الصيغة: <programlisting role="correct"
+>if [تعبير] then [عبارة]</programlisting
+> أو<programlisting role="correct">
+if [تعبير] then
+{
+        [كتلة العبارة]
+}</programlisting
+> مثل else: <programlisting role="correct"
+>else [عبارة]</programlisting
+> أو <programlisting role="correct"
+>else
+{
+        [statement block]
+}</programlisting>
+			</para>
+			
+			<example
+><title
+>if</title>
+			<programlisting role="correct"
+>if porta.0 is high then
+{
+        delay 200
+}
+else
+{
+        delay 300
+}</programlisting>
+		</example>
+	</sect2>
+	
+	<sect2 id="alias">
+		<title
+>alias</title>
+		<para
+>يخلق اسمًا مستعارًا لسلسلة نصية إلى أخرى. الصيغة: <programlisting role="correct"
+>alias [from] [to]</programlisting>
+		</para>
+	</sect2>
+	
+	<sect2 id="repeat">
+		<title
+>repeat</title>
+		<para
+>ينفذ كتلة العبارات بشكل متكرر حتى يصبح التعبير صحيحًا. يتم تقييم التعبير بعد كتلة العبارات، لذا سيتم تنفيذ كتلة العبارات مرة واحدة على الأقل. الصيغة: <programlisting role="correct"
+>repeat
+{
+        [statement block]
+}
+until [expression]</programlisting>
+	</para>
+</sect2>
+
+<sect2 id="while">
+<title
+>while</title>
+	<para
+>مشابه لـ repeat، ينفذ كتلة العبارات بشكل متكرر. ومع ذلك، يتم تقييم التعبير قبل التنفيذ، وليس بعده. لذا إذا كان التعبير خاطئًا في المرة الأولى، فلن يتم تنفيذ كتلة العبارات. الصيغة: <programlisting role="correct"
+>while [expression]
+{
+        [statement block]
+}</programlisting>
+	</para>
+</sect2>
+
+
+<sect2 id="goto">
+	<title
+>goto</title>
+	<para
+>يؤدي هذا إلى متابعة تنفيذ الكود عند العبارة التالية بعد الوسم المحدد. صيغة goto: <programlisting role="correct"
+><function
+>goto</function
+> [اسم_الوسم]</programlisting
+> صيغة الوسم: <programlisting role="correct"
+><function
+>اسم_الوسم:</function
+></programlisting
+> غالبًا ما يُعتبر تجنب استخدام goto ممارسة برمجية جيدة. استخدام عبارات التحكم والروتينات الفرعية سينتج برنامجًا أكثر قابلية للقراءة. </para>
+	
+	<example
+><title
+>goto</title>
+	<programlisting role="correct"
+>goto MyLabel
+
+...
+
+[MyLabel]:
+// Code will continue at this point</programlisting>
+		</example>
+	</sect2>
+	
+	<sect2 id="call">
+		<title
+>call</title>
+		<para
+>يستدعي روتينًا فرعيًا. الصيغة: <programlisting role="correct"
+><function
+>call</function
+> [اسم_الروتين]</programlisting
+> حيث <replaceable
+>اسم_الروتين</replaceable
+> هو اسم الروتين الفرعي المراد استدعاؤه. </para>
+	</sect2>
+	
+	<sect2 id="delay">
+	<title
+>delay</title>
+		<para
+>يؤدي هذا إلى إيقاف تنفيذ الكود لفترة زمنية معينة. الفاصل الزمني بالمللي ثانية. الصيغة: <programlisting role="correct"
+><function
+>delay</function
+> [interval]</programlisting>
+		
+		<note
+><para
+>حاليًا، يفترض &microbe; أن PIC يعمل بتردد 4MHz - أي أن كل تعليمة تستغرق 1 ميكروثانية للتنفيذ. إذا لم يكن الأمر كذلك، يجب تعديل الفاصل الزمني بشكل متناسب.</para
+></note>
+		</para>
+	</sect2>
+	
+	<sect2 id="sevenseg">
+		<title
+>sevenseg</title>
+		<para
+>يُستخدم هذا لتعريف تخطيط الأطراف لشاشة عرض سباعية (كاثود مشترك) متصلة بـ PIC. الصيغة: <programlisting role="correct"
+><function
+>sevenseg</function
+> [الاسم] [a] [b] [c] [d] [e] [f] [g]</programlisting
+> حيث [a]...[g] هي أطراف PIC التي تتصل بها الأجزاء المقابلة من الشاشة السباعية. يمكن كتابة الأطراف إما كـ PORTX.N أو RXN. </para>
+		
+		<para
+>لعرض رقم على الشاشة السباعية، يُعامل تخطيط الأطراف كمتغير للكتابة فقط. <example>
+				<title
+>تعريف وإخراج إلى شاشة سباعية</title>
+				<programlisting role="correct"
+>sevenseg seg1 RB0 RB1 RB2 RB3 RB4 RB5 RB6
+seg1 = x + 2</programlisting>
+				</example>
+		</para>
+	</sect2>
+	
+	<sect2 id="keypad">
+		<title
+>keypad</title>
+		<para
+>يُستخدم هذا لتعريف تخطيط الأطراف للوحة مفاتيح متصلة بـ PIC. الصيغة: <programlisting role="correct"
+><function
+>keypad</function
+> [الاسم] [الصف 1] ... [الصف 4] [العمود 1] ... [العمود n]</programlisting
+> حيث [الصف 1] ... [الصف 4] و [العمود 1] ... [العمود n] هي أطراف PIC التي تتصل بها الصفوف والأعمدة المقابلة من لوحة المفاتيح (حاليًا، عدد الصفوف غير قابل للتغيير). انظر <xref linkend="sevenseg"/> (أعلاه) لمزيد من المعلومات حول تخطيطات الأطراف. </para>
+		
+		<para
+>يجب سحب أعمدة لوحة المفاتيح إلى الأرض عبر مقاومات 100k. يجب ضبط أطراف الصفوف كمخرجات وأطراف الأعمدة كمدخلات. بمجرد تعريف لوحة المفاتيح، تُعامل كمتغير للقراءة فقط. <example>
+				<title
+>تعريف وقراءة من لوحة مفاتيح</title>
+					<programlisting role="correct"
+>keypad keypad1 RB0 RB1 RB2 RB3 RB4 RB5 RB6
+x = keypad1</programlisting>
+			</example>
+		</para>
+			
+		<para
+>افتراضيًا، القيم المرتجعة للوحة المفاتيح هي: <itemizedlist
+> <listitem
+><para
+>قيمة الرقم إذا كان مفتاحًا رقميًا (1 إلى 3 على طول الصف العلوي؛ سداسي عشري A إلى D أسفل العمود الرابع ومستمرًا لكل عمود إضافي).</para
+></listitem
+> <listitem
+><para
+>253 للمفتاح في الصف 4، العمود 1.</para
+></listitem
+> <listitem
+><para
+>254 للمفتاح في الصف 4، العمود 3.</para
+></listitem
+> </itemizedlist
+> يمكن إعادة تعريف هذه القيم باستخدام الأمر alias، حيث اسم المفتاح في الصف x، العمود y (تبدأ الصفوف والأعمدة من 1)، هو Keypad_x_y. على سبيل المثال، لإعطاء مفتاح النجمة على لوحة مفاتيح 4x3 القيمة صفر، سيُستخدم الاسم المستعار التالي: <example>
+				<title
+>إسناد قيمة لمفتاح من لوحة المفاتيح</title>
+				<programlisting role="correct"
+>alias Keypad_4_1 0</programlisting>
+			</example>
+		</para>
+	</sect2>
+</sect1>
+
+<sect1 id="picio">
+<title
+>PIC I/O</title>
+	
+	<sect2 id="tristate">
+	<title
+>اتجاه المنفذ</title>
+		<para
+>يُضبط اتجاه المنفذ بتعيين قيمة لـ TRIS*، حيث * هو حرف المنفذ. مثال: </para>
+		<example
+><title
+>ضبط اتجاهات المنافذ</title>
+		<programlisting role="correct"
+>TRISB = b'01111001'</programlisting>
+		</example>
+		<para
+>يضبط المثال أعلاه الأطراف RB1 وRB2 وRB7 على المنفذ PORTB كمخرجات، والأطراف الأخرى على المنفذ PORTB كمدخلات. في هذا المثال، b'01111001' تمثيل ثنائي لنوع الإخراج. الرقم 1 على اليمين يمثل مخرجًا على RB0، والرقم 0 على اليسار يمثل مدخلًا على RB7. </para>
+	</sect2>
+	
+	<sect2 id="ports">
+	<title
+>الإدخال/الإخراج للمنفذ</title>
+		<para
+>يمكن معاملة المنفذ كمتغير. مثال: </para>
+		
+		<example
+><title
+>الكتابة إلى منفذ</title>
+		<programlisting role="correct"
+>x = PORTA</programlisting>
+		</example>
+		
+		<para
+>يُسند المثال أعلاه قيمة PORTA إلى المتغير x. </para>
+	</sect2>
+	
+	<sect2 id="pins">
+	<title
+>الإدخال/الإخراج للطرف</title>
+		<para
+>يُحصل على كل طرف في منفذ بإضافة رقم الطرف مسبوقًا باسم المنفذ؛ مثلًا: الطرف 2 (بدءًا من الطرف 0) على PORTA يُعرف بـ <emphasis
+>PORTA.0</emphasis
+>. بناء الجملة لضبط حالة طرف هو: <programlisting role="correct"
+>PORTX.N = <emphasis
+>STATE</emphasis
+></programlisting
+> حيث <emphasis
+>STATE</emphasis
+> يمكن أن تكون <emphasis
+>high</emphasis
+> أو <emphasis
+>low</emphasis
+>. بناء الجملة لاختبار حالة طرف هو: <programlisting role="correct"
+><function
+>if</function
+> PORTX.N is <emphasis
+>STATE</emphasis
+> <function
+>then</function
+></programlisting
+> بدمج هذين المثالين، نحصل على: </para>
+		<example
+><title
+>ضبط واختبار حالة الطرف</title>
+		<programlisting role="correct"
+>TRISA = 0
+TRISB = 255
+<function
+>if</function
+> PORTA.3 is <function
+>high</function
+> <function
+>then</function>
+{
+        PORTB.5 = <function
+>low</function>
+}
+<function
+>else</function>
+{
+        PORTB = PORTA + 15
+}</programlisting>
+		</example>
+	</sect2>
+</sect1>
+	
+<sect1 id="variables">
+<title
+>المتغيرات</title>
+	<para
+>جميع المتغيرات هي أعداد صحيحة غير موقعة بطول 8 بت، مما يعطي نطاقًا من 0 إلى 255. يدعم <application
+>&microbe;</application
+> العمليات الأحادية النمطية (التي تعمل على متغير واحد) والعمليات الثنائية (التي تعمل على متغيرين) التي يدعمها PIC. بالإضافة إلى ذلك، يدعم &microbe; القسمة والضرب. </para>
+	<sect2 id="unary">
+	<title
+>العمليات الأحادية</title>
+		<para>
+		<itemizedlist>
+		<listitem
+><para
+><emphasis
+>rotateleft x</emphasis
+> - يُدير المتغير x يسارًا عبر الحمل.</para
+></listitem>
+		<listitem
+><para
+><emphasis
+>rotateright x</emphasis
+> - يُدير المتغير x يمينًا عبر الحمل.</para
+></listitem>
+		<listitem
+><para
+><emphasis
+>increment x</emphasis
+> - يزيد المتغير x بمقدار 1. إذا كانت قيمة x تساوي 255، فإن x يلتف إلى 0.</para
+></listitem>
+		<listitem
+><para
+><emphasis
+>decrement x</emphasis
+> - ينقص المتغير x بمقدار 1. إذا كانت قيمة x تساوي 0، فإن x يلتف إلى 255.</para
+></listitem>
+		</itemizedlist>
+		</para>
+	</sect2>
+	
+	<sect2 id="arithmetic">
+	<title
+>الحساب</title>
+		<para
+>العمليات المتاحة هي: <itemizedlist>
+		<listitem
+><para
+><emphasis
+>الجمع:</emphasis
+> x + y</para
+></listitem>
+		<listitem
+><para
+><emphasis
+>الطرح:</emphasis
+> x - y</para
+></listitem>
+		<listitem
+><para
+><emphasis
+>الضرب:</emphasis
+> x * y</para
+></listitem>
+		<listitem
+><para
+><emphasis
+>القسمة:</emphasis
+> x / y</para
+></listitem>
+		<listitem
+><para
+><emphasis
+>XOR الثنائي:</emphasis
+> x XOR y</para
+></listitem>
+		<listitem
+><para
+><emphasis
+>AND الثنائي:</emphasis
+> x AND y</para
+></listitem>
+		<listitem
+><para
+><emphasis
+>OR الثنائي:</emphasis
+> x OR y</para
+></listitem>
+		</itemizedlist>
+		</para>
+	</sect2>
+	
+	<sect2 id="comparison">
+	<title
+>المقارنة</title>
+	<para
+>العمليات المتاحة هي: </para>
+	<itemizedlist>
+	<listitem
+><para
+><emphasis
+>يساوي:</emphasis
+> x == y</para
+></listitem>
+	<listitem
+><para
+><emphasis
+>لا يساوي:</emphasis
+> x != y</para
+></listitem>
+	<listitem
+><para
+><emphasis
+>أكبر من:</emphasis
+> x 
+> y</para
+></listitem>
+	<listitem
+><para
+><emphasis
+>أصغر من:</emphasis
+> x &lt; y</para
+></listitem>
+	<listitem
+><para
+><emphasis
+>أكبر من أو يساوي:</emphasis
+> x &gt;= y</para
+></listitem>
+	<listitem
+><para
+><emphasis
+>أصغر من أو يساوي:</emphasis
+> x &lt;= y</para
+></listitem>
+	</itemizedlist>
+	
+	<para
+>على سبيل المثال: </para>
+	<example
+><title
+>المقارنة</title>
+	<programlisting role="correct"
+><function
+>إذا</function
+> PORTA 
+>= 5 <function
+>فإن</function
+></programlisting>
+	</example>
+	</sect2>
+</sect1>
+
+<!--
+<sect1 id="interrupts">
+<title
+>Interrupts</title>
+	<para>
+	There are several types of events, and some of these take an optional parameter making
+	the condition under which the routine is called more specific.
+	<itemizedlist>
+	<listitem
+><para
+><emphasis
+>change &lt;pin name&gt;</emphasis>
+		 - Occurs when the state of the specified pin changes. Pin name is in the usual syntax of PORTX.n, &eg; <programlisting
+>interrupt change PORTB.4</programlisting
+></para
+></listitem>
+	<listitem
+><para
+><emphasis
+>timer</emphasis
+> - ///TODO</para
+></listitem>
+	<listitem
+><para
+><emphasis
+>external</emphasis
+> - ///TODO</para
+></listitem>
+	</itemizedlist>
+	</para>
+</sect1>
+-->
+</chapter>
