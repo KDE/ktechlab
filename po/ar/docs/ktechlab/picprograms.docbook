@@ -1,0 +1,116 @@
+<!-- kate: tab-width 2; indent-mode xml; -->
+<chapter id="pic_programs">
+	<title
+>برامج PIC</title>
+	
+	<sect1 id="manipulation">
+		<title
+>المعالجة</title>
+		
+		<para
+>عند إنشاء مستند FlowCode أو نصي، ستلاحظ قائمة منسدلة في شريط الأدوات تحوي أيقونة صاروخ. من هنا، يمكنك معالجة برنامج PIC الخاص بك؛ تغييره إلى أشكال مختلفة.</para>
+		
+		<itemizedlist>
+				<listitem
+><para
+><guimenuitem
+>تحويل إلى &microbe;</guimenuitem
+> - يُستخدم هذا فقط في مستندات &flowcode;. يُشرح هذا بمزيد من التفصيل في <xref linkend="flowcode"/>.</para
+></listitem>
+			
+				<listitem
+><para
+><guimenuitem
+>تحويل إلى Assembly</guimenuitem
+> - يمكن استخدام هذا في أربعة سياقات. عندما يكون مستند &flowcode; مفتوحًا، سيُخرج &flowcode; كتعليمات تجميع. عندما يكون مستند &microbe; مفتوحًا، سيستدعي برنامج <command
+>microbe</command
+> الموزع مع معمل الدوائر لترجمة البرنامج. وبالمثل، إذا كان برنامج C مفتوحًا، سيحاول ترجمته عبر SDCC. عندما يكون مستند نصي يحوي PIC hex مفتوحًا، سيستدعي <command
+>gpdasm</command
+> لفك تجميع الـ hex.</para
+></listitem>
+			
+				<listitem
+><para
+><guimenuitem
+>تحويل إلى Hex</guimenuitem
+> - يمكن استخدام هذا أيضًا في أربعة سياقات. كما هو الحال مع <guimenuitem
+>تحويل إلى Assembly</guimenuitem
+>، يمكن استخدام هذا مع مستندات &flowcode; و&microbe; وC. سيُفعّل أيضًا عندما يكون مستند تجميع مفتوحًا لتجميعه عبر <command
+>gpasm</command
+>.</para
+></listitem>
+			
+				<listitem
+><para
+><guimenuitem
+>رفع إلى PIC</guimenuitem
+> - يُجمّع برنامج PIC الجاري تحريره حاليًا، ويرفعه باستخدام المبرمج الذي اختاره المستخدم.</para
+></listitem>
+		</itemizedlist>
+		
+		<para
+>لا يتطلب أي من هذه الإجراءات حفظ المستند الحالي - مفيد جدًا عند الحاجة إلى برنامج سريع. بالنسبة للأهداف غير PIC، يمكن لحوار <guilabel
+>الإخراج</guilabel
+> الذي يُستدعى عند النقر على أحد هذه الإجراءات إما إخراج النتيجة (نص دائمًا في الحالات الثلاث أعلاه) إلى مستند جديد، أو إلى ملف. إذا حُفظ الإخراج إلى ملف، فإنه يوفر أيضًا خيارات لتحميل الملف بعد الإنشاء، وإضافة الملف المنشأ حديثًا إلى المشروع المفتوح (إذا كان أحدهم مفتوحًا).</para>
+		
+		<para
+>لاحظ أنه يمكنك جعل معمل الدوائر يستخدم دائمًا نفس العرض لعرض المحتوى المُخرج بتحديد الخيار تحت إعدادات <guilabel
+>عام</guilabel
+>.</para>
+	</sect1>
+	
+	<sect1 id="uploading">
+		<title
+>الرفع</title>
+		
+		<para
+>يستخدم معمل الدوائر مبرمجين من طرف ثالث لرفع البرامج إلى PICs. تأتي مجموعة متنوعة من المبرمجين الشائعين مُعرّفة مسبقًا. يمكن إضافة آخرين عبر حوار <guilabel
+>الإعدادات</guilabel
+>.</para>
+		
+		<para
+>تُحصل قائمة المنافذ من مسح المنافذ التسلسلية والمتوازية القابلة للقراءة والكتابة. تُبحث المنافذ التسلسلية في:</para>
+			<itemizedlist>
+				<listitem
+><para
+>/dev/ttyS<emphasis
+>[0..7]</emphasis
+></para
+></listitem>
+				<listitem
+><para
+>/dev/tts/<emphasis
+>[0..7]</emphasis
+></para
+></listitem>
+				<listitem
+><para
+>/dev/ttyUSB<emphasis
+>[0..7]</emphasis
+></para
+></listitem>
+				<listitem
+><para
+>/dev/usb/tts/<emphasis
+>[0..7]</emphasis
+></para
+></listitem>
+			</itemizedlist>
+		<para
+>تُبحث المنافذ المتوازية في: <itemizedlist>
+				<listitem
+><para
+>/dev/usb/parport<emphasis
+>[0..7]</emphasis
+></para
+></listitem>
+				<listitem
+><para
+>/dev/usb/parports/<emphasis
+>[0..7]</emphasis
+></para
+></listitem>
+			</itemizedlist>
+		</para>
+	</sect1>
+</chapter>
