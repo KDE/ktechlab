@@ -79,6 +79,11 @@ public:
         return p_eSet;
     }
     /**
+     * Clear CNode and CBranch pointers
+     */
+    void clear();
+
+    /**
      * Tells the element which nodes to use. Remember that -1 is ground. You
      * should refer to the individual elements for which nodes are used for what.
      */

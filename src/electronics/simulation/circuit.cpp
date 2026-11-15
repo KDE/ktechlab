@@ -18,11 +18,9 @@
 #include "reactive.h"
 #include "wire.h"
 
-//#include <vector>
-#include <cmath>
-#include <map>
+#include <QMultiMap>
 
-typedef std::multimap<int, PinList> PinListMap;
+typedef QMultiMap<int, PinList> PinListMap;
 
 // BEGIN class Circuit
 Circuit::Circuit()
@@ -98,7 +96,7 @@ int Circuit::identifyGround(PinList nodeList, int *highest)
         Pin *node = *nodeList.begin();
         recursivePinAdd(node, &nodeList, &associated, &nodes);
         if (nodes.size() > 0) {
-            eqs.insert(std::make_pair(associated.size(), nodes));
+            eqs.insert(associated.size(), nodes);
         }
     }
 
@@ -107,13 +105,11 @@ int Circuit::identifyGround(PinList nodeList, int *highest)
     // priority than Pin::gt_never will not be considered
     *highest = Pin::gt_never; // The highest priority found so far
     int numGround = 0;        // The number of node groups found with that priority
-    const PinListMap::iterator eqsEnd = eqs.end();
-    for (PinListMap::iterator it = eqs.begin(); it != eqsEnd; ++it) {
+    for (const auto& [n, pins]: eqs.asKeyValueRange()) {
         int highPri = Pin::gt_never; // The highest priority found in these group of nodes
-        const PinList::iterator send = it->second.end();
-        for (PinList::iterator sit = it->second.begin(); sit != send; ++sit) {
-            if ((*sit)->groundType() < highPri)
-                highPri = (*sit)->groundType();
+        for (Pin* p: std::as_const(pins)) {
+            if (p->groundType() < highPri)
+                highPri = p->groundType();
         }
 
         if (highPri == *highest)
@@ -135,20 +131,19 @@ int Circuit::identifyGround(PinList nodeList, int *highest)
 
     // Now, we can give the nodes their cnode ids, or tell them they are ground
     bool foundGround = false; // This is only used when we don't have a Always ground node
-    for (PinListMap::iterator it = eqs.begin(); it != eqsEnd; ++it) {
+    for (const auto& [n, pins]: eqs.asKeyValueRange()) {
         bool ground = false;
-        const PinList::iterator send = it->second.end();
-        for (PinList::iterator sit = it->second.begin(); sit != send; ++sit) {
-            ground |= (*sit)->groundType() <= (*highest);
+        for (Pin* p: std::as_const(pins)) {
+            ground |= p->groundType() <= (*highest);
         }
         if (ground && (!foundGround || *highest == Pin::gt_always)) {
-            for (PinList::iterator sit = it->second.begin(); sit != send; ++sit) {
-                (*sit)->setEqId(-1);
+            for (Pin* p: std::as_const(pins)) {
+                p->setEqId(-1);
             }
             foundGround = true;
         } else {
-            for (PinList::iterator sit = it->second.begin(); sit != send; ++sit) {
-                (*sit)->setEqId(0);
+            for (Pin* p: std::as_const(pins)) {
+                p->setEqId(0);
             }
         }
     }
@@ -172,9 +167,8 @@ void Circuit::init()
 {
     uint branchCount = 0;
 
-    const ElementList::iterator listEnd = m_elementList.end();
-    for (ElementList::iterator it = m_elementList.begin(); it != listEnd; ++it) {
-        branchCount += (*it)->numCBranches();
+    for (Element* e: std::as_const(m_elementList)) {
+        branchCount += e->numCBranches();
     }
 
     // Now to give all the Pins ids
@@ -189,7 +183,7 @@ void Circuit::init()
             groundCount++;
         }
         if (nodes.size() > 0) {
-            eqs.insert(std::make_pair(associated.size(), nodes));
+            eqs.insert(associated.size(), nodes);
         }
     }
 
@@ -208,11 +202,10 @@ void Circuit::init()
     // these may be from a previous circuit before switches were toggled
     Vector &x = m_elementSet->x();
     int i = 0;
-    const PinListMap::iterator eqsEnd = eqs.end();
-    for (PinListMap::iterator it = eqs.begin(); it != eqsEnd; ++it) {
+    for (const auto& [n, pins]: eqs.asKeyValueRange()) {
         bool foundGround = false;
 
-        for (const auto& pin: std::as_const(it->second))
+        for (const auto& pin: std::as_const(pins))
             foundGround |= pin->eqId() == -1;
 
         if (foundGround)
@@ -220,7 +213,7 @@ void Circuit::init()
 
         bool foundEnergyStoragePin = false;
 
-        for (const auto& pin: std::as_const(it->second)) {
+        for (const auto& pin: std::as_const(pins)) {
             pin->setEqId(i);
 
             bool energyStorage = false;
@@ -256,33 +249,33 @@ void Circuit::init()
     }
 
     // And add the elements to the elementSet
-    for (ElementList::iterator it = m_elementList.begin(); it != listEnd; ++it) {
+    for (Element* e: std::as_const(m_elementList)) {
         // We don't want the element to prematurely try to do anything,
         // as it doesn't know its actual cnode ids yet
-        (*it)->setCNodes();
-        (*it)->setCBranches();
-        m_elementSet->addElement(*it);
+        e->clear();
+        m_elementSet->addElement(e);
     }
     // And give the branch ids to the elements
     i = 0;
-    for (ElementList::iterator it = m_elementList.begin(); it != listEnd; ++it) {
-        switch ((*it)->numCBranches()) {
+    for (Element* e: std::as_const(m_elementList)) {
+        switch (e->numCBranches()) {
         case 0:
             break;
         case 1:
-            (*it)->setCBranches(i);
+            e->setCBranches(i);
             i += 1;
             break;
         case 2:
-            (*it)->setCBranches(i, i + 1);
+            e->setCBranches(i, i + 1);
             i += 2;
             break;
         case 3:
-            (*it)->setCBranches(i, i + 1, i + 2);
+            e->setCBranches(i, i + 1, i + 2);
             i += 3;
             break;
         default:
             // What the?!
+            Q_UNREACHABLE();
             break;
         }
     }
@@ -439,9 +432,7 @@ void Circuit::doNonLogic()
 
 void Circuit::stepReactive()
 {
-    ElementList::iterator listEnd = m_elementList.end();
-    for (ElementList::iterator it = m_elementList.begin(); it != listEnd; ++it) {
-        Element *const e = *it;
+    for (Element* e: std::as_const(m_elementList)) {
         if (e && e->isReactive())
             (static_cast<Reactive *>(e))->time_step();
     }
@@ -451,9 +442,7 @@ void Circuit::updateNodalVoltages()
 {
     const auto& _cnodes = m_elementSet->cnodes();
 
-    const PinList::iterator endIt = m_pinList.end();
-    for (PinList::iterator it = m_pinList.begin(); it != endIt; ++it) {
-        Pin *const node = *it;
+    for (Pin* node: std::as_const(m_pinList)) {
         int i = node->eqId();
         if (i == -1)
             node->setVoltage(0.);
