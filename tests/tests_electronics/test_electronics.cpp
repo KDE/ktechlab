@@ -12,6 +12,7 @@
 #include "diode.h"
 #include "elementset.h"
 #include "inductance.h"
+#include "logic.h"
 #include "measurements.h"
 #include "pin.h"
 #include "resistance.h"
@@ -885,6 +886,45 @@ private Q_SLOTS:
         const double Irms = sqrt(ierr/n);
         const double Vrms = sqrt(verr/n);
         qDebug() << "Irms" << Irms << "Vrms" << Vrms;
+    }
+
+    void circuitLogicSanityTest()
+    {
+        // Circuit with [P1]a--b[R1]c--d[P2]
+        Circuit circuit;
+        Pin a, b, c, d;
+        Wire w1(&a, &b);
+        Wire w2(&c, &d);
+        Resistance resistor(1000);
+        LogicConfig cfg;
+        LogicOut p1(cfg, true);
+        LogicIn p2(cfg);
+
+        circuit.addPins({&a, &b, &c, &d});
+        circuit.setElementPinMapping(&p1, {&a});
+        circuit.setElementPinMapping(&resistor, {&b, &c});
+        circuit.setElementPinMapping(&p2, {&d});
+        circuit.identifyGround(circuit.pinList());
+        circuit.init();
+        QVERIFY(circuit.assignEquationIds());
+        circuit.createMatrixMap();
+        circuit.initCache();
+        circuit.addInitialDc();
+        circuit.doNonLogic();
+        QVERIFY(p1.outputState());
+        QVERIFY(p2.isHigh());
+
+        p1.setHigh(false);
+        circuit.doNonLogic();
+        QVERIFY(!p1.outputState());
+        QVERIFY(!p2.isHigh());
+
+        // Force cache clear
+        circuit.setCacheInvalidated();
+        p1.setHigh(true);
+        circuit.doNonLogic();
+        QVERIFY(p1.outputState());
+        QVERIFY(p2.isHigh());
     }
 
     void circuitFullWaveRectifier()

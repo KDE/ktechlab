@@ -30,11 +30,17 @@ class LogicCacheNode
 {
 public:
     LogicCacheNode() {}
-    ~LogicCacheNode() { clear(); }
+    ~LogicCacheNode()
+    {
+      delete high;
+      delete low;
+    }
 
     void clear() {
         delete high;
+        high = nullptr;
         delete low;
+        low = nullptr;
         data.resize(0);
     }
 
