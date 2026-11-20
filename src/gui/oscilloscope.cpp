@@ -72,7 +72,8 @@ Oscilloscope::Oscilloscope(KateMDI::ToolView *parent)
     horizontalScroll->setSingleStep(32);
     horizontalScroll->setPageStep(oscilloscopeView->width());
 
-    zoomDial->setStyle(QStyleFactory::create(QLatin1StringView("Fusion")));
+    m_zoomDialStyle = QStyleFactory::create(QLatin1StringView("Fusion"));
+    zoomDial->setStyle(m_zoomDialStyle);
     zoomDial->setNotchesVisible(true);
 
     connect(resetBtn, &QToolButton::clicked, this, &Oscilloscope::reset);
@@ -107,6 +108,7 @@ Oscilloscope::Oscilloscope(KateMDI::ToolView *parent)
 Oscilloscope::~Oscilloscope()
 {
     m_pSelf = nullptr;
+    delete m_zoomDialStyle;
 }
 
 bool Oscilloscope::isInstantiated()

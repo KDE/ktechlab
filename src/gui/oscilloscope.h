@@ -23,6 +23,7 @@
 
 #include <QTimer>
 #include <QMap>
+#include <QStyle>
 #include <QWidget>
 
 #include <stdint.h>
@@ -200,6 +201,7 @@ private:
     static Oscilloscope *m_pSelf;
     QTimer m_updateTimer;
     double m_zoomLevel;
+    QStyle* m_zoomDialStyle = nullptr;
 
     friend class OscilloscopeView;
     friend class ProbePositioner;
