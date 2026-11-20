@@ -49,7 +49,7 @@ void Circuit::addElement(Element *element)
 
 void Circuit::setElementPinMapping(Element *element, const PinList& pins)
 {
-    Q_ASSERT(element->numCNodes() == pins.size());
+    KTL_ASSERT(element->numCNodes() == pins.size());
     addElement(element);
     for (Pin* pin: pins) {
         addPin(pin);

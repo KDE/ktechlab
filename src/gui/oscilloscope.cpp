@@ -30,8 +30,6 @@
 #include <QTimer>
 #include <QToolButton>
 
-#include <cassert>
-
 #include <ktlconfig.h>
 #include <ktechlab_debug.h>
 
@@ -44,7 +42,7 @@ Oscilloscope *Oscilloscope::m_pSelf = nullptr;
 Oscilloscope *Oscilloscope::self(KateMDI::ToolView *parent)
 {
     if (!m_pSelf) {
-        assert(parent);
+        KTL_ASSERT(parent);
         m_pSelf = new Oscilloscope(parent);
     }
     return m_pSelf;

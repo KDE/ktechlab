@@ -40,8 +40,6 @@
 #include <QStandardPaths>
 #include <QTimer>
 
-#include <cassert>
-
 // BEGIN Item includes
 #ifdef MECHANICS
 #include "chassiscircular2.h"

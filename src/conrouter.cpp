@@ -12,10 +12,10 @@
 #include "icndocument.h"
 #include "utils.h"
 
-#include <cassert>
 #include <cmath>
 #include <cstdlib>
 
+#include <ktlassert.h>
 #include <ktechlab_debug.h>
 
 ConRouter::ConRouter(ICNDocument *cv)
@@ -113,7 +113,7 @@ QPointListList ConRouter::dividePoints(uint n) const
     // Divide the points up into n pieces...
 
     QPointList points = m_cellPointList;
-    assert(n != 0);
+    KTL_ASSERT(n != 0);
     if (points.size() == 0) {
         points += QPoint(toCanvas(m_lcx), toCanvas(m_lcy));
     }

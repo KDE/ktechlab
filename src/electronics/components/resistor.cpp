@@ -57,6 +57,7 @@ void Resistor::dataChanged()
     setDisplayText("res", display);
 
     m_resistance->setResistance(resistance);
+    // KTL_ASSERT(resistance != 666.123);
 }
 
 void Resistor::drawShape(QPainter &p)

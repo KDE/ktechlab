@@ -200,7 +200,7 @@ public:
      */
     void addInitialDc()
     {
-        Q_ASSERT(m_elementSet);
+        KTL_ASSERT(m_elementSet);
         for (Element* e: std::as_const(m_elementList))
             e->add_initial_dc();
     }

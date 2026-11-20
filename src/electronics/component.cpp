@@ -1060,7 +1060,8 @@ void Component::initElements(const uint stage)
 
     for (ElementMapList::iterator it = m_elementMapList.begin(); it != end; ++it) {
         ElementMap m = (*it);
-
+        if (!m.e->elementSet())
+            continue; // Element may be disconnected
         if (m.n[3]) {
             m.e->setCNodes(m.n[0]->eqId(), m.n[1]->eqId(), m.n[2]->eqId(), m.n[3]->eqId());
         } else if (m.n[2]) {

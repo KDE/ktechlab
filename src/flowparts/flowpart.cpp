@@ -30,9 +30,9 @@
 #include <QRegExp>
 
 #include <algorithm>
-#include <cassert>
 #include <cmath>
 
+#include <ktlassert.h>
 #include <ktechlab_debug.h>
 
 // Degrees per radian
@@ -68,7 +68,7 @@ FlowPart::FlowPart(ICNDocument *icnDocument, bool newItem, const QString &id)
     if (icnDocument) {
         icnDocument->registerItem(this);
         m_pFlowCodeDocument = dynamic_cast<FlowCodeDocument *>(icnDocument);
-        assert(m_pFlowCodeDocument);
+        KTL_ASSERT(m_pFlowCodeDocument);
 
         connect(m_pFlowCodeDocument, &FlowCodeDocument::picTypeChanged, this, &FlowPart::slotUpdateFlowPartVariables);
         connect(m_pFlowCodeDocument, &FlowCodeDocument::pinMappingsChangedFlowCode, this, &FlowPart::slotUpdateFlowPartVariables);

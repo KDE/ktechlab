@@ -10,8 +10,6 @@
 
 #include "element.h"
 
-#include <cassert>
-
 #include <ktechlab_debug.h>
 
 // BEGIN class Element
@@ -51,8 +49,8 @@ void Element::resetCurrents()
 
 void Element::setElementSet(ElementSet *c)
 {
-    assert(!b_componentDeleted);
-    assert(!p_eSet);
+    KTL_ASSERT(!b_componentDeleted);
+    KTL_ASSERT(!p_eSet);
     if (!c)
         return elementSetDeleted();
     p_eSet = c;
@@ -89,8 +87,8 @@ void Element::clear()
 
 void Element::setCNodesFromPins(const PinList& pins)
 {
-    Q_ASSERT(pins.size() == m_numCNodes);
-    Q_ASSERT(p_eSet);
+    KTL_ASSERT(pins.size() == m_numCNodes);
+    KTL_ASSERT(p_eSet);
     for (uint i = m_numCNodes; i < MAX_CNODES; i++)
         p_cnode[i] = nullptr;
     for (uint i=0; i < m_numCNodes; i++) {
@@ -106,7 +104,7 @@ void Element::setCNodesFromPins(const PinList& pins)
 
 void Element::setCNodes(const int n0, const int n1, const int n2, const int n3)
 {
-    Q_ASSERT(p_eSet);
+    KTL_ASSERT(p_eSet);
     p_cnode[0] = (n0 > -1) ? &p_eSet->cnode(n0) : (n0 == -1 ? &p_eSet->ground() : nullptr);
     p_cnode[1] = (n1 > -1) ? &p_eSet->cnode(n1) : (n1 == -1 ? &p_eSet->ground() : nullptr);
     p_cnode[2] = (n2 > -1) ? &p_eSet->cnode(n2) : (n2 == -1 ? &p_eSet->ground() : nullptr);
@@ -116,7 +114,7 @@ void Element::setCNodes(const int n0, const int n1, const int n2, const int n3)
 
 void Element::setCBranches(const int b0, const int b1, const int b2, const int b3)
 {
-    Q_ASSERT(p_eSet);
+    KTL_ASSERT(p_eSet);
     p_cbranch[0] = (b0 > -1) ? &p_eSet->cbranch(b0) : nullptr;
     p_cbranch[1] = (b1 > -1) ? &p_eSet->cbranch(b1) : nullptr;
     p_cbranch[2] = (b2 > -1) ? &p_eSet->cbranch(b2) : nullptr;

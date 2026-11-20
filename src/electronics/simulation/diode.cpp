@@ -67,7 +67,7 @@ void Diode::update_dc()
 
     // Add series resistance component
     if (m_diodeSettings.R != 0.0) {
-        Q_ASSERT(m_numCNodes == 3);
+        KTL_ASSERT(m_numCNodes == 3);
         double g = 1./m_diodeSettings.R;
         if (g != g_rs) {
             A_g(0, 0) += g - g_rs;

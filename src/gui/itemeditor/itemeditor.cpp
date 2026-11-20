@@ -22,8 +22,7 @@
 #include <QLabel>
 #include <QPushButton>
 
-#include <cassert>
-
+#include <ktlassert.h>
 #include <ktechlab_debug.h>
 
 ItemEditor *ItemEditor::m_pSelf = nullptr;
@@ -31,7 +30,7 @@ ItemEditor *ItemEditor::m_pSelf = nullptr;
 ItemEditor *ItemEditor::self(KateMDI::ToolView *parent)
 {
     if (!m_pSelf) {
-        assert(parent);
+        KTL_ASSERT(parent);
         m_pSelf = new ItemEditor(parent);
     }
     return m_pSelf;

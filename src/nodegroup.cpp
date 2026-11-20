@@ -14,9 +14,8 @@
 #include "icndocument.h"
 #include "node.h"
 
-#include <cassert>
 #include <cstdlib>
-
+#include <ktlassert.h>
 #include <ktechlab_debug.h>
 
 NodeGroup::NodeGroup(ICNDocument *icnDocument)
@@ -322,7 +321,7 @@ void NodeGroup::getReachable(IntList *reachable, int node)
     reachable->append(node);
 
     const uint n = m_nodeList.size() + m_extNodeList.size();
-    assert(node < int(n));
+    KTL_ASSERT(node < int(n));
     for (uint i = 0; i < n; ++i) {
         if (b_routedMap[i * n + node]) {
             getReachable(reachable, i);

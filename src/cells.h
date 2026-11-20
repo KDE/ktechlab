@@ -13,8 +13,9 @@
 
 #include "utils.h"
 #include <QRect>
-#include <cassert>
 #include <map>
+
+#include <ktlassert.h>
 
 class Point
 {
@@ -127,8 +128,8 @@ public:
     }
     Cell &cell(int i, int j) const
     {
-        assert(i < m_cellsRect.right());
-        assert(j < m_cellsRect.bottom());
+        KTL_ASSERT(i < m_cellsRect.right());
+        KTL_ASSERT(j < m_cellsRect.bottom());
         i -= m_cellsRect.left();
         j -= m_cellsRect.top();
         return m_cells[i][j];

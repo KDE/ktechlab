@@ -13,6 +13,7 @@
 
 #include "cbranch.h"
 #include "cnode.h"
+#include "ktlassert.h"
 #include <Eigen/Dense>
 #include <QList>
 

@@ -16,7 +16,7 @@
 #include <QPainter>
 #include <QString>
 
-#include <cassert>
+#include <ktlassert.h>
 
 // Thank you Scott Dattalo!
 // http://www.dattalo.com/gnupic/lcdfont.inc
@@ -282,9 +282,9 @@ static char characterMap[256][5] = {
 
 inline static bool displayBit(unsigned value, unsigned row, unsigned column)
 {
-    assert(value < 256);
-    assert(row < 7);
-    assert(column < 5);
+    KTL_ASSERT(value < 256);
+    KTL_ASSERT(row < 7);
+    KTL_ASSERT(column < 5);
     return characterMap[value][column] & (1 << row);
 }
 

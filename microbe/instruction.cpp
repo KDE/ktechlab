@@ -29,7 +29,6 @@
 #include <QDebug>
 #include <QStringList>
 #include <QLatin1StringView>
-#include <cassert>
 #include <iostream>
 
 using namespace std;

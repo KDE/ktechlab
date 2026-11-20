@@ -28,8 +28,6 @@
 #include <QFile>
 #include <QTabWidget>
 
-#include <cassert>
-
 #include <ktlconfig.h>
 #include <ktechlab_debug.h>
 

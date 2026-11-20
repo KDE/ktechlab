@@ -157,6 +157,7 @@ SET(ktechlab_SRCS
     ./picitem.cpp
 #     ./core/main.cpp
     ./core/diagnosticstyle.cpp
+    ./core/ktlassert.cpp
     ./node.cpp
     ./documentiface.cpp
     ./docmanager.cpp

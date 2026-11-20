@@ -51,7 +51,6 @@
 #include <QTextEdit>
 #include <QTimer>
 
-#include <cassert>
 #include <cmath>
 
 #include <ktlconfig.h>

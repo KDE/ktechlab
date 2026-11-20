@@ -32,8 +32,6 @@
 #include <QLabel>
 #include <QSpinBox>
 
-#include <cassert>
-
 #include <ktechlab_debug.h>
 
 ItemInterface *ItemInterface::m_pSelf = nullptr;

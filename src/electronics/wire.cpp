@@ -11,14 +11,13 @@
 #include "wire.h"
 #include "pin.h"
 
-#include <cassert>
-
+#include <ktlassert.h>
 #include <ktechlab_debug.h>
 
 Wire::Wire(Pin *startPin, Pin *endPin, QObject* parent): QObject(parent)
 {
-    assert(startPin);
-    assert(endPin);
+    KTL_ASSERT(startPin);
+    KTL_ASSERT(endPin);
 
     m_pStartPin = startPin;
     m_pEndPin = endPin;

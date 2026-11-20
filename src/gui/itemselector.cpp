@@ -30,8 +30,7 @@
 #include <QMenu>
 #include <QMimeData>
 
-#include <cassert>
-
+#include <ktlassert.h>
 #include <ktechlab_debug.h>
 
 ILVItem::ILVItem(QTreeWidget *parent, const QString &id)
@@ -387,7 +386,7 @@ ComponentSelector *ComponentSelector::m_pSelf = nullptr;
 ComponentSelector *ComponentSelector::self(KateMDI::ToolView *parent)
 {
     if (!m_pSelf) {
-        assert(parent);
+        KTL_ASSERT(parent);
         m_pSelf = new ComponentSelector(parent);
         m_pSelf->setObjectName("Component Selector");
     }
@@ -424,7 +423,7 @@ FlowPartSelector *FlowPartSelector::m_pSelf = nullptr;
 FlowPartSelector *FlowPartSelector::self(KateMDI::ToolView *parent)
 {
     if (!m_pSelf) {
-        assert(parent);
+        KTL_ASSERT(parent);
         m_pSelf = new FlowPartSelector(parent);
         m_pSelf->setObjectName("Part Selector");
     }
@@ -455,7 +454,7 @@ MechanicsSelector *MechanicsSelector::m_pSelf = nullptr;
 MechanicsSelector *MechanicsSelector::self(KateMDI::ToolView *parent)
 {
     if (!m_pSelf) {
-        assert(parent);
+        KTL_ASSERT(parent);
         m_pSelf = new MechanicsSelector(static_cast<QWidget *>(parent));
         m_pSelf->setObjectName("Mechanics Selector");
     }

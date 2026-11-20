@@ -12,6 +12,7 @@
 #define KTECHLAB_H
 
 #include <katemdi.h>
+#include "ktlassert.h"
 
 #include <QList>
 #include <QMap>

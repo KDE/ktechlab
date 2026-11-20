@@ -1,0 +1,133 @@
+/*
+ *  SPDX-FileCopyrightText: 2013 Dmitry Kazakov <dimula73@gmail.com>
+ *
+ *  SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
+#ifndef __KTL_ASSERT_H
+#define __KTL_ASSERT_H
+
+#include <QtGlobal>
+
+void ktl_assert_exception(const char *assertion, const char *file, int line);
+void ktl_assert_recoverable(const char *assertion, const char *file, int line);
+void ktl_assert_x_exception(const char *assertion, const char *where, const char *what, const char *file, int line);
+
+void ktl_safe_assert_recoverable(const char *assertion, const char *file, int line);
+
+// NOLINTBEGIN(cppcoreguidelines-macro-usage, readability-simplify-boolean-expr)
+
+/**
+ * KTL_ASSERT family of macros allows the user to choose whether to
+ * try to continue working in KTechLab or to abort an application and see
+ * a backtrace.
+ *
+ * Note, the macro are present in Release mode by default!
+ */
+
+/**
+ * Checks the condition and depending on the user action either aborts
+ * the program or throws an exception, which restarts event loop.
+ */
+#define KTL_ASSERT(cond) ((!(cond)) ? ktl_assert_exception(#cond,__FILE__,__LINE__) : qt_noop())
+
+/**
+ * Same as KTL_ASSERT, but allows to show more text to the user.
+ *
+ * \see KTL_ASSERT
+ */
+#define KTL_ASSERT_X(cond, where, what) ((!(cond)) ? ktl_assert_x_exception(#cond,where, what,__FILE__,__LINE__) : qt_noop())
+
+
+/**
+ * This is a recoverable variant of KTL_ASSERT. It doesn't throw any
+ * exceptions.  It checks the condition, and either aborts the
+ * application, or executes user-supplied code. The typical usecase is
+ * the following:
+ *
+ * int fooBar = ...;
+ * KTL_ASSERT_RECOVER (fooBar > 0) {
+ *     // the code which is executed in a case of emergency
+ * }
+ *
+ */
+#define KTL_ASSERT_RECOVER(cond) if (!(cond) && (ktl_assert_recoverable(#cond,__FILE__,__LINE__), true))
+
+/**
+ * Equivalent of the following:
+ *
+ * KTL_ASSERT_RECOVER(cond) {
+ *     break;
+ * }
+ *
+ */
+#define KTL_ASSERT_RECOVER_BREAK(cond) KTL_ASSERT_RECOVER(cond) { break; }
+
+/**
+ * Equivalent of the following:
+ *
+ * KTL_ASSERT_RECOVER(cond) {
+ *     return;
+ * }
+ *
+ */
+#define KTL_ASSERT_RECOVER_RETURN(cond) do { KTL_ASSERT_RECOVER(cond) { return; } } while (0)
+
+/**
+ * Equivalent of the following:
+ *
+ * KTL_ASSERT_RECOVER(cond) {
+ *     return val;
+ * }
+ *
+ */
+#define KTL_ASSERT_RECOVER_RETURN_VALUE(cond, val) do { KTL_ASSERT_RECOVER(cond) { return (val); } } while (0)
+
+/**
+ * Does nothing in case of a failure. Just continues execution.
+ *
+ * Equivalent of the following:
+ *
+ * KTL_ASSERT_RECOVER(cond) {
+ *     qt_noop();
+ * }
+ *
+ */
+#define KTL_ASSERT_RECOVER_NOOP(cond) do { KTL_ASSERT_RECOVER(cond) { qt_noop(); } } while (0)
+
+
+/**
+ * This set of macros work in exactly the same way as their non-safe
+ * counterparts, but they are automatically converted into console
+ * warnings in release builds. That is the user will not see any
+ * message box, just a warning message will be printed in a terminal
+ * and a recovery branch will be taken automatically.
+ *
+ * Rules when to use "safe" asserts. Use them if the following
+ * conditions are met:
+ *
+ * 1) The condition in the assert shows that a real *bug* has
+ *    happened. It is not just a warning. It is a bug that should be
+ *    fixed.
+ *
+ * 2) The recovery branch will *workaround* the bug and the user will
+ *    be able to continue his work *as if nothing has
+ *    happened*. Again, please mark the assert "safe" if and only if
+ *    you are 100% sure Krita will not crash in a minute after you
+ *    faced that bug. The user is not notified about this bug, so he
+ *    is not going to take any emergency steps like saving his work
+ *    and restarting Krita!
+ *
+ * 3) If you think that Krita should be better restarted after this
+ *    bug, please use a usual KTL_ASSERT_RECOVER.
+ */
+
+#define KTL_SAFE_ASSERT_RECOVER(cond) if (!(cond) && (ktl_safe_assert_recoverable(#cond,__FILE__,__LINE__), true))
+#define KTL_SAFE_ASSERT_RECOVER_BREAK(cond) KTL_SAFE_ASSERT_RECOVER(cond) { break; }
+#define KTL_SAFE_ASSERT_RECOVER_RETURN(cond) do { KTL_SAFE_ASSERT_RECOVER(cond) { return; } } while (0)
+#define KTL_SAFE_ASSERT_RECOVER_RETURN_VALUE(cond, val) do { KTL_SAFE_ASSERT_RECOVER(cond) { return (val); } } while (0)
+#define KTL_SAFE_ASSERT_RECOVER_NOOP(cond) do { KTL_SAFE_ASSERT_RECOVER(cond) { qt_noop(); } } while (0)
+
+// NOLINTEND(cppcoreguidelines-macro-usage, readability-simplify-boolean-expr)
+
+#endif /* __KTL_ASSERT_H */

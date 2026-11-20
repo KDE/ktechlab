@@ -13,8 +13,6 @@
 #include "microselectwidget.h"
 #include "projectmanager.h"
 
-#include <cassert>
-
 #include <KLocalizedString>
 #include <KUrlRequester>
 // #include <k3listview.h>
@@ -30,6 +28,8 @@
 #include <ui_linkeroptionswidget.h>
 #include <ui_newprojectwidget.h>
 #include <ui_processingoptionswidget.h>
+
+#include <ktlassert.h>
 #include <ktechlab_debug.h>
 
 class NewProjectWidget : public QWidget, public Ui::NewProjectWidget
@@ -188,7 +188,7 @@ LinkerOptionsDlg::LinkerOptionsDlg(LinkerOptions *linkingOptions, QWidget *paren
     m_pWidget = new LinkerOptionsWidget(this);
 
     ProjectInfo *pi = ProjectManager::self()->currentProject();
-    assert(pi);
+    KTL_ASSERT(pi);
 
     // BEGIN Update gplink options
     m_pWidget->m_pHexFormat->setCurrentIndex(m_pLinkerOptions->hexFormat());

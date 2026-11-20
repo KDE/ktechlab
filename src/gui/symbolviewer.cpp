@@ -24,8 +24,7 @@
 #include <QHeaderView>
 #include <QLabel>
 
-#include <cassert>
-
+#include <ktlassert.h>
 #include <ktechlab_debug.h>
 
 static const int NAME_COLUMN = 0;
@@ -41,7 +40,7 @@ SymbolViewerItem::SymbolViewerItem(SymbolViewer *symbolViewer, const RegisterInf
     qCDebug(KTL_LOG) << " reg info name " << m_pRegisterInfo->name();
     qCDebug(KTL_LOG) << " row " << row() << " column " << column();
 
-    assert(registerInfo);
+    KTL_ASSERT(registerInfo);
     m_pRegisterInfo = registerInfo;
     m_pSymbolViewer = symbolViewer;
 
@@ -76,7 +75,7 @@ SymbolViewer *SymbolViewer::m_pSelf = nullptr;
 SymbolViewer *SymbolViewer::self(KateMDI::ToolView *parent)
 {
     if (!m_pSelf) {
-        assert(parent);
+        KTL_ASSERT(parent);
         m_pSelf = new SymbolViewer(parent);
     }
     return m_pSelf;

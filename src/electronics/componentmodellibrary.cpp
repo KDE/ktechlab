@@ -13,8 +13,7 @@
 #include <QStandardPaths>
 #include <QElapsedTimer>
 
-#include <cassert>
-
+#include <ktlassert.h>
 #include <ktechlab_debug.h>
 
 // A prime number slightly larger than the number of models for any particular type
@@ -101,7 +100,7 @@ void ComponentModelLibrary::loadModels()
             if (line == "[/]") {
                 // End of previous model
 
-                assert(model);
+                KTL_ASSERT(model);
 
                 ModelType type = None;
                 if (typeString == "NPN")
@@ -138,16 +137,16 @@ void ComponentModelLibrary::loadModels()
                 // new model
 
                 // Check that their isn't a previous model that hasn't saved
-                assert(!model);
+                KTL_ASSERT(!model);
 
                 model = new ComponentModel;
                 id = line.mid(1, line.length() - 2); // extract the text between the square brackets
             } else {
                 // Setting a property of the model
-                assert(model);
+                KTL_ASSERT(model);
 
                 int pos = line.indexOf('=');
-                assert(pos != -1);
+                KTL_ASSERT(pos != -1);
 
                 QString name = line.left(pos);
                 QString value = line.mid(pos + 1);

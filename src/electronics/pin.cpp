@@ -13,8 +13,7 @@
 
 #include <QDebug>
 
-#include <cassert>
-
+#include <ktlassert.h>
 #include <ktechlab_debug.h>
 
 Pin::Pin(ECNode *parent) : QObject(parent)
@@ -34,7 +33,7 @@ Pin::~Pin()
 
 ECNode* Pin::parentECNode() const
 {
-    Q_ASSERT(dynamic_cast<ECNode*>(parent()));
+    KTL_ASSERT(dynamic_cast<ECNode*>(parent()));
     return static_cast<ECNode*>(parent());
 }
 

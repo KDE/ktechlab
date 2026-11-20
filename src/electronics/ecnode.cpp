@@ -19,6 +19,7 @@
 #include <QPainter>
 
 #include <ktlconfig.h>
+#include <ktlassert.h>
 #include <ktechlab_debug.h>
 
 ECNode::ECNode(ICNDocument *icnDocument, Node::node_type _type, int dir, const QPoint &pos, QString *_id)
@@ -239,7 +240,7 @@ QPoint ECNode::findConnectorDivergePoint(bool *found)
         return p2.last();
     }
 
-    Q_ASSERT(p1.size() == p2.size());
+    KTL_ASSERT(p1.size() == p2.size());
 
     for (int i = 1; i < qMin(p1.size(), p2.size()); ++i) {
         if (p1[i] != p2[i]) {

@@ -18,9 +18,9 @@
 #include <KLocalizedString>
 #include <QPainter>
 #include <QPainterPath>
-#include <cassert>
 #include <cmath>
 
+#include <ktlassert.h>
 #include <ktechlab_debug.h>
 
 // BEGIN class ECRotoSwitch
@@ -153,7 +153,7 @@ void ECRotoSwitch::drawShape(QPainter &p)
             pinY = round_8(contactY);
             break;
         default:
-            assert(!"Bad pin angle");
+            KTL_ASSERT(!"Bad pin angle");
         }
 
         p.drawLine(cx + contactX, cy - contactY, cx + pinX, cy - pinY);

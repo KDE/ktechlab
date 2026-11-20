@@ -37,8 +37,6 @@
 #include <QStandardPaths>
 #include <QTemporaryFile>
 
-#include <cassert>
-
 #include <ktlconfig.h>
 #include <ktechlab_debug.h>
 
@@ -55,7 +53,7 @@ static QString relativeUrl(const QUrl &baseDirUrl, const QUrl &url)
 
 static QString resolvedLocalFile(const QString &baseDir, const QString &path)
 {
-    Q_ASSERT(baseDir.endsWith(QLatin1Char('/')));
+    KTL_ASSERT(baseDir.endsWith(QLatin1Char('/')));
     if (QDir::isAbsolutePath(path))
         return path;
 
@@ -407,7 +405,7 @@ bool ProjectItem::build(ProcessOptionsList *pol)
     }
 
     ProjectInfo *projectInfo = ProjectManager::self()->currentProject();
-    assert(projectInfo);
+    KTL_ASSERT(projectInfo);
 
     if (outputURL().isEmpty()) {
         KMessageBox::error(nullptr, i18n("Do not know how to build \"%1\" (output URL is empty).", name()));
@@ -856,7 +854,7 @@ ProjectManager *ProjectManager::m_pSelf = nullptr;
 ProjectManager *ProjectManager::self(KateMDI::ToolView *parent)
 {
     if (!m_pSelf) {
-        assert(parent);
+        KTL_ASSERT(parent);
         m_pSelf = new ProjectManager(parent);
         m_pSelf->setObjectName("Project Manager");
     }

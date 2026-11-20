@@ -26,8 +26,6 @@
 #include <QTimer>
 #include <QToolButton>
 
-#include <cassert>
-
 #include <ktechlab_debug.h>
 
 ScopeScreen::ScopeScreen(KateMDI::ToolView *parent)
@@ -52,7 +50,7 @@ ScopeScreen *ScopeScreen::self(KateMDI::ToolView *parent)
     static ScopeScreen *pSelf = nullptr;
     if (pSelf)
         return pSelf;
-    assert(parent);
+    KTL_ASSERT(parent);
     pSelf = new ScopeScreen(parent);
     return pSelf;
 }

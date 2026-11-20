@@ -45,8 +45,7 @@
 #include <QStandardPaths>
 #include <QTextBrowser>
 
-#include <cassert>
-
+#include <ktlassert.h>
 #include <ktechlab_debug.h>
 
 ContextHelp *ContextHelp::m_pSelf = nullptr;
@@ -54,7 +53,7 @@ ContextHelp *ContextHelp::m_pSelf = nullptr;
 ContextHelp *ContextHelp::self(KateMDI::ToolView *parent)
 {
     if (!m_pSelf) {
-        assert(parent);
+        KTL_ASSERT(parent);
         m_pSelf = new ContextHelp(parent);
     }
     return m_pSelf;

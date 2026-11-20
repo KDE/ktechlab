@@ -21,8 +21,6 @@
 #include "processchain.h"
 #include "simulator.h"
 
-#include <cassert>
-
 #include <KLocalizedString>
 #include <KMessageBox>
 
@@ -32,6 +30,7 @@
 #include <QTextStream>
 #include <QTimer>
 
+#include <ktlassert.h>
 #include <ktechlab_debug.h>
 
 // gpsim has problems with dependent include headers
@@ -688,7 +687,7 @@ void RegisterSet::update()
 // BEGIN class RegisterInfo
 RegisterInfo::RegisterInfo(Register *reg)
 {
-    assert(reg);
+    KTL_ASSERT(reg);
     m_pRegister = reg;
     m_type = Invalid;
     m_prevEmitValue = 0;

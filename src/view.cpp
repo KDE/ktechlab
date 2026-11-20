@@ -25,8 +25,6 @@
 #include <QStyle>
 #include <QVBoxLayout>
 
-#include <cassert>
-
 #include <ktechlab_debug.h>
 
 // BEGIN class View
@@ -102,8 +100,8 @@ bool View::closeView()
 
 void View::setFocusWidget(QWidget *focusWidget)
 {
-    assert(focusWidget);
-    assert(!m_pFocusWidget);
+    KTL_ASSERT(focusWidget);
+    KTL_ASSERT(!m_pFocusWidget);
 
     if (hasFocus())
         focusWidget->setFocus();

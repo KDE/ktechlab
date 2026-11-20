@@ -24,8 +24,6 @@
 // #include <k3dockwidget.h>
 #include <KLocalizedString>
 
-#include <cassert>
-
 #include <ktlconfig.h>
 
 LanguageManager *LanguageManager::m_pSelf = nullptr;
@@ -33,7 +31,7 @@ LanguageManager *LanguageManager::m_pSelf = nullptr;
 LanguageManager *LanguageManager::self(KateMDI::ToolView *parent)
 {
     if (!m_pSelf) {
-        assert(parent);
+        KTL_ASSERT(parent);
         m_pSelf = new LanguageManager(parent);
     }
     return m_pSelf;

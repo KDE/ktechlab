@@ -79,10 +79,9 @@ add_definitions(
 )
 
 #set(CMAKE_VERBOSE_MAKEFILE ON)
-
 if (KTECHLAB_DEVELOPER_BUILD)
 # for debugging with GCC + ASAN
-    add_definitions( -fno-omit-frame-pointer )
+    add_definitions( -fno-omit-frame-pointer -g )
     set(SANITIZE_FLAGS " -fsanitize=address -fno-omit-frame-pointer -fPIC") # address
     #set(SANITIZE_FLAGS " -fsanitize=undefined -fno-omit-frame-pointer ") # undefined
     #set(SANITIZE_FLAGS "") # disabled
@@ -113,6 +112,14 @@ set( SRC_TESTS_DATA_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tests/data/ )
 
 CONFIGURE_FILE( ${CMAKE_SOURCE_DIR}/config.h.cmake
 	${CMAKE_BINARY_DIR}/config.h )
+
+option(HIDE_SAFE_ASSERTS "Don't show message box for \"safe\" asserts, just ignore them automatically and dump a message to the terminal." ON)
+add_feature_info("Hide safe asserts" HIDE_SAFE_ASSERTS "Don't show message box for \"safe\" asserts, just ignore them automatically and dump a message to the terminal.")
+
+option(CRASH_ON_SAFE_ASSERTS "Crash unconditionally whenever a \"safe\" assert happens. Useful for running unittests" OFF)
+add_feature_info("Crash on safe asserts" CRASH_ON_SAFE_ASSERTS "Crash unconditionally whenever a \"safe\" assert happens. Useful for running unittests")
+
+configure_file(config-safe-asserts.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-safe-asserts.h)
 
 
 # message(STATUS "include_dir begin")

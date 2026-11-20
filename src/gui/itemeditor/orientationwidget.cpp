@@ -24,7 +24,7 @@
 #include <QPixmap>
 #include <QPushButton>
 
-#include <cassert>
+#include <ktlassert.h>
 
 const int _size = 44;
 
@@ -169,7 +169,7 @@ void OrientationWidget::slotClear()
 void OrientationWidget::slotButtonClicked()
 {
     QPushButton *btn = const_cast<QPushButton *>(dynamic_cast<const QPushButton *>(sender()));
-    assert(btn);
+    KTL_ASSERT(btn);
 
     for (int row = 0; row < 2; ++row) {
         for (int col = 0; col < 4; ++col) {

@@ -24,8 +24,6 @@
 #include <QSet>
 #include <QTimer>
 
-#include <cassert>
-
 using namespace std;
 
 // BEGIN class Simulator
