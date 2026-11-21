@@ -59,9 +59,16 @@ void Element::setElementSet(ElementSet *c)
 
 void Element::componentDeleted()
 {
+    if (!p_eSet)
+    {
+        // If the circuit containing this component was deleted
+        // before the component containing this element,
+        // elementSetDeleted will never get called causing a leak
+        // so delete now.
+        return delete this;
+    }
     b_componentDeleted = true;
     b_status = false;
-
     p_eSet = nullptr;
     clear();
 }

@@ -160,10 +160,14 @@ public:
      */
     virtual void add_initial_dc() = 0;
     /**
-     * This is called from the Component destructor. When elementSetDeleted has
-     * also been called, this class will delete itself.
+     * This is called when a Component is deleted or a Component removes this element. If no
+     * elementSet is assigned when this is called, the element will delete itself.
      */
     void componentDeleted();
+    /**
+     * This is called when the assigned ElementSet is deleted. If componentDeleted was previously
+     * called, the element will delete itself.
+     */
     void elementSetDeleted();
 
     double m_cnodeI[8]; ///< Current flowing into the cnodes from the element
