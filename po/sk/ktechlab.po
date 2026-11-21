@@ -427,10 +427,9 @@ msgstr "Najväčší počet znakov zobrazených v popisoch sond osciloskopu"
 
 #. i18n: ectx: label, entry (ScopeBufferSize), group (General)
 #: src/core/ktechlab.kcfg:42
-#, fuzzy, kde-format
-#| msgid "Maximum number of characters shown Oscilloscope probe labels"
+#, kde-format
 msgid "Maximum number of samples to retain for each Oscilloscope probe (in KB)"
-msgstr "Najväčší počet znakov zobrazených v popisoch sond osciloskopu"
+msgstr "Najväčší počet vzoriek uchovaných pre každú sondu osciloskopu (v KB)"
 
 #. i18n: ectx: label, entry (AnimateWires), group (General)
 #: src/core/ktechlab.kcfg:46
@@ -3273,7 +3272,7 @@ msgstr "Zobraziť indikátor napätia pri elektronických súčiastkach"
 #: src/gui/generaloptionswidget.ui:284
 #, kde-format
 msgid "Scope probe buffer size (in KB)"
-msgstr ""
+msgstr "Veľkosť vyrovnávacej pamäte sondy osciloskopu (v KB)"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: src/gui/gpasmsettingswidget.ui:32

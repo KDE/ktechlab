@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-20 01:16+0000\n"
-"PO-Revision-Date: 2026-11-05 07:35-0300\n"
+"PO-Revision-Date: 2026-11-20 08:48-0300\n"
 "Last-Translator: Marcus Gama <marcus.gama@kde.org>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -433,11 +433,11 @@ msgstr ""
 
 #. i18n: ectx: label, entry (ScopeBufferSize), group (General)
 #: src/core/ktechlab.kcfg:42
-#, fuzzy, kde-format
-#| msgid "Maximum number of characters shown Oscilloscope probe labels"
+#, kde-format
 msgid "Maximum number of samples to retain for each Oscilloscope probe (in KB)"
 msgstr ""
-"Número máximo de caracteres exibidos nos rótulos de sondas no osciloscópio"
+"Número máximo de amostras a serem mantidas para cada sonda do osciloscópio "
+"(em KB)"
 
 #. i18n: ectx: label, entry (AnimateWires), group (General)
 #: src/core/ktechlab.kcfg:46
@@ -3289,7 +3289,7 @@ msgstr "Mostrar &barras de tensão em componentes eletrônicos"
 #: src/gui/generaloptionswidget.ui:284
 #, kde-format
 msgid "Scope probe buffer size (in KB)"
-msgstr ""
+msgstr "Tamanho do buffer da sonda de osciloscópio (em KB)"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: src/gui/gpasmsettingswidget.ui:32

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-20 01:16+0000\n"
-"PO-Revision-Date: 2026-11-04 11:59+0100\n"
+"PO-Revision-Date: 2026-11-20 18:24+0100\n"
 "Last-Translator: freek <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -432,11 +432,10 @@ msgstr ""
 
 #. i18n: ectx: label, entry (ScopeBufferSize), group (General)
 #: src/core/ktechlab.kcfg:42
-#, fuzzy, kde-format
-#| msgid "Maximum number of characters shown Oscilloscope probe labels"
+#, kde-format
 msgid "Maximum number of samples to retain for each Oscilloscope probe (in KB)"
 msgstr ""
-"Maximaal aantal weergegeven tekens voor labels van probes op oscilloscoop"
+"Maximaal aantal samples dat per oscilloscoopprobe moet worden bewaard (in KB)"
 
 #. i18n: ectx: label, entry (AnimateWires), group (General)
 #: src/core/ktechlab.kcfg:46
@@ -3294,7 +3293,7 @@ msgstr "Toon &spanningsbalken bij elektronische onderdelen"
 #: src/gui/generaloptionswidget.ui:284
 #, kde-format
 msgid "Scope probe buffer size (in KB)"
-msgstr ""
+msgstr "Buffergrootte van de oscilloscoopprobe (in KB)"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: src/gui/gpasmsettingswidget.ui:32

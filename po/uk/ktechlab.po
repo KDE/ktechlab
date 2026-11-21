@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-20 01:16+0000\n"
-"PO-Revision-Date: 2026-11-04 21:51+0200\n"
+"PO-Revision-Date: 2026-11-20 08:17+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -439,12 +439,11 @@ msgstr ""
 
 #. i18n: ectx: label, entry (ScopeBufferSize), group (General)
 #: src/core/ktechlab.kcfg:42
-#, fuzzy, kde-format
-#| msgid "Maximum number of characters shown Oscilloscope probe labels"
+#, kde-format
 msgid "Maximum number of samples to retain for each Oscilloscope probe (in KB)"
 msgstr ""
-"Максимальна кількість символів, які можна показувати у мітках зондування "
-"осцилоскопа"
+"Максимальна кількість зразків, що зберігаються для кожного зондування "
+"осцилографа (у КБ)"
 
 #. i18n: ectx: label, entry (AnimateWires), group (General)
 #: src/core/ktechlab.kcfg:46
@@ -3302,7 +3301,7 @@ msgstr "Показувати індикатори напру&ги на елек�
 #: src/gui/generaloptionswidget.ui:284
 #, kde-format
 msgid "Scope probe buffer size (in KB)"
-msgstr ""
+msgstr "Розмір буфера зондування осцилоскопа (у кБ)"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: src/gui/gpasmsettingswidget.ui:32

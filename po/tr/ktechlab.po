@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-20 01:16+0000\n"
-"PO-Revision-Date: 2026-11-10 21:38+0300\n"
+"PO-Revision-Date: 2026-11-20 17:09+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -428,10 +428,11 @@ msgstr "Salınımölçer sonda etiketlerinde gösterilecek en çok karakter say�
 
 #. i18n: ectx: label, entry (ScopeBufferSize), group (General)
 #: src/core/ktechlab.kcfg:42
-#, fuzzy, kde-format
-#| msgid "Maximum number of characters shown Oscilloscope probe labels"
+#, kde-format
 msgid "Maximum number of samples to retain for each Oscilloscope probe (in KB)"
-msgstr "Salınımölçer sonda etiketlerinde gösterilecek en çok karakter sayısı"
+msgstr ""
+"Her bir salınımölçer sondası için tutulacak en çok örneklem sayısı (KB "
+"olarak)"
 
 #. i18n: ectx: label, entry (AnimateWires), group (General)
 #: src/core/ktechlab.kcfg:46
@@ -3280,7 +3281,7 @@ msgstr "Elektronik bileşenlerde gerilim çubuklarını göster"
 #: src/gui/generaloptionswidget.ui:284
 #, kde-format
 msgid "Scope probe buffer size (in KB)"
-msgstr ""
+msgstr "Kapsam sondası arabellek boyutu (KB türünden)"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: src/gui/gpasmsettingswidget.ui:32
