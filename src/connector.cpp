@@ -74,6 +74,7 @@ Connector::~Connector()
     delete m_conRouter;
 
     qDeleteAll(m_wires);
+    qDeleteAll(m_connectorLineList);
 
     //	m_wires.resize(0);
 }
