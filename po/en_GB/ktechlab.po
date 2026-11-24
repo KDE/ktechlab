@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-08 04:38+0000\n"
+"POT-Creation-Date: 2026-11-24 03:11+0000\n"
 "PO-Revision-Date: 2024-08-24 12:19+0100\n"
 "Last-Translator: Steve Allewell <steve.allewell@gmail.com>\n"
 "Language-Team: British English\n"
@@ -376,404 +376,6 @@ msgstr "Simulation Running"
 #, kde-format
 msgid "Simulation Paused"
 msgstr "Simulation Paused"
-
-#. i18n: ectx: label, entry (MaxUndo), group (General)
-#: src/core/ktechlab.kcfg:10
-#, kde-format
-msgid "Maximum number of undo steps"
-msgstr "Maximum number of undo steps"
-
-#. i18n: ectx: label, entry (RestoreDocumentsOnStartup), group (General)
-#: src/core/ktechlab.kcfg:14
-#, kde-format
-msgid "Restore Documents on Startup"
-msgstr "Restore Documents on Startup"
-
-#. i18n: ectx: label, entry (RaiseItemSelectors), group (General)
-#: src/core/ktechlab.kcfg:18
-#, kde-format
-msgid "Raise appropriate Item Selector on document creation"
-msgstr "Raise appropriate Item Selector on document creation"
-
-#. i18n: ectx: label, entry (RaiseMessagesLog), group (General)
-#: src/core/ktechlab.kcfg:22
-#, kde-format
-msgid "Raise Messages Log on Compiling"
-msgstr "Raise Messages Log on Compiling"
-
-#. i18n: ectx: label, entry (ShowVoltageBars), group (General)
-#: src/core/ktechlab.kcfg:26
-#, kde-format
-msgid "Show Voltage Bars"
-msgstr "Show Voltage Bars"
-
-#. i18n: ectx: label, entry (ShowVoltageColor), group (General)
-#: src/core/ktechlab.kcfg:30
-#, kde-format
-msgid "Show Voltage as Color"
-msgstr "Show Voltage as Colour"
-
-#. i18n: ectx: label, entry (AnimateWires), group (General)
-#: src/core/ktechlab.kcfg:34
-#, kde-format
-msgid "Animate Wires (current or power)"
-msgstr "Animate Wires (current or power)"
-
-#. i18n: ectx: label, entry (RefreshRate), group (General)
-#: src/core/ktechlab.kcfg:38
-#, kde-format
-msgid "Refresh Rate"
-msgstr "Refresh Rate"
-
-#. i18n: ectx: label, entry (GridColor), group (General)
-#: src/core/ktechlab.kcfg:42
-#, kde-format
-msgid "Color of grid lines"
-msgstr "Colour of grid lines"
-
-#. i18n: ectx: label, entry (ShowGrid), group (General)
-#: src/core/ktechlab.kcfg:46
-#, kde-format
-msgid "Whether the grid should be shown."
-msgstr "Whether the grid should be shown."
-
-#. i18n: ectx: label, entry (ReuseSameViewForOutput), group (General)
-#: src/core/ktechlab.kcfg:50
-#, kde-format
-msgid "Whether the same output should be use for generation of code, etc"
-msgstr "Whether the same output should be use for generation of code, etc"
-
-#. i18n: ectx: label, entry (IndentAsmName), group (AsmFormatter)
-#: src/core/ktechlab.kcfg:57
-#, kde-format
-msgid "Indentation of Instruction Names"
-msgstr "Indentation of Instruction Names"
-
-#. i18n: ectx: label, entry (IndentAsmData), group (AsmFormatter)
-#: src/core/ktechlab.kcfg:61
-#, kde-format
-msgid "Indentation of Instruction Data"
-msgstr "Indentation of Instruction Data"
-
-#. i18n: ectx: label, entry (IndentComment), group (AsmFormatter)
-#: src/core/ktechlab.kcfg:65
-#, kde-format
-msgid "Indentation of Comments"
-msgstr "Indentation of Comments"
-
-#. i18n: ectx: label, entry (IndentEqu), group (AsmFormatter)
-#: src/core/ktechlab.kcfg:69
-#, kde-format
-msgid "Indentation of 'equ'"
-msgstr "Indentation of 'equ'"
-
-#. i18n: ectx: label, entry (IndentEquValue), group (AsmFormatter)
-#: src/core/ktechlab.kcfg:73
-#, kde-format
-msgid "Indentation of 'equ' Value"
-msgstr "Indentation of 'equ' Value"
-
-#. i18n: ectx: label, entry (AutoFormatMBOutput), group (AsmFormatter)
-#: src/core/ktechlab.kcfg:77
-#, kde-format
-msgid "Automatically format Microbe output"
-msgstr "Automatically format Microbe output"
-
-#. i18n: ectx: label, entry (LogicSymbolShapes), group (Logic)
-#: src/core/ktechlab.kcfg:84
-#, kde-format
-msgid "Logic Symbol Shapes"
-msgstr "Logic Symbol Shapes"
-
-#. i18n: ectx: label, entry (LogicRisingTrigger), group (Logic)
-#: src/core/ktechlab.kcfg:92
-#, kde-format
-msgid "Rising Trigger Threshold"
-msgstr "Rising Trigger Threshold"
-
-#. i18n: ectx: label, entry (LogicFallingTrigger), group (Logic)
-#: src/core/ktechlab.kcfg:96
-#, kde-format
-msgid "Falling Trigger Threshold"
-msgstr "Falling Trigger Threshold"
-
-#. i18n: ectx: label, entry (LogicOutputHigh), group (Logic)
-#: src/core/ktechlab.kcfg:100
-#, kde-format
-msgid "Logic Output High"
-msgstr "Logic Output High"
-
-#. i18n: ectx: label, entry (LogicOutputHighImpedance), group (Logic)
-#: src/core/ktechlab.kcfg:104
-#, kde-format
-msgid "Logic Output High Impedance"
-msgstr "Logic Output High Impedance"
-
-#. i18n: ectx: label, entry (LogicOutputLowImpedance), group (Logic)
-#: src/core/ktechlab.kcfg:108
-#, kde-format
-msgid "Logic Output Low Impedance"
-msgstr "Logic Output Low Impedance"
-
-#. i18n: ectx: label, entry (HexFormat), group (Gpasm)
-#: src/core/ktechlab.kcfg:115
-#, kde-format
-msgid "Hex Format"
-msgstr "Hex Format"
-
-#. i18n: ectx: label, entry (Radix), group (Gpasm)
-#: src/core/ktechlab.kcfg:125
-#, kde-format
-msgid "Radix"
-msgstr "Radix"
-
-#. i18n: ectx: label, entry (GpasmWarningLevel), group (Gpasm)
-#: src/core/ktechlab.kcfg:135
-#, kde-format
-msgid "GpasmWarning Level"
-msgstr "GpasmWarning Level"
-
-#. i18n: ectx: label, entry (IgnoreCase), group (Gpasm)
-#: src/core/ktechlab.kcfg:144
-#, kde-format
-msgid "Ignore Case"
-msgstr "Ignore Case"
-
-#. i18n: ectx: label, entry (DosFormat), group (Gpasm)
-#: src/core/ktechlab.kcfg:148
-#, kde-format
-msgid "Dos Formatting"
-msgstr "Dos Formatting"
-
-#. i18n: ectx: label, entry (MiscGpasmOptions), group (Gpasm)
-#. i18n: ectx: label, entry (MiscSDCCOptions), group (SDCC)
-#: src/core/ktechlab.kcfg:152 src/core/ktechlab.kcfg:299
-#, kde-format
-msgid "Other Options"
-msgstr "Other Options"
-
-#. i18n: ectx: label, entry (SDCC_nostdlib), group (SDCC)
-#: src/core/ktechlab.kcfg:159
-#, kde-format
-msgid "Do not search in the standard library directory"
-msgstr "Do not search in the standard library directory"
-
-#. i18n: ectx: label, entry (SDCC_nostdinc), group (SDCC)
-#: src/core/ktechlab.kcfg:163
-#, kde-format
-msgid "Do not search in the standard include directory"
-msgstr "Do not search in the standard include directory"
-
-#. i18n: ectx: label, entry (SDCC_less_pedantic), group (SDCC)
-#: src/core/ktechlab.kcfg:167
-#, kde-format
-msgid "Disable pedantic warnings"
-msgstr "Disable pedantic warnings"
-
-#. i18n: ectx: label, entry (SDCC_std_c89), group (SDCC)
-#: src/core/ktechlab.kcfg:171
-#, kde-format
-msgid "Strictly follow the C89 standard"
-msgstr "Strictly follow the C89 standard"
-
-#. i18n: ectx: label, entry (SDCC_std_c99), group (SDCC)
-#: src/core/ktechlab.kcfg:175
-#, kde-format
-msgid "Strictly follow the C99 standard"
-msgstr "Strictly follow the C99 standard"
-
-#. i18n: ectx: label, entry (SDCC_stack_auto), group (SDCC)
-#: src/core/ktechlab.kcfg:180
-#, kde-format
-msgid "Stack automatic variables"
-msgstr "Stack automatic variables"
-
-#. i18n: ectx: label, entry (SDCC_int_long_reent), group (SDCC)
-#: src/core/ktechlab.kcfg:184
-#, kde-format
-msgid "Integer libraries have been compiled as reentrant"
-msgstr "Integer libraries have been compiled as reentrant"
-
-#. i18n: ectx: label, entry (SDCC_float_reent), group (SDCC)
-#: src/core/ktechlab.kcfg:188
-#, kde-format
-msgid "Floating point library has been compiled as reentrant"
-msgstr "Floating point library has been compiled as reentrant"
-
-#. i18n: ectx: label, entry (SDCC_fommit_frame_pointer), group (SDCC)
-#: src/core/ktechlab.kcfg:192
-#, kde-format
-msgid "Leave out the frame pointer"
-msgstr "Leave out the frame pointer"
-
-#. i18n: ectx: label, entry (SDCC_no_xinit_opt), group (SDCC)
-#: src/core/ktechlab.kcfg:196
-#, kde-format
-msgid "Do not memcpy initialized data from code space to xdata space"
-msgstr "Do not memcpy initialised data from code space to xdata space"
-
-#. i18n: ectx: label, entry (SDCC_all_callee_saves), group (SDCC)
-#: src/core/ktechlab.kcfg:200
-#, kde-format
-msgid "Callee will always save registers used"
-msgstr "Callee will always save registers used"
-
-#. i18n: ectx: label, entry (SDCC_nooverlay), group (SDCC)
-#: src/core/ktechlab.kcfg:205
-#, kde-format
-msgid "Do not overlay parameters and local variables"
-msgstr "Do not overlay parameters and local variables"
-
-#. i18n: ectx: label, entry (SDCC_nogcse), group (SDCC)
-#: src/core/ktechlab.kcfg:209
-#, kde-format
-msgid "Disable the GCSE optimization"
-msgstr "Disable the GCSE optimisation"
-
-#. i18n: ectx: label, entry (SDCC_nolabelopt), group (SDCC)
-#: src/core/ktechlab.kcfg:213
-#, kde-format
-msgid "Do not optimize labels"
-msgstr "Do not optimise labels"
-
-#. i18n: ectx: label, entry (SDCC_noinvariant), group (SDCC)
-#: src/core/ktechlab.kcfg:217
-#, kde-format
-msgid "Disable optimization of invariants"
-msgstr "Disable optimisation of invariants"
-
-#. i18n: ectx: label, entry (SDCC_noinduction), group (SDCC)
-#: src/core/ktechlab.kcfg:221
-#, kde-format
-msgid "Disable loop variable induction"
-msgstr "Disable loop variable induction"
-
-#. i18n: ectx: label, entry (SDCC_no_peep), group (SDCC)
-#: src/core/ktechlab.kcfg:225
-#, kde-format
-msgid "Disable peep-hole optimization"
-msgstr "Disable peep-hole optimisation"
-
-#. i18n: ectx: label, entry (SDCC_noloopreverse), group (SDCC)
-#: src/core/ktechlab.kcfg:229
-#, kde-format
-msgid "Do not do loop reversal optimization"
-msgstr "Do not do loop reversal optimisation"
-
-#. i18n: ectx: label, entry (SDCC_opt_code_size), group (SDCC)
-#: src/core/ktechlab.kcfg:233
-#, kde-format
-msgid "Optimize for compact code"
-msgstr "Optimise for compact code"
-
-#. i18n: ectx: label, entry (SDCC_opt_code_speed), group (SDCC)
-#: src/core/ktechlab.kcfg:237
-#, kde-format
-msgid "Optimize for fast code"
-msgstr "Optimise for fast code"
-
-#. i18n: ectx: label, entry (SDCC_peep_asm), group (SDCC)
-#: src/core/ktechlab.kcfg:241
-#, kde-format
-msgid "Pass inline assembler code through peep hole optimizer"
-msgstr "Pass inline assembler code through peep hole optimiser"
-
-#. i18n: ectx: label, entry (SDCC_nojtbound), group (SDCC)
-#: src/core/ktechlab.kcfg:245
-#, kde-format
-msgid "Do not generate boundary check for jump tables"
-msgstr "Do not generate boundary check for jump tables"
-
-#. i18n: ectx: label, entry (SDCC_nodefaultlibs), group (SDCC)
-#: src/core/ktechlab.kcfg:250
-#, kde-format
-msgid "Do not use default libraries"
-msgstr "Do not use default libraries"
-
-#. i18n: ectx: label, entry (SDCC_pno_banksel), group (SDCC)
-#: src/core/ktechlab.kcfg:254
-#, kde-format
-msgid "Do not generate BANKSEL directives"
-msgstr "Do not generate BANKSEL directives"
-
-#. i18n: ectx: label, entry (SDCC_pstack_model_large), group (SDCC)
-#: src/core/ktechlab.kcfg:258
-#, kde-format
-msgid "Use large stack model"
-msgstr "Use large stack model"
-
-#. i18n: ectx: label, entry (SDCC_debug_xtra), group (SDCC)
-#: src/core/ktechlab.kcfg:262
-#, kde-format
-msgid "Show more debug info in assembly output"
-msgstr "Show more debug info in assembly output"
-
-#. i18n: ectx: label, entry (SDCC_denable_peeps), group (SDCC)
-#: src/core/ktechlab.kcfg:266
-#, kde-format
-msgid "Explicit enable of peepholes"
-msgstr "Explicit enable of peepholes"
-
-#. i18n: ectx: label, entry (SDCC_calltree), group (SDCC)
-#: src/core/ktechlab.kcfg:270
-#, kde-format
-msgid "Dump call tree in .calltree file"
-msgstr "Dump call tree in .calltree file"
-
-#. i18n: ectx: label, entry (SDCC_fstack), group (SDCC)
-#: src/core/ktechlab.kcfg:274
-#, kde-format
-msgid "Enable stack optimizations"
-msgstr "Enable stack optimisations"
-
-#. i18n: ectx: label, entry (SDCC_optimize_goto), group (SDCC)
-#: src/core/ktechlab.kcfg:278
-#, kde-format
-msgid "Try to use conditional BRA instead of GOTO"
-msgstr "Try to use conditional BRA instead of GOTO"
-
-#. i18n: ectx: label, entry (SDCC_optimize_cmp), group (SDCC)
-#: src/core/ktechlab.kcfg:282
-#, kde-format
-msgid "Try to optimize some compares"
-msgstr "Try to optimise some compares"
-
-#. i18n: ectx: label, entry (SDCC_optimize_df), group (SDCC)
-#: src/core/ktechlab.kcfg:286
-#, kde-format
-msgid "Thorough data flow analysis"
-msgstr "Thorough data flow analysis"
-
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_use_non_free)
-#. i18n: ectx: label, entry (SDCC_use_non_free), group (SDCC)
-#: src/core/ktechlab.kcfg:290 src/gui/sdccoptionswidget.ui:95
-#, kde-format
-msgid "Search / include non-free licensed libraries and header files"
-msgstr "Search / include non-free licensed libraries and header files"
-
-#. i18n: ectx: label, entry (SDCC_install_prefix), group (SDCC)
-#: src/core/ktechlab.kcfg:294
-#, kde-format
-msgid "Location where SDCC in installed"
-msgstr "Location where SDCC in installed"
-
-#. i18n: ectx: label, entry (PicProgrammerProgram), group (PicProgramming)
-#: src/core/ktechlab.kcfg:306
-#, kde-format
-msgid "The application to use to program the PIC."
-msgstr "The application to use to program the PIC."
-
-#. i18n: ectx: label, entry (PicProgrammerPort), group (PicProgramming)
-#: src/core/ktechlab.kcfg:310
-#, kde-format
-msgid "The device (serial, parallel, etc...) used to program the PIC."
-msgstr "The device (serial, parallel, etc...) used to program the PIC."
-
-#. i18n: ectx: label, entry (gplink_link_shared), group (Gplink)
-#: src/core/ktechlab.kcfg:317
-#, kde-format
-msgid "Check this if SDCC uses shared libs for compiling (newer SDCC does so)"
-msgstr "Tick this if SDCC uses shared libs for compiling (newer SDCC does so)"
 
 #: src/core/main.cpp:35
 #, kde-format
@@ -1760,9 +1362,8 @@ msgstr "Potentiometer"
 msgid "Resistance"
 msgstr "Resistance"
 
-#. i18n: ectx: property (text), item, widget (QComboBox, typeCombo)
 #: src/electronics/components/ecsevensegment.cpp:30
-#: src/flowparts/sevenseg.cpp:26 src/gui/newpinmappingwidget.ui:105
+#: src/flowparts/sevenseg.cpp:26
 #, kde-format
 msgid "Seven Segment"
 msgstr "Seven Segment"
@@ -1820,8 +1421,7 @@ msgstr "Voltage Signal"
 msgid "Voltage Range"
 msgstr "Voltage Range"
 
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox4)
-#: src/electronics/components/ecvoltagesignal.cpp:66 src/gui/logicwidget.ui:142
+#: src/electronics/components/ecvoltagesignal.cpp:66
 #, kde-format
 msgid "Output"
 msgstr "Output"
@@ -1848,12 +1448,10 @@ msgstr "Battery"
 msgid "External Connection"
 msgstr "External Connection"
 
-#. i18n: ectx: property (text), widget (QLabel, m_pNameLabel)
 #: src/electronics/components/externalconnection.cpp:34
-#: src/gui/contexthelpwidget.ui:29 src/gui/microsettingsdlg.cpp:331
-#: src/gui/settingsdlg.cpp:287 src/gui/symbolviewer.cpp:124
-#: src/gui/symbolviewer.cpp:126 src/gui/symbolviewer.cpp:191
-#: src/gui/symbolviewer.cpp:193
+#: src/gui/microsettingsdlg.cpp:331 src/gui/settingsdlg.cpp:287
+#: src/gui/symbolviewer.cpp:124 src/gui/symbolviewer.cpp:126
+#: src/gui/symbolviewer.cpp:191 src/gui/symbolviewer.cpp:193
 #, kde-format
 msgid "Name"
 msgstr "Name"
@@ -2046,11 +1644,9 @@ msgstr "Multiplexer"
 msgid "Parallel Port"
 msgstr "Parallel Port"
 
-#. i18n: ectx: property (text), widget (QLabel, textLabel1)
 #: src/electronics/components/parallelportcomponent.cpp:143
 #: src/electronics/components/serialportcomponent.cpp:119
 #: src/flowparts/readport.cpp:39 src/flowparts/writeport.cpp:44
-#: src/gui/programmerwidget.ui:62
 #, kde-format
 msgid "Port"
 msgstr "Port"
@@ -2071,9 +1667,7 @@ msgstr "PIC Micro"
 msgid "<Enter location of PIC Program>"
 msgstr "<Enter location of PIC Program>"
 
-#. i18n: ectx: property (text), item, widget (QComboBox, m_typeCombo)
 #: src/electronics/components/piccomponent.cpp:84
-#: src/gui/createsubprojectwidget.ui:59
 #, kde-format
 msgid "Program"
 msgstr "Program"
@@ -2868,58 +2462,6 @@ msgstr "to"
 msgid "Write %1 to %2"
 msgstr "Write %1 to %2"
 
-#. i18n: ectx: property (whatsThis), widget (QWidget, AsmFormattingWidget)
-#: src/gui/asmformattingwidget.ui:14
-#, kde-format
-msgid ""
-"The values control the indentation from the left margin of the various types "
-"of assembly code."
-msgstr ""
-"The values control the indentation from the left margin of the various types "
-"of assembly code."
-
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox64)
-#: src/gui/asmformattingwidget.ui:32
-#, kde-format
-msgid "Output Code Indentation"
-msgstr "Output Code Indentation"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel11)
-#: src/gui/asmformattingwidget.ui:38
-#, kde-format
-msgid "'equ' Value"
-msgstr "'equ' Value"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel8)
-#: src/gui/asmformattingwidget.ui:48
-#, kde-format
-msgid "Instruction Data"
-msgstr "Instruction Data"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel9)
-#: src/gui/asmformattingwidget.ui:58
-#, kde-format
-msgid "Comment"
-msgstr "Comment"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel10)
-#: src/gui/asmformattingwidget.ui:68
-#, kde-format
-msgid "'equ'"
-msgstr "'equ'"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel7)
-#: src/gui/asmformattingwidget.ui:78
-#, kde-format
-msgid "Instruction Name"
-msgstr "Instruction Name"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_AutoFormatMBOutput)
-#: src/gui/asmformattingwidget.ui:162
-#, kde-format
-msgid "&Automatically format Microbe output"
-msgstr "&Automatically format Microbe output"
-
 #: src/gui/contexthelp.cpp:65
 #, kde-format
 msgid ""
@@ -2939,10 +2481,7 @@ msgstr "No Item Selected"
 msgid "Multiple Items"
 msgstr "Multiple Items"
 
-#. i18n: ectx: property (toolTip), widget (QToolButton, m_pResetButton)
-#. i18n: ectx: property (text), widget (QPushButton, resetBtn)
 #: src/gui/contexthelp.cpp:329 src/gui/contexthelp.cpp:330
-#: src/gui/contexthelpwidget.ui:173 src/gui/oscilloscopewidget.ui:120
 #, kde-format
 msgid "Reset"
 msgstr "Reset"
@@ -2956,326 +2495,6 @@ msgstr "Reset item help to last saved changes?"
 #, kde-format
 msgid "Cannot save item description."
 msgstr "Cannot save item description."
-
-#. i18n: ectx: property (text), widget (QPushButton, m_pEditButton)
-#: src/gui/contexthelpwidget.ui:91
-#, kde-format
-msgid "Edit"
-msgstr "Edit"
-
-#. i18n: ectx: property (toolTip), widget (QToolButton, m_pChangeDescriptionsDirectory)
-#: src/gui/contexthelpwidget.ui:138
-#, kde-format
-msgid "Context Help Directory"
-msgstr "Context Help Directory"
-
-#. i18n: ectx: property (text), widget (QToolButton, m_pChangeDescriptionsDirectory)
-#. i18n: ectx: property (text), widget (QToolButton, m_pResetButton)
-#: src/gui/contexthelpwidget.ui:141 src/gui/contexthelpwidget.ui:176
-#, kde-format
-msgid "..."
-msgstr "..."
-
-#. i18n: ectx: property (text), widget (QPushButton, m_pSaveButton)
-#: src/gui/contexthelpwidget.ui:183
-#, kde-format
-msgid "S&ave"
-msgstr "S&ave"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel1)
-#: src/gui/createsubprojectwidget.ui:28
-#, kde-format
-msgid "Subproject Details"
-msgstr "Subproject Details"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel2)
-#: src/gui/createsubprojectwidget.ui:38
-#, kde-format
-msgid "Target File:"
-msgstr "Target File:"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel2)
-#. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
-#: src/gui/createsubprojectwidget.ui:48 src/gui/newpinmappingwidget.ui:23
-#, kde-format
-msgid "Type:"
-msgstr "Type:"
-
-#. i18n: ectx: property (text), item, widget (QComboBox, m_typeCombo)
-#: src/gui/createsubprojectwidget.ui:64
-#, kde-format
-msgid "Library"
-msgstr "Library"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ReuseSameViewForOutput)
-#: src/gui/generaloptionswidget.ui:29
-#, kde-format
-msgid "Reuse the same output view for code generation"
-msgstr "Reuse the same output view for code generation"
-
-#. i18n: ectx: property (toolTip), widget (KColorButton, kcfg_GridColor)
-#: src/gui/generaloptionswidget.ui:52
-#, kde-format
-msgid "The grid color in the work area."
-msgstr "The grid colour in the work area."
-
-#. i18n: ectx: property (text), widget (KColorButton, kcfg_GridColor)
-#: src/gui/generaloptionswidget.ui:55
-#, kde-format
-msgid "Grid Colour"
-msgstr "Grid Colour"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowGrid)
-#: src/gui/generaloptionswidget.ui:62
-#, kde-format
-msgid "Show &grid:"
-msgstr "Show &grid:"
-
-#. i18n: ectx: property (toolTip), widget (QLabel, textLabel1)
-#: src/gui/generaloptionswidget.ui:85
-#, kde-format
-msgid ""
-"Maximum undo steps for work area. This does not apply to text documents - "
-"that is configurable separately under Configure Editor."
-msgstr ""
-"Maximum undo steps for work area. This does not apply to text documents - "
-"that is configurable separately under Configure Editor."
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel1)
-#: src/gui/generaloptionswidget.ui:88
-#, kde-format
-msgid "Maximum undo steps for work area:"
-msgstr "Maximum undo steps for work area:"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowVoltageBars)
-#: src/gui/generaloptionswidget.ui:98
-#, kde-format
-msgid "Show voltage bars &on electronic components"
-msgstr "Show voltage bars &on electronic components"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowVoltageColor)
-#: src/gui/generaloptionswidget.ui:105
-#, kde-format
-msgid "Color the wires to match the voltage"
-msgstr "Colour the wires to match the voltage"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_AnimateWires)
-#: src/gui/generaloptionswidget.ui:115
-#, kde-format
-msgid "Animate wires to show the current or power flow"
-msgstr "Animate wires to show the current or power flow"
-
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox21)
-#: src/gui/generaloptionswidget.ui:125
-#, kde-format
-msgid "Display Refresh Rate"
-msgstr "Display Refresh Rate"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel3_2)
-#: src/gui/generaloptionswidget.ui:152
-#, kde-format
-msgid "Refresh rate:"
-msgstr "Refresh rate:"
-
-#. i18n: ectx: property (text), widget (QLabel, refreshRateLabel)
-#: src/gui/generaloptionswidget.ui:162
-#, kde-format
-msgid "Medium (50 FPS)"
-msgstr "Medium (50 FPS)"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel9_2)
-#: src/gui/generaloptionswidget.ui:180
-#, kde-format
-msgid ""
-"This is the number of times per second that the work area view is updated; a "
-"compromise between CPU usage and smoothness of display."
-msgstr ""
-"This is the number of times per second that the work area view is updated; a "
-"compromise between CPU usage and smoothness of display."
-
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox4)
-#: src/gui/generaloptionswidget.ui:202
-#, kde-format
-msgid "Convenience"
-msgstr "Convenience"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_RestoreDocumentsOnStartup)
-#: src/gui/generaloptionswidget.ui:208
-#, kde-format
-msgid "Restore opened doc&uments on startup"
-msgstr "Restore opened doc&uments on startup"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_RaiseItemSelectors)
-#: src/gui/generaloptionswidget.ui:215
-#, kde-format
-msgid "Raise the &appropriate item selector on creating a new document"
-msgstr "Raise the &appropriate item selector on creating a new document"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_RaiseMessagesLog)
-#: src/gui/generaloptionswidget.ui:222
-#, kde-format
-msgid "Raise the &Messages log when compiling"
-msgstr "Raise the &Messages log when compiling"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel2)
-#: src/gui/gpasmsettingswidget.ui:32
-#, kde-format
-msgid "Radix (-r):"
-msgstr "Radix (-r):"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel3)
-#: src/gui/gpasmsettingswidget.ui:42
-#, kde-format
-msgid "Warning level (-w):"
-msgstr "Warning level (-w):"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel1)
-#: src/gui/gpasmsettingswidget.ui:52 src/gui/linkeroptionswidget.ui:69
-#, kde-format
-msgid "Hex Format (-a):"
-msgstr "Hex Format (-a):"
-
-#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_IgnoreCase)
-#: src/gui/gpasmsettingswidget.ui:62
-#, kde-format
-msgid ""
-"All user defined symbols and macros are case sensitive. This option makes "
-"them case insensitive."
-msgstr ""
-"All user defined symbols and macros are case sensitive. This option makes "
-"them case insensitive."
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_IgnoreCase)
-#: src/gui/gpasmsettingswidget.ui:65
-#, kde-format
-msgid "Ign&ore case (-i)"
-msgstr "Ign&ore case (-i)"
-
-#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_DosFormat)
-#: src/gui/gpasmsettingswidget.ui:72
-#, kde-format
-msgid ""
-"By default, gpasm generates hex files using ISO format. However, some device "
-"programmers required a DOS formatted file. This option will cause gpasm to "
-"generate a DOS formatted hex file. "
-msgstr ""
-"By default, gpasm generates hex files using ISO format. However, some device "
-"programmers required a DOS formatted file. This option will cause gpasm to "
-"generate a DOS formatted hex file. "
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_DosFormat)
-#: src/gui/gpasmsettingswidget.ui:75
-#, kde-format
-msgid "Generate DOS-formatted hex file (-&n)"
-msgstr "Generate DOS-formatted hex file (-&n)"
-
-#. i18n: ectx: property (toolTip), widget (QComboBox, kcfg_HexFormat)
-#. i18n: ectx: property (toolTip), widget (KComboBox, m_pHexFormat)
-#: src/gui/gpasmsettingswidget.ui:104 src/gui/linkeroptionswidget.ui:29
-#, kde-format
-msgid ""
-"GPASM supports inhx8m, inhx8s, inhx16, and inhx32 hex file formats. This "
-"option controls which hex file format is used."
-msgstr ""
-"GPASM supports inhx8m, inhx8s, inhx16, and inhx32 hex file formats. This "
-"option controls which hex file format is used."
-
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_HexFormat)
-#. i18n: ectx: property (text), item, widget (KComboBox, m_pHexFormat)
-#: src/gui/gpasmsettingswidget.ui:108 src/gui/linkeroptionswidget.ui:33
-#, kde-format
-msgid "inhx32"
-msgstr "inhx32"
-
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_HexFormat)
-#. i18n: ectx: property (text), item, widget (KComboBox, m_pHexFormat)
-#: src/gui/gpasmsettingswidget.ui:113 src/gui/linkeroptionswidget.ui:38
-#, kde-format
-msgid "inhx8m"
-msgstr "inhx8m"
-
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_HexFormat)
-#. i18n: ectx: property (text), item, widget (KComboBox, m_pHexFormat)
-#: src/gui/gpasmsettingswidget.ui:118 src/gui/linkeroptionswidget.ui:43
-#, kde-format
-msgid "inhx8s"
-msgstr "inhx8s"
-
-#. i18n: ectx: property (text), item, widget (QComboBox, kcfg_HexFormat)
-#. i18n: ectx: property (text), item, widget (KComboBox, m_pHexFormat)
-#: src/gui/gpasmsettingswidget.ui:123 src/gui/linkeroptionswidget.ui:48
-#, kde-format
-msgid "inhx16"
-msgstr "inhx16"
-
-#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_Radix)
-#: src/gui/gpasmsettingswidget.ui:138 src/gui/symbolviewer.cpp:110
-#, kde-format
-msgid "Decimal"
-msgstr "Decimal"
-
-#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_Radix)
-#: src/gui/gpasmsettingswidget.ui:143 src/gui/symbolviewer.cpp:108
-#, kde-format
-msgid "Binary"
-msgstr "Binary"
-
-#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_Radix)
-#: src/gui/gpasmsettingswidget.ui:148 src/gui/symbolviewer.cpp:109
-#, kde-format
-msgid "Octal"
-msgstr "Octal"
-
-#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_Radix)
-#: src/gui/gpasmsettingswidget.ui:153 src/gui/symbolviewer.cpp:111
-#, kde-format
-msgid "Hexadecimal"
-msgstr "Hexadecimal"
-
-#. i18n: ectx: property (toolTip), widget (KComboBox, kcfg_GpasmWarningLevel)
-#: src/gui/gpasmsettingswidget.ui:167
-#, kde-format
-msgid ""
-"This sets the threshold of messages displayed in the log view.<ul><li>\"All"
-"\" will display all output - information, warnings and errors.<li>\"Warnings"
-"\" will suppress messages. <li>\"Errors\" will suppress both messages and "
-"warnings.</ul>"
-msgstr ""
-"This sets the threshold of messages displayed in the log view.<ul><li>\"All"
-"\" will display all output - information, warnings and errors.<li>\"Warnings"
-"\" will suppress messages. <li>\"Errors\" will suppress both messages and "
-"warnings.</ul>"
-
-#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GpasmWarningLevel)
-#: src/gui/gpasmsettingswidget.ui:171
-#, kde-format
-msgid "All"
-msgstr "All"
-
-#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GpasmWarningLevel)
-#: src/gui/gpasmsettingswidget.ui:176
-#, kde-format
-msgid "Warnings"
-msgstr "Warnings"
-
-#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GpasmWarningLevel)
-#: src/gui/gpasmsettingswidget.ui:181
-#, kde-format
-msgid "Errors"
-msgstr "Errors"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
-#. i18n: ectx: property (text), widget (QLabel, textLabel2)
-#: src/gui/gpasmsettingswidget.ui:237 src/gui/sdccoptionswidget.ui:449
-#, kde-format
-msgid "Other options:"
-msgstr "Other options:"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_gplink_link_shared)
-#: src/gui/gplinksettingswidget.ui:26
-#, kde-format
-msgid "Link with shared libraries (&use this with new SDCC)"
-msgstr "Link with shared libraries (&use this with new SDCC)"
 
 #: src/gui/imageexportdlg.cpp:32 src/itemdocument.cpp:848
 #: src/itemdocument.cpp:854
@@ -3439,154 +2658,6 @@ msgid "Add mechanical parts to the mechanics work area by dragging them there."
 msgstr ""
 "Add mechanical parts to the mechanics work area by dragging them there."
 
-#. i18n: ectx: property (text), widget (QLabel, textLabel3)
-#: src/gui/linkeroptionswidget.ui:56
-#, kde-format
-msgid "Library Directory (-I):"
-msgstr "Library Directory (-I):"
-
-#. i18n: ectx: property (text), widget (QCheckBox, m_pOutputMap)
-#: src/gui/linkeroptionswidget.ui:79
-#, kde-format
-msgid "&Output a map file (-m)"
-msgstr "&Output a map file (-m)"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel8)
-#: src/gui/linkeroptionswidget.ui:86
-#, kde-format
-msgid "Linker Script (-s):"
-msgstr "Linker Script (-s):"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel4)
-#: src/gui/linkeroptionswidget.ui:102
-#, kde-format
-msgid "Other:"
-msgstr "Other:"
-
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox2)
-#: src/gui/linkeroptionswidget.ui:116
-#, kde-format
-msgid "Link libraries inside project"
-msgstr "Link libraries inside project"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel1_3)
-#: src/gui/logicwidget.ui:31
-#, kde-format
-msgid "Logic Symbol Shapes:"
-msgstr "Logic Symbol Shapes:"
-
-#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_LogicSymbolShapes)
-#: src/gui/logicwidget.ui:42
-#, kde-format
-msgid "Distinctive"
-msgstr "Distinctive"
-
-#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_LogicSymbolShapes)
-#: src/gui/logicwidget.ui:47
-#, kde-format
-msgid "Rectangular"
-msgstr "Rectangular"
-
-#. i18n: ectx: property (title), widget (QGroupBox, groupBox3)
-#: src/gui/logicwidget.ui:57
-#, kde-format
-msgid "Input"
-msgstr "Input"
-
-#. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, kcfg_LogicRisingTrigger)
-#. i18n: ectx: property (toolTip), widget (QLabel, textLabel1)
-#: src/gui/logicwidget.ui:63 src/gui/logicwidget.ui:126
-#, kde-format
-msgid "Required voltage level before the input will be considered high."
-msgstr "Required voltage level before the input will be considered high."
-
-#. i18n: ectx: property (suffix), widget (QDoubleSpinBox, kcfg_LogicRisingTrigger)
-#. i18n: ectx: property (suffix), widget (QDoubleSpinBox, kcfg_LogicFallingTrigger)
-#. i18n: ectx: property (suffix), widget (QDoubleSpinBox, kcfg_LogicOutputHigh)
-#: src/gui/logicwidget.ui:72 src/gui/logicwidget.ui:110
-#: src/gui/logicwidget.ui:170
-#, kde-format
-msgid " V"
-msgstr " V"
-
-#. i18n: ectx: property (toolTip), widget (QLabel, textLabel2_2)
-#. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, kcfg_LogicFallingTrigger)
-#: src/gui/logicwidget.ui:88 src/gui/logicwidget.ui:101
-#, kde-format
-msgid "Required voltage level before an input will be considered low."
-msgstr "Required voltage level before an input will be considered low."
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel2_2)
-#: src/gui/logicwidget.ui:91
-#, kde-format
-msgid "Falling Trigger Threshold:"
-msgstr "Falling Trigger Threshold:"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel1)
-#: src/gui/logicwidget.ui:129
-#, kde-format
-msgid "Rising Trigger Threshold:"
-msgstr "Rising Trigger Threshold:"
-
-#. i18n: ectx: property (toolTip), widget (QLabel, textLabel2)
-#. i18n: ectx: property (toolTip), widget (QDoubleSpinBox, kcfg_LogicOutputHigh)
-#: src/gui/logicwidget.ui:148 src/gui/logicwidget.ui:161
-#, kde-format
-msgid "Voltage level for high on logic components."
-msgstr "Voltage level for high on logic components."
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel2)
-#: src/gui/logicwidget.ui:151
-#, kde-format
-msgid "Output High:"
-msgstr "Output High:"
-
-#. i18n: ectx: property (toolTip), widget (QLabel, textLabel4)
-#. i18n: ectx: property (toolTip), widget (QSpinBox, kcfg_LogicOutputHighImpedance)
-#: src/gui/logicwidget.ui:186 src/gui/logicwidget.ui:212
-#, kde-format
-msgid "This is the output impedance when the output is high."
-msgstr "This is the output impedance when the output is high."
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel4)
-#: src/gui/logicwidget.ui:189
-#, kde-format
-msgid "High Output Impedance:"
-msgstr "High Output Impedance:"
-
-#. i18n: ectx: property (toolTip), widget (QLabel, textLabel1_2)
-#. i18n: ectx: property (toolTip), widget (QSpinBox, kcfg_LogicOutputLowImpedance)
-#: src/gui/logicwidget.ui:199 src/gui/logicwidget.ui:234
-#, kde-format
-msgid "This is the output impedance when the output is low."
-msgstr "This is the output impedance when the output is low."
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
-#: src/gui/logicwidget.ui:202
-#, kde-format
-msgid "Low Output Impedance:"
-msgstr "Low Output Impedance:"
-
-#. i18n: ectx: property (specialValueText), widget (QSpinBox, kcfg_LogicOutputLowImpedance)
-#: src/gui/logicwidget.ui:240
-#, kde-format
-msgid "Floating"
-msgstr "Floating"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel2_3)
-#: src/gui/logicwidget.ui:264
-#, kde-format
-msgid ""
-"Here, you can configure the behaviour of logic components.\n"
-"\n"
-"These values will apply to all components, apart from the PIC, whose pins' "
-"impedances depend on the pin in use."
-msgstr ""
-"Here, you can configure the behaviour of logic components.\n"
-"\n"
-"These values will apply to all components, apart from the PIC, whose pins' "
-"impedances depend on the pin in use."
-
 #. i18n("Clear All"), this, SLOT(clear()) ); // 2018.12.07
 #: src/gui/logview.cpp:121
 #, kde-format
@@ -3665,14 +2736,12 @@ msgstr "Variable name"
 msgid "Variable value"
 msgstr "Variable value"
 
-#. i18n: ectx: property (text), widget (QLabel, textLabel3)
-#: src/gui/microsettingsdlg.cpp:259 src/gui/newpinmappingwidget.ui:48
+#: src/gui/microsettingsdlg.cpp:259
 #, kde-format
 msgid "New Pin Mapping"
 msgstr "New Pin Mapping"
 
-#. i18n: ectx: property (text), widget (QPushButton, pinMapAdd)
-#: src/gui/microsettingsdlg.cpp:266 src/gui/microsettingswidget.ui:132
+#: src/gui/microsettingsdlg.cpp:266
 #, kde-format
 msgid "Create"
 msgstr "Create"
@@ -3687,138 +2756,10 @@ msgstr "New Pin Map Name"
 msgid "Invalid variable value: %1"
 msgstr "Invalid variable value: %1"
 
-#. i18n: ectx: property (text), widget (QLabel, textLabel1)
-#: src/gui/microsettingswidget.ui:45
-#, kde-format
-msgid ""
-"Tip: Toggle the initial state (high/low) of a pin by clicking its picture.\n"
-"Drag it to set the type (input/output)."
-msgstr ""
-"Tip: Toggle the initial state (high/low) of a pin by clicking its picture.\n"
-"Drag it to set the type (input/output)."
-
-#. i18n: ectx: property (text), widget (QPushButton, pinMapRemove)
-#: src/gui/microsettingswidget.ui:109 src/projectmanager.cpp:1078
-#, kde-format
-msgid "Remove"
-msgstr "Remove"
-
-#. i18n: ectx: property (text), widget (QPushButton, pinMapModify)
-#: src/gui/microsettingswidget.ui:139
-#, kde-format
-msgid "Modif&y"
-msgstr "Modif&y"
-
-#. i18n: ectx: property (text), widget (QPushButton, pinMapRename)
-#: src/gui/microsettingswidget.ui:146
-#, kde-format
-msgid "Rename"
-msgstr "Rename"
-
 #: src/gui/newfiledlg.cpp:56 src/ktechlab.cpp:457
 #, kde-format
 msgid "New File"
 msgstr "New File"
-
-#. i18n: ectx: property (whatsThis), widget (QWidget, NewFileWidget)
-#: src/gui/newfilewidget.ui:20
-#, kde-format
-msgid ""
-"Select the type of file you wish to create.<br>\n"
-"<p>\n"
-"<b>Pic Program</b><br>\n"
-"Creates a new PIC program, with flow chart editor. Select the target device "
-"for your program below.\n"
-"<p>\n"
-"<b>Circuit</b><br>\n"
-"Creates a new circuit, with drag and drop editor. Real time simulation of "
-"the circuit occurs automatically."
-msgstr ""
-"Select the type of file you wish to create.<br>\n"
-"<p>\n"
-"<b>Pic Program</b><br>\n"
-"Creates a new PIC program, with flow chart editor. Select the target device "
-"for your program below.\n"
-"<p>\n"
-"<b>Circuit</b><br>\n"
-"Creates a new circuit, with drag and drop editor. Real time simulation of "
-"the circuit occurs automatically."
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel1)
-#: src/gui/newfilewidget.ui:72
-#, kde-format
-msgid "New File Details"
-msgstr "New File Details"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel1_2_2)
-#: src/gui/newfilewidget.ui:82
-#, kde-format
-msgid "File Type:"
-msgstr "File Type:"
-
-#. i18n: ectx: property (text), widget (QCheckBox, addToProjectCheck)
-#: src/gui/newfilewidget.ui:129
-#, kde-format
-msgid "&Add to project"
-msgstr "&Add to project"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel1)
-#: src/gui/newpinmappingwidget.ui:33
-#, kde-format
-msgid "Name:"
-msgstr "Name:"
-
-#. i18n: ectx: property (toolTip), widget (KLineEdit, nameEdit)
-#: src/gui/newpinmappingwidget.ui:91
-#, kde-format
-msgid ""
-"The variable name of the pin mapping - this must be a valid Microbe variable "
-"name."
-msgstr ""
-"The variable name of the pin mapping - this must be a valid Microbe variable "
-"name."
-
-#. i18n: ectx: property (text), item, widget (QComboBox, typeCombo)
-#: src/gui/newpinmappingwidget.ui:110
-#, kde-format
-msgid "Keypad (4x3)"
-msgstr "Keypad (4x3)"
-
-#. i18n: ectx: property (text), item, widget (QComboBox, typeCombo)
-#: src/gui/newpinmappingwidget.ui:115
-#, kde-format
-msgid "Keypad (4x4)"
-msgstr "Keypad (4x4)"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel8)
-#: src/gui/newprojectwidget.ui:23
-#, kde-format
-msgid "Final location:"
-msgstr "Final location:"
-
-#. i18n: ectx: property (text), widget (QLabel, locationLabel)
-#: src/gui/newprojectwidget.ui:33
-#, kde-format
-msgid "/"
-msgstr "/"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel4)
-#: src/gui/newprojectwidget.ui:59
-#, kde-format
-msgid "Location:"
-msgstr "Location:"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel1)
-#: src/gui/newprojectwidget.ui:74
-#, kde-format
-msgid "New Project Details"
-msgstr "New Project Details"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel10)
-#: src/gui/newprojectwidget.ui:84
-#, kde-format
-msgid "Project Name:"
-msgstr "Project Name:"
 
 #: src/gui/oscilloscope.cpp:323
 #, kde-format
@@ -3834,126 +2775,6 @@ msgstr "Framerate"
 #, kde-format
 msgid "%1 fps"
 msgstr "%1 fps"
-
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: src/gui/oscilloscopewidget.ui:91
-#, kde-format
-msgid "Time Zoom"
-msgstr "Time Zoom"
-
-#. i18n: ectx: property (text), widget (QRadioButton, displayDirectCheck)
-#: src/gui/outputmethodwidget.ui:44
-#, kde-format
-msgid "Displa&y directly"
-msgstr "Displa&y directly"
-
-#. i18n: ectx: property (text), widget (QRadioButton, saveFileCheck)
-#: src/gui/outputmethodwidget.ui:54
-#, kde-format
-msgid "Sa&ve to file"
-msgstr "Sa&ve to file"
-
-#. i18n: ectx: property (text), widget (QCheckBox, loadFileCheck)
-#: src/gui/outputmethodwidget.ui:73
-#, kde-format
-msgid "Load File in &New View"
-msgstr "Load File in &New View"
-
-#. i18n: ectx: property (text), widget (QCheckBox, addToProjectCheck)
-#: src/gui/outputmethodwidget.ui:80
-#, kde-format
-msgid "&Add to Project"
-msgstr "&Add to Project"
-
-#. i18n: ectx: property (text), widget (QPushButton, addButton)
-#: src/gui/picprogrammerconfigwidget.ui:48
-#, kde-format
-msgid "&Add ..."
-msgstr "&Add ..."
-
-#. i18n: ectx: property (text), widget (QPushButton, removeButton)
-#: src/gui/picprogrammerconfigwidget.ui:55
-#, kde-format
-msgid "Re&move"
-msgstr "Re&move"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel1_3)
-#: src/gui/picprogrammerconfigwidget.ui:62 src/gui/programmerwidget.ui:29
-#, kde-format
-msgid "Program:"
-msgstr "Program:"
-
-#. i18n: ectx: property (text), widget (QLabel, m_pProgrammerDescription)
-#: src/gui/picprogrammerconfigwidget.ui:85
-#, kde-format
-msgid "(Program Description)"
-msgstr "(Program Description)"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel1_2)
-#: src/gui/picprogrammerconfigwidget.ui:101
-#, kde-format
-msgid "Initialization:"
-msgstr "Initialisation:"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel4)
-#: src/gui/picprogrammerconfigwidget.ui:123
-#, kde-format
-msgid "Read:"
-msgstr "Read:"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel3)
-#: src/gui/picprogrammerconfigwidget.ui:133
-#, kde-format
-msgid "Write:"
-msgstr "Write:"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel2)
-#: src/gui/picprogrammerconfigwidget.ui:154
-#, no-c-format, kde-format
-msgid ""
-"The following strings will be replaced when the command is run:\n"
-"<ul>\n"
-"<li><b>%port</b> - Port that the programmer is connected to</li>\n"
-"<li><b>%device</b> - PIC device</li>\n"
-"<li><b>%file</b> - File to read from or write to</li>\n"
-"</ul>"
-msgstr ""
-"The following strings will be replaced when the command is run:\n"
-"<ul>\n"
-"<li><b>%port</b> - Port that the programmer is connected to</li>\n"
-"<li><b>%device</b> - PIC device</li>\n"
-"<li><b>%file</b> - File to read from or write to</li>\n"
-"</ul>"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel5)
-#: src/gui/picprogrammerconfigwidget.ui:167
-#, kde-format
-msgid "Erase:"
-msgstr "Erase:"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel2_3)
-#: src/gui/picprogrammerconfigwidget.ui:177
-#, kde-format
-msgid "Verify:"
-msgstr "Verify:"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel1_4)
-#: src/gui/picprogrammerconfigwidget.ui:187
-#, kde-format
-msgid "Blank Check:"
-msgstr "Blank Check:"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel1)
-#: src/gui/picprogrammerconfigwidget.ui:202
-#, kde-format
-msgid "Default port:"
-msgstr "Default port:"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel1)
-#: src/gui/processingoptionswidget.ui:49
-#, kde-format
-msgid "Output File:"
-msgstr "Output File:"
 
 #: src/gui/programmerdlg.cpp:40 src/gui/settingsdlg.cpp:134
 #, kde-format
@@ -4070,398 +2891,6 @@ msgstr "Subscript"
 msgid "Text Color..."
 msgstr "Text Colour..."
 
-#. i18n: ectx: property (title), widget (QGroupBox, xGroupBox)
-#: src/gui/scopescreenwidget.ui:26
-#, kde-format
-msgid "X"
-msgstr "X"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel2)
-#: src/gui/scopescreenwidget.ui:36
-#, kde-format
-msgid "Intervals"
-msgstr "Intervals"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel3)
-#: src/gui/scopescreenwidget.ui:88
-#, kde-format
-msgid "Ticks per Interval"
-msgstr "Ticks per Interval"
-
-#. i18n: ectx: property (text), widget (QLabel, textLabel4)
-#: src/gui/scopescreenwidget.ui:134
-#, kde-format
-msgid "Offset (ticks)"
-msgstr "Offset (ticks)"
-
-#. i18n: ectx: attribute (title), widget (QWidget, general)
-#: src/gui/sdccoptionswidget.ui:36
-#, kde-format
-msgid "Ge&neral"
-msgstr "Ge&neral"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nostdlib)
-#: src/gui/sdccoptionswidget.ui:42
-#, kde-format
-msgid "Do not search in the standard librar&y directory (--nostdlib)"
-msgstr "Do not search in the standard librar&y directory (--nostdlib)"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nostdinc)
-#: src/gui/sdccoptionswidget.ui:49
-#, kde-format
-msgid "Do not search in the standard include directory (--nostdinc)"
-msgstr "Do not search in the standard include directory (--nostdinc)"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_less_pedantic)
-#: src/gui/sdccoptionswidget.ui:59
-#, kde-format
-msgid "Disa&ble pedantic warnings (--less-pedantic)"
-msgstr "Disa&ble pedantic warnings (--less-pedantic)"
-
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_std_c89)
-#: src/gui/sdccoptionswidget.ui:66
-#, kde-format
-msgid ""
-"Follow the C89 standard and disable SDCC features that conflict with the "
-"standard."
-msgstr ""
-"Follow the C89 standard and disable SDCC features that conflict with the "
-"standard."
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_std_c89)
-#: src/gui/sdccoptionswidget.ui:69
-#, kde-format
-msgid "Use C&89 standard only (--std-c89)"
-msgstr "Use C&89 standard only (--std-c89)"
-
-#. i18n: ectx: property (shortcut), widget (QCheckBox, kcfg_SDCC_std_c89)
-#: src/gui/sdccoptionswidget.ui:72
-#, kde-format
-msgid "Alt+8"
-msgstr "Alt+8"
-
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_std_c99)
-#: src/gui/sdccoptionswidget.ui:82
-#, kde-format
-msgid ""
-"Follow the C99 standard and disable SDCC features that conflict with the "
-"standard (incomplete support)."
-msgstr ""
-"Follow the C99 standard and disable SDCC features that conflict with the "
-"standard (incomplete support)."
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_std_c99)
-#: src/gui/sdccoptionswidget.ui:85
-#, kde-format
-msgid "Use C&99 standard only (--std-c99)"
-msgstr "Use C&99 standard only (--std-c99)"
-
-#. i18n: ectx: property (shortcut), widget (QCheckBox, kcfg_SDCC_std_c99)
-#: src/gui/sdccoptionswidget.ui:88
-#, kde-format
-msgid "Alt+9"
-msgstr "Alt+9"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_use_non_free)
-#: src/gui/sdccoptionswidget.ui:98
-#, kde-format
-msgid "Use non-free licensed libraries and header files (--use-non-free)"
-msgstr "Use non-free licensed libraries and header files (--use-non-free)"
-
-#. i18n: ectx: attribute (title), widget (QWidget, code_generation)
-#: src/gui/sdccoptionswidget.ui:122
-#, kde-format
-msgid "Code Gener&ation"
-msgstr "Code Gener&ation"
-
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_stack_auto)
-#: src/gui/sdccoptionswidget.ui:131
-#, kde-format
-msgid ""
-"All functions in the source file will be compiled as reentrant, i.e. the "
-"parameters and local variables will be allocated on the stack. If this "
-"option is used all source files in the project should be compiled with this "
-"option. It automatically implies --int-long-reent and --float-reent."
-msgstr ""
-"All functions in the source file will be compiled as reentrant, i.e. the "
-"parameters and local variables will be allocated on the stack. If this "
-"option is used all source files in the project should be compiled with this "
-"option. It automatically implies --int-long-reent and --float-reent."
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_stack_auto)
-#: src/gui/sdccoptionswidget.ui:134
-#, kde-format
-msgid "Stack auto&matic variables (--stack-auto)"
-msgstr "Stack auto&matic variables (--stack-auto)"
-
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_int_long_reent)
-#: src/gui/sdccoptionswidget.ui:144
-#, kde-format
-msgid ""
-"Integer (16 bit) and long (32 bit) libraries have been compiled as "
-"reentrant. Note by default these libraries are compiled as non-reentrant."
-msgstr ""
-"Integer (16 bit) and long (32 bit) libraries have been compiled as "
-"reentrant. Note by default these libraries are compiled as non-reentrant."
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_int_long_reent)
-#: src/gui/sdccoptionswidget.ui:147
-#, kde-format
-msgid "Integer li&braries were compiled as reentrant (--int-long-reent)"
-msgstr "Integer li&braries were compiled as reentrant (--int-long-reent)"
-
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_float_reent)
-#: src/gui/sdccoptionswidget.ui:154
-#, kde-format
-msgid "Floating point library is compiled as reentrant."
-msgstr "Floating point library is compiled as reentrant."
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_float_reent)
-#: src/gui/sdccoptionswidget.ui:157
-#, kde-format
-msgid "Floating point librar&y was compiled as reentrant (--float-reent)"
-msgstr "Floating point librar&y was compiled as reentrant (--float-reent)"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_fommit_frame_pointer)
-#: src/gui/sdccoptionswidget.ui:164
-#, kde-format
-msgid "Leave out the frame pointer (--fommit-frame-pointer)"
-msgstr "Leave out the frame pointer (--fommit-frame-pointer)"
-
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_no_xinit_opt)
-#: src/gui/sdccoptionswidget.ui:174
-#, kde-format
-msgid ""
-"Will not memcpy initialized data from code space into xdata space. This "
-"saves a few bytes in code space if you do not have initialized data."
-msgstr ""
-"Will not memcpy initialised data from code space into xdata space. This "
-"saves a few bytes in code space if you do not have initialised data."
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_no_xinit_opt)
-#: src/gui/sdccoptionswidget.ui:177
-#, kde-format
-msgid "Do not memcpy initialized &xram from code (--no-xinit-opt)"
-msgstr "Do not memcpy initialised &xram from code (--no-xinit-opt)"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_all_callee_saves)
-#: src/gui/sdccoptionswidget.ui:184
-#, kde-format
-msgid "Callee will &always save registers used (--all-callee-saves)"
-msgstr "Callee will &always save registers used (--all-callee-saves)"
-
-#. i18n: ectx: attribute (title), widget (QWidget, optimization)
-#: src/gui/sdccoptionswidget.ui:208
-#, kde-format
-msgid "&Optimization"
-msgstr "&Optimisation"
-
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_nooverlay)
-#: src/gui/sdccoptionswidget.ui:214
-#, kde-format
-msgid ""
-"The compiler will not overlay parameters and local variables of any "
-"function, see section Parameters and local variables for more details."
-msgstr ""
-"The compiler will not overlay parameters and local variables of any "
-"function, see section Parameters and local variables for more details."
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nooverlay)
-#: src/gui/sdccoptionswidget.ui:217
-#, kde-format
-msgid "Disable overlaying leaf function &auto variables (--nooverlay)"
-msgstr "Disable overlaying leaf function &auto variables (--nooverlay)"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nogcse)
-#: src/gui/sdccoptionswidget.ui:224
-#, kde-format
-msgid "Disable the GCSE optimization (--nogcse)"
-msgstr "Disable the GCSE optimisation (--nogcse)"
-
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_nolabelopt)
-#: src/gui/sdccoptionswidget.ui:234
-#, kde-format
-msgid "Will not optimize labels (makes the dumpfiles more readable)."
-msgstr "Will not optimise labels (makes the dumpfiles more readable)."
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nolabelopt)
-#: src/gui/sdccoptionswidget.ui:237
-#, kde-format
-msgid "Disable label optimi&zation (--nolabelopt)"
-msgstr "Disable label optimi&sation (--nolabelopt)"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_noinvariant)
-#: src/gui/sdccoptionswidget.ui:244
-#, kde-format
-msgid "Disable optimization of invariants (--noinvariant)"
-msgstr "Disable optimisation of invariants (--noinvariant)"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_noinduction)
-#: src/gui/sdccoptionswidget.ui:254
-#, kde-format
-msgid "Disable loop variable induction (--noinduction)"
-msgstr "Disable loop variable induction (--noinduction)"
-
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_no_peep)
-#: src/gui/sdccoptionswidget.ui:264
-#, kde-format
-msgid "Disable peep-hole optimization."
-msgstr "Disable peep-hole optimisation."
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_no_peep)
-#: src/gui/sdccoptionswidget.ui:267
-#, kde-format
-msgid "Disable peep-hole optimization (--&no-peep)"
-msgstr "Disable peep-hole optimisation (--&no-peep)"
-
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_noloopreverse)
-#: src/gui/sdccoptionswidget.ui:274
-#, kde-format
-msgid "Will not do loop reversal optimization."
-msgstr "Will not do loop reversal optimisation."
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_noloopreverse)
-#: src/gui/sdccoptionswidget.ui:277
-#, kde-format
-msgid "Disable loop reverse optimization (--noloopreverse)"
-msgstr "Disable loop reverse optimisation (--noloopreverse)"
-
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_opt_code_size)
-#: src/gui/sdccoptionswidget.ui:287
-#, kde-format
-msgid ""
-"The compiler will optimize code generation towards compact code, possibly at "
-"the expense of code speed."
-msgstr ""
-"The compiler will optimise code generation towards compact code, possibly at "
-"the expense of code speed."
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_opt_code_size)
-#: src/gui/sdccoptionswidget.ui:290
-#, kde-format
-msgid "Opti&mize for compact code (--opt-code-size)"
-msgstr "Opti&mise for compact code (--opt-code-size)"
-
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_opt_code_speed)
-#: src/gui/sdccoptionswidget.ui:297
-#, kde-format
-msgid ""
-"The compiler will optimize code generation towards fast code, possibly at "
-"the expense of code size."
-msgstr ""
-"The compiler will optimise code generation towards fast code, possibly at "
-"the expense of code size."
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_opt_code_speed)
-#: src/gui/sdccoptionswidget.ui:300
-#, kde-format
-msgid "&Optimize for fast code (--opt-code-speed)"
-msgstr "&Optimise for fast code (--opt-code-speed)"
-
-#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_SDCC_peep_asm)
-#: src/gui/sdccoptionswidget.ui:307
-#, kde-format
-msgid ""
-"Pass the inline assembler code through the peep hole optimizer. This can "
-"cause unexpected changes to inline assembler code, please go through the "
-"peephole optimizer rules defined in the source file tree '<target>/peeph."
-"def' before using this option."
-msgstr ""
-"Pass the inline assembler code through the peep hole optimiser. This can "
-"cause unexpected changes to inline assembler code, please go through the "
-"peephole optimiser rules defined in the source file tree '<target>/peeph."
-"def' before using this option."
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_peep_asm)
-#: src/gui/sdccoptionswidget.ui:310
-#, kde-format
-msgid "Ena&ble inline assembly peephole optimization (--peep-asm)"
-msgstr "Ena&ble inline assembly peephole optimisation (--peep-asm)"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nojtbound)
-#: src/gui/sdccoptionswidget.ui:317
-#, kde-format
-msgid "Do not generate boundary check for &jump tables (--nojtbound)"
-msgstr "Do not generate boundary check for &jump tables (--nojtbound)"
-
-#. i18n: ectx: attribute (title), widget (QWidget, pic16_specific)
-#: src/gui/sdccoptionswidget.ui:341
-#, kde-format
-msgid "PIC&16 Specific"
-msgstr "PIC&16 Specific"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_nodefaultlibs)
-#: src/gui/sdccoptionswidget.ui:347
-#, kde-format
-msgid "Do not use default libraries (--nodefaultlibs)"
-msgstr "Do not use default libraries (--nodefaultlibs)"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_pno_banksel)
-#: src/gui/sdccoptionswidget.ui:357
-#, kde-format
-msgid "Do not generate BANKSEL directives (--pno-banksel)"
-msgstr "Do not generate BANKSEL directives (--pno-banksel)"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_pstack_model_large)
-#: src/gui/sdccoptionswidget.ui:367
-#, kde-format
-msgid "Use large stac&k model (--pstack-model=large)"
-msgstr "Use large stac&k model (--pstack-model=large)"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_debug_xtra)
-#: src/gui/sdccoptionswidget.ui:374
-#, kde-format
-msgid "Show more debug info in assembl&y output (--debug-xtra)"
-msgstr "Show more debug info in assembl&y output (--debug-xtra)"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_denable_peeps)
-#: src/gui/sdccoptionswidget.ui:381
-#, kde-format
-msgid "E&xplicit enable of peepholes (--denable-peeps)"
-msgstr "E&xplicit enable of peepholes (--denable-peeps)"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_calltree)
-#: src/gui/sdccoptionswidget.ui:388
-#, kde-format
-msgid "Du&mp call tree in .calltree file (--calltree)"
-msgstr "Du&mp call tree in .calltree file (--calltree)"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_fstack)
-#: src/gui/sdccoptionswidget.ui:395
-#, kde-format
-msgid "Ena&ble stack optimizations (--fstack)"
-msgstr "Ena&ble stack optimisations (--fstack)"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_optimize_goto)
-#: src/gui/sdccoptionswidget.ui:402
-#, kde-format
-msgid "Try to use conditional BRA instead of GOTO (--optimi&ze-goto)"
-msgstr "Try to use conditional BRA instead of GOTO (--optimi&ze-goto)"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_optimize_cmp)
-#: src/gui/sdccoptionswidget.ui:409
-#, kde-format
-msgid "Try to optimize some compares (--optimize-cmp)"
-msgstr "Try to optimise some compares (--optimize-cmp)"
-
-#. i18n: ectx: property (text), widget (QCheckBox, kcfg_SDCC_optimize_df)
-#: src/gui/sdccoptionswidget.ui:419
-#, kde-format
-msgid "Thorough data flow analysis (resource intensive) (--optimize-df)"
-msgstr "Thorough data flow analysis (resource intensive) (--optimize-df)"
-
-#. i18n: ectx: property (text), widget (QLabel, installPrefixLabel)
-#: src/gui/sdccoptionswidget.ui:475
-#, kde-format
-msgid "SDCC install prefix:"
-msgstr "SDCC install prefix:"
-
-#. i18n: ectx: property (whatsThis), widget (QLineEdit, kcfg_SDCC_install_prefix)
-#: src/gui/sdccoptionswidget.ui:482
-#, kde-format
-msgid "Location where SDCC in installed. Empty for system default."
-msgstr "Location where SDCC in installed. Empty for system default."
-
 #: src/gui/settingsdlg.cpp:133
 #, kde-format
 msgid "General"
@@ -4551,6 +2980,26 @@ msgstr "Configuration Name"
 #, kde-format
 msgid "Value radix:"
 msgstr "Value radix:"
+
+#: src/gui/symbolviewer.cpp:108
+#, kde-format
+msgid "Binary"
+msgstr "Binary"
+
+#: src/gui/symbolviewer.cpp:109
+#, kde-format
+msgid "Octal"
+msgstr "Octal"
+
+#: src/gui/symbolviewer.cpp:110
+#, kde-format
+msgid "Decimal"
+msgstr "Decimal"
+
+#: src/gui/symbolviewer.cpp:111
+#, kde-format
+msgid "Hexadecimal"
+msgstr "Hexadecimal"
 
 #. i18n("Automatic"), "", 0, this, SLOT(slotSetRoutingAuto()), ac, "routing_mode_auto" );
 #: src/icnview.cpp:34 src/icnview.cpp:63
@@ -4787,9 +3236,7 @@ msgstr "Flow Parts"
 msgid "Mechanics"
 msgstr "Mechanics"
 
-#. i18n: ectx: ToolBar (itemEditorTB)
-#: src/ktechlab.cpp:207 src/ktechlabcircuitui.rc:34
-#: src/ktechlabflowcodeui.rc:28 src/ktechlabmechanicsui.rc:8
+#: src/ktechlab.cpp:207
 #, kde-format
 msgid "Item Editor"
 msgstr "Item Editor"
@@ -5079,135 +3526,6 @@ msgstr "Open Location"
 msgid "Exiting..."
 msgstr "Exiting..."
 
-#. i18n: ectx: Menu (tools)
-#: src/ktechlabcircuitui.rc:6 src/ktechlabflowcodeui.rc:5
-#: src/ktechlabitemviewui.rc:25 src/ktechlabkateui.rc:55
-#: src/ktechlabtextui.rc:15 src/ktechlabui.rc:37
-#, kde-format
-msgid "&Tools"
-msgstr "&Tools"
-
-#. i18n: ectx: Menu (routing_mode_menu)
-#: src/ktechlabcircuitui.rc:9 src/ktechlabflowcodeui.rc:8
-#, kde-format
-msgid "Routing Mode"
-msgstr "Routing Mode"
-
-#. i18n: ectx: Menu (file)
-#: src/ktechlabitemviewui.rc:6 src/ktechlabkateui.rc:6 src/ktechlabtextui.rc:6
-#: src/ktechlabui.rc:6
-#, kde-format
-msgid "&File"
-msgstr "&File"
-
-#. i18n: ectx: Menu (edit)
-#: src/ktechlabitemviewui.rc:11 src/ktechlabkateui.rc:15
-#, kde-format
-msgid "&Edit"
-msgstr "&Edit"
-
-#. i18n: ectx: Menu (view)
-#: src/ktechlabitemviewui.rc:18 src/ktechlabkateui.rc:31 src/ktechlabui.rc:11
-#, kde-format
-msgid "&View"
-msgstr "&View"
-
-#. i18n: ectx: ToolBar (toolsToolBar)
-#: src/ktechlabitemviewui.rc:34
-#, kde-format
-msgid "Tools"
-msgstr "Tools"
-
-#. i18n: ectx: Menu (codefolding)
-#: src/ktechlabkateui.rc:45
-#, kde-format
-msgid "&Code Folding"
-msgstr "&Code Folding"
-
-#. i18n: ectx: Menu (settings)
-#: src/ktechlabkateui.rc:93
-#, kde-format
-msgid "&Settings"
-msgstr "&Settings"
-
-#. i18n: ectx: ToolBar (toolsToolBar)
-#: src/ktechlabkateui.rc:116 src/ktechlabtextui.rc:82
-#, kde-format
-msgid "Main Toolbar"
-msgstr "Main Toolbar"
-
-#. i18n: ectx: Menu (debug)
-#: src/ktechlabtextui.rc:53
-#, kde-format
-msgid "&Debug"
-msgstr "&Debug"
-
-#. i18n: ectx: ToolBar (debugTB)
-#: src/ktechlabtextui.rc:90
-#, kde-format
-msgid "Debugger"
-msgstr "Debugger"
-
-#. i18n: ectx: Menu (project)
-#: src/ktechlabui.rc:21
-#, kde-format
-msgid "&Project"
-msgstr "&Project"
-
-#. i18n: ectx: Menu (examples)
-#: src/ktechlabui.rc:45
-#, kde-format
-msgid "Examples"
-msgstr "Examples"
-
-#. i18n: ectx: Menu (examples_555)
-#: src/ktechlabui.rc:47
-#, kde-format
-msgid "555s"
-msgstr "555s"
-
-#. i18n: ectx: Menu (examples_basic)
-#: src/ktechlabui.rc:50
-#, kde-format
-msgid "Basic"
-msgstr "Basic"
-
-#. i18n: ectx: Menu (examples_diodes)
-#: src/ktechlabui.rc:53
-#, kde-format
-msgid "Diodes"
-msgstr "Diodes"
-
-#. i18n: ectx: Menu (examples_jfets)
-#: src/ktechlabui.rc:56
-#, kde-format
-msgid "JFETs"
-msgstr "JFETs"
-
-#. i18n: ectx: Menu (examples_matrix_disp_driver)
-#: src/ktechlabui.rc:59
-#, kde-format
-msgid "Matrix Display Drivers"
-msgstr "Matrix Display Drivers"
-
-#. i18n: ectx: Menu (examples_mosfets)
-#: src/ktechlabui.rc:62
-#, kde-format
-msgid "MOSFETs"
-msgstr "MOSFETs"
-
-#. i18n: ectx: Menu (examples_transistors)
-#: src/ktechlabui.rc:65
-#, kde-format
-msgid "Transistors"
-msgstr "Transistors"
-
-#. i18n: ectx: Menu (examples_opamps)
-#: src/ktechlabui.rc:68
-#, kde-format
-msgid "Opamps"
-msgstr "Opamps"
-
 #: src/languages/flowcode.cpp:30
 #, kde-format
 msgid "*** Microbe generation successful ***"
@@ -5456,6 +3774,11 @@ msgstr "Do you really want to remove \"%1\"?"
 msgid "Remove Project File?"
 msgstr "Remove Project File?"
 
+#: src/projectmanager.cpp:1078
+#, kde-format
+msgid "Remove"
+msgstr "Remove"
+
 #: src/textdocument.cpp:84
 #, kde-format
 msgid "Failed to create editor"
@@ -5551,6 +3874,890 @@ msgstr "(empty)"
 #, kde-format
 msgid "Open Document"
 msgstr "Open Document"
+
+#~ msgid "Maximum number of undo steps"
+#~ msgstr "Maximum number of undo steps"
+
+#~ msgid "Restore Documents on Startup"
+#~ msgstr "Restore Documents on Startup"
+
+#~ msgid "Raise appropriate Item Selector on document creation"
+#~ msgstr "Raise appropriate Item Selector on document creation"
+
+#~ msgid "Raise Messages Log on Compiling"
+#~ msgstr "Raise Messages Log on Compiling"
+
+#~ msgid "Show Voltage Bars"
+#~ msgstr "Show Voltage Bars"
+
+#~ msgid "Show Voltage as Color"
+#~ msgstr "Show Voltage as Colour"
+
+#~ msgid "Animate Wires (current or power)"
+#~ msgstr "Animate Wires (current or power)"
+
+#~ msgid "Refresh Rate"
+#~ msgstr "Refresh Rate"
+
+#~ msgid "Color of grid lines"
+#~ msgstr "Colour of grid lines"
+
+#~ msgid "Whether the grid should be shown."
+#~ msgstr "Whether the grid should be shown."
+
+#~ msgid "Whether the same output should be use for generation of code, etc"
+#~ msgstr "Whether the same output should be use for generation of code, etc"
+
+#~ msgid "Indentation of Instruction Names"
+#~ msgstr "Indentation of Instruction Names"
+
+#~ msgid "Indentation of Instruction Data"
+#~ msgstr "Indentation of Instruction Data"
+
+#~ msgid "Indentation of Comments"
+#~ msgstr "Indentation of Comments"
+
+#~ msgid "Indentation of 'equ'"
+#~ msgstr "Indentation of 'equ'"
+
+#~ msgid "Indentation of 'equ' Value"
+#~ msgstr "Indentation of 'equ' Value"
+
+#~ msgid "Automatically format Microbe output"
+#~ msgstr "Automatically format Microbe output"
+
+#~ msgid "Logic Symbol Shapes"
+#~ msgstr "Logic Symbol Shapes"
+
+#~ msgid "Rising Trigger Threshold"
+#~ msgstr "Rising Trigger Threshold"
+
+#~ msgid "Falling Trigger Threshold"
+#~ msgstr "Falling Trigger Threshold"
+
+#~ msgid "Logic Output High"
+#~ msgstr "Logic Output High"
+
+#~ msgid "Logic Output High Impedance"
+#~ msgstr "Logic Output High Impedance"
+
+#~ msgid "Logic Output Low Impedance"
+#~ msgstr "Logic Output Low Impedance"
+
+#~ msgid "Hex Format"
+#~ msgstr "Hex Format"
+
+#~ msgid "Radix"
+#~ msgstr "Radix"
+
+#~ msgid "GpasmWarning Level"
+#~ msgstr "GpasmWarning Level"
+
+#~ msgid "Ignore Case"
+#~ msgstr "Ignore Case"
+
+#~ msgid "Dos Formatting"
+#~ msgstr "Dos Formatting"
+
+#~ msgid "Other Options"
+#~ msgstr "Other Options"
+
+#~ msgid "Do not search in the standard library directory"
+#~ msgstr "Do not search in the standard library directory"
+
+#~ msgid "Do not search in the standard include directory"
+#~ msgstr "Do not search in the standard include directory"
+
+#~ msgid "Disable pedantic warnings"
+#~ msgstr "Disable pedantic warnings"
+
+#~ msgid "Strictly follow the C89 standard"
+#~ msgstr "Strictly follow the C89 standard"
+
+#~ msgid "Strictly follow the C99 standard"
+#~ msgstr "Strictly follow the C99 standard"
+
+#~ msgid "Stack automatic variables"
+#~ msgstr "Stack automatic variables"
+
+#~ msgid "Integer libraries have been compiled as reentrant"
+#~ msgstr "Integer libraries have been compiled as reentrant"
+
+#~ msgid "Floating point library has been compiled as reentrant"
+#~ msgstr "Floating point library has been compiled as reentrant"
+
+#~ msgid "Leave out the frame pointer"
+#~ msgstr "Leave out the frame pointer"
+
+#~ msgid "Do not memcpy initialized data from code space to xdata space"
+#~ msgstr "Do not memcpy initialised data from code space to xdata space"
+
+#~ msgid "Callee will always save registers used"
+#~ msgstr "Callee will always save registers used"
+
+#~ msgid "Do not overlay parameters and local variables"
+#~ msgstr "Do not overlay parameters and local variables"
+
+#~ msgid "Disable the GCSE optimization"
+#~ msgstr "Disable the GCSE optimisation"
+
+#~ msgid "Do not optimize labels"
+#~ msgstr "Do not optimise labels"
+
+#~ msgid "Disable optimization of invariants"
+#~ msgstr "Disable optimisation of invariants"
+
+#~ msgid "Disable loop variable induction"
+#~ msgstr "Disable loop variable induction"
+
+#~ msgid "Disable peep-hole optimization"
+#~ msgstr "Disable peep-hole optimisation"
+
+#~ msgid "Do not do loop reversal optimization"
+#~ msgstr "Do not do loop reversal optimisation"
+
+#~ msgid "Optimize for compact code"
+#~ msgstr "Optimise for compact code"
+
+#~ msgid "Optimize for fast code"
+#~ msgstr "Optimise for fast code"
+
+#~ msgid "Pass inline assembler code through peep hole optimizer"
+#~ msgstr "Pass inline assembler code through peep hole optimiser"
+
+#~ msgid "Do not generate boundary check for jump tables"
+#~ msgstr "Do not generate boundary check for jump tables"
+
+#~ msgid "Do not use default libraries"
+#~ msgstr "Do not use default libraries"
+
+#~ msgid "Do not generate BANKSEL directives"
+#~ msgstr "Do not generate BANKSEL directives"
+
+#~ msgid "Use large stack model"
+#~ msgstr "Use large stack model"
+
+#~ msgid "Show more debug info in assembly output"
+#~ msgstr "Show more debug info in assembly output"
+
+#~ msgid "Explicit enable of peepholes"
+#~ msgstr "Explicit enable of peepholes"
+
+#~ msgid "Dump call tree in .calltree file"
+#~ msgstr "Dump call tree in .calltree file"
+
+#~ msgid "Enable stack optimizations"
+#~ msgstr "Enable stack optimisations"
+
+#~ msgid "Try to use conditional BRA instead of GOTO"
+#~ msgstr "Try to use conditional BRA instead of GOTO"
+
+#~ msgid "Try to optimize some compares"
+#~ msgstr "Try to optimise some compares"
+
+#~ msgid "Thorough data flow analysis"
+#~ msgstr "Thorough data flow analysis"
+
+#~ msgid "Search / include non-free licensed libraries and header files"
+#~ msgstr "Search / include non-free licensed libraries and header files"
+
+#~ msgid "Location where SDCC in installed"
+#~ msgstr "Location where SDCC in installed"
+
+#~ msgid "The application to use to program the PIC."
+#~ msgstr "The application to use to program the PIC."
+
+#~ msgid "The device (serial, parallel, etc...) used to program the PIC."
+#~ msgstr "The device (serial, parallel, etc...) used to program the PIC."
+
+#~ msgid ""
+#~ "Check this if SDCC uses shared libs for compiling (newer SDCC does so)"
+#~ msgstr ""
+#~ "Tick this if SDCC uses shared libs for compiling (newer SDCC does so)"
+
+#~ msgid ""
+#~ "The values control the indentation from the left margin of the various "
+#~ "types of assembly code."
+#~ msgstr ""
+#~ "The values control the indentation from the left margin of the various "
+#~ "types of assembly code."
+
+#~ msgid "Output Code Indentation"
+#~ msgstr "Output Code Indentation"
+
+#~ msgid "'equ' Value"
+#~ msgstr "'equ' Value"
+
+#~ msgid "Instruction Data"
+#~ msgstr "Instruction Data"
+
+#~ msgid "Comment"
+#~ msgstr "Comment"
+
+#~ msgid "'equ'"
+#~ msgstr "'equ'"
+
+#~ msgid "Instruction Name"
+#~ msgstr "Instruction Name"
+
+#~ msgid "&Automatically format Microbe output"
+#~ msgstr "&Automatically format Microbe output"
+
+#~ msgid "Edit"
+#~ msgstr "Edit"
+
+#~ msgid "Context Help Directory"
+#~ msgstr "Context Help Directory"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "S&ave"
+#~ msgstr "S&ave"
+
+#~ msgid "Subproject Details"
+#~ msgstr "Subproject Details"
+
+#~ msgid "Target File:"
+#~ msgstr "Target File:"
+
+#~ msgid "Type:"
+#~ msgstr "Type:"
+
+#~ msgid "Library"
+#~ msgstr "Library"
+
+#~ msgid "Reuse the same output view for code generation"
+#~ msgstr "Reuse the same output view for code generation"
+
+#~ msgid "The grid color in the work area."
+#~ msgstr "The grid colour in the work area."
+
+#~ msgid "Grid Colour"
+#~ msgstr "Grid Colour"
+
+#~ msgid "Show &grid:"
+#~ msgstr "Show &grid:"
+
+#~ msgid ""
+#~ "Maximum undo steps for work area. This does not apply to text documents - "
+#~ "that is configurable separately under Configure Editor."
+#~ msgstr ""
+#~ "Maximum undo steps for work area. This does not apply to text documents - "
+#~ "that is configurable separately under Configure Editor."
+
+#~ msgid "Maximum undo steps for work area:"
+#~ msgstr "Maximum undo steps for work area:"
+
+#~ msgid "Show voltage bars &on electronic components"
+#~ msgstr "Show voltage bars &on electronic components"
+
+#~ msgid "Color the wires to match the voltage"
+#~ msgstr "Colour the wires to match the voltage"
+
+#~ msgid "Animate wires to show the current or power flow"
+#~ msgstr "Animate wires to show the current or power flow"
+
+#~ msgid "Display Refresh Rate"
+#~ msgstr "Display Refresh Rate"
+
+#~ msgid "Refresh rate:"
+#~ msgstr "Refresh rate:"
+
+#~ msgid "Medium (50 FPS)"
+#~ msgstr "Medium (50 FPS)"
+
+#~ msgid ""
+#~ "This is the number of times per second that the work area view is "
+#~ "updated; a compromise between CPU usage and smoothness of display."
+#~ msgstr ""
+#~ "This is the number of times per second that the work area view is "
+#~ "updated; a compromise between CPU usage and smoothness of display."
+
+#~ msgid "Convenience"
+#~ msgstr "Convenience"
+
+#~ msgid "Restore opened doc&uments on startup"
+#~ msgstr "Restore opened doc&uments on startup"
+
+#~ msgid "Raise the &appropriate item selector on creating a new document"
+#~ msgstr "Raise the &appropriate item selector on creating a new document"
+
+#~ msgid "Raise the &Messages log when compiling"
+#~ msgstr "Raise the &Messages log when compiling"
+
+#~ msgid "Radix (-r):"
+#~ msgstr "Radix (-r):"
+
+#~ msgid "Warning level (-w):"
+#~ msgstr "Warning level (-w):"
+
+#~ msgid "Hex Format (-a):"
+#~ msgstr "Hex Format (-a):"
+
+#~ msgid ""
+#~ "All user defined symbols and macros are case sensitive. This option makes "
+#~ "them case insensitive."
+#~ msgstr ""
+#~ "All user defined symbols and macros are case sensitive. This option makes "
+#~ "them case insensitive."
+
+#~ msgid "Ign&ore case (-i)"
+#~ msgstr "Ign&ore case (-i)"
+
+#~ msgid ""
+#~ "By default, gpasm generates hex files using ISO format. However, some "
+#~ "device programmers required a DOS formatted file. This option will cause "
+#~ "gpasm to generate a DOS formatted hex file. "
+#~ msgstr ""
+#~ "By default, gpasm generates hex files using ISO format. However, some "
+#~ "device programmers required a DOS formatted file. This option will cause "
+#~ "gpasm to generate a DOS formatted hex file. "
+
+#~ msgid "Generate DOS-formatted hex file (-&n)"
+#~ msgstr "Generate DOS-formatted hex file (-&n)"
+
+#~ msgid ""
+#~ "GPASM supports inhx8m, inhx8s, inhx16, and inhx32 hex file formats. This "
+#~ "option controls which hex file format is used."
+#~ msgstr ""
+#~ "GPASM supports inhx8m, inhx8s, inhx16, and inhx32 hex file formats. This "
+#~ "option controls which hex file format is used."
+
+#~ msgid "inhx32"
+#~ msgstr "inhx32"
+
+#~ msgid "inhx8m"
+#~ msgstr "inhx8m"
+
+#~ msgid "inhx8s"
+#~ msgstr "inhx8s"
+
+#~ msgid "inhx16"
+#~ msgstr "inhx16"
+
+#~ msgid ""
+#~ "This sets the threshold of messages displayed in the log view.<ul><li>"
+#~ "\"All\" will display all output - information, warnings and errors.<li>"
+#~ "\"Warnings\" will suppress messages. <li>\"Errors\" will suppress both "
+#~ "messages and warnings.</ul>"
+#~ msgstr ""
+#~ "This sets the threshold of messages displayed in the log view.<ul><li>"
+#~ "\"All\" will display all output - information, warnings and errors.<li>"
+#~ "\"Warnings\" will suppress messages. <li>\"Errors\" will suppress both "
+#~ "messages and warnings.</ul>"
+
+#~ msgid "All"
+#~ msgstr "All"
+
+#~ msgid "Warnings"
+#~ msgstr "Warnings"
+
+#~ msgid "Errors"
+#~ msgstr "Errors"
+
+#~ msgid "Other options:"
+#~ msgstr "Other options:"
+
+#~ msgid "Link with shared libraries (&use this with new SDCC)"
+#~ msgstr "Link with shared libraries (&use this with new SDCC)"
+
+#~ msgid "Library Directory (-I):"
+#~ msgstr "Library Directory (-I):"
+
+#~ msgid "&Output a map file (-m)"
+#~ msgstr "&Output a map file (-m)"
+
+#~ msgid "Linker Script (-s):"
+#~ msgstr "Linker Script (-s):"
+
+#~ msgid "Other:"
+#~ msgstr "Other:"
+
+#~ msgid "Link libraries inside project"
+#~ msgstr "Link libraries inside project"
+
+#~ msgid "Logic Symbol Shapes:"
+#~ msgstr "Logic Symbol Shapes:"
+
+#~ msgid "Distinctive"
+#~ msgstr "Distinctive"
+
+#~ msgid "Rectangular"
+#~ msgstr "Rectangular"
+
+#~ msgid "Input"
+#~ msgstr "Input"
+
+#~ msgid "Required voltage level before the input will be considered high."
+#~ msgstr "Required voltage level before the input will be considered high."
+
+#~ msgid " V"
+#~ msgstr " V"
+
+#~ msgid "Required voltage level before an input will be considered low."
+#~ msgstr "Required voltage level before an input will be considered low."
+
+#~ msgid "Falling Trigger Threshold:"
+#~ msgstr "Falling Trigger Threshold:"
+
+#~ msgid "Rising Trigger Threshold:"
+#~ msgstr "Rising Trigger Threshold:"
+
+#~ msgid "Voltage level for high on logic components."
+#~ msgstr "Voltage level for high on logic components."
+
+#~ msgid "Output High:"
+#~ msgstr "Output High:"
+
+#~ msgid "This is the output impedance when the output is high."
+#~ msgstr "This is the output impedance when the output is high."
+
+#~ msgid "High Output Impedance:"
+#~ msgstr "High Output Impedance:"
+
+#~ msgid "This is the output impedance when the output is low."
+#~ msgstr "This is the output impedance when the output is low."
+
+#~ msgid "Low Output Impedance:"
+#~ msgstr "Low Output Impedance:"
+
+#~ msgid "Floating"
+#~ msgstr "Floating"
+
+#~ msgid ""
+#~ "Here, you can configure the behaviour of logic components.\n"
+#~ "\n"
+#~ "These values will apply to all components, apart from the PIC, whose "
+#~ "pins' impedances depend on the pin in use."
+#~ msgstr ""
+#~ "Here, you can configure the behaviour of logic components.\n"
+#~ "\n"
+#~ "These values will apply to all components, apart from the PIC, whose "
+#~ "pins' impedances depend on the pin in use."
+
+#~ msgid ""
+#~ "Tip: Toggle the initial state (high/low) of a pin by clicking its "
+#~ "picture.\n"
+#~ "Drag it to set the type (input/output)."
+#~ msgstr ""
+#~ "Tip: Toggle the initial state (high/low) of a pin by clicking its "
+#~ "picture.\n"
+#~ "Drag it to set the type (input/output)."
+
+#~ msgid "Modif&y"
+#~ msgstr "Modif&y"
+
+#~ msgid "Rename"
+#~ msgstr "Rename"
+
+#~ msgid ""
+#~ "Select the type of file you wish to create.<br>\n"
+#~ "<p>\n"
+#~ "<b>Pic Program</b><br>\n"
+#~ "Creates a new PIC program, with flow chart editor. Select the target "
+#~ "device for your program below.\n"
+#~ "<p>\n"
+#~ "<b>Circuit</b><br>\n"
+#~ "Creates a new circuit, with drag and drop editor. Real time simulation of "
+#~ "the circuit occurs automatically."
+#~ msgstr ""
+#~ "Select the type of file you wish to create.<br>\n"
+#~ "<p>\n"
+#~ "<b>Pic Program</b><br>\n"
+#~ "Creates a new PIC program, with flow chart editor. Select the target "
+#~ "device for your program below.\n"
+#~ "<p>\n"
+#~ "<b>Circuit</b><br>\n"
+#~ "Creates a new circuit, with drag and drop editor. Real time simulation of "
+#~ "the circuit occurs automatically."
+
+#~ msgid "New File Details"
+#~ msgstr "New File Details"
+
+#~ msgid "File Type:"
+#~ msgstr "File Type:"
+
+#~ msgid "&Add to project"
+#~ msgstr "&Add to project"
+
+#~ msgid "Name:"
+#~ msgstr "Name:"
+
+#~ msgid ""
+#~ "The variable name of the pin mapping - this must be a valid Microbe "
+#~ "variable name."
+#~ msgstr ""
+#~ "The variable name of the pin mapping - this must be a valid Microbe "
+#~ "variable name."
+
+#~ msgid "Keypad (4x3)"
+#~ msgstr "Keypad (4x3)"
+
+#~ msgid "Keypad (4x4)"
+#~ msgstr "Keypad (4x4)"
+
+#~ msgid "Final location:"
+#~ msgstr "Final location:"
+
+#~ msgid "/"
+#~ msgstr "/"
+
+#~ msgid "Location:"
+#~ msgstr "Location:"
+
+#~ msgid "New Project Details"
+#~ msgstr "New Project Details"
+
+#~ msgid "Project Name:"
+#~ msgstr "Project Name:"
+
+#~ msgid "Time Zoom"
+#~ msgstr "Time Zoom"
+
+#~ msgid "Displa&y directly"
+#~ msgstr "Displa&y directly"
+
+#~ msgid "Sa&ve to file"
+#~ msgstr "Sa&ve to file"
+
+#~ msgid "Load File in &New View"
+#~ msgstr "Load File in &New View"
+
+#~ msgid "&Add to Project"
+#~ msgstr "&Add to Project"
+
+#~ msgid "&Add ..."
+#~ msgstr "&Add ..."
+
+#~ msgid "Re&move"
+#~ msgstr "Re&move"
+
+#~ msgid "Program:"
+#~ msgstr "Program:"
+
+#~ msgid "(Program Description)"
+#~ msgstr "(Program Description)"
+
+#~ msgid "Initialization:"
+#~ msgstr "Initialisation:"
+
+#~ msgid "Read:"
+#~ msgstr "Read:"
+
+#~ msgid "Write:"
+#~ msgstr "Write:"
+
+#~ msgid ""
+#~ "The following strings will be replaced when the command is run:\n"
+#~ "<ul>\n"
+#~ "<li><b>%port</b> - Port that the programmer is connected to</li>\n"
+#~ "<li><b>%device</b> - PIC device</li>\n"
+#~ "<li><b>%file</b> - File to read from or write to</li>\n"
+#~ "</ul>"
+#~ msgstr ""
+#~ "The following strings will be replaced when the command is run:\n"
+#~ "<ul>\n"
+#~ "<li><b>%port</b> - Port that the programmer is connected to</li>\n"
+#~ "<li><b>%device</b> - PIC device</li>\n"
+#~ "<li><b>%file</b> - File to read from or write to</li>\n"
+#~ "</ul>"
+
+#~ msgid "Erase:"
+#~ msgstr "Erase:"
+
+#~ msgid "Verify:"
+#~ msgstr "Verify:"
+
+#~ msgid "Blank Check:"
+#~ msgstr "Blank Check:"
+
+#~ msgid "Default port:"
+#~ msgstr "Default port:"
+
+#~ msgid "Output File:"
+#~ msgstr "Output File:"
+
+#~ msgid "X"
+#~ msgstr "X"
+
+#~ msgid "Intervals"
+#~ msgstr "Intervals"
+
+#~ msgid "Ticks per Interval"
+#~ msgstr "Ticks per Interval"
+
+#~ msgid "Offset (ticks)"
+#~ msgstr "Offset (ticks)"
+
+#~ msgid "Ge&neral"
+#~ msgstr "Ge&neral"
+
+#~ msgid "Do not search in the standard librar&y directory (--nostdlib)"
+#~ msgstr "Do not search in the standard librar&y directory (--nostdlib)"
+
+#~ msgid "Do not search in the standard include directory (--nostdinc)"
+#~ msgstr "Do not search in the standard include directory (--nostdinc)"
+
+#~ msgid "Disa&ble pedantic warnings (--less-pedantic)"
+#~ msgstr "Disa&ble pedantic warnings (--less-pedantic)"
+
+#~ msgid ""
+#~ "Follow the C89 standard and disable SDCC features that conflict with the "
+#~ "standard."
+#~ msgstr ""
+#~ "Follow the C89 standard and disable SDCC features that conflict with the "
+#~ "standard."
+
+#~ msgid "Use C&89 standard only (--std-c89)"
+#~ msgstr "Use C&89 standard only (--std-c89)"
+
+#~ msgid "Alt+8"
+#~ msgstr "Alt+8"
+
+#~ msgid ""
+#~ "Follow the C99 standard and disable SDCC features that conflict with the "
+#~ "standard (incomplete support)."
+#~ msgstr ""
+#~ "Follow the C99 standard and disable SDCC features that conflict with the "
+#~ "standard (incomplete support)."
+
+#~ msgid "Use C&99 standard only (--std-c99)"
+#~ msgstr "Use C&99 standard only (--std-c99)"
+
+#~ msgid "Alt+9"
+#~ msgstr "Alt+9"
+
+#~ msgid "Use non-free licensed libraries and header files (--use-non-free)"
+#~ msgstr "Use non-free licensed libraries and header files (--use-non-free)"
+
+#~ msgid "Code Gener&ation"
+#~ msgstr "Code Gener&ation"
+
+#~ msgid ""
+#~ "All functions in the source file will be compiled as reentrant, i.e. the "
+#~ "parameters and local variables will be allocated on the stack. If this "
+#~ "option is used all source files in the project should be compiled with "
+#~ "this option. It automatically implies --int-long-reent and --float-reent."
+#~ msgstr ""
+#~ "All functions in the source file will be compiled as reentrant, i.e. the "
+#~ "parameters and local variables will be allocated on the stack. If this "
+#~ "option is used all source files in the project should be compiled with "
+#~ "this option. It automatically implies --int-long-reent and --float-reent."
+
+#~ msgid "Stack auto&matic variables (--stack-auto)"
+#~ msgstr "Stack auto&matic variables (--stack-auto)"
+
+#~ msgid ""
+#~ "Integer (16 bit) and long (32 bit) libraries have been compiled as "
+#~ "reentrant. Note by default these libraries are compiled as non-reentrant."
+#~ msgstr ""
+#~ "Integer (16 bit) and long (32 bit) libraries have been compiled as "
+#~ "reentrant. Note by default these libraries are compiled as non-reentrant."
+
+#~ msgid "Integer li&braries were compiled as reentrant (--int-long-reent)"
+#~ msgstr "Integer li&braries were compiled as reentrant (--int-long-reent)"
+
+#~ msgid "Floating point library is compiled as reentrant."
+#~ msgstr "Floating point library is compiled as reentrant."
+
+#~ msgid "Floating point librar&y was compiled as reentrant (--float-reent)"
+#~ msgstr "Floating point librar&y was compiled as reentrant (--float-reent)"
+
+#~ msgid "Leave out the frame pointer (--fommit-frame-pointer)"
+#~ msgstr "Leave out the frame pointer (--fommit-frame-pointer)"
+
+#~ msgid ""
+#~ "Will not memcpy initialized data from code space into xdata space. This "
+#~ "saves a few bytes in code space if you do not have initialized data."
+#~ msgstr ""
+#~ "Will not memcpy initialised data from code space into xdata space. This "
+#~ "saves a few bytes in code space if you do not have initialised data."
+
+#~ msgid "Do not memcpy initialized &xram from code (--no-xinit-opt)"
+#~ msgstr "Do not memcpy initialised &xram from code (--no-xinit-opt)"
+
+#~ msgid "Callee will &always save registers used (--all-callee-saves)"
+#~ msgstr "Callee will &always save registers used (--all-callee-saves)"
+
+#~ msgid "&Optimization"
+#~ msgstr "&Optimisation"
+
+#~ msgid ""
+#~ "The compiler will not overlay parameters and local variables of any "
+#~ "function, see section Parameters and local variables for more details."
+#~ msgstr ""
+#~ "The compiler will not overlay parameters and local variables of any "
+#~ "function, see section Parameters and local variables for more details."
+
+#~ msgid "Disable overlaying leaf function &auto variables (--nooverlay)"
+#~ msgstr "Disable overlaying leaf function &auto variables (--nooverlay)"
+
+#~ msgid "Disable the GCSE optimization (--nogcse)"
+#~ msgstr "Disable the GCSE optimisation (--nogcse)"
+
+#~ msgid "Will not optimize labels (makes the dumpfiles more readable)."
+#~ msgstr "Will not optimise labels (makes the dumpfiles more readable)."
+
+#~ msgid "Disable label optimi&zation (--nolabelopt)"
+#~ msgstr "Disable label optimi&sation (--nolabelopt)"
+
+#~ msgid "Disable optimization of invariants (--noinvariant)"
+#~ msgstr "Disable optimisation of invariants (--noinvariant)"
+
+#~ msgid "Disable loop variable induction (--noinduction)"
+#~ msgstr "Disable loop variable induction (--noinduction)"
+
+#~ msgid "Disable peep-hole optimization."
+#~ msgstr "Disable peep-hole optimisation."
+
+#~ msgid "Disable peep-hole optimization (--&no-peep)"
+#~ msgstr "Disable peep-hole optimisation (--&no-peep)"
+
+#~ msgid "Will not do loop reversal optimization."
+#~ msgstr "Will not do loop reversal optimisation."
+
+#~ msgid "Disable loop reverse optimization (--noloopreverse)"
+#~ msgstr "Disable loop reverse optimisation (--noloopreverse)"
+
+#~ msgid ""
+#~ "The compiler will optimize code generation towards compact code, possibly "
+#~ "at the expense of code speed."
+#~ msgstr ""
+#~ "The compiler will optimise code generation towards compact code, possibly "
+#~ "at the expense of code speed."
+
+#~ msgid "Opti&mize for compact code (--opt-code-size)"
+#~ msgstr "Opti&mise for compact code (--opt-code-size)"
+
+#~ msgid ""
+#~ "The compiler will optimize code generation towards fast code, possibly at "
+#~ "the expense of code size."
+#~ msgstr ""
+#~ "The compiler will optimise code generation towards fast code, possibly at "
+#~ "the expense of code size."
+
+#~ msgid "&Optimize for fast code (--opt-code-speed)"
+#~ msgstr "&Optimise for fast code (--opt-code-speed)"
+
+#~ msgid ""
+#~ "Pass the inline assembler code through the peep hole optimizer. This can "
+#~ "cause unexpected changes to inline assembler code, please go through the "
+#~ "peephole optimizer rules defined in the source file tree '<target>/peeph."
+#~ "def' before using this option."
+#~ msgstr ""
+#~ "Pass the inline assembler code through the peep hole optimiser. This can "
+#~ "cause unexpected changes to inline assembler code, please go through the "
+#~ "peephole optimiser rules defined in the source file tree '<target>/peeph."
+#~ "def' before using this option."
+
+#~ msgid "Ena&ble inline assembly peephole optimization (--peep-asm)"
+#~ msgstr "Ena&ble inline assembly peephole optimisation (--peep-asm)"
+
+#~ msgid "Do not generate boundary check for &jump tables (--nojtbound)"
+#~ msgstr "Do not generate boundary check for &jump tables (--nojtbound)"
+
+#~ msgid "PIC&16 Specific"
+#~ msgstr "PIC&16 Specific"
+
+#~ msgid "Do not use default libraries (--nodefaultlibs)"
+#~ msgstr "Do not use default libraries (--nodefaultlibs)"
+
+#~ msgid "Do not generate BANKSEL directives (--pno-banksel)"
+#~ msgstr "Do not generate BANKSEL directives (--pno-banksel)"
+
+#~ msgid "Use large stac&k model (--pstack-model=large)"
+#~ msgstr "Use large stac&k model (--pstack-model=large)"
+
+#~ msgid "Show more debug info in assembl&y output (--debug-xtra)"
+#~ msgstr "Show more debug info in assembl&y output (--debug-xtra)"
+
+#~ msgid "E&xplicit enable of peepholes (--denable-peeps)"
+#~ msgstr "E&xplicit enable of peepholes (--denable-peeps)"
+
+#~ msgid "Du&mp call tree in .calltree file (--calltree)"
+#~ msgstr "Du&mp call tree in .calltree file (--calltree)"
+
+#~ msgid "Ena&ble stack optimizations (--fstack)"
+#~ msgstr "Ena&ble stack optimisations (--fstack)"
+
+#~ msgid "Try to use conditional BRA instead of GOTO (--optimi&ze-goto)"
+#~ msgstr "Try to use conditional BRA instead of GOTO (--optimi&ze-goto)"
+
+#~ msgid "Try to optimize some compares (--optimize-cmp)"
+#~ msgstr "Try to optimise some compares (--optimize-cmp)"
+
+#~ msgid "Thorough data flow analysis (resource intensive) (--optimize-df)"
+#~ msgstr "Thorough data flow analysis (resource intensive) (--optimize-df)"
+
+#~ msgid "SDCC install prefix:"
+#~ msgstr "SDCC install prefix:"
+
+#~ msgid "Location where SDCC in installed. Empty for system default."
+#~ msgstr "Location where SDCC in installed. Empty for system default."
+
+#~ msgid "&Tools"
+#~ msgstr "&Tools"
+
+#~ msgid "Routing Mode"
+#~ msgstr "Routing Mode"
+
+#~ msgid "&File"
+#~ msgstr "&File"
+
+#~ msgid "&Edit"
+#~ msgstr "&Edit"
+
+#~ msgid "&View"
+#~ msgstr "&View"
+
+#~ msgid "Tools"
+#~ msgstr "Tools"
+
+#~ msgid "&Code Folding"
+#~ msgstr "&Code Folding"
+
+#~ msgid "&Settings"
+#~ msgstr "&Settings"
+
+#~ msgid "Main Toolbar"
+#~ msgstr "Main Toolbar"
+
+#~ msgid "&Debug"
+#~ msgstr "&Debug"
+
+#~ msgid "Debugger"
+#~ msgstr "Debugger"
+
+#~ msgid "&Project"
+#~ msgstr "&Project"
+
+#~ msgid "Examples"
+#~ msgstr "Examples"
+
+#~ msgid "555s"
+#~ msgstr "555s"
+
+#~ msgid "Basic"
+#~ msgstr "Basic"
+
+#~ msgid "Diodes"
+#~ msgstr "Diodes"
+
+#~ msgid "JFETs"
+#~ msgstr "JFETs"
+
+#~ msgid "Matrix Display Drivers"
+#~ msgstr "Matrix Display Drivers"
+
+#~ msgid "MOSFETs"
+#~ msgstr "MOSFETs"
+
+#~ msgid "Transistors"
+#~ msgstr "Transistors"
+
+#~ msgid "Opamps"
+#~ msgstr "Opamps"
 
 #~ msgid "Custom..."
 #~ msgstr "Custom..."
