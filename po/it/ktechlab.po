@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-20 01:16+0000\n"
+"POT-Creation-Date: 2026-11-25 01:29+0000\n"
 "PO-Revision-Date: 2026-11-20 14:03+0100\n"
 "Last-Translator: Vincenzo Reale <smart2128vr@gmail.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -274,7 +274,7 @@ msgstr "Attesa variabile"
 msgid "Name expected"
 msgstr "Atteso nome"
 
-#: microbe/optimizer.cpp:71
+#: microbe/optimizer.cpp:70
 #, kde-format
 msgid "Internal issue: Optimization has not finished in %1 iterations."
 msgstr ""
@@ -818,6 +818,12 @@ msgstr ""
 "Controlla se SDCC usa librerie condivise per la compilazione (quelli più "
 "recenti lo fanno)"
 
+#: src/core/ktlassert.cpp:80
+#, kde-format
+msgctxt "@title:window"
+msgid "KTechLab: Internal Error"
+msgstr ""
+
 #: src/core/main.cpp:31
 #, kde-format
 msgid "KTechLab"
@@ -948,67 +954,67 @@ msgstr "Vecchio sito web e riscontri durante lo sviluppo iniziale"
 msgid "Document to open."
 msgstr "Documento da aprire."
 
-#: src/docmanager.cpp:97
+#: src/docmanager.cpp:95
 #, kde-format
 msgid "Could not open '%1'"
 msgstr "Impossibile aprire «%1»"
 
-#: src/docmanager.cpp:165
+#: src/docmanager.cpp:163
 #, kde-format
 msgid "Untitled (Circuit %1)"
 msgstr "Senza titolo (Circuito %1)"
 
-#: src/docmanager.cpp:167
+#: src/docmanager.cpp:165
 #, kde-format
 msgid "Untitled (Circuit)"
 msgstr "Senza titolo (Circuito)"
 
-#: src/docmanager.cpp:173
+#: src/docmanager.cpp:171
 #, kde-format
 msgid "Untitled (FlowCode %1)"
 msgstr "Senza titolo (FlowCode %1)"
 
-#: src/docmanager.cpp:175
+#: src/docmanager.cpp:173
 #, kde-format
 msgid "Untitled (FlowCode)"
 msgstr "Senza titolo (FlowCode)"
 
-#: src/docmanager.cpp:181
+#: src/docmanager.cpp:179
 #, kde-format
 msgid "Untitled (Mechanics %1)"
 msgstr "Senza titolo (Meccanica %1)"
 
-#: src/docmanager.cpp:183
+#: src/docmanager.cpp:181
 #, kde-format
 msgid "Untitled (Mechanics)"
 msgstr "Senza titolo (Meccanica)"
 
-#: src/docmanager.cpp:189
+#: src/docmanager.cpp:187
 #, kde-format
 msgid "Untitled (%1)"
 msgstr "Senza titolo (%1)"
 
-#: src/docmanager.cpp:191 src/view.cpp:259
+#: src/docmanager.cpp:189 src/view.cpp:257
 #, kde-format
 msgid "Untitled"
 msgstr "Senza titolo"
 
-#: src/docmanager.cpp:413
+#: src/docmanager.cpp:411
 #, kde-format
 msgid "Could not open Circuit file \"%1\""
 msgstr "Impossibile aprire il file Circuito «%1»"
 
-#: src/docmanager.cpp:428
+#: src/docmanager.cpp:426
 #, kde-format
 msgid "Could not open FlowCode file \"%1\""
 msgstr "Impossibile aprire il file FlowCode «%1»"
 
-#: src/docmanager.cpp:443
+#: src/docmanager.cpp:441
 #, kde-format
 msgid "Could not open Mechanics file \"%1\""
 msgstr "Impossibile aprire il file Meccanica «%1»"
 
-#: src/docmanager.cpp:461
+#: src/docmanager.cpp:459
 #, kde-format
 msgid "Could not open text file \"%1\""
 msgstr "Impossibile aprire il file di testo «%1»"
@@ -1019,13 +1025,13 @@ msgid "Save Location"
 msgstr "Salva posizione"
 
 # VAD: la forma è presa pari-pari dalla traduzione di kbabel
-#: src/document.cpp:113 src/itemdocument.cpp:838
+#: src/document.cpp:113 src/itemdocument.cpp:837
 #, kde-format
 msgid ""
 "A file named \"%1\" already exists. Are you sure you want to overwrite it?"
 msgstr "Esiste già un file chiamato «%1». Sei sicuro di volerlo sovrascrivere?"
 
-#: src/document.cpp:114 src/itemdocument.cpp:841
+#: src/document.cpp:114 src/itemdocument.cpp:840
 #, kde-format
 msgid "Overwrite File?"
 msgstr "Sovrascrivere il file?"
@@ -1190,7 +1196,7 @@ msgstr "Orientazione"
 #: src/electronics/components/piccomponent.cpp:92 src/flowcodedocument.cpp:50
 #: src/flowcodedocument.cpp:173 src/flowcodedocument.cpp:197
 #: src/flowcodedocument.cpp:221 src/ktechlab.cpp:1193
-#: src/mechanics/mechanicsdocument.cpp:28 src/projectmanager.cpp:916
+#: src/mechanics/mechanicsdocument.cpp:28 src/projectmanager.cpp:914
 #: src/textdocument.cpp:472 src/textdocument.cpp:510
 #, kde-format
 msgid "All Files"
@@ -1937,9 +1943,9 @@ msgstr "Connessione esterna"
 #. i18n: ectx: property (text), widget (QLabel, m_pNameLabel)
 #: src/electronics/components/externalconnection.cpp:34
 #: src/gui/contexthelpwidget.ui:29 src/gui/microsettingsdlg.cpp:331
-#: src/gui/settingsdlg.cpp:289 src/gui/symbolviewer.cpp:124
-#: src/gui/symbolviewer.cpp:126 src/gui/symbolviewer.cpp:191
-#: src/gui/symbolviewer.cpp:193
+#: src/gui/settingsdlg.cpp:289 src/gui/symbolviewer.cpp:123
+#: src/gui/symbolviewer.cpp:125 src/gui/symbolviewer.cpp:190
+#: src/gui/symbolviewer.cpp:192
 #, kde-format
 msgid "Name"
 msgstr "Nome"
@@ -2464,102 +2470,102 @@ msgstr "Regolatore di tensione"
 msgid "Voltage Out"
 msgstr "Tensione di uscita"
 
-#: src/electronics/gpsimprocessor.cpp:139
+#: src/electronics/gpsimprocessor.cpp:138
 #, kde-format
 msgid "The cod file \"%1\" was not found."
 msgstr "Il file cod «%1» non è stato trovato."
 
-#: src/electronics/gpsimprocessor.cpp:139
+#: src/electronics/gpsimprocessor.cpp:138
 #, kde-format
 msgid "File Not Found"
 msgstr "File non trovato"
 
-#: src/electronics/gpsimprocessor.cpp:142
+#: src/electronics/gpsimprocessor.cpp:141
 #, kde-format
 msgid "The processor for cod file \"%1\" is unrecognized."
 msgstr "Il processore per il file cod «%1» non è stato riconosciuto."
 
-#: src/electronics/gpsimprocessor.cpp:142
+#: src/electronics/gpsimprocessor.cpp:141
 #, kde-format
 msgid "Unrecognized Processor"
 msgstr "Processore non riconosciuto"
 
-#: src/electronics/gpsimprocessor.cpp:145
+#: src/electronics/gpsimprocessor.cpp:144
 #, kde-format
 msgid "The file name \"%1\" is too long."
 msgstr "Il nome del file «%1» è troppo lungo."
 
-#: src/electronics/gpsimprocessor.cpp:145
+#: src/electronics/gpsimprocessor.cpp:144
 #, kde-format
 msgid "Filename Too Long"
 msgstr "Nome file troppo lungo"
 
-#: src/electronics/gpsimprocessor.cpp:148
+#: src/electronics/gpsimprocessor.cpp:147
 #, kde-format
 msgid "The lst file associated with the cod file \"%1\" was not found."
 msgstr "Il file lst associato al file cod «%1» non è stato trovato."
 
-#: src/electronics/gpsimprocessor.cpp:148
+#: src/electronics/gpsimprocessor.cpp:147
 #, kde-format
 msgid "LST File Not Found"
 msgstr "File LST non trovato"
 
-#: src/electronics/gpsimprocessor.cpp:151
+#: src/electronics/gpsimprocessor.cpp:150
 #, kde-format
 msgid "The cod file \"%1\" is bad."
 msgstr "Il file cod «%1» è danneggiato."
 
-#: src/electronics/gpsimprocessor.cpp:151
+#: src/electronics/gpsimprocessor.cpp:150
 #, kde-format
 msgid "Bad File"
 msgstr "File danneggiato"
 
-#: src/electronics/gpsimprocessor.cpp:154
+#: src/electronics/gpsimprocessor.cpp:153
 #, kde-format
 msgid "The cod file \"%1\" could not be read from."
 msgstr "Impossibile leggere il file cod «%1»."
 
-#: src/electronics/gpsimprocessor.cpp:154
+#: src/electronics/gpsimprocessor.cpp:153
 #, kde-format
 msgid "Unreadable File"
 msgstr "File non accessibile in lettura"
 
-#: src/electronics/gpsimprocessor.cpp:158
+#: src/electronics/gpsimprocessor.cpp:157
 #, kde-format
 msgid "An error occurred with the cod file \"%1\"."
 msgstr "Si è verificato un errore accedendo al file cod «%1»."
 
-#: src/electronics/gpsimprocessor.cpp:158
+#: src/electronics/gpsimprocessor.cpp:157
 #, kde-format
 msgid "Error"
 msgstr "Errore"
 
-#: src/electronics/gpsimprocessor.cpp:735
+#: src/electronics/gpsimprocessor.cpp:734
 #, kde-format
 msgid "Generic"
 msgstr "Generico"
 
-#: src/electronics/gpsimprocessor.cpp:738 src/projectmanager.cpp:872
+#: src/electronics/gpsimprocessor.cpp:737 src/projectmanager.cpp:870
 #, kde-format
 msgid "File"
 msgstr "File"
 
-#: src/electronics/gpsimprocessor.cpp:741
+#: src/electronics/gpsimprocessor.cpp:740
 #, kde-format
 msgid "SFR"
 msgstr "SFR"
 
-#: src/electronics/gpsimprocessor.cpp:744 src/textdocument.cpp:137
+#: src/electronics/gpsimprocessor.cpp:743 src/textdocument.cpp:137
 #, kde-format
 msgid "Breakpoint"
 msgstr "Breakpoint"
 
-#: src/electronics/gpsimprocessor.cpp:747
+#: src/electronics/gpsimprocessor.cpp:746
 #, kde-format
 msgid "Invalid"
 msgstr "Non valido"
 
-#: src/electronics/gpsimprocessor.cpp:750
+#: src/electronics/gpsimprocessor.cpp:749
 #, kde-format
 msgid "Unknown"
 msgstr "Sconosciuto"
@@ -2882,9 +2888,9 @@ msgstr "Operazione"
 
 #: src/flowparts/repeat.cpp:53 src/flowparts/varassignment.cpp:43
 #: src/flowparts/varcomparison.cpp:54 src/flowparts/while.cpp:53
-#: src/gui/itemeditor/propertyeditor.cpp:257 src/gui/symbolviewer.cpp:125
-#: src/gui/symbolviewer.cpp:127 src/gui/symbolviewer.cpp:192
-#: src/gui/symbolviewer.cpp:194
+#: src/gui/itemeditor/propertyeditor.cpp:257 src/gui/symbolviewer.cpp:124
+#: src/gui/symbolviewer.cpp:126 src/gui/symbolviewer.cpp:191
+#: src/gui/symbolviewer.cpp:193
 #, kde-format
 msgid "Value"
 msgstr "Valore"
@@ -3069,7 +3075,7 @@ msgstr "Nome istruzione"
 msgid "&Automatically format Microbe output"
 msgstr "Formatta &automaticamente il Microbe in uscita"
 
-#: src/gui/contexthelp.cpp:69
+#: src/gui/contexthelp.cpp:68
 #, kde-format
 msgid ""
 "Provides context-sensitive help relevant to the current editing being "
@@ -3078,30 +3084,30 @@ msgstr ""
 "Mette a disposizione un aiuto rilevante sensibile al contesto delle "
 "modifiche che vengono correntemente effettuate."
 
-#: src/gui/contexthelp.cpp:249 src/gui/itemeditor/itemeditor.cpp:141
+#: src/gui/contexthelp.cpp:248 src/gui/itemeditor/itemeditor.cpp:140
 #, kde-format
 msgid "No Item Selected"
 msgstr "Nessun elemento selezionato"
 
-#: src/gui/contexthelp.cpp:259 src/gui/itemeditor/itemeditor.cpp:108
+#: src/gui/contexthelp.cpp:258 src/gui/itemeditor/itemeditor.cpp:107
 #, kde-format
 msgid "Multiple Items"
 msgstr "Elementi multipli"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, m_pResetButton)
 #. i18n: ectx: property (text), widget (QToolButton, resetBtn)
-#: src/gui/contexthelp.cpp:334 src/gui/contexthelp.cpp:335
+#: src/gui/contexthelp.cpp:333 src/gui/contexthelp.cpp:334
 #: src/gui/contexthelpwidget.ui:173 src/gui/oscilloscopewidget.ui:117
 #, kde-format
 msgid "Reset"
 msgstr "Reimposta"
 
-#: src/gui/contexthelp.cpp:335
+#: src/gui/contexthelp.cpp:334
 #, kde-format
 msgid "Reset item help to last saved changes?"
 msgstr "Reimposto l'aiuto sull'elemento all'ultima modifica salvata?"
 
-#: src/gui/contexthelp.cpp:355
+#: src/gui/contexthelp.cpp:354
 #, kde-format
 msgid "Cannot save item description."
 msgstr "Impossibile salvare la descrizione dell'elemento."
@@ -3398,25 +3404,25 @@ msgid "inhx16"
 msgstr "inhx16"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_Radix)
-#: src/gui/gpasmsettingswidget.ui:138 src/gui/symbolviewer.cpp:110
+#: src/gui/gpasmsettingswidget.ui:138 src/gui/symbolviewer.cpp:109
 #, kde-format
 msgid "Decimal"
 msgstr "Decimale"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_Radix)
-#: src/gui/gpasmsettingswidget.ui:143 src/gui/symbolviewer.cpp:108
+#: src/gui/gpasmsettingswidget.ui:143 src/gui/symbolviewer.cpp:107
 #, kde-format
 msgid "Binary"
 msgstr "Binario"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_Radix)
-#: src/gui/gpasmsettingswidget.ui:148 src/gui/symbolviewer.cpp:109
+#: src/gui/gpasmsettingswidget.ui:148 src/gui/symbolviewer.cpp:108
 #, kde-format
 msgid "Octal"
 msgstr "Ottale"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_Radix)
-#: src/gui/gpasmsettingswidget.ui:153 src/gui/symbolviewer.cpp:111
+#: src/gui/gpasmsettingswidget.ui:153 src/gui/symbolviewer.cpp:110
 #, kde-format
 msgid "Hexadecimal"
 msgstr "Esadecimale"
@@ -3466,8 +3472,8 @@ msgstr "Altre opzioni:"
 msgid "Link with shared libraries (&use this with new SDCC)"
 msgstr "Collega con le librerie condivise (&usalo con il nuovo SDCC)"
 
-#: src/gui/imageexportdlg.cpp:32 src/itemdocument.cpp:863
-#: src/itemdocument.cpp:869
+#: src/gui/imageexportdlg.cpp:32 src/itemdocument.cpp:862
+#: src/itemdocument.cpp:868
 #, kde-format
 msgid "Export As Image"
 msgstr "Esporta come immagine"
@@ -3515,7 +3521,7 @@ msgid "Select a predefined component configuration from this list."
 msgstr ""
 "Seleziona una configurazione predefinita del componente da questo elenco."
 
-#: src/gui/itemeditor/itemeditor.cpp:44
+#: src/gui/itemeditor/itemeditor.cpp:43
 #, kde-format
 msgid ""
 "This allows editing of advanced properties of the selected item(s). Right "
@@ -3525,7 +3531,7 @@ msgstr ""
 "selezionato/i. Tramite un clic con il tasto destro sull'immagine "
 "dell'oggetto si imposta l'orientazione."
 
-#: src/gui/itemeditor/itemeditor.cpp:71
+#: src/gui/itemeditor/itemeditor.cpp:70
 #, kde-format
 msgid ""
 "<p>Shows properties associated with the currently selected item(s).<br/"
@@ -3540,7 +3546,7 @@ msgstr ""
 "usa «Fondi proprietà» per renderli uguali.<br/>Seleziona «Predefinito» per "
 "impostare tutte le proprietà ai loro valori predefiniti"
 
-#: src/gui/itemeditor/itemeditor.cpp:87
+#: src/gui/itemeditor/itemeditor.cpp:86
 #, kde-format
 msgid ""
 "Change the orientation of the selected item by selecting the appropriate "
@@ -3583,17 +3589,17 @@ msgstr " ... "
 msgid "Choose File"
 msgstr "Scegli file"
 
-#: src/gui/itemselector.cpp:62 src/gui/itemselector.cpp:409
+#: src/gui/itemselector.cpp:61 src/gui/itemselector.cpp:408
 #, kde-format
 msgid "Component"
 msgstr "Componente"
 
-#: src/gui/itemselector.cpp:266
+#: src/gui/itemselector.cpp:265
 #, kde-format
 msgid "Remove %1"
 msgstr "Rimuovi %1"
 
-#: src/gui/itemselector.cpp:403
+#: src/gui/itemselector.cpp:402
 #, kde-format
 msgid ""
 "Add components to the circuit diagram by dragging them into the circuit."
@@ -3609,7 +3615,7 @@ msgstr ""
 "componenti (come i sotto-circuiti) possono essere rimossi facendoci clic "
 "sopra e selezionando «Rimuovi»."
 
-#: src/gui/itemselector.cpp:438
+#: src/gui/itemselector.cpp:437
 #, kde-format
 msgid ""
 "Add FlowPart to the FlowCode document by dragging them there.<br><br>To add "
@@ -3622,12 +3628,12 @@ msgstr ""
 "esse e fai clic ripetutamente nel diagramma di flusso per piazzare il "
 "componente; tasto destro per fermare il piazzamento."
 
-#: src/gui/itemselector.cpp:441
+#: src/gui/itemselector.cpp:440
 #, kde-format
 msgid "Flow Part"
 msgstr "Parte flusso"
 
-#: src/gui/itemselector.cpp:468
+#: src/gui/itemselector.cpp:467
 #, kde-format
 msgid "Add mechanical parts to the mechanics work area by dragging them there."
 msgstr ""
@@ -3899,7 +3905,7 @@ msgstr ""
 "Trascinalo per impostare il tipo (ingresso o uscita)."
 
 #. i18n: ectx: property (text), widget (QPushButton, pinMapRemove)
-#: src/gui/microsettingswidget.ui:109 src/projectmanager.cpp:1086
+#: src/gui/microsettingswidget.ui:109 src/projectmanager.cpp:1084
 #, kde-format
 msgid "Remove"
 msgstr "Rimuovi"
@@ -4798,7 +4804,7 @@ msgstr "Rimuovo «%1»"
 msgid "Configuration Name"
 msgstr "Nome della configurazione"
 
-#: src/gui/symbolviewer.cpp:104
+#: src/gui/symbolviewer.cpp:103
 #, kde-format
 msgid "Value radix:"
 msgstr "Valore della radice:"
@@ -4831,42 +4837,42 @@ msgstr "Modalità di connessione <b>manuale</b> abilitata."
 msgid "<b>Automatic</b> connection routing enabled."
 msgstr "Modalità di connessione <b>automatica</b> abilitata."
 
-#: src/itemdocument.cpp:94
+#: src/itemdocument.cpp:93
 #, kde-format
 msgid "Alignment"
 msgstr "Allineamento"
 
-#: src/itemdocument.cpp:863
+#: src/itemdocument.cpp:862
 #, kde-format
 msgid "SVG export is sub-functional"
 msgstr "L'esportazione SVG è sub-funzionale"
 
-#: src/itemdocument.cpp:869
+#: src/itemdocument.cpp:868
 #, kde-format
 msgid "There is nothing to crop"
 msgstr "Non c'è niente da tagliare"
 
-#: src/itemdocument.cpp:938
+#: src/itemdocument.cpp:937
 #, kde-format
 msgid "Export failed"
 msgstr "Esportazione fallita"
 
-#: src/itemdocument.cpp:938
+#: src/itemdocument.cpp:937
 #, kde-format
 msgid "Image Export"
 msgstr "Esporta immagine"
 
-#: src/itemdocumentdata.cpp:103 src/projectmanager.cpp:741
+#: src/itemdocumentdata.cpp:103 src/projectmanager.cpp:739
 #, kde-format
 msgid "Could not open temporary file for writing: %1"
 msgstr "Impossibile aprire in scrittura il file temporaneo: %1"
 
-#: src/itemdocumentdata.cpp:117 src/projectmanager.cpp:755
+#: src/itemdocumentdata.cpp:117 src/projectmanager.cpp:753
 #, kde-format
 msgid "Could not open %1 for reading"
 msgstr "Impossibile aprire %1 in lettura"
 
-#: src/itemdocumentdata.cpp:138 src/projectmanager.cpp:771
+#: src/itemdocumentdata.cpp:138 src/projectmanager.cpp:769
 #, kde-format
 msgid ""
 "Could not parse XML:\n"
@@ -4885,7 +4891,7 @@ msgstr "Impossibile aprire «%1» in scrittura. Controlla di avere il permesso"
 msgid "Saving File"
 msgstr "Salvataggio del file"
 
-#: src/itemlibrary.cpp:134
+#: src/itemlibrary.cpp:132
 #, kde-format
 msgid ""
 "This help item does not yet exist for the %1 language. Help out with "
@@ -4894,7 +4900,7 @@ msgstr ""
 "Questo elemento di aiuto non esiste ancora per la lingua %1. Aiuta KTechLab "
 "creandone uno per mezzo del pulsante «Modifica»."
 
-#: src/itemlibrary.cpp:519
+#: src/itemlibrary.cpp:517
 #, kde-format
 msgid "Could not open item descriptions file \"%1\" for writing."
 msgstr ""
@@ -4902,7 +4908,7 @@ msgstr ""
 
 #. i18n("Cancel"), i18n("Cancel the current operation"), Qt::Key_Escape, itemDocument, SLOT(cancelCurrentOperation()) );
 #. pAccel->readSettings(); // TODO what does this do?
-#: src/itemview.cpp:59 src/projectmanager.cpp:1086 src/viewcontainer.cpp:542
+#: src/itemview.cpp:59 src/projectmanager.cpp:1084 src/viewcontainer.cpp:542
 #, kde-format
 msgid "Cancel"
 msgstr "Annulla"
@@ -5329,7 +5335,7 @@ msgstr "Chiudi tutti gli altri"
 msgid "Intel Hex"
 msgstr "Esadecimale Intel"
 
-#: src/ktechlab.cpp:1199 src/ktechlab.cpp:1202 src/projectmanager.cpp:918
+#: src/ktechlab.cpp:1199 src/ktechlab.cpp:1202 src/projectmanager.cpp:916
 #, kde-format
 msgid "Open Location"
 msgstr "Apri posizione"
@@ -5551,7 +5557,7 @@ msgstr "*** Collegamento eseguito con successo ***"
 msgid "*** Linking failed ***"
 msgstr "*** Collegamento non riuscito ***"
 
-#: src/languages/languagemanager.cpp:49
+#: src/languages/languagemanager.cpp:47
 #, kde-format
 msgid ""
 "These messages show the output of language-related functionality such as "
@@ -5665,32 +5671,32 @@ msgstr "Momento d'inerzia"
 msgid "Advanced..."
 msgstr "Avanzate..."
 
-#: src/projectmanager.cpp:413
+#: src/projectmanager.cpp:411
 #, kde-format
 msgid "Do not know how to build \"%1\" (output URL is empty)."
 msgstr "Non so come compilare «%1» (l'URL di output è vuoto)."
 
-#: src/projectmanager.cpp:422
+#: src/projectmanager.cpp:420
 #, kde-format
 msgid "Do not know how to build \"%1\" (library does not exist in project)."
 msgstr "Non so come compilare «%1» (la libreria non esiste nel progetto)."
 
-#: src/projectmanager.cpp:448
+#: src/projectmanager.cpp:446
 #, kde-format
 msgid "Do not know how to build \"%1\" (unknown output type)."
 msgstr "Non so come compilare «%1» (tipo di output sconosciuto)."
 
-#: src/projectmanager.cpp:807
+#: src/projectmanager.cpp:805
 #, kde-format
 msgid "Project could not be saved to \"%1\""
 msgstr "Il progetto non può essere salvato su «%1»"
 
-#: src/projectmanager.cpp:807
+#: src/projectmanager.cpp:805
 #, kde-format
 msgid "Saving Project"
 msgstr "Salvataggio del progetto"
 
-#: src/projectmanager.cpp:870
+#: src/projectmanager.cpp:868
 #, kde-format
 msgid ""
 "Displays the list of files in the project.\n"
@@ -5701,22 +5707,22 @@ msgstr ""
 "Per aprire o chiudere un progetto utilizza il menu «Progetto». Clic destro "
 "su un file per rimuoverlo dal progetto"
 
-#: src/projectmanager.cpp:873
+#: src/projectmanager.cpp:871
 #, kde-format
 msgid "Project Manager"
 msgstr "Gestore del progetto"
 
-#: src/projectmanager.cpp:916
+#: src/projectmanager.cpp:914
 #, kde-format
 msgid "KTechlab Project"
 msgstr "Progetto di KTechlab"
 
-#: src/projectmanager.cpp:1086
+#: src/projectmanager.cpp:1084
 #, kde-format
 msgid "Do you really want to remove \"%1\"?"
 msgstr "Vuoi davvero rimuovere il file «%1»?"
 
-#: src/projectmanager.cpp:1086
+#: src/projectmanager.cpp:1084
 #, kde-format
 msgid "Remove Project File?"
 msgstr "Rimuovere il file progetto?"

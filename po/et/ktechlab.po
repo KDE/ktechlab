@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-20 01:16+0000\n"
+"POT-Creation-Date: 2026-11-25 01:29+0000\n"
 "PO-Revision-Date: 2020-04-28 10:48+0300\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -269,7 +269,7 @@ msgstr "Oodati muutujat"
 msgid "Name expected"
 msgstr "Oodati nime"
 
-#: microbe/optimizer.cpp:71
+#: microbe/optimizer.cpp:70
 #, kde-format
 msgid "Internal issue: Optimization has not finished in %1 iterations."
 msgstr "Sisemine probleem: optimeerimine ei ole lõppenud ka %1 korduse järel."
@@ -793,6 +793,12 @@ msgstr ""
 "Märkimisel kasutab SDCC kompileerimisel jagatud teeke (uuemad SDCC teevad "
 "seda)"
 
+#: src/core/ktlassert.cpp:80
+#, kde-format
+msgctxt "@title:window"
+msgid "KTechLab: Internal Error"
+msgstr ""
+
 #: src/core/main.cpp:31
 #, kde-format
 msgid "KTechLab"
@@ -923,67 +929,67 @@ msgstr "Endine veebisaidi majutaja ja tagasiside arendamise algjärgus"
 msgid "Document to open."
 msgstr "Avatav dokument."
 
-#: src/docmanager.cpp:97
+#: src/docmanager.cpp:95
 #, kde-format
 msgid "Could not open '%1'"
 msgstr "\"%1\" avamine nurjus"
 
-#: src/docmanager.cpp:165
+#: src/docmanager.cpp:163
 #, kde-format
 msgid "Untitled (Circuit %1)"
 msgstr "Nimeta (vooluring %1)"
 
-#: src/docmanager.cpp:167
+#: src/docmanager.cpp:165
 #, kde-format
 msgid "Untitled (Circuit)"
 msgstr "Nimeta (vooluring)"
 
-#: src/docmanager.cpp:173
+#: src/docmanager.cpp:171
 #, kde-format
 msgid "Untitled (FlowCode %1)"
 msgstr ""
 
-#: src/docmanager.cpp:175
+#: src/docmanager.cpp:173
 #, kde-format
 msgid "Untitled (FlowCode)"
 msgstr ""
 
-#: src/docmanager.cpp:181
+#: src/docmanager.cpp:179
 #, kde-format
 msgid "Untitled (Mechanics %1)"
 msgstr ""
 
-#: src/docmanager.cpp:183
+#: src/docmanager.cpp:181
 #, kde-format
 msgid "Untitled (Mechanics)"
 msgstr ""
 
-#: src/docmanager.cpp:189
+#: src/docmanager.cpp:187
 #, kde-format
 msgid "Untitled (%1)"
 msgstr "Nimeta (%1)"
 
-#: src/docmanager.cpp:191 src/view.cpp:259
+#: src/docmanager.cpp:189 src/view.cpp:257
 #, kde-format
 msgid "Untitled"
 msgstr "Nimeta"
 
-#: src/docmanager.cpp:413
+#: src/docmanager.cpp:411
 #, kde-format
 msgid "Could not open Circuit file \"%1\""
 msgstr "Vooluringifaili \"%1\" avamine nurjus"
 
-#: src/docmanager.cpp:428
+#: src/docmanager.cpp:426
 #, kde-format
 msgid "Could not open FlowCode file \"%1\""
 msgstr ""
 
-#: src/docmanager.cpp:443
+#: src/docmanager.cpp:441
 #, kde-format
 msgid "Could not open Mechanics file \"%1\""
 msgstr ""
 
-#: src/docmanager.cpp:461
+#: src/docmanager.cpp:459
 #, kde-format
 msgid "Could not open text file \"%1\""
 msgstr "Tekstifaili \"%1\" avamine nurjus"
@@ -993,13 +999,13 @@ msgstr "Tekstifaili \"%1\" avamine nurjus"
 msgid "Save Location"
 msgstr "Asukoha salvestamine"
 
-#: src/document.cpp:113 src/itemdocument.cpp:838
+#: src/document.cpp:113 src/itemdocument.cpp:837
 #, kde-format
 msgid ""
 "A file named \"%1\" already exists. Are you sure you want to overwrite it?"
 msgstr "Fail nimega \"%1\" on juba olemas. Kas tõesti see üle kirjutada?"
 
-#: src/document.cpp:114 src/itemdocument.cpp:841
+#: src/document.cpp:114 src/itemdocument.cpp:840
 #, kde-format
 msgid "Overwrite File?"
 msgstr "Kas kirjutada fail üle?"
@@ -1164,7 +1170,7 @@ msgstr "Orientatsioon"
 #: src/electronics/components/piccomponent.cpp:92 src/flowcodedocument.cpp:50
 #: src/flowcodedocument.cpp:173 src/flowcodedocument.cpp:197
 #: src/flowcodedocument.cpp:221 src/ktechlab.cpp:1193
-#: src/mechanics/mechanicsdocument.cpp:28 src/projectmanager.cpp:916
+#: src/mechanics/mechanicsdocument.cpp:28 src/projectmanager.cpp:914
 #: src/textdocument.cpp:472 src/textdocument.cpp:510
 #, kde-format
 msgid "All Files"
@@ -1910,9 +1916,9 @@ msgstr "Väline ühendus"
 #. i18n: ectx: property (text), widget (QLabel, m_pNameLabel)
 #: src/electronics/components/externalconnection.cpp:34
 #: src/gui/contexthelpwidget.ui:29 src/gui/microsettingsdlg.cpp:331
-#: src/gui/settingsdlg.cpp:289 src/gui/symbolviewer.cpp:124
-#: src/gui/symbolviewer.cpp:126 src/gui/symbolviewer.cpp:191
-#: src/gui/symbolviewer.cpp:193
+#: src/gui/settingsdlg.cpp:289 src/gui/symbolviewer.cpp:123
+#: src/gui/symbolviewer.cpp:125 src/gui/symbolviewer.cpp:190
+#: src/gui/symbolviewer.cpp:192
 #, kde-format
 msgid "Name"
 msgstr "Nimi"
@@ -2435,102 +2441,102 @@ msgstr ""
 msgid "Voltage Out"
 msgstr ""
 
-#: src/electronics/gpsimprocessor.cpp:139
+#: src/electronics/gpsimprocessor.cpp:138
 #, kde-format
 msgid "The cod file \"%1\" was not found."
 msgstr ""
 
-#: src/electronics/gpsimprocessor.cpp:139
+#: src/electronics/gpsimprocessor.cpp:138
 #, kde-format
 msgid "File Not Found"
 msgstr "Faili ei leitud"
 
-#: src/electronics/gpsimprocessor.cpp:142
+#: src/electronics/gpsimprocessor.cpp:141
 #, kde-format
 msgid "The processor for cod file \"%1\" is unrecognized."
 msgstr ""
 
-#: src/electronics/gpsimprocessor.cpp:142
+#: src/electronics/gpsimprocessor.cpp:141
 #, kde-format
 msgid "Unrecognized Processor"
 msgstr "Tundmatu protsessor"
 
-#: src/electronics/gpsimprocessor.cpp:145
+#: src/electronics/gpsimprocessor.cpp:144
 #, kde-format
 msgid "The file name \"%1\" is too long."
 msgstr "Failinimi \"%1\" on liiga pikk."
 
-#: src/electronics/gpsimprocessor.cpp:145
+#: src/electronics/gpsimprocessor.cpp:144
 #, kde-format
 msgid "Filename Too Long"
 msgstr "Failinimi on liiga pikk"
 
-#: src/electronics/gpsimprocessor.cpp:148
+#: src/electronics/gpsimprocessor.cpp:147
 #, kde-format
 msgid "The lst file associated with the cod file \"%1\" was not found."
 msgstr ""
 
-#: src/electronics/gpsimprocessor.cpp:148
+#: src/electronics/gpsimprocessor.cpp:147
 #, kde-format
 msgid "LST File Not Found"
 msgstr "LST-faili ei leitud"
 
-#: src/electronics/gpsimprocessor.cpp:151
+#: src/electronics/gpsimprocessor.cpp:150
 #, kde-format
 msgid "The cod file \"%1\" is bad."
 msgstr ""
 
-#: src/electronics/gpsimprocessor.cpp:151
+#: src/electronics/gpsimprocessor.cpp:150
 #, kde-format
 msgid "Bad File"
 msgstr "Halb fail"
 
-#: src/electronics/gpsimprocessor.cpp:154
+#: src/electronics/gpsimprocessor.cpp:153
 #, kde-format
 msgid "The cod file \"%1\" could not be read from."
 msgstr ""
 
-#: src/electronics/gpsimprocessor.cpp:154
+#: src/electronics/gpsimprocessor.cpp:153
 #, kde-format
 msgid "Unreadable File"
 msgstr "Loetamatu fail"
 
-#: src/electronics/gpsimprocessor.cpp:158
+#: src/electronics/gpsimprocessor.cpp:157
 #, kde-format
 msgid "An error occurred with the cod file \"%1\"."
 msgstr ""
 
-#: src/electronics/gpsimprocessor.cpp:158
+#: src/electronics/gpsimprocessor.cpp:157
 #, kde-format
 msgid "Error"
 msgstr "Tõrge"
 
-#: src/electronics/gpsimprocessor.cpp:735
+#: src/electronics/gpsimprocessor.cpp:734
 #, kde-format
 msgid "Generic"
 msgstr "Üldine"
 
-#: src/electronics/gpsimprocessor.cpp:738 src/projectmanager.cpp:872
+#: src/electronics/gpsimprocessor.cpp:737 src/projectmanager.cpp:870
 #, kde-format
 msgid "File"
 msgstr "Fail"
 
-#: src/electronics/gpsimprocessor.cpp:741
+#: src/electronics/gpsimprocessor.cpp:740
 #, kde-format
 msgid "SFR"
 msgstr "SFR"
 
-#: src/electronics/gpsimprocessor.cpp:744 src/textdocument.cpp:137
+#: src/electronics/gpsimprocessor.cpp:743 src/textdocument.cpp:137
 #, kde-format
 msgid "Breakpoint"
 msgstr "Katkestuspunkt"
 
-#: src/electronics/gpsimprocessor.cpp:747
+#: src/electronics/gpsimprocessor.cpp:746
 #, kde-format
 msgid "Invalid"
 msgstr "Vigane"
 
-#: src/electronics/gpsimprocessor.cpp:750
+#: src/electronics/gpsimprocessor.cpp:749
 #, kde-format
 msgid "Unknown"
 msgstr "Tundmatu"
@@ -2847,9 +2853,9 @@ msgstr "Toiming"
 
 #: src/flowparts/repeat.cpp:53 src/flowparts/varassignment.cpp:43
 #: src/flowparts/varcomparison.cpp:54 src/flowparts/while.cpp:53
-#: src/gui/itemeditor/propertyeditor.cpp:257 src/gui/symbolviewer.cpp:125
-#: src/gui/symbolviewer.cpp:127 src/gui/symbolviewer.cpp:192
-#: src/gui/symbolviewer.cpp:194
+#: src/gui/itemeditor/propertyeditor.cpp:257 src/gui/symbolviewer.cpp:124
+#: src/gui/symbolviewer.cpp:126 src/gui/symbolviewer.cpp:191
+#: src/gui/symbolviewer.cpp:193
 #, kde-format
 msgid "Value"
 msgstr "Väärtus"
@@ -3032,37 +3038,37 @@ msgstr "Instruktsiooni nimi"
 msgid "&Automatically format Microbe output"
 msgstr "&Microbe väljundi automaatme vormindamine"
 
-#: src/gui/contexthelp.cpp:69
+#: src/gui/contexthelp.cpp:68
 #, kde-format
 msgid ""
 "Provides context-sensitive help relevant to the current editing being "
 "performed."
 msgstr ""
 
-#: src/gui/contexthelp.cpp:249 src/gui/itemeditor/itemeditor.cpp:141
+#: src/gui/contexthelp.cpp:248 src/gui/itemeditor/itemeditor.cpp:140
 #, kde-format
 msgid "No Item Selected"
 msgstr "Ühtegi elementi pole valitud"
 
-#: src/gui/contexthelp.cpp:259 src/gui/itemeditor/itemeditor.cpp:108
+#: src/gui/contexthelp.cpp:258 src/gui/itemeditor/itemeditor.cpp:107
 #, kde-format
 msgid "Multiple Items"
 msgstr "Mitu elementi"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, m_pResetButton)
 #. i18n: ectx: property (text), widget (QToolButton, resetBtn)
-#: src/gui/contexthelp.cpp:334 src/gui/contexthelp.cpp:335
+#: src/gui/contexthelp.cpp:333 src/gui/contexthelp.cpp:334
 #: src/gui/contexthelpwidget.ui:173 src/gui/oscilloscopewidget.ui:117
 #, kde-format
 msgid "Reset"
 msgstr "Lähtesta"
 
-#: src/gui/contexthelp.cpp:335
+#: src/gui/contexthelp.cpp:334
 #, kde-format
 msgid "Reset item help to last saved changes?"
 msgstr "Kas lähtestada abi viimati salvestatud muutuste peale?"
 
-#: src/gui/contexthelp.cpp:355
+#: src/gui/contexthelp.cpp:354
 #, kde-format
 msgid "Cannot save item description."
 msgstr "Elemendi kirjelduse salvestamine nurjus."
@@ -3349,25 +3355,25 @@ msgid "inhx16"
 msgstr "inhx16"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_Radix)
-#: src/gui/gpasmsettingswidget.ui:138 src/gui/symbolviewer.cpp:110
+#: src/gui/gpasmsettingswidget.ui:138 src/gui/symbolviewer.cpp:109
 #, kde-format
 msgid "Decimal"
 msgstr ""
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_Radix)
-#: src/gui/gpasmsettingswidget.ui:143 src/gui/symbolviewer.cpp:108
+#: src/gui/gpasmsettingswidget.ui:143 src/gui/symbolviewer.cpp:107
 #, kde-format
 msgid "Binary"
 msgstr ""
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_Radix)
-#: src/gui/gpasmsettingswidget.ui:148 src/gui/symbolviewer.cpp:109
+#: src/gui/gpasmsettingswidget.ui:148 src/gui/symbolviewer.cpp:108
 #, kde-format
 msgid "Octal"
 msgstr ""
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_Radix)
-#: src/gui/gpasmsettingswidget.ui:153 src/gui/symbolviewer.cpp:111
+#: src/gui/gpasmsettingswidget.ui:153 src/gui/symbolviewer.cpp:110
 #, kde-format
 msgid "Hexadecimal"
 msgstr ""
@@ -3413,8 +3419,8 @@ msgstr "Muud valikud:"
 msgid "Link with shared libraries (&use this with new SDCC)"
 msgstr ""
 
-#: src/gui/imageexportdlg.cpp:32 src/itemdocument.cpp:863
-#: src/itemdocument.cpp:869
+#: src/gui/imageexportdlg.cpp:32 src/itemdocument.cpp:862
+#: src/itemdocument.cpp:868
 #, kde-format
 msgid "Export As Image"
 msgstr "Eksport pildina"
@@ -3459,14 +3465,14 @@ msgstr ""
 msgid "Select a predefined component configuration from this list."
 msgstr ""
 
-#: src/gui/itemeditor/itemeditor.cpp:44
+#: src/gui/itemeditor/itemeditor.cpp:43
 #, kde-format
 msgid ""
 "This allows editing of advanced properties of the selected item(s). Right "
 "click on the picture of the item to set the orientation."
 msgstr ""
 
-#: src/gui/itemeditor/itemeditor.cpp:71
+#: src/gui/itemeditor/itemeditor.cpp:70
 #, kde-format
 msgid ""
 "<p>Shows properties associated with the currently selected item(s).<br/"
@@ -3476,7 +3482,7 @@ msgid ""
 "properties to their default values"
 msgstr ""
 
-#: src/gui/itemeditor/itemeditor.cpp:87
+#: src/gui/itemeditor/itemeditor.cpp:86
 #, kde-format
 msgid ""
 "Change the orientation of the selected item by selecting the appropriate "
@@ -3517,17 +3523,17 @@ msgstr " ... "
 msgid "Choose File"
 msgstr "Faili valimine"
 
-#: src/gui/itemselector.cpp:62 src/gui/itemselector.cpp:409
+#: src/gui/itemselector.cpp:61 src/gui/itemselector.cpp:408
 #, kde-format
 msgid "Component"
 msgstr "Komponent"
 
-#: src/gui/itemselector.cpp:266
+#: src/gui/itemselector.cpp:265
 #, kde-format
 msgid "Remove %1"
 msgstr "Eemalda %1"
 
-#: src/gui/itemselector.cpp:403
+#: src/gui/itemselector.cpp:402
 #, kde-format
 msgid ""
 "Add components to the circuit diagram by dragging them into the circuit."
@@ -3537,7 +3543,7 @@ msgid ""
 "removed by right clicking on the item and selecting \"Remove\"."
 msgstr ""
 
-#: src/gui/itemselector.cpp:438
+#: src/gui/itemselector.cpp:437
 #, kde-format
 msgid ""
 "Add FlowPart to the FlowCode document by dragging them there.<br><br>To add "
@@ -3546,12 +3552,12 @@ msgid ""
 "stop placement."
 msgstr ""
 
-#: src/gui/itemselector.cpp:441
+#: src/gui/itemselector.cpp:440
 #, kde-format
 msgid "Flow Part"
 msgstr ""
 
-#: src/gui/itemselector.cpp:468
+#: src/gui/itemselector.cpp:467
 #, kde-format
 msgid "Add mechanical parts to the mechanics work area by dragging them there."
 msgstr ""
@@ -3801,7 +3807,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, pinMapRemove)
-#: src/gui/microsettingswidget.ui:109 src/projectmanager.cpp:1086
+#: src/gui/microsettingswidget.ui:109 src/projectmanager.cpp:1084
 #, kde-format
 msgid "Remove"
 msgstr "Eemalda"
@@ -4650,7 +4656,7 @@ msgstr ""
 msgid "Configuration Name"
 msgstr "Seadistuse nimi"
 
-#: src/gui/symbolviewer.cpp:104
+#: src/gui/symbolviewer.cpp:103
 #, kde-format
 msgid "Value radix:"
 msgstr ""
@@ -4683,43 +4689,43 @@ msgstr ""
 msgid "<b>Automatic</b> connection routing enabled."
 msgstr ""
 
-#: src/itemdocument.cpp:94
+#: src/itemdocument.cpp:93
 #, kde-format
 msgid "Alignment"
 msgstr "Joondus"
 
-#: src/itemdocument.cpp:863
+#: src/itemdocument.cpp:862
 #, kde-format
 msgid "SVG export is sub-functional"
 msgstr ""
 
-#: src/itemdocument.cpp:869
+#: src/itemdocument.cpp:868
 #, kde-format
 msgid "There is nothing to crop"
 msgstr "Pole midagi kärpida"
 
-#: src/itemdocument.cpp:938
+#: src/itemdocument.cpp:937
 #, kde-format
 msgid "Export failed"
 msgstr "Eksport nurjus"
 
-#: src/itemdocument.cpp:938
+#: src/itemdocument.cpp:937
 #, kde-format
 msgid "Image Export"
 msgstr "Pildi eksport"
 
-#: src/itemdocumentdata.cpp:103 src/projectmanager.cpp:741
+#: src/itemdocumentdata.cpp:103 src/projectmanager.cpp:739
 #, fuzzy, kde-format
 #| msgid "Could not open item descriptions file \"%1\" for writing."
 msgid "Could not open temporary file for writing: %1"
 msgstr "Elemendi kirjeldusfaili \"%1\" avamine kirjutamiseks nurjus."
 
-#: src/itemdocumentdata.cpp:117 src/projectmanager.cpp:755
+#: src/itemdocumentdata.cpp:117 src/projectmanager.cpp:753
 #, kde-format
 msgid "Could not open %1 for reading"
 msgstr "%1 avamine lugemiseks nurjus"
 
-#: src/itemdocumentdata.cpp:138 src/projectmanager.cpp:771
+#: src/itemdocumentdata.cpp:138 src/projectmanager.cpp:769
 #, kde-format
 msgid ""
 "Could not parse XML:\n"
@@ -4739,7 +4745,7 @@ msgstr ""
 msgid "Saving File"
 msgstr "Faili salvestamine"
 
-#: src/itemlibrary.cpp:134
+#: src/itemlibrary.cpp:132
 #, kde-format
 msgid ""
 "This help item does not yet exist for the %1 language. Help out with "
@@ -4748,14 +4754,14 @@ msgstr ""
 "Seda abi ei ole veel %1 keeles olemas. Aita KTechlabi, luues abiteksti nupu "
 "\"Muuda\" abil."
 
-#: src/itemlibrary.cpp:519
+#: src/itemlibrary.cpp:517
 #, kde-format
 msgid "Could not open item descriptions file \"%1\" for writing."
 msgstr "Elemendi kirjeldusfaili \"%1\" avamine kirjutamiseks nurjus."
 
 #. i18n("Cancel"), i18n("Cancel the current operation"), Qt::Key_Escape, itemDocument, SLOT(cancelCurrentOperation()) );
 #. pAccel->readSettings(); // TODO what does this do?
-#: src/itemview.cpp:59 src/projectmanager.cpp:1086 src/viewcontainer.cpp:542
+#: src/itemview.cpp:59 src/projectmanager.cpp:1084 src/viewcontainer.cpp:542
 #, kde-format
 msgid "Cancel"
 msgstr "Loobu"
@@ -5179,7 +5185,7 @@ msgstr "Sulge kõik teised"
 msgid "Intel Hex"
 msgstr ""
 
-#: src/ktechlab.cpp:1199 src/ktechlab.cpp:1202 src/projectmanager.cpp:918
+#: src/ktechlab.cpp:1199 src/ktechlab.cpp:1202 src/projectmanager.cpp:916
 #, kde-format
 msgid "Open Location"
 msgstr ""
@@ -5395,7 +5401,7 @@ msgstr "*** Linkimine õnnestus ***"
 msgid "*** Linking failed ***"
 msgstr "*** Linkimine nurjus ***"
 
-#: src/languages/languagemanager.cpp:49
+#: src/languages/languagemanager.cpp:47
 #, kde-format
 msgid ""
 "These messages show the output of language-related functionality such as "
@@ -5503,32 +5509,32 @@ msgstr "Inertsimoment"
 msgid "Advanced..."
 msgstr "Muu ..."
 
-#: src/projectmanager.cpp:413
+#: src/projectmanager.cpp:411
 #, kde-format
 msgid "Do not know how to build \"%1\" (output URL is empty)."
 msgstr "Ei tea, kuidas \"%1\" ehitada (väljundi URL puudub)."
 
-#: src/projectmanager.cpp:422
+#: src/projectmanager.cpp:420
 #, kde-format
 msgid "Do not know how to build \"%1\" (library does not exist in project)."
 msgstr "Ei tea, kuidas \"%1\" ehitada (projektis puudub teek)."
 
-#: src/projectmanager.cpp:448
+#: src/projectmanager.cpp:446
 #, kde-format
 msgid "Do not know how to build \"%1\" (unknown output type)."
 msgstr "Ei tea, kuidas \"%1\" ehitada (tundmatu väljundi tüüp)."
 
-#: src/projectmanager.cpp:807
+#: src/projectmanager.cpp:805
 #, kde-format
 msgid "Project could not be saved to \"%1\""
 msgstr "Projekti salvestamine asukohta \"%1\" nurjus"
 
-#: src/projectmanager.cpp:807
+#: src/projectmanager.cpp:805
 #, kde-format
 msgid "Saving Project"
 msgstr "Projekti salvestamine"
 
-#: src/projectmanager.cpp:870
+#: src/projectmanager.cpp:868
 #, kde-format
 msgid ""
 "Displays the list of files in the project.\n"
@@ -5539,22 +5545,22 @@ msgstr ""
 "Projekti avamiseks või sulgemiseks kasuta menüüd \"Projekt\". Faili "
 "eemaldamiseks projektist tee sellel paremklõps."
 
-#: src/projectmanager.cpp:873
+#: src/projectmanager.cpp:871
 #, kde-format
 msgid "Project Manager"
 msgstr "Projektihaldur"
 
-#: src/projectmanager.cpp:916
+#: src/projectmanager.cpp:914
 #, kde-format
 msgid "KTechlab Project"
 msgstr "KTechlabi projekt"
 
-#: src/projectmanager.cpp:1086
+#: src/projectmanager.cpp:1084
 #, kde-format
 msgid "Do you really want to remove \"%1\"?"
 msgstr "Kas tõesti eemaldada \"%1\"?"
 
-#: src/projectmanager.cpp:1086
+#: src/projectmanager.cpp:1084
 #, kde-format
 msgid "Remove Project File?"
 msgstr "Kas eemaldada projektifail?"

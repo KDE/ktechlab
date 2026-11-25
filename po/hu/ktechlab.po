@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktechlab 0.3.7\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-20 01:16+0000\n"
+"POT-Creation-Date: 2026-11-25 01:29+0000\n"
 "PO-Revision-Date: 2013-05-19 18:42+0200\n"
 "Last-Translator: Peter Bojtos <ptr@ulx.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -284,7 +284,7 @@ msgstr "Címke az elvárt"
 msgid "Name expected"
 msgstr "A név kötelező"
 
-#: microbe/optimizer.cpp:71
+#: microbe/optimizer.cpp:70
 #, kde-format
 msgid "Internal issue: Optimization has not finished in %1 iterations."
 msgstr ""
@@ -877,6 +877,12 @@ msgstr ""
 msgid "Check this if SDCC uses shared libs for compiling (newer SDCC does so)"
 msgstr ""
 
+#: src/core/ktlassert.cpp:80
+#, kde-format
+msgctxt "@title:window"
+msgid "KTechLab: Internal Error"
+msgstr ""
+
 #: src/core/main.cpp:31
 #, fuzzy, kde-format
 #| msgid "KTechlab"
@@ -1010,67 +1016,67 @@ msgstr ""
 msgid "Document to open."
 msgstr "Dokumentum megnyitása."
 
-#: src/docmanager.cpp:97
+#: src/docmanager.cpp:95
 #, kde-format
 msgid "Could not open '%1'"
 msgstr " '%1' megnyitása nem lehetséges"
 
-#: src/docmanager.cpp:165
+#: src/docmanager.cpp:163
 #, kde-format
 msgid "Untitled (Circuit %1)"
 msgstr "Névtelen (Áramkör %1)"
 
-#: src/docmanager.cpp:167
+#: src/docmanager.cpp:165
 #, kde-format
 msgid "Untitled (Circuit)"
 msgstr "Névtelen (Áramkör)"
 
-#: src/docmanager.cpp:173
+#: src/docmanager.cpp:171
 #, kde-format
 msgid "Untitled (FlowCode %1)"
 msgstr "Névtelen (FlowCode %1)"
 
-#: src/docmanager.cpp:175
+#: src/docmanager.cpp:173
 #, kde-format
 msgid "Untitled (FlowCode)"
 msgstr "Névtelen (FlowCode)"
 
-#: src/docmanager.cpp:181
+#: src/docmanager.cpp:179
 #, kde-format
 msgid "Untitled (Mechanics %1)"
 msgstr "Névtelen (Mechanika %1)"
 
-#: src/docmanager.cpp:183
+#: src/docmanager.cpp:181
 #, kde-format
 msgid "Untitled (Mechanics)"
 msgstr "Névtelen (Mechanika)"
 
-#: src/docmanager.cpp:189
+#: src/docmanager.cpp:187
 #, kde-format
 msgid "Untitled (%1)"
 msgstr "Névtelen (%1)"
 
-#: src/docmanager.cpp:191 src/view.cpp:259
+#: src/docmanager.cpp:189 src/view.cpp:257
 #, kde-format
 msgid "Untitled"
 msgstr "Névtelen"
 
-#: src/docmanager.cpp:413
+#: src/docmanager.cpp:411
 #, kde-format
 msgid "Could not open Circuit file \"%1\""
 msgstr " \"%1\" Áramkör fájl nem nyitható meg"
 
-#: src/docmanager.cpp:428
+#: src/docmanager.cpp:426
 #, kde-format
 msgid "Could not open FlowCode file \"%1\""
 msgstr " \"%1\" FlowCode fájl nem nyitható meg"
 
-#: src/docmanager.cpp:443
+#: src/docmanager.cpp:441
 #, kde-format
 msgid "Could not open Mechanics file \"%1\""
 msgstr " \"%1\" Mechanics fájl nem nyitható meg"
 
-#: src/docmanager.cpp:461
+#: src/docmanager.cpp:459
 #, kde-format
 msgid "Could not open text file \"%1\""
 msgstr " \"%1\" text fájl nem nyitható meg"
@@ -1080,13 +1086,13 @@ msgstr " \"%1\" text fájl nem nyitható meg"
 msgid "Save Location"
 msgstr "Hely mentése"
 
-#: src/document.cpp:113 src/itemdocument.cpp:838
+#: src/document.cpp:113 src/itemdocument.cpp:837
 #, kde-format
 msgid ""
 "A file named \"%1\" already exists. Are you sure you want to overwrite it?"
 msgstr " \"%1\" fájl név létezik. Felül kívánja írni?"
 
-#: src/document.cpp:114 src/itemdocument.cpp:841
+#: src/document.cpp:114 src/itemdocument.cpp:840
 #, kde-format
 msgid "Overwrite File?"
 msgstr "Felülírja a fájlt?"
@@ -1252,7 +1258,7 @@ msgstr "Tájolás"
 #: src/electronics/components/piccomponent.cpp:92 src/flowcodedocument.cpp:50
 #: src/flowcodedocument.cpp:173 src/flowcodedocument.cpp:197
 #: src/flowcodedocument.cpp:221 src/ktechlab.cpp:1193
-#: src/mechanics/mechanicsdocument.cpp:28 src/projectmanager.cpp:916
+#: src/mechanics/mechanicsdocument.cpp:28 src/projectmanager.cpp:914
 #: src/textdocument.cpp:472 src/textdocument.cpp:510
 #, kde-format
 msgid "All Files"
@@ -2001,9 +2007,9 @@ msgstr "Külső kapcsolat"
 #. i18n: ectx: property (text), widget (QLabel, m_pNameLabel)
 #: src/electronics/components/externalconnection.cpp:34
 #: src/gui/contexthelpwidget.ui:29 src/gui/microsettingsdlg.cpp:331
-#: src/gui/settingsdlg.cpp:289 src/gui/symbolviewer.cpp:124
-#: src/gui/symbolviewer.cpp:126 src/gui/symbolviewer.cpp:191
-#: src/gui/symbolviewer.cpp:193
+#: src/gui/settingsdlg.cpp:289 src/gui/symbolviewer.cpp:123
+#: src/gui/symbolviewer.cpp:125 src/gui/symbolviewer.cpp:190
+#: src/gui/symbolviewer.cpp:192
 #, kde-format
 msgid "Name"
 msgstr "Név"
@@ -2532,103 +2538,103 @@ msgstr "Feszültségszabályozó"
 msgid "Voltage Out"
 msgstr "Feszültség kimenet"
 
-#: src/electronics/gpsimprocessor.cpp:139
+#: src/electronics/gpsimprocessor.cpp:138
 #, kde-format
 msgid "The cod file \"%1\" was not found."
 msgstr "\"%1\" cod fájl nem található."
 
-#: src/electronics/gpsimprocessor.cpp:139
+#: src/electronics/gpsimprocessor.cpp:138
 #, kde-format
 msgid "File Not Found"
 msgstr "Fájl nem található"
 
-#: src/electronics/gpsimprocessor.cpp:142
+#: src/electronics/gpsimprocessor.cpp:141
 #, kde-format
 msgid "The processor for cod file \"%1\" is unrecognized."
 msgstr "\"%1\" cod fájl feldolgozása fel nem ismerhető."
 
-#: src/electronics/gpsimprocessor.cpp:142
+#: src/electronics/gpsimprocessor.cpp:141
 #, kde-format
 msgid "Unrecognized Processor"
 msgstr "Fel nem ismert Processzor"
 
-#: src/electronics/gpsimprocessor.cpp:145
+#: src/electronics/gpsimprocessor.cpp:144
 #, kde-format
 msgid "The file name \"%1\" is too long."
 msgstr "\"%1\" fájlnév túl hosszú."
 
-#: src/electronics/gpsimprocessor.cpp:145
+#: src/electronics/gpsimprocessor.cpp:144
 #, kde-format
 msgid "Filename Too Long"
 msgstr "A fájlnév túl hosszú"
 
-#: src/electronics/gpsimprocessor.cpp:148
+#: src/electronics/gpsimprocessor.cpp:147
 #, kde-format
 msgid "The lst file associated with the cod file \"%1\" was not found."
 msgstr "A  \"%1\" cod fájlal összekapcsolt lst fájl nem található. "
 
-#: src/electronics/gpsimprocessor.cpp:148
+#: src/electronics/gpsimprocessor.cpp:147
 #, kde-format
 msgid "LST File Not Found"
 msgstr "LST fájl nem található"
 
-#: src/electronics/gpsimprocessor.cpp:151
+#: src/electronics/gpsimprocessor.cpp:150
 #, kde-format
 msgid "The cod file \"%1\" is bad."
 msgstr "\"%1\" cod fájl rossz."
 
-#: src/electronics/gpsimprocessor.cpp:151
+#: src/electronics/gpsimprocessor.cpp:150
 #, kde-format
 msgid "Bad File"
 msgstr "Rossz fájl"
 
-#: src/electronics/gpsimprocessor.cpp:154
+#: src/electronics/gpsimprocessor.cpp:153
 #, kde-format
 msgid "The cod file \"%1\" could not be read from."
 msgstr " \"%1\" cod fájl nem olvasható."
 
-#: src/electronics/gpsimprocessor.cpp:154
+#: src/electronics/gpsimprocessor.cpp:153
 #, kde-format
 msgid "Unreadable File"
 msgstr "Olvashatatlan fájl"
 
-#: src/electronics/gpsimprocessor.cpp:158
+#: src/electronics/gpsimprocessor.cpp:157
 #, fuzzy, kde-format
 #| msgid "An error occured with the cod file \"%1\"."
 msgid "An error occurred with the cod file \"%1\"."
 msgstr "\"%1\" cod fájllal hiba történt."
 
-#: src/electronics/gpsimprocessor.cpp:158
+#: src/electronics/gpsimprocessor.cpp:157
 #, kde-format
 msgid "Error"
 msgstr "Hiba"
 
-#: src/electronics/gpsimprocessor.cpp:735
+#: src/electronics/gpsimprocessor.cpp:734
 #, kde-format
 msgid "Generic"
 msgstr "Általános"
 
-#: src/electronics/gpsimprocessor.cpp:738 src/projectmanager.cpp:872
+#: src/electronics/gpsimprocessor.cpp:737 src/projectmanager.cpp:870
 #, kde-format
 msgid "File"
 msgstr "Fájl"
 
-#: src/electronics/gpsimprocessor.cpp:741
+#: src/electronics/gpsimprocessor.cpp:740
 #, kde-format
 msgid "SFR"
 msgstr "SFR"
 
-#: src/electronics/gpsimprocessor.cpp:744 src/textdocument.cpp:137
+#: src/electronics/gpsimprocessor.cpp:743 src/textdocument.cpp:137
 #, kde-format
 msgid "Breakpoint"
 msgstr "Töréspont"
 
-#: src/electronics/gpsimprocessor.cpp:747
+#: src/electronics/gpsimprocessor.cpp:746
 #, kde-format
 msgid "Invalid"
 msgstr "Érvénytelen"
 
-#: src/electronics/gpsimprocessor.cpp:750
+#: src/electronics/gpsimprocessor.cpp:749
 #, kde-format
 msgid "Unknown"
 msgstr "Ismeretlen"
@@ -2966,9 +2972,9 @@ msgstr "Művelet"
 
 #: src/flowparts/repeat.cpp:53 src/flowparts/varassignment.cpp:43
 #: src/flowparts/varcomparison.cpp:54 src/flowparts/while.cpp:53
-#: src/gui/itemeditor/propertyeditor.cpp:257 src/gui/symbolviewer.cpp:125
-#: src/gui/symbolviewer.cpp:127 src/gui/symbolviewer.cpp:192
-#: src/gui/symbolviewer.cpp:194
+#: src/gui/itemeditor/propertyeditor.cpp:257 src/gui/symbolviewer.cpp:124
+#: src/gui/symbolviewer.cpp:126 src/gui/symbolviewer.cpp:191
+#: src/gui/symbolviewer.cpp:193
 #, kde-format
 msgid "Value"
 msgstr "Érték"
@@ -3157,7 +3163,7 @@ msgstr "Utasítás neve"
 msgid "&Automatically format Microbe output"
 msgstr "&Automatikusan formázott Microbe kimenet"
 
-#: src/gui/contexthelp.cpp:69
+#: src/gui/contexthelp.cpp:68
 #, kde-format
 msgid ""
 "Provides context-sensitive help relevant to the current editing being "
@@ -3166,13 +3172,13 @@ msgstr ""
 "Szövegkörnyezet érzékeny súgót nyújt, ami fontos az aktuális szerkesztés "
 "végrehajtásának szempontjából."
 
-#: src/gui/contexthelp.cpp:249 src/gui/itemeditor/itemeditor.cpp:141
+#: src/gui/contexthelp.cpp:248 src/gui/itemeditor/itemeditor.cpp:140
 #, fuzzy, kde-format
 #| msgid "<h2>No Item Selected</h2>"
 msgid "No Item Selected"
 msgstr "<h2>Nincs kiválasztott elem</h2>"
 
-#: src/gui/contexthelp.cpp:259 src/gui/itemeditor/itemeditor.cpp:108
+#: src/gui/contexthelp.cpp:258 src/gui/itemeditor/itemeditor.cpp:107
 #, fuzzy, kde-format
 #| msgid "<h2>Multiple Items</h2>"
 msgid "Multiple Items"
@@ -3180,18 +3186,18 @@ msgstr "<h2>Többszörös elemek</h2>"
 
 #. i18n: ectx: property (toolTip), widget (QToolButton, m_pResetButton)
 #. i18n: ectx: property (text), widget (QToolButton, resetBtn)
-#: src/gui/contexthelp.cpp:334 src/gui/contexthelp.cpp:335
+#: src/gui/contexthelp.cpp:333 src/gui/contexthelp.cpp:334
 #: src/gui/contexthelpwidget.ui:173 src/gui/oscilloscopewidget.ui:117
 #, kde-format
 msgid "Reset"
 msgstr "Alapállapot"
 
-#: src/gui/contexthelp.cpp:335
+#: src/gui/contexthelp.cpp:334
 #, kde-format
 msgid "Reset item help to last saved changes?"
 msgstr "Visszaállítsa az elem segítséget a legutolsó mentett változatra?"
 
-#: src/gui/contexthelp.cpp:355
+#: src/gui/contexthelp.cpp:354
 #, kde-format
 msgid "Cannot save item description."
 msgstr "A tárgy leírás nem menthető."
@@ -3493,25 +3499,25 @@ msgid "inhx16"
 msgstr "inhx16"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_Radix)
-#: src/gui/gpasmsettingswidget.ui:138 src/gui/symbolviewer.cpp:110
+#: src/gui/gpasmsettingswidget.ui:138 src/gui/symbolviewer.cpp:109
 #, kde-format
 msgid "Decimal"
 msgstr "Decimális"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_Radix)
-#: src/gui/gpasmsettingswidget.ui:143 src/gui/symbolviewer.cpp:108
+#: src/gui/gpasmsettingswidget.ui:143 src/gui/symbolviewer.cpp:107
 #, kde-format
 msgid "Binary"
 msgstr "Bináris"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_Radix)
-#: src/gui/gpasmsettingswidget.ui:148 src/gui/symbolviewer.cpp:109
+#: src/gui/gpasmsettingswidget.ui:148 src/gui/symbolviewer.cpp:108
 #, kde-format
 msgid "Octal"
 msgstr "Oktális"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_Radix)
-#: src/gui/gpasmsettingswidget.ui:153 src/gui/symbolviewer.cpp:111
+#: src/gui/gpasmsettingswidget.ui:153 src/gui/symbolviewer.cpp:110
 #, kde-format
 msgid "Hexadecimal"
 msgstr "Hexadecimális"
@@ -3566,8 +3572,8 @@ msgstr "Egyéb beállítások:"
 msgid "Link with shared libraries (&use this with new SDCC)"
 msgstr ""
 
-#: src/gui/imageexportdlg.cpp:32 src/itemdocument.cpp:863
-#: src/itemdocument.cpp:869
+#: src/gui/imageexportdlg.cpp:32 src/itemdocument.cpp:862
+#: src/itemdocument.cpp:868
 #, kde-format
 msgid "Export As Image"
 msgstr "Exportálás képként"
@@ -3617,7 +3623,7 @@ msgstr "Adja meg szóközzel elválasztva a komponens-könyvtárak szűrőjét."
 msgid "Select a predefined component configuration from this list."
 msgstr "Válasszon egy előre definiált konfigurációt a listából."
 
-#: src/gui/itemeditor/itemeditor.cpp:44
+#: src/gui/itemeditor/itemeditor.cpp:43
 #, kde-format
 msgid ""
 "This allows editing of advanced properties of the selected item(s). Right "
@@ -3627,7 +3633,7 @@ msgstr ""
 "szerkesztését. Jobb egérgombbal kattintson a tétel képére a tájolás "
 "beállításához."
 
-#: src/gui/itemeditor/itemeditor.cpp:71
+#: src/gui/itemeditor/itemeditor.cpp:70
 #, fuzzy, kde-format
 #| msgid ""
 #| "<qt>Shows properties associated with the currently selected item(s)."
@@ -3649,7 +3655,7 @@ msgstr ""
 "készítsen.<p>Válassza ki az alapértelmezettet, hogy az alapértelmezett "
 "értéket állítsa be az összes tulajdonságnak"
 
-#: src/gui/itemeditor/itemeditor.cpp:87
+#: src/gui/itemeditor/itemeditor.cpp:86
 #, kde-format
 msgid ""
 "Change the orientation of the selected item by selecting the appropriate "
@@ -3692,17 +3698,17 @@ msgstr " ... "
 msgid "Choose File"
 msgstr "Fájl kiválasztása"
 
-#: src/gui/itemselector.cpp:62 src/gui/itemselector.cpp:409
+#: src/gui/itemselector.cpp:61 src/gui/itemselector.cpp:408
 #, kde-format
 msgid "Component"
 msgstr "Összetevő"
 
-#: src/gui/itemselector.cpp:266
+#: src/gui/itemselector.cpp:265
 #, kde-format
 msgid "Remove %1"
 msgstr "%1 eltávolítása"
 
-#: src/gui/itemselector.cpp:403
+#: src/gui/itemselector.cpp:402
 #, kde-format
 msgid ""
 "Add components to the circuit diagram by dragging them into the circuit."
@@ -3718,7 +3724,7 @@ msgstr ""
 "elhelyezést.<br><br>Néhány összetevő(ilyen például az aláramkör) "
 "eltávolítható jobb kattintással a tételen és a kiválasztáson \"Eltávolít\"."
 
-#: src/gui/itemselector.cpp:438
+#: src/gui/itemselector.cpp:437
 #, kde-format
 msgid ""
 "Add FlowPart to the FlowCode document by dragging them there.<br><br>To add "
@@ -3731,12 +3737,12 @@ msgstr ""
 "kattintás a FlowPart-on és ismételten kattintson a FlowChart-on az összetevő "
 "helyére. A jobb kattintás leállítja a behelyezést."
 
-#: src/gui/itemselector.cpp:441
+#: src/gui/itemselector.cpp:440
 #, kde-format
 msgid "Flow Part"
 msgstr "Áramlás rész"
 
-#: src/gui/itemselector.cpp:468
+#: src/gui/itemselector.cpp:467
 #, kde-format
 msgid "Add mechanical parts to the mechanics work area by dragging them there."
 msgstr ""
@@ -4008,7 +4014,7 @@ msgstr ""
 "Húzza oda, hogy beállítsa a típusát (bemenet/kimenet)."
 
 #. i18n: ectx: property (text), widget (QPushButton, pinMapRemove)
-#: src/gui/microsettingswidget.ui:109 src/projectmanager.cpp:1086
+#: src/gui/microsettingswidget.ui:109 src/projectmanager.cpp:1084
 #, kde-format
 msgid "Remove"
 msgstr "Eltávolítás"
@@ -4919,7 +4925,7 @@ msgstr "\"%1\" eltávolítása"
 msgid "Configuration Name"
 msgstr "Konfiguráció neve"
 
-#: src/gui/symbolviewer.cpp:104
+#: src/gui/symbolviewer.cpp:103
 #, kde-format
 msgid "Value radix:"
 msgstr "Radix érték:"
@@ -4952,43 +4958,43 @@ msgstr "<b>Manuális</b> kapcsolat irányítás engedélyezett."
 msgid "<b>Automatic</b> connection routing enabled."
 msgstr "<b>Automatikus</b> kapcsolat irányítás engedélyezett."
 
-#: src/itemdocument.cpp:94
+#: src/itemdocument.cpp:93
 #, kde-format
 msgid "Alignment"
 msgstr "Elhelyezkedés"
 
-#: src/itemdocument.cpp:863
+#: src/itemdocument.cpp:862
 #, kde-format
 msgid "SVG export is sub-functional"
 msgstr "Az SVG exportálás alfunkció"
 
-#: src/itemdocument.cpp:869
+#: src/itemdocument.cpp:868
 #, kde-format
 msgid "There is nothing to crop"
 msgstr "Nincs semmi kivágásra"
 
-#: src/itemdocument.cpp:938
+#: src/itemdocument.cpp:937
 #, kde-format
 msgid "Export failed"
 msgstr "Exportálás sikertelen"
 
-#: src/itemdocument.cpp:938
+#: src/itemdocument.cpp:937
 #, kde-format
 msgid "Image Export"
 msgstr "Kép exportálás"
 
-#: src/itemdocumentdata.cpp:103 src/projectmanager.cpp:741
+#: src/itemdocumentdata.cpp:103 src/projectmanager.cpp:739
 #, fuzzy, kde-format
 #| msgid "Could not open item descriptions file \"%1\" for writing."
 msgid "Could not open temporary file for writing: %1"
 msgstr " \"%1\" elem leíró fájl nem nyitható meg írásra."
 
-#: src/itemdocumentdata.cpp:117 src/projectmanager.cpp:755
+#: src/itemdocumentdata.cpp:117 src/projectmanager.cpp:753
 #, kde-format
 msgid "Could not open %1 for reading"
 msgstr "%1 nem nyitható meg olvasásra"
 
-#: src/itemdocumentdata.cpp:138 src/projectmanager.cpp:771
+#: src/itemdocumentdata.cpp:138 src/projectmanager.cpp:769
 #, fuzzy, kde-format
 #| msgid ""
 #| "Couldn't parse xml:\n"
@@ -5011,7 +5017,7 @@ msgstr ""
 msgid "Saving File"
 msgstr "Fájl mentése"
 
-#: src/itemlibrary.cpp:134
+#: src/itemlibrary.cpp:132
 #, fuzzy, kde-format
 #| msgid ""
 #| "This help item does not yet exist for the %1 language. Help out with "
@@ -5023,14 +5029,14 @@ msgstr ""
 "Ez a segítőelem még nem létezik %1 nyelven. Segítse a KTechLab-ot, azáltal, "
 "hogy létrehozza a \"Szerkeszt\" gombbal!"
 
-#: src/itemlibrary.cpp:519
+#: src/itemlibrary.cpp:517
 #, kde-format
 msgid "Could not open item descriptions file \"%1\" for writing."
 msgstr " \"%1\" elem leíró fájl nem nyitható meg írásra."
 
 #. i18n("Cancel"), i18n("Cancel the current operation"), Qt::Key_Escape, itemDocument, SLOT(cancelCurrentOperation()) );
 #. pAccel->readSettings(); // TODO what does this do?
-#: src/itemview.cpp:59 src/projectmanager.cpp:1086 src/viewcontainer.cpp:542
+#: src/itemview.cpp:59 src/projectmanager.cpp:1084 src/viewcontainer.cpp:542
 #, fuzzy, kde-format
 #| msgid "&Cancel"
 msgid "Cancel"
@@ -5461,7 +5467,7 @@ msgstr "Minden mást bezár"
 msgid "Intel Hex"
 msgstr "Intel Hex"
 
-#: src/ktechlab.cpp:1199 src/ktechlab.cpp:1202 src/projectmanager.cpp:918
+#: src/ktechlab.cpp:1199 src/ktechlab.cpp:1202 src/projectmanager.cpp:916
 #, kde-format
 msgid "Open Location"
 msgstr "Hely megnyitása"
@@ -5685,7 +5691,7 @@ msgstr "*** A linkelés sikeres ***"
 msgid "*** Linking failed ***"
 msgstr "*** A linkelés sikertelen ***"
 
-#: src/languages/languagemanager.cpp:49
+#: src/languages/languagemanager.cpp:47
 #, kde-format
 msgid ""
 "These messages show the output of language-related functionality such as "
@@ -5800,36 +5806,36 @@ msgstr "Tehetetlenségi nyomaték"
 msgid "Advanced..."
 msgstr "Bővített..."
 
-#: src/projectmanager.cpp:413
+#: src/projectmanager.cpp:411
 #, fuzzy, kde-format
 #| msgid "Don't know how to build \"%1\" (output url is empty)."
 msgid "Do not know how to build \"%1\" (output URL is empty)."
 msgstr "Nem ismert \"%1\" építésének módja (külső url üres)."
 
-#: src/projectmanager.cpp:422
+#: src/projectmanager.cpp:420
 #, fuzzy, kde-format
 #| msgid "Don't know how to build \"%1\" (library does not exist in project)."
 msgid "Do not know how to build \"%1\" (library does not exist in project)."
 msgstr ""
 "Nem ismert \"%1\" építésének módja (a könyvtár nem létezik a projektben)."
 
-#: src/projectmanager.cpp:448
+#: src/projectmanager.cpp:446
 #, fuzzy, kde-format
 #| msgid "Don't know how to build \"%1\" (unknown output type)."
 msgid "Do not know how to build \"%1\" (unknown output type)."
 msgstr "Nem ismert \"%1\" építésének módja (ismeretlen eredmény típus)."
 
-#: src/projectmanager.cpp:807
+#: src/projectmanager.cpp:805
 #, kde-format
 msgid "Project could not be saved to \"%1\""
 msgstr "A Projekt nem menthető el ide: \"%1\""
 
-#: src/projectmanager.cpp:807
+#: src/projectmanager.cpp:805
 #, kde-format
 msgid "Saving Project"
 msgstr "Projekt mentése"
 
-#: src/projectmanager.cpp:870
+#: src/projectmanager.cpp:868
 #, kde-format
 msgid ""
 "Displays the list of files in the project.\n"
@@ -5840,22 +5846,22 @@ msgstr ""
 "A projekt megnyitására vagy bezárására használja a \"Projekt\" menüt. A "
 "projektből való eltávolításhoz kattintson jobb gombbal a fájlon"
 
-#: src/projectmanager.cpp:873
+#: src/projectmanager.cpp:871
 #, kde-format
 msgid "Project Manager"
 msgstr "Projekt Manager"
 
-#: src/projectmanager.cpp:916
+#: src/projectmanager.cpp:914
 #, kde-format
 msgid "KTechlab Project"
 msgstr "KTechlab projekt"
 
-#: src/projectmanager.cpp:1086
+#: src/projectmanager.cpp:1084
 #, kde-format
 msgid "Do you really want to remove \"%1\"?"
 msgstr "Valóban el akarja távolítani ezt: \"%1\"?"
 
-#: src/projectmanager.cpp:1086
+#: src/projectmanager.cpp:1084
 #, kde-format
 msgid "Remove Project File?"
 msgstr "Eltávolítsa a Projekt fájlt?"
