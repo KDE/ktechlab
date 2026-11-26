@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-25 01:29+0000\n"
-"PO-Revision-Date: 2026-11-04 04:01+0100\n"
+"PO-Revision-Date: 2026-11-25 13:59+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -432,10 +432,11 @@ msgstr "ოსცილოსკოპის ზონდის ჭდეებ�
 
 #. i18n: ectx: label, entry (ScopeBufferSize), group (General)
 #: src/core/ktechlab.kcfg:42
-#, fuzzy, kde-format
-#| msgid "Maximum number of characters shown Oscilloscope probe labels"
+#, kde-format
 msgid "Maximum number of samples to retain for each Oscilloscope probe (in KB)"
-msgstr "ოსცილოსკოპის ზონდის ჭდეებში ნაჩვენების სიმბოლოების მაქს. რაოდენობა"
+msgstr ""
+"შესანარჩუნებელი სინჯების მაქს რაოდენობა ოსცილოსკოპის თითოეული ზონდირებისთვის "
+"(კბ)"
 
 #. i18n: ectx: label, entry (AnimateWires), group (General)
 #: src/core/ktechlab.kcfg:46
@@ -820,7 +821,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "KTechLab: Internal Error"
-msgstr ""
+msgstr "KTechLab: შიდა შეცდომა"
 
 #: src/core/main.cpp:31
 #, kde-format
@@ -3296,7 +3297,7 @@ msgstr "ძაბვის ზ&ოლების ჩვენება ელ�
 #: src/gui/generaloptionswidget.ui:284
 #, kde-format
 msgid "Scope probe buffer size (in KB)"
-msgstr ""
+msgstr "შუალედის ზონდირების ბუფერის ზომა (კბ-ში)"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: src/gui/gpasmsettingswidget.ui:32

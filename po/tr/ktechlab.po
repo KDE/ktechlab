@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-25 01:29+0000\n"
-"PO-Revision-Date: 2026-11-23 18:15+0300\n"
+"PO-Revision-Date: 2026-11-25 17:57+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -808,7 +808,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "KTechLab: Internal Error"
-msgstr ""
+msgstr "KTechLab: İçsel Hata"
 
 #: src/core/main.cpp:31
 #, kde-format

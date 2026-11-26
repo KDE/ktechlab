@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-25 01:29+0000\n"
-"PO-Revision-Date: 2026-11-20 18:24+0100\n"
+"PO-Revision-Date: 2026-11-25 13:35+0100\n"
 "Last-Translator: freek <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -815,7 +815,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "KTechLab: Internal Error"
-msgstr ""
+msgstr "KTechLab: interne fout"
 
 #: src/core/main.cpp:31
 #, kde-format

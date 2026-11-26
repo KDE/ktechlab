@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ktechlab\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-25 01:29+0000\n"
-"PO-Revision-Date: 2026-11-05 09:22+0100\n"
+"PO-Revision-Date: 2026-11-25 10:42+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -436,12 +436,10 @@ msgstr ""
 
 #. i18n: ectx: label, entry (ScopeBufferSize), group (General)
 #: src/core/ktechlab.kcfg:42
-#, fuzzy, kde-format
-#| msgid "Maximum number of characters shown Oscilloscope probe labels"
+#, kde-format
 msgid "Maximum number of samples to retain for each Oscilloscope probe (in KB)"
 msgstr ""
-"Nombre màxim de caràcters que es mostren a les etiquetes de la sonda de "
-"l'oscil·loscopi"
+"Nombre màxim de mostres a retindre per a cada sonda d'oscil·loscopi (en kB)"
 
 # skip-rule: ff-current
 #. i18n: ectx: label, entry (AnimateWires), group (General)
@@ -826,7 +824,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "KTechLab: Internal Error"
-msgstr ""
+msgstr "KTechLab: S'ha produït un error intern"
 
 #: src/core/main.cpp:31
 #, kde-format
@@ -1047,7 +1045,7 @@ msgid ""
 "The document '%1' has been modified.\n"
 "Do you want to save it?"
 msgstr ""
-"El document «'%1» ha sigut modificat.\n"
+"El document «%1» s'ha modificat.\n"
 "Voleu guardar-lo?"
 
 #: src/document.cpp:144
@@ -2013,7 +2011,7 @@ msgstr "LED"
 #: src/electronics/components/ledbargraphdisplay.cpp:92
 #, kde-format
 msgid "Bar Graph Display"
-msgstr "Visualització de la gràfica de barres"
+msgstr "Visualitzeu la gràfica de barres"
 
 #: src/electronics/components/ledbargraphdisplay.cpp:102
 #: src/electronics/components/matrixdisplay.cpp:55
@@ -2037,7 +2035,7 @@ msgstr "Nombre d'entrades"
 #: src/electronics/components/matrixdisplay.cpp:38
 #, kde-format
 msgid "Matrix Display"
-msgstr "Visualització de la matriu"
+msgstr "Visualitzeu la matriu"
 
 #: src/electronics/components/matrixdisplay.cpp:73
 #: src/electronics/components/matrixdisplaydriver.cpp:313
@@ -3323,7 +3321,7 @@ msgstr "Mostra les barres del voltatge en els c&omponents electrònics"
 #: src/gui/generaloptionswidget.ui:284
 #, kde-format
 msgid "Scope probe buffer size (in KB)"
-msgstr ""
+msgstr "Mida de la memòria intermèdia de la sonda de l'oscil·loscopi (en kB)"
 
 #. i18n: ectx: property (text), widget (QLabel, textLabel2)
 #: src/gui/gpasmsettingswidget.ui:32
